@@ -23,3 +23,11 @@ backups/
 
 # Gift card codes — treat as cash, never commit
 docs/migration/gift-cards-reissued.csv
+
+# QA/test artifacts
+test-results/
+.audit/
+.screenshots/
+
+# Product source photos (already on Shopify CDN)
+public/ezq-products/
