@@ -22,8 +22,8 @@
             "primary_url": "/collections/hubs-adapters",
             "secondary_label": "Shop best-selling hub",
             "secondary_url": "/products/usb-c-multimedia-hub",
-            "image": "shopify://shop_images/DT_Banner_01.jpg",
-            "image_mobile": "shopify://shop_images/Mob_Banner_01.jpg"
+            "image": "shopify://shop_images/DT_Banner_01_d4d5e4dd-db12-4c47-bfb0-273c1d3e8e0f.jpg",
+            "image_mobile": "shopify://shop_images/Mob_Banner_01_3f5dfa45-ce88-4412-9faa-028fed503e5d.jpg"
           }
         },
         "slide_2": {
@@ -36,8 +36,8 @@
             "primary_url": "/collections/docking-stations",
             "secondary_label": "Compare desk options",
             "secondary_url": "/pages/compare",
-            "image": "shopify://shop_images/DT_Banner_02.jpg",
-            "image_mobile": "shopify://shop_images/Mob_Banner_02.jpg"
+            "image": "shopify://shop_images/DT_Banner_02_0df90393-2bbc-4c57-9f67-6517b0e4d39e.jpg",
+            "image_mobile": "shopify://shop_images/Mob_Banner_02_8ab61f7c-456d-466d-88d7-424941fedfe7.jpg"
           }
         },
         "slide_3": {
@@ -50,8 +50,8 @@
             "primary_url": "/collections/chargers-power",
             "secondary_label": "Find the right charger",
             "secondary_url": "/pages/help-me-choose",
-            "image": "shopify://shop_images/DT_Banner_03.jpg",
-            "image_mobile": "shopify://shop_images/Mob_Banner_03.jpg"
+            "image": "shopify://shop_images/DT_Banner_03_0b965f33-5228-45b6-9803-234143821790.jpg",
+            "image_mobile": "shopify://shop_images/Mob_Banner_03_946d174f-cbb0-4529-9802-07f1932b5fed.jpg"
           }
         },
         "slide_4": {
@@ -64,8 +64,8 @@
             "primary_url": "/collections/chargers-power",
             "secondary_label": "Shop hubs & adapters",
             "secondary_url": "/collections/hubs-adapters",
-            "image": "shopify://shop_images/DT_Banner_04.png",
-            "image_mobile": "shopify://shop_images/Mob_Banner_04.jpg"
+            "image": "shopify://shop_images/DT_Banner_04_7c7145ca-003e-43f6-8325-cd8fc93fc2cc.png",
+            "image_mobile": "shopify://shop_images/Mob_Banner_04_4ba785cf-8ee1-4320-a6e6-be96c62d8c32.jpg"
           }
         }
       },
