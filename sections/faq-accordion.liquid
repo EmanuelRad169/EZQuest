@@ -63,7 +63,34 @@
 
       <!-- Accordion groups -->
       <div class="faq-main{% if hide_faq_intro %} faq-main--tabbed{% endif %}">
-        {% if section.blocks.size > 0 %}
+        {%- liquid
+          assign product_faq_items = ''
+          if request.page_type == 'product' and product.metafields.ezquest.faq_items != blank
+            assign product_faq_items = product.metafields.ezquest.faq_items.value
+          endif
+        -%}
+        {% if product_faq_items != blank and product_faq_items.size > 0 %}
+          <!-- Product-specific FAQs: only this product's linked items (no global duplication) -->
+          <div class="faq-group">
+            <div class="faq-list">
+              {% for faq_item in product_faq_items %}
+                {% if faq_item.question.value != blank and faq_item.answer.value != blank %}
+                  <div class="faq-item" style="--i:{{ forloop.index0 }}">
+                    <button class="faq-trigger" type="button" aria-expanded="false">
+                      <span class="faq-trigger-text">
+                        <span class="faq-question">{{ faq_item.question.value }}</span>
+                      </span>
+                      <span class="faq-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></span>
+                    </button>
+                    <div class="faq-body" aria-hidden="true">
+                      <div class="faq-answer">{{ faq_item.answer.value | newline_to_br }}</div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% elsif section.blocks.size > 0 %}
           {%- assign item_idx = 0 -%}
           {% for block in section.blocks %}
             {% if block.type == 'group' %}
@@ -229,7 +256,23 @@
   "@type": "FAQPage",
   "mainEntity": [
     {%- assign schema_item_count = 0 -%}
-    {%- if use_global_faqs -%}
+    {%- if product_faq_items != blank and product_faq_items.size > 0 -%}
+      {%- comment -%} On a product page, only this product's linked FAQs (no global duplication in schema) {%- endcomment -%}
+      {%- for faq_item in product_faq_items -%}
+        {%- if faq_item.question.value != blank and faq_item.answer.value != blank -%}
+          {%- if schema_item_count > 0 -%},{%- endif -%}
+          {
+            "@type": "Question",
+            "name": {{ faq_item.question.value | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ faq_item.answer.value | strip_html | json }}
+            }
+          }
+          {%- assign schema_item_count = schema_item_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif use_global_faqs -%}
       {%- for faq_key in sorted_global_faq_keys -%}
         {%- if faq_key == blank -%}{%- continue -%}{%- endif -%}
         {%- assign faq_handle = faq_key | split: '::' | last -%}
