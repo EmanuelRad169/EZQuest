@@ -344,12 +344,37 @@ function animateMediaReveal(element, options) {
 
 // ─── Product gallery: click thumbnail to swap main image ─────────────────────
 (function () {
+  function sizedCdnUrl(url, width) {
+    // Shopify CDN image URLs carry a `width` query param — rewrite it so the
+    // main stage gets a high-res rendition instead of the 100–200px thumbnail.
+    try {
+      const parsed = new URL(url, window.location.href);
+      if (!/\.(jpg|jpeg|png|webp|gif|avif)(\?|$)/i.test(parsed.pathname)) return null;
+      parsed.searchParams.set('width', String(width));
+      return parsed.toString();
+    } catch (error) {
+      return null;
+    }
+  }
+
   function readThumbSource(thumb) {
     if (!thumb) return null;
     const thumbImg = thumb.querySelector('img');
     if (!thumbImg) return null;
+    const baseSrc = thumbImg.currentSrc || thumbImg.src;
+    const large = sizedCdnUrl(baseSrc, 1200);
+    if (large) {
+      return {
+        src: large,
+        srcset:
+          sizedCdnUrl(baseSrc, 400) + ' 400w, ' +
+          sizedCdnUrl(baseSrc, 800) + ' 800w, ' +
+          large + ' 1200w'
+      };
+    }
+    // Fallback (non-CDN/placeholder images): use the thumb source as before.
     return {
-      src: thumbImg.currentSrc || thumbImg.src,
+      src: baseSrc,
       srcset: thumbImg.getAttribute('srcset') || thumbImg.srcset || ''
     };
   }
