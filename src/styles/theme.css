@@ -10049,6 +10049,20 @@
     will-change: auto;
   }
 
+  /* Above-the-fold PDP content must never be gated by the JS reveal system —
+     the buy box and gallery are critical and load-time-sensitive. Force them
+     visible even if a reveal/motion class is present (belt-and-suspenders on
+     top of removing the classes in the template). */
+  .pdp-buy-box.js-reveal,
+  .pdp-buy-box.motion-fade-up,
+  .pdp-buy-box.reveal,
+  .product-gallery-stage .js-reveal,
+  .product-gallery-stage .motion-fade-up,
+  .product-gallery-stage .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
   /* Stagger children via --delay CSS variable */
   .reveal-child {
     transition-delay: var(--delay, 0ms);
