@@ -341,8 +341,13 @@
 
   var autoplayTimer;
   var AUTOPLAY_DELAY = 5000;
+  /* Autoplay is off by default: an auto-rotating hero moves the UVP before
+     shoppers can read it (CRO). Merchants can re-enable via the section setting.
+     The slider stays fully navigable via dots, arrows, and swipe regardless. */
+  var AUTOPLAY_ENABLED = {% if section.settings.hero_autoplay %}true{% else %}false{% endif %};
 
   function startAutoplay() {
+    if (!AUTOPLAY_ENABLED) return;
     clearInterval(autoplayTimer);
     autoplayTimer = setInterval(function () {
       goToSlide((currentIndex + 1) % totalSlides);
@@ -392,6 +397,7 @@
 {
   "name": "Home hero",
   "settings": [
+    { "type": "checkbox", "id": "hero_autoplay", "label": "Auto-rotate hero slides", "info": "Off is recommended — an auto-rotating hero moves the message before shoppers can read it.", "default": false },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Premium connectivity" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "USB-C hubs, docks, chargers, and cables built for modern-device workflows." },
     { "type": "textarea", "id": "copy", "label": "Copy", "default": "EZQuest helps Mac, PC, tablet, and mobile users expand ports, power displays, and keep everyday setups cleaner from desk to travel." },

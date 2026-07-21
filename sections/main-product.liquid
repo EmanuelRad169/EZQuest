@@ -331,9 +331,11 @@
         </div>
 
 
-        {%- comment -%} Feature icon strip (assets/pcon-001..009.png) {%- endcomment -%}
+        {%- comment -%} Feature icon strip (assets/pcon-001..009.png). Trimmed to the
+             first 6 feature icons; the trailing compliance badges (FCC/CE/RoHS) were
+             visual clutter with no conversion value, especially on mobile. {%- endcomment -%}
         <div class="pdp-feature-icons" aria-label="Product features">
-          {%- for i in (1..9) -%}
+          {%- for i in (1..6) -%}
             {%- assign pcon_n = i | prepend: '00' -%}
             <img src="{{ 'pcon-' | append: pcon_n | append: '.png' | asset_url }}" alt="" width="80" height="80" loading="lazy">
           {%- endfor -%}
@@ -561,6 +563,7 @@
               </div>
 
               {% if section.settings.show_dynamic_checkout %}
+                <div class="product-form-express-divider" aria-hidden="true"><span>or</span></div>
                 <div class="product-form-payment">
                   {{ form | payment_button }}
                 </div>
@@ -572,7 +575,7 @@
               {%- if product.available -%}
                 <p class="product-form-secure">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10.5h14v9.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                  Secure checkout · 30-day returns · Ships free over $90
+                  Secure checkout · Ships in 1–2 business days · Free over $90
                 </p>
               {%- endif -%}
 
@@ -585,7 +588,7 @@
                 <path d="M9 2l6 2.5V9c0 3.5-2.5 5.5-6 7C3.5 14.5 3 12.5 3 9V4.5L9 2z" stroke="rgba(254, 211, 0, 0.96)" stroke-width="1.25" stroke-linejoin="round"/>
               </svg>
               <div>
-                <p class="pdp-trust-label">{{ product.metafields.custom.warranty_years | default: '1' }}-yr warranty</p>
+                <p class="pdp-trust-label">{{ product.metafields.custom.warranty_years | default: '1' | replace: '.0', '' }}-yr warranty</p>
                 <p class="pdp-trust-sub">Covered against defects</p>
               </div>
             </div>

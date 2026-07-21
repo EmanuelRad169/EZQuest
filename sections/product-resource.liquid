@@ -24,7 +24,7 @@
     assign firmware_url       = rp.metafields.custom.firmware_url.value
     assign manual_pdf_url     = rp.metafields.custom.manual_pdf.value
     assign quickstart_pdf_url = rp.metafields.custom.quickstart_pdf.value
-    assign warranty_years     = rp.metafields.custom.warranty_years | default: '1'
+    assign warranty_years     = rp.metafields.custom.warranty_years | default: '1' | replace: '.0', ''
 
     if compat_html == blank
       assign compat_html = rp.metafields.custom.product_compatibility_html.value
