@@ -20,7 +20,7 @@
         "free_shipping": {
           "type": "message",
           "settings": {
-            "text": "Free Shipping Over $100"
+            "text": "Free Shipping Over $90"
           }
         },
         "returns": {
