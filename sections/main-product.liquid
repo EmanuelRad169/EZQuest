@@ -1184,40 +1184,46 @@
 
 <script>
 (function () {
-  var productRoot = document.querySelector('[data-product-root]');
-  if (!productRoot) return;
-
-  var productForm = productRoot.querySelector('form[id^="ProductForm-"]');
-  if (!productForm) return;
-
-  var primaryButton = productRoot.querySelector('[data-product-primary-button]');
-  var primaryButtonLabel = productRoot.querySelector('[data-product-primary-button-label]');
-  var primaryButtonPrice = productRoot.querySelector('[data-product-primary-button-price]');
-  var primaryButtonDivider = productRoot.querySelector('[data-product-primary-button-divider]');
-  var stickyButton = productRoot.querySelector('[data-sticky-atc-button]');
-  var stickyButtonLabel = productRoot.querySelector('[data-sticky-atc-button-label]');
-  var stickyButtonPrice = productRoot.querySelector('[data-sticky-atc-button-price]');
-  var stickyButtonDivider = productRoot.querySelector('[data-sticky-atc-button-divider]');
-
-  var addLabel = primaryButton ? (primaryButton.getAttribute('data-label-add') || 'Add to cart') : 'Add to cart';
-  var addingLabel = primaryButton ? (primaryButton.getAttribute('data-label-adding') || 'Adding\u2026') : 'Adding\u2026';
+  /* DELEGATED submit handler: the buybox re-renders client-side after load,
+     which detaches any handler bound directly to the form node \u2014 that caused
+     Add to cart to fall back to a native POST + /cart redirect (same bug
+     class as the "Learn more" toggle fix). Delegating on document survives
+     re-renders; button refs are re-queried at call time for the same reason. */
+  function q(sel) {
+    var root = document.querySelector('[data-product-root]');
+    return root ? root.querySelector(sel) : null;
+  }
 
   function setLoading(loading) {
+    var primaryButton = q('[data-product-primary-button]');
+    var stickyButton = q('[data-sticky-atc-button]');
+    var addLabel = primaryButton ? (primaryButton.getAttribute('data-label-add') || 'Add to cart') : 'Add to cart';
+    var addingLabel = primaryButton ? (primaryButton.getAttribute('data-label-adding') || 'Adding\u2026') : 'Adding\u2026';
     [primaryButton, stickyButton].forEach(function (btn) {
       if (!btn) return;
       btn.classList.toggle('is-loading', loading);
       btn.disabled = loading;
       btn.setAttribute('aria-busy', loading ? 'true' : 'false');
     });
-    if (primaryButtonLabel) primaryButtonLabel.textContent = loading ? addingLabel : addLabel;
-    if (primaryButtonPrice) primaryButtonPrice.hidden = loading;
-    if (primaryButtonDivider) primaryButtonDivider.hidden = loading;
-    if (stickyButtonLabel) stickyButtonLabel.textContent = loading ? addingLabel : addLabel;
-    if (stickyButtonPrice) stickyButtonPrice.hidden = loading;
-    if (stickyButtonDivider) stickyButtonDivider.hidden = loading;
+    var pairs = [
+      ['[data-product-primary-button-label]', loading ? addingLabel : addLabel],
+      ['[data-sticky-atc-button-label]', loading ? addingLabel : addLabel]
+    ];
+    pairs.forEach(function (p) { var el = q(p[0]); if (el) el.textContent = p[1]; });
+    ['[data-product-primary-button-price]', '[data-product-primary-button-divider]', '[data-sticky-atc-button-price]', '[data-sticky-atc-button-divider]'].forEach(function (sel) {
+      var el = q(sel); if (el) el.hidden = loading;
+    });
   }
 
-  productForm.addEventListener('submit', function (event) {
+  function setLabels(text) {
+    ['[data-product-primary-button-label]', '[data-sticky-atc-button-label]'].forEach(function (sel) {
+      var el = q(sel); if (el) el.textContent = text;
+    });
+  }
+
+  document.addEventListener('submit', function (event) {
+    var productForm = event.target && event.target.closest ? event.target.closest('form[id^="ProductForm-"]') : null;
+    if (!productForm || !productForm.closest('[data-product-root]')) return;
     event.preventDefault();
     var variantInput = productForm.querySelector('[name="id"]');
     var quantityInput = productForm.querySelector('[name="quantity"]');
@@ -1237,8 +1243,7 @@
       return res.json();
     })
     .then(function () {
-      if (primaryButtonLabel) primaryButtonLabel.textContent = 'Added!';
-      if (stickyButtonLabel) stickyButtonLabel.textContent = 'Added!';
+      setLabels('Added!');
       setTimeout(function () {
         if (typeof window.refreshAndOpenCartDrawer === 'function') {
           window.refreshAndOpenCartDrawer();
