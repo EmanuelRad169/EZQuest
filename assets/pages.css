@@ -2736,8 +2736,14 @@
   margin: 0 0 2.25rem;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: .75rem;
+}
+@media (max-width: 1024px) {
+  .ez-promise__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .ez-promise__list { grid-template-columns: 1fr; }
 }
 .ez-promise__item {
   display: flex;
