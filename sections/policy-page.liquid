@@ -26,11 +26,11 @@
 
 <div class="policy-page bg-white">
 
-  <div class="policy-hero">
-    <p class="policy-hero__kicker">Legal</p>
-    <h1 class="policy-hero__heading">{{ doc_title }}</h1>
-    <p class="policy-hero__meta">Last updated: 2026</p>
-  </div>
+  {%- comment -%}
+    Hero intentionally omitted: pages using this section (e.g. cookie-policy)
+    pair it with a dark `page-hero` section, so a second hero here would be a
+    duplicate. Native /policies/* pages get their navy hero via policy-page.css.
+  {%- endcomment -%}
 
   <div class="policy-layout">
 
@@ -75,11 +75,7 @@
         <p class="policy-sidebar__help-body">
           We respond within 1 business day.
         </p>
-        <a href="/pages/contact"
-           class="btn btn--primary"
-           style="display:block;text-align:center;margin-top:1rem;border-radius:100px">
-          Contact us
-        </a>
+        <a href="/pages/contact" class="policy-sidebar__cta">Contact us</a>
       </div>
 
     </aside>

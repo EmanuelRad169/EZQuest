@@ -24,7 +24,7 @@
     + '<div class="policy-sidebar__card policy-sidebar__card--help">'
     + '<p class="policy-sidebar__help-title">Questions?</p>'
     + '<p class="policy-sidebar__help-body">We respond within 1 business day.</p>'
-    + '<a href="/pages/contact" class="btn btn--primary" style="display:block;text-align:center;margin-top:1rem;border-radius:100px">Contact us</a>'
+    + '<a href="/pages/contact" class="policy-sidebar__cta">Contact us</a>'
     + '</div>'
     + '</aside>';
 
