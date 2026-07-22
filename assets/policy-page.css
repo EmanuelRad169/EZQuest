@@ -45,6 +45,29 @@
   margin: 0;
 }
 
+/* Trust chips in the native policy hero (mirror .page-hero__trust) */
+.shopify-policy__trust {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.shopify-policy__trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .4rem .85rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 9999px;
+}
+.shopify-policy__trust-chip svg { color: var(--ez-amber, #FED300); flex-shrink: 0; }
+
 @media (max-width: 768px) {
   .shopify-policy__title { padding-top: 132px; }
 }
