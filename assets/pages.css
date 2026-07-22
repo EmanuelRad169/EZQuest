@@ -2467,9 +2467,9 @@
    About / Our Story — official brand narrative components
    ============================================================ */
 
-/* Long-form narrative prose (About + Our Story) */
+/* Long-form narrative prose (About + Our Story) — full content width */
 .about-narrative,
-.story-narrative { max-width: 760px; }
+.story-narrative { max-width: none; }
 .about-narrative > p,
 .story-narrative > p {
   font-size: clamp(15px, 1.4vw, 17px);
