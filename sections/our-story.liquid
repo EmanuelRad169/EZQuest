@@ -28,20 +28,27 @@
       <a href="{{ routes.collections_url }}" class="page-hero__cta">Shop products</a>
       <a href="/pages/contact" class="page-hero__cta-secondary">Contact us <span aria-hidden="true">&rarr;</span></a>
     </div>
-    <div class="story-stat-grid">
-      <div>
-        <p style="font-size:36px;font-weight:500;letter-spacing:-.03em;color:var(--ez-light);margin:0 0 .25rem;">30+</p>
-        <p style="font-size:13px;color:rgba(255,255,255,.45);margin:0;">Years in business</p>
-      </div>
-      <div>
-        <p style="font-size:36px;font-weight:500;letter-spacing:-.03em;color:var(--ez-light);margin:0 0 .25rem;">100+</p>
-        <p style="font-size:13px;color:rgba(255,255,255,.45);margin:0;">Products made</p>
-      </div>
-      <div>
-        <p style="font-size:36px;font-weight:500;letter-spacing:-.03em;color:var(--ez-light);margin:0 0 .25rem;">1–2yr</p>
-        <p style="font-size:13px;color:rgba(255,255,255,.45);margin:0;">Limited warranty (varies by product)</p>
-      </div>
+    {%- comment -%} Stats relocated to a dedicated band below the hero {%- endcomment -%}
     </div>
+  </div>
+</section>
+
+{% comment %} 1b. STATS BAND {% endcomment %}
+<section class="page-section page-section--grey story-stats-section">
+  <div class="container-shell">
+    <div class="story-stats-band">
+      <div class="story-stat" data-animate>
+        <p class="story-stat__value">30+</p>
+        <p class="story-stat__label">Years in business</p>
+      </div>
+      <div class="story-stat" data-animate>
+        <p class="story-stat__value">100+</p>
+        <p class="story-stat__label">Products made</p>
+      </div>
+      <div class="story-stat" data-animate>
+        <p class="story-stat__value">1–2yr</p>
+        <p class="story-stat__label">Limited warranty (varies by product)</p>
+      </div>
     </div>
   </div>
 </section>
@@ -59,7 +66,7 @@
       <p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions. That’s why many of our products include thoughtful features customers didn’t even realize they needed — from detachable USB-C cables to reinforced strain reliefs engineered for long-term durability.</p>
       <p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?” Every EZQuest product is designed to add meaningful value and deliver a better everyday experience.</p>
       <p>Perhaps the greatest compliment we receive isn’t an award — it’s hearing from customers who are still using products they purchased decades ago. Those conversations remind us why we do what we do.</p>
-      <p class="story-narrative__closer">Our goal has never been to earn a sale.<br>Our goal is to earn a fan.<br>One customer at a time.</p>
+      <p class="story-narrative__closer">Our goal has never been to earn a sale.<br>Our goal is to <span class="story-narrative__accent">earn a fan</span>.<br><span class="story-narrative__sub">One customer at a time.</span></p>
     </div>
   </div>
 </section>
@@ -71,28 +78,28 @@
       <p class="section-intro__kicker story-section-intro__kicker text-left">What we believe</p>
       <h2 class="section-intro__heading story-section-intro__heading">Our core values.</h2>
     </div>
-    <div class="values-grid">
-      <div class="value-card" data-animate>
+    <div class="values-bento">
+      <div class="value-card value-card--1 value-card--feature" data-animate>
         <span class="value-card__num">01</span>
         <p class="value-card__title">We listen first</p>
         <p class="value-card__body">Every product begins with understanding our customers’ needs — not following market trends.</p>
       </div>
-      <div class="value-card" data-animate>
+      <div class="value-card value-card--2" data-animate>
         <span class="value-card__num">02</span>
         <p class="value-card__title">We never build “me too” products</p>
         <p class="value-card__body">Every EZQuest product must improve upon what’s already available by adding meaningful value.</p>
       </div>
-      <div class="value-card" data-animate>
+      <div class="value-card value-card--3" data-animate>
         <span class="value-card__num">03</span>
         <p class="value-card__title">Thoughtful engineering</p>
         <p class="value-card__body">Every detail matters — from internal components to packaging, durability, and user experience.</p>
       </div>
-      <div class="value-card" data-animate>
+      <div class="value-card value-card--4" data-animate>
         <span class="value-card__num">04</span>
         <p class="value-card__title">Innovation with purpose</p>
         <p class="value-card__body">Technology should simplify life, not complicate it. Every feature should have a reason for existing.</p>
       </div>
-      <div class="value-card" data-animate>
+      <div class="value-card value-card--5" data-animate>
         <span class="value-card__num">05</span>
         <p class="value-card__title">Building lifelong relationships</p>
         <p class="value-card__body">Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others.</p>

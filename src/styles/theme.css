@@ -12927,7 +12927,7 @@ body.template-index .home-hero-slide {
 
 .page-hero__subheading {
   font-size: var(--text-lg, 1.125rem);
-  max-width: 60ch;
+  max-width: none;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
 }
