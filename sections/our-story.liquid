@@ -108,15 +108,17 @@
       <p class="section-intro__kicker story-section-intro__kicker text-left">Our journey</p>
       <h2 class="section-intro__heading story-section-intro__heading">30 years of connectivity.</h2>
     </div>
-    {% if section.settings.timeline_image != blank %}
-      <div class="story-timeline-media">
-        {{ section.settings.timeline_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'EZQuest product timeline', class: 'story-timeline-image' }}
-      </div>
-    {% endif %}
-    <div class="milestone-grid">
+    <div class="milestone-bento">
+      {% if section.settings.timeline_image != blank %}
+        <figure class="milestone-bento__media" data-animate>
+          {{ section.settings.timeline_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: 'EZQuest products through the years', class: 'milestone-bento__img' }}
+        </figure>
+      {% endif %}
+      {%- assign mi = 0 -%}
       {% for block in section.blocks %}
         {% if block.type == 'milestone' %}
-          <div class="milestone-card" data-animate {{ block.shopify_attributes }}>
+          {%- assign mi = mi | plus: 1 -%}
+          <div class="milestone-card milestone-card--{{ mi }}{% if mi == 1 %} milestone-card--feature{% endif %}" data-animate {{ block.shopify_attributes }}>
             <p class="milestone-card__year">{{ block.settings.year }}</p>
             <p class="milestone-card__title">{{ block.settings.title }}</p>
             <p class="milestone-card__body">{{ block.settings.body }}</p>
