@@ -25,7 +25,7 @@
     --ez-black: #1d1d1f;
     --ez-dark: #0a0a0a;
     --ez-slate: #0F172A;
-    --ez-grey: #6e6e73;
+    --ez-grey: #5d5d62;
     --ez-light: #f5f5f7;
     --ez-white: #ffffff;
     --ez-border: rgba(0,0,0,0.07);
@@ -126,7 +126,7 @@
     --color-border:         #e8e8e8;
     --color-text-primary:   #0f172a;   /* ≈ rgb(--color-ink) */
     --color-text-secondary: #475569;   /* ≈ rgb(--color-ink-soft) */
-    --color-text-muted:     #a3a3a3;
+    --color-text-muted:     #6b6b70;
     --color-text-inverse:   #ffffff;
     /* Brand CTA color (dark navy — matches .button-primary bg) */
     --color-brand:          #0f172a;
@@ -12584,18 +12584,20 @@ body.template-index .home-hero-slide {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  border-radius: 0.875rem;
+  /* Match the sitewide primary (Add to cart) so the purchase flow uses one CTA color */
+  border-radius: var(--radius-pill, 9999px);
   text-decoration: none;
-  background: rgb(15 23 42);
-  color: #fff;
-  border: none;
+  background: var(--ez-amber, #FED300);
+  color: #111;
+  border: 1.5px solid var(--ez-amber, #FED300);
   cursor: pointer;
-  transition: background 0.18s;
+  transition: background 0.18s, box-shadow 0.18s;
 }
 
 @media (hover: hover) {
   .cart-checkout-btn:hover {
-    background: rgb(30 41 59);
+    background: #FFC700;
+    box-shadow: 0 8px 20px rgba(254, 211, 0, 0.3);
   }
 }
 
