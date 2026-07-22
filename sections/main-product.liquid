@@ -1100,6 +1100,7 @@
     "priceCurrency": {{ cart.currency.iso_code | json }},
     "price": {{ product.price | divided_by: 100.0 }},
     "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
     "seller": {
       "@type": "Organization",
       "name": {{ shop.name | json }}
