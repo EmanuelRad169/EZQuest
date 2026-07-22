@@ -18387,6 +18387,24 @@ body.template-product .site-header--hero-overlay .site-header-icon-button {
   color: rgba(15, 23, 42, 0.88);
 }
 
+/* Policy / legal pages have a light hero (no dark hero behind the overlay
+   header), so the white nav was invisible. Give the header the same solid,
+   dark-text treatment used on product pages so the nav matches the rest. */
+body.template-policy .site-header--hero-overlay {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(226, 232, 240, 0.75);
+}
+body.template-policy .site-header--hero-overlay .site-brandmark img {
+  filter: none;
+}
+body.template-policy .site-header--hero-overlay .mega-menu-trigger,
+body.template-policy .site-header--hero-overlay .mega-menu-trigger--plain,
+body.template-policy .site-header--hero-overlay .site-header-icon-button {
+  color: rgba(15, 23, 42, 0.88);
+}
+
 /* Header language switcher — transparent select with flag + caret backgrounds */
 .site-header-locale{display:inline-flex;align-items:center}
 .site-header-locale__form{margin:0;display:inline-flex}
