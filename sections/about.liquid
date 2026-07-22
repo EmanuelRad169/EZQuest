@@ -1,45 +1,85 @@
 {% comment %} sections/about.liquid {% endcomment %}
 {{ 'pages.css' | asset_url | stylesheet_tag }}
 
-{% comment %} INTRO — authentic EZQuest company description {% endcomment %}
-{%- assign about_body = section.settings.body | default: 'EZQuest provides the highest-quality accessories for the Apple, PC, and mobile consumer-electronics markets. Our portfolio spans USB-C hubs and docks, DuraGuard™ cables, display adapters, GaN power products, and card readers — precision-engineered from premium materials, built with the latest technology, and designed to last.' -%}
-{%- if about_body != blank -%}
+{% comment %} INTRO — official About EZQuest narrative {% endcomment %}
 <section class="page-section page-section--white bg-white">
   <div class="container-shell">
-    <div class="about-intro">
+    <div class="about-narrative">
       <p class="about-intro__kicker">Who we are</p>
-      <p class="about-intro__lead">{{ about_body }}</p>
+      <p class="about-narrative__lead">For more than three decades, EZQuest has helped people navigate every major evolution in computer connectivity. From the early days of SCSI to today’s USB-C, Thunderbolt, and USB4 technologies, we’ve remained committed to one mission: designing products that make technology easier, smarter, and more reliable.</p>
+      <p>Founded in 1994 by electronics engineer Ebrahim Zmehrir, EZQuest was built on a simple philosophy: listen first, design second. Rather than following market trends or producing products that simply match what’s already available, we believe every product should solve a genuine customer problem and provide meaningful improvements that make everyday life easier.</p>
+      <p>During the FireWire era, EZQuest became one of the industry’s early innovators, helping creative professionals transition from tape-based workflows to digital video editing. Our products were showcased by Apple at Macworld San Francisco, and our commitment to innovation earned recognition alongside some of the technology industry’s most respected companies.</p>
+      <p>Today, EZQuest designs premium USB-C and Thunderbolt accessories — including hubs, docking stations, adapters, cables, power solutions, and productivity accessories for Mac and PC users, creative professionals, businesses, educators, and technology enthusiasts around the world.</p>
+      <p>Every product begins with one simple question: <strong>What problem are we solving?</strong> If we cannot improve the customer experience, we simply don’t build the product. That’s why you’ll often find thoughtful details that set EZQuest apart — from detachable USB-C cables that improve convenience and extend product life, to reinforced cable strain reliefs engineered for greater durability, to carefully selected port configurations inspired directly by customer feedback.</p>
+      <p>We believe innovation isn’t about adding more features. It’s about adding the right features. At EZQuest, engineering always comes before marketing — every decision we make is guided by long-term reliability, thoughtful design, and real-world usability. And because the customer experience extends far beyond the product itself, packaging, documentation, technical support, and after-sales service all play an important role in building lasting relationships.</p>
+      <p class="about-narrative__closer">While technology will continue to change, our philosophy never will. We listen. We innovate. We improve. And above all, we strive to earn something far more valuable than a sale — we strive to earn your trust.</p>
     </div>
   </div>
 </section>
-{%- endif -%}
 
-{% comment %} THREE PILLARS {% endcomment %}
+{% comment %} MISSION {% endcomment %}
 <section class="page-section page-section--grey">
-  <div class="container-shell about-pillars-shell">
-    <div class="about-section-head">
-      <p class="about-intro__kicker">What we stand for</p>
-      <h2 class="about-section-head__heading">
-        Three things we never compromise on.
-      </h2>
+  <div class="container-shell">
+    <div class="about-mission" data-animate>
+      <p class="about-intro__kicker">Our mission</p>
+      <p class="about-mission__statement">To design thoughtfully engineered connectivity solutions that solve real-world problems, deliver meaningful innovation, and earn the trust of our customers through exceptional quality, reliability, and service.</p>
     </div>
-    <div class="three-col story-three-col p-0">
-      {% for block in section.blocks %}
-        {% if block.type == 'pillar' %}
-          <div class="pillar-card" {{ block.shopify_attributes }}>
-            <div class="pillar-card__icon">
-              <svg viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor"
-                   stroke-width="1.5" stroke-linecap="round"
-                   aria-hidden="true">
-                <path d="{{ block.settings.icon_path }}"/>
-              </svg>
-            </div>
-            <p class="pillar-card__title">{{ block.settings.title }}</p>
-            <p class="pillar-card__body">{{ block.settings.body }}</p>
-          </div>
-        {% endif %}
-      {% endfor %}
+  </div>
+</section>
+
+{% comment %} WHY CHOOSE EZQUEST {% endcomment %}
+<section class="page-section page-section--white bg-white">
+  <div class="container-shell">
+    <div class="about-section-head">
+      <p class="about-intro__kicker">Why EZQuest</p>
+      <h2 class="about-section-head__heading">Why choose EZQuest?</h2>
+    </div>
+    <div class="why-choose-grid">
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Over 30 years of innovation</h3>
+        <p class="why-card__body">Helping customers navigate every major evolution in computer connectivity since 1994.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Customer-driven design</h3>
+        <p class="why-card__body">Every product begins by listening to real customer feedback.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">No “me too” products</h3>
+        <p class="why-card__body">Every EZQuest product is designed to improve upon what’s already available.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Thoughtful engineering</h3>
+        <p class="why-card__body">Smart features, durable construction, and practical innovations that make a difference.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Premium quality &amp; reliability</h3>
+        <p class="why-card__body">Built for dependable performance and long-term value.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Exceptional customer support</h3>
+        <p class="why-card__body">Our commitment doesn’t end when your order arrives.</p>
+      </div>
+      <div class="why-card" data-animate>
+        <h3 class="why-card__title">Trusted by professionals worldwide</h3>
+        <p class="why-card__body">Solutions designed for creators, businesses, educators, and everyday users alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} THE EZQUEST PROMISE {% endcomment %}
+<section class="page-section ez-promise">
+  <div class="container-shell">
+    <div class="ez-promise__inner" data-animate>
+      <p class="ez-promise__kicker">The EZQuest Promise</p>
+      <ul class="ez-promise__list">
+        <li>We listen before we design.</li>
+        <li>We solve real-world problems.</li>
+        <li>We never create “me too” products.</li>
+        <li>We engineer every detail with purpose.</li>
+        <li>We stand behind what we build.</li>
+      </ul>
+      <p class="ez-promise__closer">Most importantly, we don’t build products simply to gain customers. We build products to earn lifelong fans.</p>
     </div>
   </div>
 </section>
