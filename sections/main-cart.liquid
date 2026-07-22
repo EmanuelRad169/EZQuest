@@ -83,7 +83,7 @@
             <h2 class="cart-summary-heading">Order summary</h2>
 
             {%- liquid
-              assign free_ship_threshold = 15000
+              assign free_ship_threshold = 9000
               assign remaining_cents = free_ship_threshold | minus: cart.total_price
             -%}
             {% if remaining_cents > 0 %}
@@ -130,7 +130,7 @@
               </span>
               <span class="cart-trust-item" role="listitem">
                 <span class="cart-trust-icon" aria-hidden="true">{% render 'icon', name: 'truck' %}</span>
-                Free shipping on orders $150+
+                Free shipping over $90
               </span>
               <span class="cart-trust-item" role="listitem">
                 <span class="cart-trust-icon" aria-hidden="true">{% render 'icon', name: 'shield' %}</span>
