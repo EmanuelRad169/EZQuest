@@ -295,3 +295,45 @@
   transition: background .15s ease, transform .15s ease;
 }
 .policy-sidebar__cta:hover { background: #FFC700; }
+
+/* ── Tables in policy content (e.g. Cookie Policy) ── */
+.policy-prose table,
+.shopify-policy__body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 14px;
+}
+.policy-prose th,
+.policy-prose td,
+.shopify-policy__body th,
+.shopify-policy__body td {
+  text-align: left;
+  padding: .8rem 1rem;
+  border: 1px solid rgba(0,0,0,.09);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.policy-prose th,
+.shopify-policy__body th {
+  background: var(--ez-light, #f5f5f7);
+  color: var(--ez-black, #1d1d1f);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.policy-prose td,
+.shopify-policy__body td { color: var(--ez-grey, #5d5d62); }
+.policy-prose tbody tr:nth-child(even) td,
+.shopify-policy__body tbody tr:nth-child(even) td { background: rgba(0,0,0,.015); }
+/* Small screens: let wide tables scroll horizontally instead of squashing */
+@media (max-width: 720px) {
+  .policy-prose table,
+  .shopify-policy__body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
