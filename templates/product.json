@@ -73,12 +73,22 @@
     "178474916264f76e07": {
       "type": "apps",
       "blocks": {
+        "judge_me_reviews_review_widget_YjdDbD": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
         "comparexpert_product_compare_table_block_mkLATX": {
           "type": "shopify://apps/comparexpert/blocks/product-compare-table-block/c855b225-94ed-4209-962c-0fcdc53b09bf",
           "settings": {}
         }
       },
       "block_order": [
+        "judge_me_reviews_review_widget_YjdDbD",
         "comparexpert_product_compare_table_block_mkLATX"
       ],
       "settings": {}
@@ -88,7 +98,7 @@
     "main",
     "faq",
     "bundle",
-    "recently_viewed",
-    "178474916264f76e07"
+    "178474916264f76e07",
+    "recently_viewed"
   ]
 }
