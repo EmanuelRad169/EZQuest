@@ -16,17 +16,41 @@
         "show_sku": false,
         "show_product_type": false,
         "show_description": false,
+        "show_support_summary": true,
+        "highlight_limit": 4,
         "show_quantity_selector": true,
         "show_dynamic_checkout": true,
         "show_support_panel": false,
+        "fallback_rating": "",
+        "fallback_rating_count": "",
+        "show_pickup_availability": false,
+        "pickup_location": "German Warehouse",
+        "pickup_check_url": "",
+        "show_accessories_row": false,
+        "accessories_collection": "",
+        "support_eyebrow": "Support",
         "support_heading": "Support for this product",
-        "support_copy": "Compatibility, manuals, downloads, and help"
+        "support_copy": "Compatibility, manuals, downloads, and help",
+        "youtube_url": "",
+        "show_3d_badge": false,
+        "tab_set": "default",
+        "show_overview": true,
+        "show_specifications": true,
+        "show_recommended": true,
+        "show_comparisons": false,
+        "show_reviews": false,
+        "show_highlight": false,
+        "show_compatibility": false,
+        "show_downloads": false
       }
     },
     "faq": {
       "type": "faq-accordion",
       "settings": {
-        "heading": "FAQ"
+        "heading": "FAQ",
+        "subhead": "Find answers to the questions we hear most. If something is missing, use the form to reach us directly.",
+        "cta_label": "Contact support",
+        "cta_url": ""
       }
     },
     "bundle": {
@@ -45,12 +69,26 @@
         "heading": "Recently viewed",
         "max_products": 4
       }
+    },
+    "178474916264f76e07": {
+      "type": "apps",
+      "blocks": {
+        "comparexpert_product_compare_table_block_mkLATX": {
+          "type": "shopify://apps/comparexpert/blocks/product-compare-table-block/c855b225-94ed-4209-962c-0fcdc53b09bf",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "comparexpert_product_compare_table_block_mkLATX"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "main",
     "faq",
     "bundle",
-    "recently_viewed"
+    "recently_viewed",
+    "178474916264f76e07"
   ]
 }
