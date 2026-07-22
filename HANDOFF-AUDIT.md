@@ -109,6 +109,20 @@ EZQ_FILTER_HANDLES=
 
 ---
 
+## ✅ Fixed in this pass (commit `908e7b2`)
+
+- **#1 `.env.example`** rewritten to document all ~15 vars (Shopify, dev preview, image-gen, tooling overrides).
+- **#2 env-var aliasing** — `scripts/shopify-admin/lib/env.js` now resolves the legacy aliases (`SHOPIFY_STORE`/`SHOPIFY_FLAG_STORE` → `SHOPIFY_SHOP_DOMAIN`; `SHOPIFY_ADMIN_TOKEN`/`SHOPIFY_ADMIN_API_TOKEN` → `SHOPIFY_ADMIN_ACCESS_TOKEN`; `SHOPIFY_API_VERSION` → `SHOPIFY_ADMIN_API_VERSION`, defaulting to `2026-01`).
+- **#5 dormant GA4** — documented inline in `layout/theme.liquid` as an intentional fallback (primary GA = Custom Pixel).
+- **#6 duplicate `/contact` POST + swallowed errors** — extracted `assets/shopify-contact-submit.js` (`window.ezSubmitContact`, rejects on non-2xx); `notify.js` and the newsletter popup now use it. The popup's false-"success" bug is fixed (`.catch` now fires on HTTP error).
+- **#3 `.git` size** — `git gc --prune=now` run (558 MB → 546 MB; the rest is large blobs in history — see below).
+
+## ⏳ Deferred (destructive — need your go-ahead)
+
+- **Deep `.git` shrink:** the remaining bloat is large binary blobs committed to history. Removing them requires a history rewrite (`git filter-repo` / BFG), which changes commit SHAs and needs a force-push — it will also desync the GitHub→Shopify connection until re-synced. I did **not** run this unilaterally.
+- **`.ts` image scripts (#4):** left in place — deleting the duplicate is irreversible; confirm which one to keep (`generate-shopify-images.ts` is the more complete of the two) and whether to port it to `.js` or add `tsx`.
+- **`scripts/migration/`:** left tracked — kept as reference for how the store was seeded; say the word and I'll untrack it.
+
 ## Recommended fix order
 
 1. **Rewrite `.env.example`** (§5a) and **unify env-var names** in `scripts/shopify-admin/lib/env.js` with alias fallbacks (§2/§4).
