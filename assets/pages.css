@@ -154,6 +154,14 @@
 
 .section-intro__body { font-size: 16px; color: var(--ez-grey); line-height: 1.65; }
 
+.section-intro__lead {
+  font-size: clamp(17px, 1.6vw, 21px);
+  color: var(--ez-black);
+  line-height: 1.6;
+  max-width: 62ch;
+  margin: 0.5rem auto 0;
+}
+
 .story-hero-copy { max-width: 680px; }
 .story-stat-grid {
   display: flex;

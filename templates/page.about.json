@@ -12,15 +12,15 @@
     "about": {
       "type": "about",
       "settings": {
-        "kicker": "Est. 1994 · Lake Forest, California",
+        "kicker": "Est. 1994 · Yorba Linda, California",
         "heading": "Built for people who connect everything.",
-        "body": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one.",
+        "body": "EZQuest provides the highest-quality accessories for the Apple, PC, and mobile consumer-electronics markets. Since 1994, our portfolio has spanned USB-C hubs and docks, DuraGuard™ cables, display adapters, GaN power products, and card readers — precision-engineered from premium materials, built with the latest technology, and designed to last.",
         "stat1_value": "30+",
         "stat1_label": "Years in business",
         "stat2_value": "100+",
         "stat2_label": "Products made",
-        "stat3_value": "2yr",
-        "stat3_label": "Warranty on every product",
+        "stat3_value": "1–2yr",
+        "stat3_label": "Limited warranty (varies by product)",
         "cta_heading": "Explore what we make.",
         "cta_body": "Premium accessories for every desk, every device.",
         "cta_label": "Browse products",
@@ -47,7 +47,7 @@
           "type": "pillar",
           "settings": {
             "title": "Real support",
-            "body": "Our team answers within 1 business day — by phone, email, or chat. Every product comes with a full 2-year limited warranty with no asterisks.",
+            "body": "Our team answers within 1 business day — by phone, email, or chat. Every product is backed by a 1–2 year limited warranty (depending on product) with no runaround.",
             "icon_path": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"
           }
         }

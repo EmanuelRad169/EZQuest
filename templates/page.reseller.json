@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "background_color": "#020617",
+        "overlay_opacity": 35,
+        "height": 300,
+        "kicker": "Partnerships",
+        "heading": "Become a Reseller",
+        "subheading": "Carry EZQuest premium USB-C accessories in your store or catalog.",
+        "trust_1": "Trusted since 1994",
+        "trust_2": "100+ products",
+        "trust_3": "US-based support"
+      }
+    },
+    "reseller": {
+      "type": "reseller"
+    }
+  },
+  "order": [
+    "page_hero",
+    "reseller"
+  ]
+}

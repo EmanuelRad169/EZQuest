@@ -14,7 +14,56 @@
       "settings": {
         "hero_image": "shopify://shop_images/ezquest-story-hero.png",
         "timeline_image": "shopify://shop_images/ezquest-story-timeline.png"
-      }
+      },
+      "blocks": {
+        "m_1994": {
+          "type": "milestone",
+          "settings": {
+            "year": "1994",
+            "title": "EZQuest is founded",
+            "body": "Founded in Southern California to make connectivity simpler for Mac users — a focus on premium, precision-engineered accessories that has never changed."
+          }
+        },
+        "m_2000": {
+          "type": "milestone",
+          "settings": {
+            "year": "2000",
+            "title": "DuraGuard™ cables launch",
+            "body": "Introduced the DuraGuard cable line — Kevlar-reinforced, nylon-braided cables engineered to outlast the devices they connect."
+          }
+        },
+        "m_2012": {
+          "type": "milestone",
+          "settings": {
+            "year": "2012",
+            "title": "The USB-C era begins",
+            "body": "Ahead of the industry, we began engineering USB-C hubs and adapters before most manufacturers recognized the shift to a single connector."
+          }
+        },
+        "m_2018": {
+          "type": "milestone",
+          "settings": {
+            "year": "2018",
+            "title": "UltimatePower GaN charging",
+            "body": "Launched the UltimatePower GaN charger line — smaller, faster, and cooler than the chargers available at the time, from 30W travel plugs to 120W desktop power."
+          }
+        },
+        "m_2024": {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "title": "USB4 V2 & next-gen docks",
+            "body": "Bringing 8K displays, 80Gbps transfer, and 240W power to a new generation of creators, remote workers, and travelers who expect their gear to just work."
+          }
+        }
+      },
+      "block_order": [
+        "m_1994",
+        "m_2000",
+        "m_2012",
+        "m_2018",
+        "m_2024"
+      ]
     }
   },
   "order": [
