@@ -255,13 +255,16 @@
 
 /* Clean, correctly-sized amber pill CTA (replaces oversized .btn--primary) */
 .policy-sidebar__cta {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  text-align: center;
+  min-height: 44px;
   padding: .7rem 1.25rem;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
+  text-align: center;
   color: #111;
   background: var(--ez-amber, #FED300);
   border-radius: 9999px;
