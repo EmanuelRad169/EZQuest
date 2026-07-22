@@ -222,6 +222,14 @@
 
     {%- comment -%} Product JSON-LD is emitted by sections/main-product.liquid (avoids duplicate schema). {%- endcomment -%}
 
+    {%- comment -%}
+      GA4 (theme-embedded) — FALLBACK ONLY, intentionally dormant.
+      Primary GA4 tracking runs through a Shopify Custom Pixel (admin → Settings →
+      Customer events). `settings.ga4_measurement_id` is deliberately left blank, so
+      none of the block below executes on the storefront (window.gtag stays undefined),
+      and assets/analytics.js is a no-op in production. Populate the theme setting only
+      if you want to move GA off the Custom Pixel and back into the theme.
+    {%- endcomment -%}
     {% if settings.ga4_measurement_id != blank %}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.ga4_measurement_id }}"></script>
       <script>
@@ -321,6 +329,7 @@
     <script src="{{ 'reveal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'shopify-contact-submit.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'notify.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'htc-clean.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'cart-gift.js' | asset_url }}" defer="defer"></script>

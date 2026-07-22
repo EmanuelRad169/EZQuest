@@ -44,20 +44,13 @@
         btn.textContent = 'Sending...';
         if (error) error.hidden = true;
 
-        var formData = new FormData();
-        formData.append('form_type', 'customer');
-        formData.append('utf8', '\u2713');
-        formData.append('contact[email]', email);
-        formData.append('contact[tags]', 'back-in-stock,notify-me');
-        formData.append(
-          'contact[body]',
+        var contactBody =
           'Back in stock request\n\n' +
-            'Product: ' + productTitle + '\n' +
-            'Variant: ' + variantTitle + '\n' +
-            'URL: ' + productUrl + '\n' +
-            'Handle: ' + productHandle + '\n' +
-            'Customer email: ' + email
-        );
+          'Product: ' + productTitle + '\n' +
+          'Variant: ' + variantTitle + '\n' +
+          'URL: ' + productUrl + '\n' +
+          'Handle: ' + productHandle + '\n' +
+          'Customer email: ' + email;
 
         if (window.klaviyo && typeof window.klaviyo.push === 'function') {
           window.klaviyo.push(['identify', { '$email': email }]);
@@ -68,17 +61,12 @@
           }]);
         }
 
-        var root = window.EZRoutes && window.EZRoutes.root ? window.EZRoutes.root : '/';
-        var contactUrl = root.replace(/\/?$/, '/') + 'contact';
-
-        fetch(contactUrl, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+        window.ezSubmitContact({
+          email: email,
+          tags: 'back-in-stock,notify-me',
+          body: contactBody
         })
-          .then(function (response) {
-            if (!response.ok) throw new Error('Server error: ' + response.status);
-
+          .then(function () {
             window.dispatchEvent(new CustomEvent('ez:notify-me-submit', {
               detail: {
                 product: productTitle,

@@ -180,20 +180,10 @@
             button.textContent = 'Saving...';
           }
 
-          var formData = new FormData();
-          formData.append('form_type', 'customer');
-          formData.append('utf8', '✓');
-          formData.append('contact[email]', email);
-          formData.append('contact[tags]', 'newsletter,welcome10');
-          formData.append('contact[body]', 'Newsletter signup — discount code: WELCOME10');
-
-          var root = window.EZRoutes && window.EZRoutes.root ? window.EZRoutes.root : '/';
-          var endpoint = root.replace(/\/?$/, '/') + 'contact';
-
-          fetch(endpoint, {
-            method: 'POST',
-            headers: { Accept: 'application/json' },
-            body: formData
+          window.ezSubmitContact({
+            email: email,
+            tags: 'newsletter,welcome10',
+            body: 'Newsletter signup — discount code: WELCOME10'
           })
             .then(function () {
               form.hidden = true;

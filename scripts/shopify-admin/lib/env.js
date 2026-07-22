@@ -76,10 +76,32 @@ function loadAdminEnv() {
     ...process.env
   };
 
+  // Accept legacy env-var aliases so a partially-configured .env still works.
+  // Canonical name <- first non-empty alias found.
+  const aliases = {
+    SHOPIFY_SHOP_DOMAIN: ["SHOPIFY_STORE", "SHOPIFY_FLAG_STORE"],
+    SHOPIFY_ADMIN_ACCESS_TOKEN: ["SHOPIFY_ADMIN_TOKEN", "SHOPIFY_ADMIN_API_TOKEN"],
+    SHOPIFY_ADMIN_API_VERSION: ["SHOPIFY_API_VERSION"]
+  };
+  for (const [canonical, alts] of Object.entries(aliases)) {
+    if (!merged[canonical]) {
+      for (const alt of alts) {
+        if (merged[alt]) {
+          merged[canonical] = merged[alt];
+          break;
+        }
+      }
+    }
+  }
+
+  // Sensible default so the API version isn't a hard requirement.
+  if (!merged.SHOPIFY_ADMIN_API_VERSION) {
+    merged.SHOPIFY_ADMIN_API_VERSION = "2026-01";
+  }
+
   const requiredKeys = [
     "SHOPIFY_SHOP_DOMAIN",
-    "SHOPIFY_ADMIN_ACCESS_TOKEN",
-    "SHOPIFY_ADMIN_API_VERSION"
+    "SHOPIFY_ADMIN_ACCESS_TOKEN"
   ];
 
   const missing = requiredKeys.filter((key) => !merged[key]);
