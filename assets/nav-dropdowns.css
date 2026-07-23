@@ -581,3 +581,10 @@
 .mega-menu {
   position: static;
 }
+
+/* Match the Shop panel's top gap to the smaller dropdowns. Anchoring to the
+   header adds the header's bottom padding (~20px) below the nav row, so pull
+   the panel back up by that amount to align with the other menus. */
+.mega-menu-panels {
+  top: calc(100% + 0.75rem - 20px);
+}
