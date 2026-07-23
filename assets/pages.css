@@ -2567,10 +2567,10 @@
 .about-narrative__body > p strong { color: var(--ez-black, #1d1d1f); font-weight: 600; }
 /* Amber marker highlight for key phrases in prose */
 .ez-hl {
-  background: linear-gradient(transparent 62%, rgba(254,211,0,.5) 62%);
-  color: var(--ez-black, #1d1d1f);
-  font-weight: 500;
-  padding: 0 .03em;
+  background: none;
+  color: inherit;
+  font-weight: inherit;
+  padding: 0;
 }
 @media (max-width: 860px) {
   .about-narrative,
