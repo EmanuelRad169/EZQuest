@@ -892,7 +892,7 @@
 <section class="section-shell pdp-section pdp-section--features" id="pdp-features">
   <div class="container-shell">
     <div class="section-intro">
-      <div class="max-w-2xl">
+      <div class="max-w-7xl">
         <p class="section-kicker">Product features</p>
         <h2 class="section-heading mt-4">{{ product.title | split: '—' | first | strip }}</h2>
       </div>
@@ -1004,7 +1004,7 @@
 
     <div class="pdp-tabs2__panels">
       {%- if show_overview_tab -%}
-        <div class="pdp-tabs2__panel is-active" role="tabpanel" data-panel="overview" id="pdp-overview" tabindex="0">
+        <div class="pdp-tabs2__panel is-active" role="tabpanel" data-panel="overview" id="pdp-panel-overview" tabindex="0">
           <div class="pdp-content-prose">{{ features_html }}</div>
         </div>
       {%- endif -%}

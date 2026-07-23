@@ -18431,3 +18431,6 @@ a[href*="helptochoose.com"]{display:none !important;}
 .ezq-no-compare .htc-comparison-list,
 .ezq-no-compare .htc-side-tab-count,
 .ezq-no-compare [class*="htc-addToCompare"]{display:none !important;}
+
+/* Soften the bold utility site-wide to medium weight (brand preference). */
+.font-bold { font-weight: 500; }
