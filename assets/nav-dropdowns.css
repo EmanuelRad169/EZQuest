@@ -553,3 +553,23 @@
   color: var(--ez-grey, #6e6e73);
   text-align: center;
 }
+
+/* Dropdown triggers: small solid downward-triangle caret (inherits nav text color). */
+.mega-menu-trigger[aria-haspopup="true"] > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .34em;
+}
+.mega-menu-trigger[aria-haspopup="true"] > span::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transform: translateY(1px);
+  transition: transform .18s ease;
+}
+.mega-menu-trigger[aria-expanded="true"] > span::after {
+  transform: translateY(1px) rotate(180deg);
+}
