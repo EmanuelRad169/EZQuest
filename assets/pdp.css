@@ -717,6 +717,9 @@
 
 /* ── Zone 3: Features ── */
 
+/* Product Features intro heading spans the full content width (remove the inner max-width cap) */
+.pdp-section--features .section-intro { max-width: none; width: 100%; }
+.pdp-section--features .section-intro > div { max-width: none !important; width: 100%; }
 
 .pdp-video-frame {
   position: relative;
