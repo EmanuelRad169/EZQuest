@@ -573,3 +573,11 @@
 .mega-menu-trigger[aria-expanded="true"] > span::after {
   transform: translateY(1px) rotate(180deg);
 }
+
+/* Shop mega panel: anchor to the full-width header (not the off-center nav) so
+   the panel centers on the page and aligns with the site content container,
+   matching the rest of the layout. The small dropdowns are anchored to their
+   own <li> and are unaffected. */
+.mega-menu {
+  position: static;
+}
