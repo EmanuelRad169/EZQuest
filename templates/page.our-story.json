@@ -11,10 +11,6 @@
   "sections": {
     "story": {
       "type": "our-story",
-      "settings": {
-        "hero_image": "shopify://shop_images/ezquest-story-hero.png",
-        "timeline_image": "shopify://shop_images/ezquest-story-timeline.png"
-      },
       "blocks": {
         "m_1994": {
           "type": "milestone",
@@ -63,7 +59,11 @@
         "m_2012",
         "m_2018",
         "m_2024"
-      ]
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/ezquest-story-hero.png",
+        "timeline_image": "shopify://shop_images/EEC30479-B56F-4F50-BC60-5A6E2F4863A4.png"
+      }
     }
   },
   "order": [
