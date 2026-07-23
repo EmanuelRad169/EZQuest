@@ -18411,6 +18411,15 @@ body.template-policy .site-header--hero-overlay .site-header-icon-button {
 .site-header-locale__select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;color:#fff;font-size:12px;font-weight:600;line-height:1;border:0;border-radius:999px;cursor:pointer;padding:6px 24px 6px 36px;transition:background-color .15s ease}
 .site-header-locale__select:hover,.site-header-locale__select:focus{background-color:rgba(255,255,255,.12);outline:none}
 .site-header-locale__select option{color:#0f172a}
+/* Locale switcher text must darken when the header is solid (scrolled / menu open / product pages), matching the nav triggers. */
+.site-header--hero-overlay.is-scrolled .site-header-locale__select,
+.site-header--hero-overlay.is-menu-open .site-header-locale__select,
+.site-header--hero-overlay:has(.mega-menu-trigger[aria-expanded='true']) .site-header-locale__select,
+body.template-product .site-header--hero-overlay .site-header-locale__select{color:rgba(0,0,0,.88)}
+.site-header--hero-overlay.is-scrolled .site-header-locale__select:hover,
+.site-header--hero-overlay.is-scrolled .site-header-locale__select:focus,
+body.template-product .site-header--hero-overlay .site-header-locale__select:hover,
+body.template-product .site-header--hero-overlay .site-header-locale__select:focus{background-color:rgba(0,0,0,.06)}
 @media (max-width:1023px){.site-header-locale{display:none}}
 
 /* Hide ComparExpert free-tier "Powered by Helptochoose" branding */
