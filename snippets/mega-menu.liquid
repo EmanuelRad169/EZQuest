@@ -153,9 +153,9 @@
             <div class="nav-dd__compare-card">
               <div class="nav-dd__compare-img">
                 {%- if p.featured_image -%}
-                  <img src="{{ p.featured_image | image_url: width: 120 }}"
+                  <img src="{{ p.featured_image | image_url: width: 240 }}"
                        alt="{{ p.featured_image.alt | default: p.title | escape }}"
-                       width="60" height="60" loading="lazy" decoding="async">
+                       width="88" height="88" loading="lazy" decoding="async">
                 {%- endif -%}
               </div>
               <span class="nav-dd__compare-name">{{ p.title | truncate: 22 }}</span>
