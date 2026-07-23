@@ -68,6 +68,8 @@
           if request.page_type == 'product' and product.metafields.ezquest.faq_items != blank
             assign product_faq_items = product.metafields.ezquest.faq_items.value
           endif
+          # Track seen questions so duplicate FAQ metaobjects render only once.
+          assign seen_q = '~~'
         -%}
         {% if product_faq_items != blank and product_faq_items.size > 0 %}
           <!-- Product-specific FAQs: only this product's linked items (no global duplication) -->
@@ -75,6 +77,9 @@
             <div class="faq-list">
               {% for faq_item in product_faq_items %}
                 {% if faq_item.question.value != blank and faq_item.answer.value != blank %}
+                  {%- assign q_key = '~~' | append: faq_item.question.value | strip | downcase | append: '~~' -%}
+                  {% if seen_q contains q_key %}{% continue %}{% endif %}
+                  {%- assign seen_q = seen_q | append: faq_item.question.value | strip | downcase | append: '~~' -%}
                   <div class="faq-item" style="--i:{{ forloop.index0 }}">
                     <button class="faq-trigger" type="button" aria-expanded="false">
                       <span class="faq-trigger-text">
@@ -115,6 +120,9 @@
                       {% assign faq_item = metaobjects.ezquest_faq_item[faq_handle] %}
                       {%- assign item_group = faq_item.faq_group.value | downcase | default: '' -%}
                       {% if item_group == group_filter %}
+                        {%- assign q_key = '~~' | append: faq_item.question.value | strip | downcase | append: '~~' -%}
+                        {% if seen_q contains q_key %}{% continue %}{% endif %}
+                        {%- assign seen_q = seen_q | append: faq_item.question.value | strip | downcase | append: '~~' -%}
                         <div class="faq-item" style="--i:{{ item_idx }}">
                           <button class="faq-trigger" type="button" aria-expanded="false">
                             <span class="faq-trigger-text">
@@ -171,6 +179,9 @@
                   {% if faq_key == blank %}{% continue %}{% endif %}
                   {% assign faq_handle = faq_key | split: '::' | last %}
                   {% assign faq_item = metaobjects.ezquest_faq_item[faq_handle] %}
+                  {%- assign q_key = '~~' | append: faq_item.question.value | strip | downcase | append: '~~' -%}
+                  {% if seen_q contains q_key %}{% continue %}{% endif %}
+                  {%- assign seen_q = seen_q | append: faq_item.question.value | strip | downcase | append: '~~' -%}
                   <div class="faq-item" style="--i:{{ forloop.index0 }}">
                     <button class="faq-trigger" type="button" aria-expanded="false">
                       <span class="faq-trigger-text">
@@ -256,10 +267,14 @@
   "@type": "FAQPage",
   "mainEntity": [
     {%- assign schema_item_count = 0 -%}
+    {%- assign seen_schema_q = '~~' -%}
     {%- if product_faq_items != blank and product_faq_items.size > 0 -%}
       {%- comment -%} On a product page, only this product's linked FAQs (no global duplication in schema) {%- endcomment -%}
       {%- for faq_item in product_faq_items -%}
         {%- if faq_item.question.value != blank and faq_item.answer.value != blank -%}
+          {%- assign sq_key = '~~' | append: faq_item.question.value | strip | downcase | append: '~~' -%}
+          {%- if seen_schema_q contains sq_key -%}{%- continue -%}{%- endif -%}
+          {%- assign seen_schema_q = seen_schema_q | append: faq_item.question.value | strip | downcase | append: '~~' -%}
           {%- if schema_item_count > 0 -%},{%- endif -%}
           {
             "@type": "Question",
@@ -278,6 +293,9 @@
         {%- assign faq_handle = faq_key | split: '::' | last -%}
         {%- assign faq_item = metaobjects.ezquest_faq_item[faq_handle] -%}
         {%- if faq_item.question.value != blank and faq_item.answer.value != blank -%}
+          {%- assign sq_key = '~~' | append: faq_item.question.value | strip | downcase | append: '~~' -%}
+          {%- if seen_schema_q contains sq_key -%}{%- continue -%}{%- endif -%}
+          {%- assign seen_schema_q = seen_schema_q | append: faq_item.question.value | strip | downcase | append: '~~' -%}
           {%- if schema_item_count > 0 -%},{%- endif -%}
           {
             "@type": "Question",
