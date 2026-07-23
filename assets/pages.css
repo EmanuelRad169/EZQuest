@@ -2605,9 +2605,9 @@
   margin: 0;
 }
 .about-mission__hl {
-  background: linear-gradient(transparent 60%, rgba(254,211,0,.55) 60%);
+  background: none;
   color: inherit;
-  padding: 0 .04em;
+  padding: 0;
 }
 
 /* Why choose EZQuest — benefit grid */
