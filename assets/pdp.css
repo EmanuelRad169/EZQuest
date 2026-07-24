@@ -497,8 +497,9 @@
 }
 .pdp-highlight.is-open .pdp-highlight__body { max-height: 240rem; }
 .pdp-highlight.is-open .pdp-highlight__body::after { opacity: 0; }
-.pdp-highlight__body ul { margin: 0; padding-left: 1.15rem; }
-.pdp-highlight__body li { margin-bottom: 0.4rem; }
+.pdp-highlight__body ul { margin: 0; padding-left: 1.2rem; list-style: disc outside; }
+.pdp-highlight__body li { margin-bottom: 0.28rem; line-height: 1.45; }
+.pdp-highlight__body li::marker { color: #94a3b8; }
 .pdp-highlight__body strong { color: #0f172a; font-weight: 600; }
 .pdp-highlight__body h2 {
   font-size: clamp(1.05rem, 1.4vw, 1.3rem);
