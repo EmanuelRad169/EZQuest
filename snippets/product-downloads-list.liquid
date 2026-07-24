@@ -6,17 +6,16 @@
   because .value returns objects, not strings.
 {% endcomment %}
 
-{%- assign all_downloads = shop.metaobjects.ezquest_download.values -%}
+{%- comment -%}
+  Reads downloads directly from the product's custom.download_files metafield
+  (list of ezquest_download metaobjects). This avoids Shopify's 50-item cap on
+  shop.metaobjects.<type>.values, which silently dropped products past the 50th.
+{%- endcomment -%}
+{%- assign all_downloads = product.metafields.custom.download_files.value -%}
 
 {%- capture dl_list_html -%}
   {%- for dl in all_downloads -%}
-    {%- assign dl_has_product = false -%}
-    {%- for ref in dl.products.value -%}
-      {%- if ref.id == product.id -%}
-        {%- assign dl_has_product = true -%}
-      {%- endif -%}
-    {%- endfor -%}
-    {%- if dl_has_product -%}
+    {%- if dl != blank -%}
       {%- assign file_url = dl.file.value.url | default: dl.external_url.value -%}
       {%- if file_url != blank -%}
         {%- assign ext = file_url | split: '?' | first | split: '.' | last | upcase -%}
