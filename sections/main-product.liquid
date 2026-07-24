@@ -995,7 +995,19 @@
   if has_compat
     assign show_compat_tab = true
   endif
-  if manual_count > 0 or download_count > 0
+  comment
+    Also show the Downloads tab whenever an ezquest_download metaobject references
+    this product (migrated downloads live as metaobjects, not per-product metafields).
+  endcomment
+  assign product_dl_count = 0
+  for dl in shop.metaobjects.ezquest_download.values
+    for ref in dl.products.value
+      if ref.id == product.id
+        assign product_dl_count = product_dl_count | plus: 1
+      endif
+    endfor
+  endfor
+  if manual_count > 0 or download_count > 0 or product_dl_count > 0
     assign show_downloads_tab = true
   endif
 
