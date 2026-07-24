@@ -77,6 +77,12 @@
             <h3 class="contact-success__heading text-[22px] font-medium m-0 mb-2 tracking-[-0.02em] text-[var(--ez-black)]">{{ 'contact.success' | t }}</h3>
             <p class="contact-success__body text-[15px] text-[var(--ez-grey)] m-0">{{ 'contact.success_body' | t: email: form.email }}</p>
           </div>
+          <script>
+            (function () {
+              function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('contact'); }
+              if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fire); } else { fire(); }
+            })();
+          </script>
 
         {% else %}
 

@@ -35,6 +35,12 @@
               {{ section.settings.success_message | escape }}
             </p>
           </div>
+          <script>
+            (function () {
+              function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('newsletter'); }
+              if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fire); } else { fire(); }
+            })();
+          </script>
         {% else %}
           {% if form.errors %}
             <p class="email-signup__error" role="alert">

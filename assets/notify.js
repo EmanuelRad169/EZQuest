@@ -25,8 +25,16 @@
       function submitNotifyRequest(event) {
         event.preventDefault();
 
+        // Honeypot: hidden field only bots fill. Bail silently if it's set.
+        var hp = form.querySelector('[name="notify_hp"]');
+        if (hp && hp.value) {
+          if (inputRow) inputRow.hidden = true;
+          if (success) { success.textContent = 'Thanks! We will be in touch.'; success.hidden = false; }
+          return;
+        }
+
         var email = input.value.trim();
-        if (!email || !email.includes('@')) {
+        if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
           if (error) {
             error.textContent = 'Please enter a valid email address.';
             error.hidden = false;
@@ -79,6 +87,7 @@
               success.textContent = 'Got it. We will email you at ' + email + ' when it is back in stock.';
               success.hidden = false;
             }
+            if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('back_in_stock');
           })
           .catch(function () {
             if (error) {

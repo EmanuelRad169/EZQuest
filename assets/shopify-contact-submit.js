@@ -46,4 +46,30 @@
       return response;
     });
   };
+
+  /*
+   * ezTrackFormSubmit — fire a conversion event on a successful form submit.
+   * Safe no-op if GA4 (gtag), GTM (dataLayer) or Meta (fbq) are absent, so it
+   * never throws. Pass a formType so events can be told apart in reporting.
+   */
+  window.ezTrackFormSubmit = function ezTrackFormSubmit(formType, extra) {
+    formType = formType || 'form';
+    var params = { form_type: formType, form_location: (location && location.pathname) || '' };
+    if (extra) { Object.keys(extra).forEach(function (k) { params[k] = extra[k]; }); }
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', params);
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        var dl = { event: 'form_submit' };
+        Object.keys(params).forEach(function (k) { dl[k] = params[k]; });
+        window.dataLayer.push(dl);
+      }
+    } catch (e) { /* analytics must never break the form */ }
+    try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', { content_name: formType });
+      }
+    } catch (e) { /* no-op */ }
+  };
 })();

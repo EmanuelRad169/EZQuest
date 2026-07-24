@@ -12,6 +12,12 @@
   <input type="hidden" name="form_type" value="customer">
   <input type="hidden" name="utf8" value="✓">
 
+  {% comment %} Honeypot — only bots fill this; checked in notify.js {% endcomment %}
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    <label for="notify-hp-{{ section.id }}">Leave this field empty</label>
+    <input type="text" id="notify-hp-{{ section.id }}" name="notify_hp" tabindex="-1" autocomplete="off">
+  </div>
+
   <p class="notify-form__message">{{ 'notify.out_of_stock' | t }}</p>
 
   <div class="notify-form__input-row" data-notify-fields data-notify-input-row>

@@ -61,6 +61,10 @@
               Please enter a valid email address.
             </p>
           </div>
+          <div class="nl-popup__hp" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+            <label for="nl-popup-website">Leave this field empty</label>
+            <input type="text" id="nl-popup-website" name="nl_website" tabindex="-1" autocomplete="off">
+          </div>
           <button type="submit" class="nl-popup__submit">Claim my 10% off</button>
         </form>
 
@@ -161,6 +165,19 @@
       if (form) {
         form.addEventListener('submit', function (event) {
           event.preventDefault();
+
+          // Honeypot: real users never fill this hidden field. If it has a
+          // value, treat it as a bot — show the success UI but never submit.
+          var hp = form.querySelector('[name="nl_website"]');
+          if (hp && hp.value) {
+            form.hidden = true;
+            if (success) success.hidden = false;
+            sessionStorage.setItem(POPUP_KEY, '1');
+            localStorage.setItem(SUCCESS_KEY, '1');
+            window.setTimeout(close, 6000);
+            return;
+          }
+
           var emailInput = document.getElementById('nl-popup-email');
           var email = emailInput ? emailInput.value.trim() : '';
           var button = form.querySelector('.nl-popup__submit');
@@ -190,6 +207,7 @@
               if (success) success.hidden = false;
               sessionStorage.setItem(POPUP_KEY, '1');
               localStorage.setItem(SUCCESS_KEY, '1');
+              if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('newsletter_popup');
               window.setTimeout(close, 6000);
             })
             .catch(function () {
