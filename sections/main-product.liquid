@@ -445,9 +445,12 @@
               <p class="product-buybox-setup-statement text-sm leading-relaxed text-slate-700">{{ setup_statement }}</p>
             </div>
 
-            {%- if product.description != blank -%}
+            {%- comment -%} Read-more box shows the FEATURE content (custom.product_features), falling back to the description. {%- endcomment -%}
+            {%- assign buybox_readmore = product.metafields.custom.product_features.value -%}
+            {%- if buybox_readmore == blank -%}{%- assign buybox_readmore = product.description -%}{%- endif -%}
+            {%- if buybox_readmore != blank -%}
               <div class="pdp-highlight" data-pdp-highlight>
-                <div class="pdp-highlight__body richtext-content">{{ product.description }}</div>
+                <div class="pdp-highlight__body richtext-content">{{ buybox_readmore }}</div>
                 <button type="button" class="pdp-highlight__toggle" data-pdp-highlight-toggle aria-expanded="false">
                   <span data-pdp-highlight-label>Learn more</span>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 5.5 7 9l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -968,7 +971,19 @@
   assign show_compat_tab      = false
   assign show_downloads_tab   = false
 
-  if has_features and section.settings.show_overview != false
+  comment
+    Overview tab shows the HIGHLIGHT content (custom.product_highlight), falling back to
+    the feature content if a product has no highlight. (Swapped with the read-more box.)
+  endcomment
+  assign overview_html = highlight_html
+  if overview_html == blank
+    assign overview_html = features_html
+  endif
+  assign has_overview_content = false
+  if overview_html and overview_html != ''
+    assign has_overview_content = true
+  endif
+  if has_overview_content and section.settings.show_overview != false
     assign show_overview_tab = true
   endif
   if has_specs and section.settings.show_specifications != false
@@ -1005,7 +1020,7 @@
     <div class="pdp-tabs2__panels">
       {%- if show_overview_tab -%}
         <div class="pdp-tabs2__panel is-active" role="tabpanel" data-panel="overview" id="pdp-panel-overview" tabindex="0">
-          <div class="pdp-content-prose">{{ features_html }}</div>
+          <div class="pdp-content-prose">{{ overview_html }}</div>
         </div>
       {%- endif -%}
 
