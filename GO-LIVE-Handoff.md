@@ -42,9 +42,10 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 
 ## E. Apps & integrations
 
-- 🔴 **Judge.me reviews:** app is healthy but no genuine reviews are imported yet. Import the real Amazon reviews (CSVs are prepared) and confirm the review widget + star badges render on PDPs. Fix the Judge.me email logo that still points at the old `*.myshopify.com` host.
+- ✅ **Reviews — Judge.me removed (verified clean).** Uninstalling it left **no broken storefront output**: the theme never rendered its stub, and the review-stars setting (`reviews_app`) isn't referenced anywhere, so product pages simply show no reviews — no empty boxes or errors. The store will launch with **zero product reviews**, which is fine functionally but reduces social proof; decide later whether to add Shopify's native product reviews (the theme already has a "native" option) or another review app. 🟡 Optional hygiene: delete the inert `snippets/judgeme_widgets.liquid` stub and the disabled Judge.me app block in `config/settings_data.json` (both are ignored by Shopify now).
 - 🔴 **Finale Inventory:** installed but not actively syncing (0 products mapped). Either complete the connection/stock push or disable it cleanly so it doesn't cause confusion. Tie this to the inventory decision in section D.
 - ✅ **ShipStation:** connected and active.
+- ✅ **Tidio live chat:** "Talk to Expert" widget present and active.
 
 ## F. Content & SEO — verified this pass
 
@@ -72,7 +73,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 - [ ] Submit the contact form and the newsletter popup → check Shopify **Customers** + notification inbox, and GA4 DebugView for the event.
 - [ ] Load the site on a real iPhone and Android: header, menus, PDP, add-to-cart, checkout.
 - [ ] Check `https://yourdomain/` has the padlock (SSL) and the `.myshopify.com` URL redirects to it.
-- [ ] Spot-check 3–4 products for correct price, images, stock state, and reviews.
+- [ ] Spot-check 3–4 products for correct price, images, and stock state.
 
 ---
 
