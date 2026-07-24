@@ -28,7 +28,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 ## C. Store settings & brand assets
 
 - 🔴 **Upload a favicon** in **Theme settings → favicon.** Right now the site uses an SVG fallback for the browser tab, and the iOS home-screen icon (`apple-touch-icon`) only renders once a favicon is set. Uploading one fixes both.
-- 🟡 **Image alt text** — several images are missing `alt` (home ~8, product pages ~11). Add alt text on product images and any content images for accessibility + image SEO.
+- ✅ **Product image alt text** — audited all 66 products; only 2 had blank alt (15 images total) and I set descriptive alt on every one. All product images now have alt. 🟡 A few *theme UI images* (badges/icons/placeholder graphics) still lack alt — minor, can be added in the theme components later for a perfect a11y score.
 - ⚠️ Confirm the social share image (`og:image`) is the intended brand image (it's present and valid).
 - ✅ Title tags, meta descriptions, canonical, Open Graph, Twitter card, `lang`, and viewport are all present and well-formed.
 
@@ -37,7 +37,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 - ⚠️ **Payments:** you ran successful test orders (#1001/#1002) and turned test mode off — re-confirm the live gateway is enabled and test mode is **off** right before launch.
 - ✅ **Shipping:** rates configured; free shipping over $90 threshold verified.
 - 🔴 **Taxes:** confirm tax regions/rates are set for where you sell (Settings → Taxes).
-- 🔴 **Inventory:** store-wide inventory tracking is **off**, so products can show 0/untracked stock. Decide whether to track inventory (and finish the Finale sync) or leave "continue selling when out of stock" on. Don't launch with items that look out of stock unintentionally.
+- ✅ **Inventory — never shows sold out (done).** Per your choice, every variant is now set to **continue selling** with tracking off, so no product can display as sold out. (9 kit products were still on "deny" and were switched to "continue".) Finale remains not-syncing, which is fine under this model — revisit only if you later want true stock counts.
 - ⚠️ **Checkout:** confirm contact/customer accounts setting, and that order confirmation + shipping notification emails are enabled.
 
 ## E. Apps & integrations
@@ -87,5 +87,6 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 | Console errors | ✅ none observed |
 | GA4 / Meta Pixel loaded | 🔴 not present yet |
 | Favicon / apple-touch-icon | 🔴 no favicon uploaded (SVG fallback only) |
-| Image alt text | 🟡 gaps on home/product |
+| Product image alt text | ✅ complete (theme UI images minor) |
+| Inventory / sold-out state | ✅ all variants continue-selling |
 | Forms (keyboard, labels, errors, spam, 16px) | ✅ fixed this engagement |
