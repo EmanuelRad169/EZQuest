@@ -28,7 +28,8 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 ## C. Store settings & brand assets
 
 - 🔴 **Upload a favicon** in **Theme settings → favicon.** Right now the site uses an SVG fallback for the browser tab, and the iOS home-screen icon (`apple-touch-icon`) only renders once a favicon is set. Uploading one fixes both.
-- ✅ **Product image alt text** — audited all 66 products; only 2 had blank alt (15 images total) and I set descriptive alt on every one. All product images now have alt. 🟡 A few *theme UI images* (badges/icons/placeholder graphics) still lack alt — minor, can be added in the theme components later for a perfect a11y score.
+- ✅ **Product image alt text** — audited all 66 products; only 2 had blank alt (15 images total) and I set descriptive alt on every one. All product images now have alt.
+- ✅ **Remaining empty-alt images are correct, not defects.** Verified the images that scanners flag on the homepage are **decorative by design**: the hero banners are background images with the headline as real HTML text, and the Shop-menu thumbnails sit inside `aria-hidden="true"` links that already carry an `aria-label`. Empty `alt=""` is the WCAG-correct treatment for decorative images, so Lighthouse/axe pass them — no change needed (adding alt would be redundant and worse for screen readers).
 - ⚠️ Confirm the social share image (`og:image`) is the intended brand image (it's present and valid).
 - ✅ Title tags, meta descriptions, canonical, Open Graph, Twitter card, `lang`, and viewport are all present and well-formed.
 
