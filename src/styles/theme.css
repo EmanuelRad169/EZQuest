@@ -2317,11 +2317,12 @@
 
   .product-buybox-price .price-amount,
   .product-buybox-price [data-price-amount] {
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: -0.04em;
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.045em;
     color: rgb(15 23 42);
-    line-height: 1.1;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
   }
 
   .product-buybox-price [data-price-compare] {
@@ -2343,6 +2344,32 @@
     padding: 0.2rem 0.625rem;
     line-height: 1.5;
     align-self: center;
+  }
+
+  /* Setup-statement tagline — a designed subtitle under the price with a brand accent bar. */
+  .main-product-section .product-buybox-price-row {
+    margin-top: 0.35rem;
+  }
+  .product-buybox-setup-statement {
+    position: relative;
+    margin: 0;
+    padding-left: 0.85rem;
+    max-width: 44ch;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgb(71 85 105);
+    text-wrap: pretty;
+  }
+  .product-buybox-setup-statement::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    bottom: 0.2em;
+    width: 3px;
+    border-radius: 999px;
+    background: #fed300;
   }
 
 
@@ -3140,7 +3167,7 @@
     }
 
     .product-buybox-price [data-price-amount] {
-      font-size: 1.5rem;
+      font-size: 2.35rem;
     }
   }
 
