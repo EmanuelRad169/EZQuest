@@ -71,5 +71,13 @@
         window.fbq('track', 'Lead', { content_name: formType });
       }
     } catch (e) { /* no-op */ }
+    // Emit a Shopify analytics event so a Customer Events custom pixel can
+    // forward form submits to GA4 when GA4 is connected via the Google channel
+    // (sandboxed pixel, so no global gtag on the page).
+    try {
+      if (window.Shopify && window.Shopify.analytics && typeof window.Shopify.analytics.publish === 'function') {
+        window.Shopify.analytics.publish('ez_form_submit', params);
+      }
+    } catch (e) { /* no-op */ }
   };
 })();

@@ -20,9 +20,9 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 
 ## B. Analytics & conversion tracking
 
-- 🔴 **GA4 is not currently loading on the storefront.** The tracking code is wired (a `generate_lead` event fires on every form success), but nothing sends until GA4 is live. Connect GA4 via **Settings → Customer events** (or the Google & YouTube channel), then open **GA4 → DebugView**, submit a form, and confirm the event arrives.
-- 🟡 **Meta Pixel** is not installed. If you run Meta ads, add the Pixel (the code already fires a `Lead` event when `fbq` is present). Verify with the Meta Pixel Helper extension.
-- ⚠️ Once live, mark the form event(s) as **conversions/key events** in GA4 so they show in reports.
+- 🔴 **Connect GA4 via Shopify's Google & YouTube channel** (your chosen route — no theme code). In admin: **Settings → Apps and sales channels → Google & YouTube** (install if needed) → connect your Google account → link your GA4 property. Once linked, GA4 loads on storefront + checkout and this row goes green. Verify in **GA4 → DebugView**.
+- ⚠️ **Form conversions under this method need one extra step.** The Google channel runs GA4 in a sandboxed pixel (no global `gtag`), so the form-submit events don't reach GA4 by themselves. The theme now emits a Shopify analytics event **`ez_form_submit`** on every form success — add a **custom pixel** (Settings → Customer events → Add custom pixel) that subscribes to it and forwards to GA4 as a `generate_lead` event, then mark it a **key event** in GA4. (Ready-to-paste pixel code was provided in chat.)
+- 🟡 **Meta Pixel** — not using Meta ads, skipped.
 - ✅ Shopify's native analytics (`ShopifyAnalytics`) is active.
 
 ## C. Store settings & brand assets
@@ -86,7 +86,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 | Structured data | ✅ Org, WebSite, Breadcrumb, Collection, Product+offers, FAQ |
 | Broken links (18 key routes) | ✅ all 200 |
 | Console errors | ✅ none observed |
-| GA4 / Meta Pixel loaded | 🔴 not present yet |
+| GA4 (Google & YouTube channel) | 🔴 connect in admin → then green |
 | Favicon / apple-touch-icon | ✅ PNG + apple-touch icons in theme (after push) |
 | Product image alt text | ✅ complete (theme UI images minor) |
 | Inventory / sold-out state | ✅ all variants continue-selling |
