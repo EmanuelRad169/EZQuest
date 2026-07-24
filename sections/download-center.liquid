@@ -62,12 +62,16 @@
             {%- for entry in mo_entries -%}
               {%- assign type_val    = entry[type_field].value -%}
               {%- assign file_url    = entry.file.value.url | default: entry.external_url.value -%}
-              {%- assign product_ref = entry.products.value | map: 'title' | first -%}
+              {%- assign product_obj = entry.products.value | first -%}
               {%- assign platforms   = entry.platforms.value | join: ' · ' -%}
               {%- if platforms == blank -%}{%- assign platforms = 'Mac · Windows' -%}{%- endif -%}
               <tr data-category="{{ type_val | handleize }}">
                 <td data-label="Product">
-                  <span class="product-pill">{{ product_ref | default: '—' }}</span>
+                  {%- if product_obj -%}
+                    <a href="{{ product_obj.url }}" class="product-pill product-pill--link">{{ product_obj.title }}</a>
+                  {%- else -%}
+                    <span class="product-pill">—</span>
+                  {%- endif -%}
                 </td>
                 <td class="data-table__file" data-label="File">{{ entry.title.value }}</td>
                 <td data-label="Type">

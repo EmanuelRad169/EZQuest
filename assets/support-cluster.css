@@ -149,6 +149,16 @@
   font-size: 0.75rem;
   font-weight: 500;
 }
+a.product-pill--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+a.product-pill--link:hover,
+a.product-pill--link:focus-visible {
+  background: rgba(254, 211, 0, 0.18);
+  color: var(--ez-black, #1d1d1f);
+}
 
 /* Status indicators */
 
