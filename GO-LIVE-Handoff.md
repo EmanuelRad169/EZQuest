@@ -27,7 +27,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 
 ## C. Store settings & brand assets
 
-- 🔴 **Upload a favicon** in **Theme settings → favicon.** Right now the site uses an SVG fallback for the browser tab, and the iOS home-screen icon (`apple-touch-icon`) only renders once a favicon is set. Uploading one fixes both.
+- ✅ **Favicon + apple-touch-icon — done in the theme.** Rasterized your brand `favicon.svg` into PNG icons (32/180/192/512) and wired them so the browser favicon **and** the iOS home-screen icon render without needing a Theme Settings upload. If you later upload a favicon in Theme Settings, it automatically overrides these. Takes effect after the push (section A).
 - ✅ **Product image alt text** — audited all 66 products; only 2 had blank alt (15 images total) and I set descriptive alt on every one. All product images now have alt.
 - ✅ **Remaining empty-alt images are correct, not defects.** Verified the images that scanners flag on the homepage are **decorative by design**: the hero banners are background images with the headline as real HTML text, and the Shop-menu thumbnails sit inside `aria-hidden="true"` links that already carry an `aria-label`. Empty `alt=""` is the WCAG-correct treatment for decorative images, so Lighthouse/axe pass them — no change needed (adding alt would be redundant and worse for screen readers).
 - ⚠️ Confirm the social share image (`og:image`) is the intended brand image (it's present and valid).
@@ -87,7 +87,7 @@ Live audit run against `ezquest-4.myshopify.com` on the date of handoff. Overall
 | Broken links (18 key routes) | ✅ all 200 |
 | Console errors | ✅ none observed |
 | GA4 / Meta Pixel loaded | 🔴 not present yet |
-| Favicon / apple-touch-icon | 🔴 no favicon uploaded (SVG fallback only) |
+| Favicon / apple-touch-icon | ✅ PNG + apple-touch icons in theme (after push) |
 | Product image alt text | ✅ complete (theme UI images minor) |
 | Inventory / sold-out state | ✅ all variants continue-selling |
 | Forms (keyboard, labels, errors, spam, 16px) | ✅ fixed this engagement |
