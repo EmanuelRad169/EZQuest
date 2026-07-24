@@ -27,6 +27,12 @@
               <strong>{{ form.email | escape }}</strong> within 1 business day.
             </p>
           </div>
+          <script>
+            (function () {
+              function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('ticket'); }
+              if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fire); } else { fire(); }
+            })();
+          </script>
         {% else %}
 
           {% if form.errors %}
