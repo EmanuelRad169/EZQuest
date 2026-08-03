@@ -1,6 +1,6 @@
 {%- liquid
-  assign hub_product = all_products['usb-c-multimedia-hub']
-  assign dock_product = all_products['usb-c-pro-dock']
+  assign hub_product = all_products['usb-4-dual-display-8-in-1-hub-pro-series']
+  assign dock_product = all_products['65w-gan-usb-c-pd-wall-charger']
 -%}
 <section
   id="site-header-search-panel"
@@ -84,8 +84,8 @@
               <p class="search-mega-label">Quick links</p>
             </div>
             <div class="search-mega-link-stack grid gap-2">
-              <a href="/pages/compatibility" class="text-sm font-medium text-slate-900 no-underline transition duration-200 hover:text-blue-600">Check compatibility</a>
-              <a href="/pages/support" class="text-sm font-medium text-slate-900 no-underline transition duration-200 hover:text-blue-600">Open support center</a>
+              <a href="/pages/compatibility" class="search-mega-quicklink text-sm font-medium text-slate-900 no-underline transition duration-200">Check compatibility</a>
+              <a href="/pages/support" class="search-mega-quicklink text-sm font-medium text-slate-900 no-underline transition duration-200">Open support center</a>
             </div>
           </div>
         </aside>
@@ -111,7 +111,7 @@
                 {% render 'mega-menu-stage-card',
                   product: dock_product,
                   media_context: 'search',
-                  eyebrow: 'Desk',
+                  eyebrow: 'Power',
                   show_descriptor: true,
                   card_class: 'search-mega-stage-card'
                 %}

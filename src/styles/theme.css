@@ -11835,6 +11835,33 @@ body.template-index .home-hero-slide {
   }
 }
 
+/* Search panel quick links — brand-neutral hover (no off-brand blue) to match
+   the warm neutral + amber palette used across the other header menus. */
+.search-mega-quicklink {
+  position: relative;
+  width: fit-content;
+}
+.search-mega-quicklink:hover,
+.search-mega-quicklink:focus-visible {
+  color: var(--ez-black, #1d1d1f);
+}
+.search-mega-quicklink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1.5px;
+  background: var(--ez-amber, #FED300);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
+}
+.search-mega-quicklink:hover::after,
+.search-mega-quicklink:focus-visible::after {
+  transform: scaleX(1);
+}
+
 /* ═══ SEARCH SKELETON LOADER — CSS-only, aria-busy controlled ════════════════
    Shown when [data-search-results] parent has aria-busy="true".
    Pure CSS pulse animation, no JS dependency.
@@ -14320,6 +14347,25 @@ details.js-filter .facets__list {
 
 body.collection-filter-drawer-open {
   overflow: hidden;
+}
+
+/* Desktop: the filter sidebar is always visible inline, so the "Filter"
+   toggle button (and its divider) is redundant. Hiding it also prevents the
+   drawer JS from dropping a full-screen gray overlay over the page. */
+@media (min-width: 1024px) {
+  .collection-filter-toggle,
+  .collection-filter-btn,
+  #collection-filter-toggle {
+    display: none !important;
+  }
+
+  .collection-subnav__actions .collection-subnav__divider {
+    display: none;
+  }
+
+  .collection-filter-overlay {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1023px) {
