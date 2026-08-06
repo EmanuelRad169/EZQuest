@@ -6636,18 +6636,7 @@
   }
 
   .featured-products-support-row {
-    @apply relative mt-5 flex flex-col gap-3 border-t border-slate-200/80 pt-4 sm:flex-row sm:items-center sm:justify-between;
-  }
-
-  .featured-products-support-row::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    width: 6rem;
-    height: 2px;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, rgba(254, 211, 0, 0.96), rgba(254, 211, 0, 0.05));
+    @apply relative mt-5 flex flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between;
   }
 
   .featured-products-support-copy {

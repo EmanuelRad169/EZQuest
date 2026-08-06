@@ -83,7 +83,9 @@
 
 @media (max-width: 900px) {
   .policy-native-layout { grid-template-columns: 1fr; }
-  .policy-native-layout .policy-sidebar { order: -1; }
+  /* Content first; move the nav + help cards below the policy text so they
+     don't push the actual content down the page. */
+  .policy-native-layout .policy-sidebar { order: 2; position: static; top: auto; }
 }
 
 /* Style the body/rte inside the native container */
@@ -133,10 +135,9 @@
 
 @media (max-width: 900px) {
   .policy-layout { grid-template-columns: 1fr; }
-  .policy-sidebar { order: -1; }
-  /* Single column on mobile: the sidebar must NOT stay pinned, or the article
-     text scrolls underneath it and overlaps. Return it to normal flow. */
-  .policy-sidebar { position: static; top: auto; }
+  /* Content first; nav + help cards move below the policy text (and drop the
+     sticky pinning so text never scrolls underneath them). */
+  .policy-sidebar { order: 2; position: static; top: auto; }
 }
 
 
