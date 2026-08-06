@@ -134,6 +134,9 @@
 @media (max-width: 900px) {
   .policy-layout { grid-template-columns: 1fr; }
   .policy-sidebar { order: -1; }
+  /* Single column on mobile: the sidebar must NOT stay pinned, or the article
+     text scrolls underneath it and overlaps. Return it to normal flow. */
+  .policy-sidebar { position: static; top: auto; }
 }
 
 
