@@ -6154,6 +6154,10 @@
     scroll-padding-left: 0;
     scroll-snap-type: x proximity;
     scrollbar-width: none;
+    /* Horizontal only — prevent the rail from scrolling up/down */
+    overflow-y: hidden;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
   }
 
   .featured-products-track::-webkit-scrollbar {

@@ -304,8 +304,7 @@
     {%- endif -%}
     {%- comment -%}v2026-04-29-newsletter-popup{%- endcomment -%}
     {{ content_for_header }}
-    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="{{ 'theme.css' | asset_url }}"></noscript>
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
     {% if request.path contains '/policies/' %}
       <link rel="stylesheet" href="{{ 'policy-page.css' | asset_url }}" media="print" onload="this.media='all'">
       <noscript><link rel="stylesheet" href="{{ 'policy-page.css' | asset_url }}"></noscript>
