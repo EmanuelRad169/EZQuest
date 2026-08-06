@@ -314,8 +314,15 @@
     <script src="{{ analytics_src }}?ezv=20260428" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'component-accordion.js' | asset_url }}" defer="defer"></script>
+    {% comment %}
+      Legacy jQuery for old-site product descriptions that still embed Bootstrap markup.
+      Served from jQuery's official CDN (was previously an untrusted third-party domain,
+      cdn.younet.network). Pinned to 3.x for Bootstrap 3 compatibility. The theme itself
+      does not depend on jQuery — safe to remove once legacy descriptions are cleaned.
+    {% endcomment %}
+    {% # theme-check-disable RemoteAsset %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" defer="defer"></script>
     {% # theme-check-enable RemoteAsset %}
-      <script src="https://cdn.younet.network/jquery.min.js" defer="defer"></script>
 </head>
   <body class="page-shell template-{{ template | split: '.' | first | handle }}{% if request.design_mode %} design-mode{% endif %}">
     <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
