@@ -467,10 +467,6 @@
 
               {% if product.has_only_default_variant == false %}
                 <div class="product-buybox-option-shell grid gap-3">
-                  <div class="product-buybox-option-head flex flex-wrap items-center justify-between gap-2">
-                    <p class="product-buybox-option-label text-sm font-medium text-slate-500">{{ selected_option_label }}</p>
-                    <p class="product-buybox-option-selected text-sm font-medium text-slate-950" data-product-selected-variant-label>{{ selected_option_summary }}</p>
-                  </div>
                   <select id="ProductVariant-{{ section.id }}" name="id" class="sr-only" data-product-variant-select>
                     {% for variant in product.variants %}
                       <option value="{{ variant.id }}" data-variant-price="{{ variant.price | money | escape }}" data-variant-compare-price="{{ variant.compare_at_price | money | escape }}" data-variant-save-label="{% if variant.compare_at_price > variant.price %}Save {{ variant.compare_at_price | minus: variant.price | money | escape }}{% endif %}" data-variant-available="{% if variant.available %}true{% else %}false{% endif %}" data-variant-title="{{ variant.title | escape }}" data-variant-option-label="{{ variant.options.first | default: variant.title | escape }}" data-variant-inventory-quantity="{{ variant.inventory_quantity }}" data-variant-inventory-management="{{ variant.inventory_management }}" data-variant-inventory-policy="{{ variant.inventory_policy }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %}>
