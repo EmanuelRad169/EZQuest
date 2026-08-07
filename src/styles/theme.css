@@ -1971,6 +1971,7 @@
   .collection-perks-bar {
     background: #fff;
     border-top: 1px solid rgba(226, 232, 240, 0.8);
+    margin-top: clamp(2rem, 5vw, 3.5rem);
   }
 
   .collection-perks-grid {
