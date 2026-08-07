@@ -2638,6 +2638,59 @@
     text-wrap: pretty;
   }
 
+  /* ── Option-based variant selectors (Color swatches + Length buttons) ── */
+  .product-option-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .product-option-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.95rem;
+    border: 1.5px solid rgba(15, 23, 42, 0.14);
+    border-radius: 0.85rem;
+    background: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .product-option-btn:hover { border-color: #94a3b8; color: #0f172a; }
+  .product-option-btn.is-active {
+    border-color: var(--ez-black, #1d1d1f);
+    background: #f8fafc;
+    color: #0f172a;
+    box-shadow: 0 0 0 1px var(--ez-black, #1d1d1f) inset;
+  }
+  .product-option-btn.is-unavailable {
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
+  .product-option-btn--swatch {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-height: 0;
+    padding: 0.3rem;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+  .product-option-btn--swatch.is-active {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #fff inset, 0 0 0 4px var(--ez-black, #1d1d1f);
+  }
+  .product-option-swatch-dot {
+    display: block;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
   .product-secondary-details {
     @apply mt-10 space-y-6;
   }
