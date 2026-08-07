@@ -251,6 +251,10 @@ a.product-pill--link:focus-visible {
 .warranty-section__heading { letter-spacing: .12em; }
 
 @media (max-width: 900px) {
+  /* Collapse the two-column warranty layout to a single column on mobile.
+     Without this the base rule keeps the 340px sidebar and crushes the main
+     text column to one word per line. */
+  .warranty-layout { grid-template-columns: 1fr !important; }
   .warranty-proof-grid { grid-template-columns: 1fr; }
   .warranty-stat-row { grid-template-columns: 1fr; }
   .warranty-claim-card__button { width: 100%; }
