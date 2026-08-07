@@ -483,36 +483,22 @@
                   {%- endcomment -%}
                   <div class="product-option-groups grid gap-4" data-product-option-groups>
                     {% for option in product.options_with_values %}
-                      {%- assign opt_lower = option.name | downcase -%}
-                      {%- assign opt_is_color = false -%}
-                      {%- if opt_lower contains 'color' or opt_lower contains 'colour' or opt_lower contains 'finish' -%}{%- assign opt_is_color = true -%}{%- endif -%}
                       <div class="product-option-group" data-option-group data-option-position="{{ option.position }}">
-                        <div class="product-option-group__head flex items-center justify-between gap-2">
-                          <span class="product-option-group__name text-sm font-medium text-slate-500">{{ option.name }}</span>
-                          <span class="product-option-group__value text-sm font-medium text-slate-950" data-option-selected="{{ option.position }}">{{ option.selected_value }}</span>
-                        </div>
-                        <div class="product-option-values{% if opt_is_color %} product-option-values--swatch{% endif %}" role="group" aria-label="{{ option.name | escape }}">
-                          {% for value in option.values %}
-                            {%- assign sw = value | handleize -%}
-                            {%- assign swc = '#c9ccd1' -%}
-                            {%- case sw -%}
-                              {%- when 'space-gray','space-grey','gray','grey' -%}{%- assign swc = '#6e6e73' -%}
-                              {%- when 'silver' -%}{%- assign swc = '#c9ccd1' -%}
-                              {%- when 'black' -%}{%- assign swc = '#1d1d1f' -%}
-                              {%- when 'white' -%}{%- assign swc = '#eff0f2' -%}
-                              {%- when 'blue' -%}{%- assign swc = '#2563eb' -%}
-                            {%- endcase -%}
-                            <button type="button"
-                              class="product-option-btn{% if opt_is_color %} product-option-btn--swatch{% endif %}{% if value == option.selected_value %} is-active{% endif %}"
-                              data-option-value
-                              data-option-position="{{ option.position }}"
-                              data-option-value-name="{{ value | escape }}"
-                              aria-pressed="{% if value == option.selected_value %}true{% else %}false{% endif %}"
-                              title="{{ value | escape }}">
-                              {% if opt_is_color %}<span class="product-option-swatch-dot" style="background:{{ swc }}" aria-hidden="true"></span>{% endif %}
-                              <span class="product-option-btn__label{% if opt_is_color %} sr-only{% endif %}">{{ value }}</span>
-                            </button>
-                          {% endfor %}
+                        <label class="product-option-select-label" for="opt-{{ section.id }}-{{ option.position }}">{{ option.name }}</label>
+                        <div class="product-option-select-wrap">
+                          <select
+                            id="opt-{{ section.id }}-{{ option.position }}"
+                            class="product-option-select"
+                            data-option-select
+                            data-option-position="{{ option.position }}"
+                            aria-label="{{ option.name | escape }}">
+                            {% for value in option.values %}
+                              <option value="{{ value | escape }}" {% if value == option.selected_value %}selected="selected"{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                          </select>
+                          <span class="product-option-select-chevron" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25 7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
                         </div>
                       </div>
                     {% endfor %}
@@ -1454,14 +1440,9 @@
     var variants;
     try { variants = JSON.parse(jsonEl.textContent); } catch (e) { return; }
 
+    var selects = Array.prototype.slice.call(groups.querySelectorAll('[data-option-select]'));
     var vals = {};
-    groups.querySelectorAll('[data-option-group]').forEach(function (g) {
-      var pos = g.getAttribute('data-option-position');
-      var active = g.querySelector('[data-option-value].is-active');
-      vals[pos] = active ? active.getAttribute('data-option-value-name') : null;
-      var lbl = root.querySelector('[data-option-selected="' + pos + '"]');
-      if (lbl && vals[pos]) lbl.textContent = vals[pos];
-    });
+    selects.forEach(function (s) { vals[s.getAttribute('data-option-position')] = s.value; });
 
     var match = variants.find(function (v) {
       return v.options.every(function (ov, i) { return vals[String(i + 1)] === ov; });
@@ -1477,61 +1458,55 @@
       }
     }
 
-    // Grey out option values that can't form an available variant with the
-    // current selections in the other option groups.
-    groups.querySelectorAll('[data-option-group]').forEach(function (g) {
-      var pos = g.getAttribute('data-option-position');
-      g.querySelectorAll('[data-option-value]').forEach(function (btn) {
-        var val = btn.getAttribute('data-option-value-name');
+    // Disable option values that can't form an available variant given the
+    // current selection in the other dropdowns.
+    selects.forEach(function (s) {
+      var pos = s.getAttribute('data-option-position');
+      Array.prototype.slice.call(s.options).forEach(function (opt) {
+        var val = opt.value;
         var ok = variants.some(function (v) {
           if (!v.available) return false;
           return v.options.every(function (ov, i) {
             var p = String(i + 1);
             if (p === pos) return ov === val;
-            return !vals[p] || vals[p] === ov;
+            return vals[p] === ov;
           });
         });
-        btn.classList.toggle('is-unavailable', !ok);
+        opt.disabled = !ok;
       });
     });
   }
 
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-option-value]');
-    if (!btn) return;
-    var root = btn.closest('[data-product-root]');
+  document.addEventListener('change', function (e) {
+    var changed = e.target && e.target.closest ? e.target.closest('[data-option-select]') : null;
+    if (!changed) return;
+    var root = changed.closest('[data-product-root]');
     var groups = root && root.querySelector('[data-product-option-groups]');
     var jsonEl = root && root.querySelector('[data-product-variants-json]');
     if (!root || !groups || !jsonEl) return;
-    e.preventDefault();
     var variants;
     try { variants = JSON.parse(jsonEl.textContent); } catch (err) { return; }
 
-    var pos = parseInt(btn.getAttribute('data-option-position'), 10);
-    var val = btn.getAttribute('data-option-value-name');
+    var pos = parseInt(changed.getAttribute('data-option-position'), 10);
+    var val = changed.value;
+    var selects = Array.prototype.slice.call(groups.querySelectorAll('[data-option-select]'));
     var cur = {};
-    groups.querySelectorAll('[data-option-group]').forEach(function (g) {
-      var a = g.querySelector('[data-option-value].is-active');
-      cur[g.getAttribute('data-option-position')] = a ? a.getAttribute('data-option-value-name') : null;
-    });
+    selects.forEach(function (s) { cur[s.getAttribute('data-option-position')] = s.value; });
     cur[String(pos)] = val;
 
     // Prefer the exact combo; otherwise the first AVAILABLE variant carrying the
-    // clicked value; otherwise any variant with it — so we never land on a
+    // changed value; otherwise any variant with it — so we never land on a
     // non-existent combination (e.g. a colour that has no current length).
     var target = variants.find(function (v) { return v.options.every(function (ov, i) { return cur[String(i + 1)] === ov; }); })
       || variants.find(function (v) { return v.available && v.options[pos - 1] === val; })
       || variants.find(function (v) { return v.options[pos - 1] === val; });
     if (!target) return;
 
-    groups.querySelectorAll('[data-option-group]').forEach(function (g) {
-      var p = parseInt(g.getAttribute('data-option-position'), 10);
+    // Sync every dropdown to the resolved variant's options.
+    selects.forEach(function (s) {
+      var p = parseInt(s.getAttribute('data-option-position'), 10);
       var want = target.options[p - 1];
-      g.querySelectorAll('[data-option-value]').forEach(function (b) {
-        var on = b.getAttribute('data-option-value-name') === want;
-        b.classList.toggle('is-active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
+      if (s.value !== want) s.value = want;
     });
     apply(root);
   });
