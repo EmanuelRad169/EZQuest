@@ -155,8 +155,8 @@
           "settings": {
             "size": "normal",
             "card_style": "blue",
-            "stat": "",
-            "label": "USB-C charging",
+            "stat": "USB-C",
+            "label": "Fast charging & sync",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_F_0a1a49f9-77e6-4e40-9035-4ccbffb89906.jpg"
           }
@@ -177,8 +177,8 @@
           "settings": {
             "size": "normal",
             "card_style": "light",
-            "stat": "",
-            "label": "Desk-ready docks",
+            "stat": "Desk-ready",
+            "label": "Docking hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg"
           }
