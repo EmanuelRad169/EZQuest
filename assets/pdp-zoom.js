@@ -105,6 +105,11 @@
   }
 
   function initTriggers() {
+    // Full-screen "full picture" viewer removed per request (it rendered
+    // scrambled over the page content). The in-place hover lens zoom below
+    // still provides magnification. Leaving early disables the modal entirely.
+    return;
+    /* eslint-disable no-unreachable */
     document.querySelectorAll('[data-zoom-trigger]').forEach(function (trigger) {
       trigger.addEventListener('click', function (event) {
         if (event.target.closest('.product-gallery-grid')) return;

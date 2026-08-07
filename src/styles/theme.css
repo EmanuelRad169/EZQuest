@@ -10310,6 +10310,12 @@
   @media (max-width: 1023px) {
     .quick-add-btn {
       position: static;
+      /* Fully clear the absolute offsets so the button can't hang off / clip
+         to the side on touch devices (no :hover to re-center it). */
+      inset: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
       width: calc(100% - 2.5rem);
       margin: 0.5rem 1.25rem 1.25rem;
       justify-content: center;
