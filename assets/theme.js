@@ -402,23 +402,50 @@ function animateMediaReveal(element, options) {
   }
 
   function animateMainImage(mainImg, nextSrc, nextSrcset) {
-    const frame = mainImg.closest('.product-gallery-main');
-    if (frame) frame.classList.add('is-switching');
+    if (!mainImg) return;
+    // No-op if it's already the current image (prevents a pointless re-animation
+    // when clicking the active thumbnail).
+    if (mainImg.getAttribute('src') === nextSrc) return;
 
-    mainImg.style.transition = 'opacity 160ms ease, transform 220ms ease';
-    mainImg.style.opacity = '0.18';
-    mainImg.style.transform = 'scale(0.985)';
-    window.setTimeout(function () {
+    const frame = mainImg.closest('.product-gallery-main');
+    const applySrc = function () {
       mainImg.src = nextSrc;
-      if (nextSrcset) {
-        mainImg.srcset = nextSrcset;
-      } else {
-        mainImg.removeAttribute('srcset');
-      }
-      mainImg.style.opacity = '1';
-      mainImg.style.transform = 'scale(1)';
+      if (nextSrcset) { mainImg.srcset = nextSrcset; } else { mainImg.removeAttribute('srcset'); }
+    };
+
+    // Reduced motion: swap instantly, no animation.
+    if (prefersReducedMotion()) { applySrc(); if (frame) frame.classList.remove('is-switching'); return; }
+
+    // Preload + decode the next image up front so the swap is instant and never
+    // shows a blank or stale frame mid-transition.
+    const next = new Image();
+    if (nextSrcset) next.srcset = nextSrcset;
+    next.src = nextSrc;
+
+    if (frame) frame.classList.add('is-switching');
+    mainImg.style.transition = 'opacity 200ms ease, transform 260ms ease';
+    mainImg.style.opacity = '0';
+    mainImg.style.transform = 'scale(0.98)';
+
+    let done = false;
+    const reveal = function () {
+      if (done) return; done = true;
+      applySrc();
+      requestAnimationFrame(function () {
+        mainImg.style.opacity = '1';
+        mainImg.style.transform = 'scale(1)';
+      });
       if (frame) frame.classList.remove('is-switching');
-    }, 140);
+    };
+
+    // Swap in only once BOTH the fade-out has played and the new image is decoded.
+    const decoded = next.decode
+      ? next.decode().then(function () { return true; }).catch(function () { return true; })
+      : Promise.resolve(true);
+    const faded = new Promise(function (res) { window.setTimeout(res, 200); });
+    Promise.all([decoded, faded]).then(reveal);
+    // Safety net so the image never gets stuck hidden if load/decode stalls.
+    window.setTimeout(reveal, 1200);
   }
 
   document.querySelectorAll('.product-gallery-stage').forEach(function (stage) {
