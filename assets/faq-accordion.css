@@ -5,7 +5,7 @@
 @media(min-width:1024px){.faq-layout{grid-template-columns:280px 1fr;gap:clamp(3rem,5vw,5rem)}}
 .faq-layout--full-width{grid-template-columns:1fr !important}
 .faq-layout--full-width .faq-header{position:relative !important;top:auto !important}
-.faq-tabs-nav{display:inline-flex;align-items:center;gap:.375rem;max-width:100%;padding:.375rem;border:1px solid rgba(15,23,42,.08);border-radius:9999px;background:rgba(255,255,255,.8);box-shadow:0 10px 30px rgba(15,23,42,.04);margin-bottom:1rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.faq-tabs-nav{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.375rem;max-width:100%;padding:.375rem;border:1px solid rgba(15,23,42,.08);border-radius:9999px;background:rgba(255,255,255,.8);box-shadow:0 10px 30px rgba(15,23,42,.04);margin-bottom:1rem}
 .faq-tab-trigger{flex:0 0 auto;padding:.7rem 1rem;font-size:.9375rem;font-weight:600;line-height:1;color:var(--ez-grey);background:transparent;border:0;border-radius:9999px;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s,transform .2s;letter-spacing:-.01em}
 .faq-tab-trigger:hover{color:var(--ez-black);background:rgba(15,23,42,.04)}
 .faq-tab-trigger.is-active{color:var(--ez-black);background:var(--ez-amber);box-shadow:0 6px 16px rgba(254,211,0,.25)}
