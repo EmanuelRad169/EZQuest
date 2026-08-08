@@ -307,7 +307,7 @@
               {% endif %}
 
               {% if product.media.size > 1 %}
-                {% for media_item in product.media limit: 6 %}
+                {% for media_item in product.media %}
                   {% unless lead_media != blank and media_item.id == lead_media.id %}
                     <button type="button" class="product-thumb-card" data-pdp-thumb>
                       {% render 'media', media: media_item, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', max_width: 200, widths: '100, 200', sizes: '80px' %}
