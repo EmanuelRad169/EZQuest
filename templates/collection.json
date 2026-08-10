@@ -29,12 +29,12 @@
     "cta": {
       "type": "support-cta-rail",
       "settings": {
-        "kicker": "Go further",
-        "heading": "Compare the full lineup or get setup guidance.",
+        "kicker": "Go Further",
+        "heading": "Compare the Full Lineup or Get Setup Guidance.",
         "body": "Use the compare tool or Help me choose to find the right product before you add to cart.",
-        "cta_label": "Compare lineup",
+        "cta_label": "Compare Lineup",
         "cta_url": "/pages/compare",
-        "cta2_label": "Help me choose",
+        "cta2_label": "Help Me Choose",
         "cta2_url": "/pages/help-me-choose"
       }
     },

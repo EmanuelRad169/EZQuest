@@ -15,7 +15,7 @@
         "background_image": "shopify://shop_images/DT_Banner_03.jpg",
         "background_color": "#020617",
         "kicker": "Compare",
-        "heading": "Find the right setup, side by side",
+        "heading": "Find the Right Setup, Side by Side",
         "subheading": "Compare ports, power, portability, and display support across the full EZQuest lineup.",
         "height": 360,
         "overlay_opacity": 35,
@@ -38,7 +38,7 @@
         "comparexpert_comparison_table_builder_N3tTj9": {
           "type": "shopify://apps/comparexpert/blocks/comparison-table-builder/c855b225-94ed-4209-962c-0fcdc53b09bf",
           "settings": {
-            "heading": "Build your Comparison",
+            "heading": "Build Your Comparison",
             "default_slots": "2"
           }
         }
@@ -56,12 +56,12 @@
       "type": "support-cta-rail",
       "settings": {
         "variant": "light",
-        "kicker": "Not sure which to choose",
-        "heading": "Still deciding? We can help narrow it down.",
+        "kicker": "Not Sure Which to Choose",
+        "heading": "Still Deciding? We Can Help Narrow It Down.",
         "body": "Use compatibility check or open support to get a direct answer before you buy.",
-        "cta_label": "Help me choose",
+        "cta_label": "Help Me Choose",
         "cta_url": "/pages/help-me-choose",
-        "cta2_label": "Check compatibility",
+        "cta2_label": "Check Compatibility",
         "cta2_url": "/pages/compatibility"
       }
     }

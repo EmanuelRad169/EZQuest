@@ -14,7 +14,7 @@
       "settings": {
         "background_image": "shopify://shop_images/DT_Banner_04.png",
         "background_color": "#020617",
-        "kicker": "Choose a setup",
+        "kicker": "Choose a Setup",
         "heading": "Built for Your Workflow",
         "subheading": "Choose the role first, then move into the family and the product built for that setup.",
         "height": 360,
@@ -38,72 +38,72 @@
         "guide_1": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Most balanced",
-            "title": "Everyday hybrid desk",
+            "eyebrow": "Most Balanced",
+            "title": "Everyday Hybrid Desk",
             "copy": "Best for daily desks that need ports, power, and display without a full dock.",
-            "primary_label": "Shop hubs & adapters",
+            "primary_label": "Shop Hubs & Adapters",
             "primary_url": "/collections/hubs-adapters",
-            "secondary_label": "Compare options",
+            "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
         },
         "guide_2": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Most portable",
-            "title": "Mobile and travel-first",
+            "eyebrow": "Most Portable",
+            "title": "Mobile and Travel-First",
             "copy": "Best for hotel desks, meetings, and lightweight carry kits.",
-            "primary_label": "Shop hubs & adapters",
+            "primary_label": "Shop Hubs & Adapters",
             "primary_url": "/collections/hubs-adapters",
-            "secondary_label": "Compare options",
+            "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
         },
         "guide_3": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Most desk-ready",
-            "title": "Permanent workstation",
+            "eyebrow": "Most Desk-Ready",
+            "title": "Permanent Workstation",
             "copy": "Best for desks that need displays, Ethernet, peripherals, and stable cable control.",
-            "primary_label": "Shop docking stations",
+            "primary_label": "Shop Docking Stations",
             "primary_url": "/collections/docking-stations",
-            "secondary_label": "Compare options",
+            "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
         },
         "guide_4": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Power first",
-            "title": "Charging and power layer",
+            "eyebrow": "Power First",
+            "title": "Charging and Power Layer",
             "copy": "Best for setups that need reliable power before additional ports.",
-            "primary_label": "Shop chargers & power",
+            "primary_label": "Shop Chargers & Power",
             "primary_url": "/collections/chargers-power",
-            "secondary_label": "View support",
+            "secondary_label": "View Support",
             "secondary_url": "/pages/support"
           }
         },
         "guide_5": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Finish the setup",
-            "title": "Cables and accessories",
+            "eyebrow": "Finish the Setup",
+            "title": "Cables and Accessories",
             "copy": "Best for tightening cable paths or completing the last step.",
-            "primary_label": "Shop accessories",
+            "primary_label": "Shop Accessories",
             "primary_url": "/collections/accessories",
-            "secondary_label": "View support",
+            "secondary_label": "View Support",
             "secondary_url": "/pages/support"
           }
         },
         "guide_6": {
           "type": "guide",
           "settings": {
-            "eyebrow": "Still deciding?",
-            "title": "Talk to support",
+            "eyebrow": "Still Deciding?",
+            "title": "Talk to Support",
             "copy": "Not sure which setup fits? Support can help narrow it down before you buy.",
-            "primary_label": "Contact support",
+            "primary_label": "Contact Support",
             "primary_url": "/pages/support",
-            "secondary_label": "Compare options",
+            "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
         }
@@ -130,12 +130,12 @@
       "type": "support-cta-rail",
       "settings": {
         "variant": "light",
-        "kicker": "Need compatibility help",
-        "heading": "Need to confirm compatibility before you decide?",
+        "kicker": "Need Compatibility Help",
+        "heading": "Need to Confirm Compatibility Before You Decide?",
         "body": "Use compatibility or support when one device, display, or workflow detail still needs confirmation.",
-        "cta_label": "Check compatibility",
+        "cta_label": "Check Compatibility",
         "cta_url": "/pages/compatibility",
-        "cta2_label": "Open support center",
+        "cta2_label": "Open Support Center",
         "cta2_url": "/pages/support"
       }
     }

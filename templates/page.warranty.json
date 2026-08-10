@@ -15,7 +15,7 @@
         "background_image": "shopify://shop_images/DT_Banner_03.jpg",
         "background_color": "#020617",
         "kicker": "Warranty",
-        "heading": "Our promise to you",
+        "heading": "Our Promise to You",
         "subheading": "Every EZQuest product is covered by a limited manufacturer's warranty. Find your coverage period, what's covered, and how to file a claim.",
         "height": 360,
         "overlay_opacity": 35,
@@ -41,11 +41,11 @@
       "settings": {
         "variant": "light",
         "kicker": "Support",
-        "heading": "Have a warranty question?",
+        "heading": "Have a Warranty Question?",
         "body": "Some warranty questions are resolved faster through troubleshooting or direct support.",
-        "cta_label": "Open support",
+        "cta_label": "Open Support",
         "cta_url": "/pages/support",
-        "cta2_label": "Contact support",
+        "cta2_label": "Contact Support",
         "cta2_url": "/pages/contact"
       }
     }

@@ -126,11 +126,11 @@
       "settings": {
         "variant": "light",
         "kicker": "Support",
-        "heading": "Need help choosing the right file?",
+        "heading": "Need Help Choosing the Right File?",
         "body": "Open support if you need guidance on which download matches your product and platform.",
-        "cta_label": "Open support",
+        "cta_label": "Open Support",
         "cta_url": "/pages/support",
-        "cta2_label": "Find manuals",
+        "cta2_label": "Find Manuals",
         "cta2_url": "/pages/manuals"
       }
     }

@@ -122,11 +122,11 @@
       "type": "support-cta-rail",
       "settings": {
         "kicker": "Support",
-        "heading": "Need direct help?",
+        "heading": "Need Direct Help?",
         "body": "Open support when the guide still leaves a step unclear.",
-        "cta_label": "Open support",
+        "cta_label": "Open Support",
         "cta_url": "/pages/support",
-        "cta2_label": "Find manuals",
+        "cta2_label": "Find Manuals",
         "cta2_url": "/pages/manuals"
       }
     }

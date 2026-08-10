@@ -12,7 +12,7 @@
     "main": {
       "type": "main-404",
       "settings": {
-        "heading": "This page isn't connected.",
+        "heading": "This Page Isn't Connected.",
         "copy": "The link might have moved or the URL might be wrong. Here is where to go instead."
       }
     },
@@ -22,9 +22,9 @@
         "background_color": "#020617",
         "overlay_opacity": 35,
         "height": 280,
-        "heading": "We couldn't find that page",
-        "subheading": "Try searching or browse our products from the menu.",
-        "kicker": "Not found"
+        "heading": "We Couldn't Find That Page",
+        "subheading": "Try Searching or Browse Our Products from the Menu.",
+        "kicker": "Not Found"
       }
     }
   },

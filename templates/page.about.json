@@ -13,24 +13,24 @@
       "type": "about",
       "settings": {
         "kicker": "Est. 1994 · Yorba Linda, California",
-        "heading": "Built for people who connect everything.",
+        "heading": "Built for People Who Connect Everything.",
         "body": "EZQuest provides the highest-quality accessories for the Apple, PC, and mobile consumer-electronics markets. Since 1994, our portfolio has spanned USB-C hubs and docks, DuraGuard™ cables, display adapters, GaN power products, and card readers — precision-engineered from premium materials, built with the latest technology, and designed to last.",
         "stat1_value": "30+",
-        "stat1_label": "Years in business",
+        "stat1_label": "Years in Business",
         "stat2_value": "100+",
-        "stat2_label": "Products made",
+        "stat2_label": "Products Made",
         "stat3_value": "1–2yr",
-        "stat3_label": "Limited warranty (varies by product)",
-        "cta_heading": "Explore what we make.",
+        "stat3_label": "Limited Warranty (Varies by Product)",
+        "cta_heading": "Explore What We Make.",
         "cta_body": "Premium accessories for every desk, every device.",
-        "cta_label": "Browse products",
+        "cta_label": "Browse Products",
         "cta_url": "/collections/all"
       },
       "blocks": {
         "pillar_1": {
           "type": "pillar",
           "settings": {
-            "title": "Built to last",
+            "title": "Built to Last",
             "body": "Every product is stress-tested beyond spec. Kevlar-reinforced cables, aircraft-grade aluminum housings, and the DuraGuard system — because accessories should outlast the devices they connect.",
             "icon_path": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
           }
@@ -38,7 +38,7 @@
         "pillar_2": {
           "type": "pillar",
           "settings": {
-            "title": "Works with everything",
+            "title": "Works with Everything",
             "body": "Designed for the full ecosystem — Mac, Windows, iPad, and beyond. We test every product across hundreds of device and OS combinations before it ships.",
             "icon_path": "M13 10V3L4 14h7v7l9-11h-7z"
           }
@@ -46,7 +46,7 @@
         "pillar_3": {
           "type": "pillar",
           "settings": {
-            "title": "Real support",
+            "title": "Real Support",
             "body": "Our team answers within 1 business day — by phone, email, or chat. Every product is backed by a 1–2 year limited warranty (depending on product) with no runaround.",
             "icon_path": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"
           }
@@ -64,12 +64,12 @@
         "background_color": "#020617",
         "overlay_opacity": 35,
         "height": 320,
-        "heading": "Built to simplify your connections",
+        "heading": "Built to Simplify Your Connections",
         "subheading": "Since 1994, EZQuest has made it simpler to connect the devices that matter most.",
         "kicker": "About",
-        "cta_label": "Shop products",
+        "cta_label": "Shop Products",
         "cta_link": "/collections",
-        "cta_secondary_label": "Our story",
+        "cta_secondary_label": "Our Story",
         "cta_secondary_link": "/pages/our-story"
       }
     }

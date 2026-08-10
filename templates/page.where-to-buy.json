@@ -181,11 +181,11 @@
         "icongroup"
       ],
       "settings": {
-        "heading": "Where to buy",
+        "heading": "Where to Buy",
         "subheading": "EZQuest products are sold through these authorised retailers and distributors worldwide.",
         "show_cta": true,
         "cta_text": "Interested in carrying EZQuest products?",
-        "cta_label": "Become a reseller",
+        "cta_label": "Become a Reseller",
         "cta_url": "/pages/contact"
       }
     },
@@ -195,12 +195,12 @@
         "background_color": "#020617",
         "overlay_opacity": 35,
         "height": 320,
-        "heading": "Where to buy EZQuest",
+        "heading": "Where to Buy EZQuest",
         "subheading": "Shop online or find an authorised retailer or distributor near you — worldwide.",
         "kicker": "Where To Buy",
-        "cta_label": "Shop online",
+        "cta_label": "Shop Online",
         "cta_link": "/collections",
-        "cta_secondary_label": "Become a reseller",
+        "cta_secondary_label": "Become a Reseller",
         "cta_secondary_link": "/pages/contact"
       }
     }

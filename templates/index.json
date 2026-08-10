@@ -15,12 +15,12 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "eyebrow": "USB-C essentials",
-            "heading": "USB-C hubs, docks, chargers, and cables for modern devices",
+            "eyebrow": "USB-C Essentials",
+            "heading": "USB-C Hubs, Docks, Chargers, and Cables for Modern Devices",
             "copy": "Add the ports, power, and display support your desk or travel kit actually needs.",
-            "primary_label": "Shop everyday setups",
+            "primary_label": "Shop Everyday Setups",
             "primary_url": "/collections/hubs-adapters",
-            "secondary_label": "Shop best-selling hub",
+            "secondary_label": "Shop Best-Selling Hub",
             "secondary_url": "/products/usb-c-multimedia-hub",
             "image": "shopify://shop_images/DT_Banner_01_d4d5e4dd-db12-4c47-bfb0-273c1d3e8e0f.jpg",
             "image_mobile": "shopify://shop_images/Mob_Banner_01_3f5dfa45-ce88-4412-9faa-028fed503e5d.jpg"
@@ -30,11 +30,11 @@
           "type": "slide",
           "settings": {
             "eyebrow": "Desk-ready",
-            "heading": "Build a cleaner desk with the right dock",
+            "heading": "Build a Cleaner Desk with the Right Dock",
             "copy": "Expand displays, Ethernet, charging, and peripherals without turning the desk into cable clutter.",
-            "primary_label": "See desk-ready docks",
+            "primary_label": "See Desk-Ready Docks",
             "primary_url": "/collections/docking-stations",
-            "secondary_label": "Compare desk options",
+            "secondary_label": "Compare Desk Options",
             "secondary_url": "/pages/compare",
             "image": "shopify://shop_images/DT_Banner_02_0df90393-2bbc-4c57-9f67-6517b0e4d39e.jpg",
             "image_mobile": "shopify://shop_images/Mob_Banner_02_8ab61f7c-456d-466d-88d7-424941fedfe7.jpg"
@@ -43,12 +43,12 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "eyebrow": "Chargers & power",
-            "heading": "Keep laptops, tablets, and phones charged",
+            "eyebrow": "Chargers & Power",
+            "heading": "Keep Laptops, Tablets, and Phones Charged",
             "copy": "Choose compact travel chargers or higher-output wall chargers for multi-device desks.",
-            "primary_label": "Shop chargers & power",
+            "primary_label": "Shop Chargers & Power",
             "primary_url": "/collections/chargers-power",
-            "secondary_label": "Find the right charger",
+            "secondary_label": "Find the Right Charger",
             "secondary_url": "/pages/help-me-choose",
             "image": "shopify://shop_images/DT_Banner_03_0b965f33-5228-45b6-9803-234143821790.jpg",
             "image_mobile": "shopify://shop_images/Mob_Banner_03_946d174f-cbb0-4529-9802-07f1932b5fed.jpg"
@@ -60,9 +60,9 @@
             "eyebrow": "Travel-ready",
             "heading": "Keep the right ports and power in your travel kit",
             "copy": "Compact chargers, cables, and adapters for hotel desks, meetings, and carry-light days.",
-            "primary_label": "Shop travel-ready power",
+            "primary_label": "Shop Travel-Ready Power",
             "primary_url": "/collections/chargers-power",
-            "secondary_label": "Shop hubs & adapters",
+            "secondary_label": "Shop Hubs & Adapters",
             "secondary_url": "/collections/hubs-adapters",
             "image": "shopify://shop_images/DT_Banner_04_7c7145ca-003e-43f6-8325-cd8fc93fc2cc.png",
             "image_mobile": "shopify://shop_images/Mob_Banner_04_4ba785cf-8ee1-4320-a6e6-be96c62d8c32.jpg"
@@ -76,12 +76,12 @@
         "slide_4"
       ],
       "settings": {
-        "eyebrow": "USB-C essentials",
-        "heading": "USB-C hubs, docks, chargers, and cables for modern devices",
+        "eyebrow": "USB-C Essentials",
+        "heading": "USB-C Hubs, Docks, Chargers, and Cables for Modern Devices",
         "copy": "Add the ports, power, and display support your desk or travel kit actually needs.",
-        "primary_label": "Shop everyday setups",
+        "primary_label": "Shop Everyday Setups",
         "primary_url": "/collections/hubs-adapters",
-        "secondary_label": "Shop best-selling hub",
+        "secondary_label": "Shop Best-Selling Hub",
         "secondary_url": "/products/usb-c-multimedia-hub"
       }
     },
@@ -132,7 +132,7 @@
         "category_4"
       ],
       "settings": {
-        "heading": "Shop by product family",
+        "heading": "Shop by Product Family",
         "copy": "Browse hubs, docks, chargers, and accessories."
       }
     },
@@ -145,7 +145,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "8-in-1",
-            "label": "Hub expansion",
+            "label": "Hub Expansion",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_E_53e16a4a-1b01-4981-95d4-4250d8ec2a70.jpg"
           }
@@ -156,7 +156,7 @@
             "size": "normal",
             "card_style": "blue",
             "stat": "USB-C",
-            "label": "Fast charging & sync",
+            "label": "Fast Charging & Sync",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_F_0a1a49f9-77e6-4e40-9035-4ccbffb89906.jpg"
           }
@@ -167,7 +167,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "4K 60Hz",
-            "label": "Display support",
+            "label": "Display Support",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_G_851c726e-7dc9-4498-a517-d64cf2ce5b0e.jpg"
           }
@@ -178,7 +178,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "Desk-ready",
-            "label": "Docking hubs",
+            "label": "Docking Hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg"
           }
@@ -189,7 +189,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "100W",
-            "label": "Power delivery",
+            "label": "Power Delivery",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_I_232a3349-793a-4bd9-bc02-126f673a7a51.jpg"
           }
@@ -200,7 +200,7 @@
             "size": "wide",
             "card_style": "blue",
             "stat": "Travel-ready",
-            "label": "Compact chargers and hubs",
+            "label": "Compact Chargers and Hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_J.jpg"
           }
@@ -211,7 +211,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "2.5GbE",
-            "label": "Faster wired networking",
+            "label": "Faster Wired Networking",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_K_da877eab-b9f9-4f67-9803-519fa59f9d01.jpg"
           }
@@ -222,7 +222,7 @@
             "size": "wide",
             "card_style": "light",
             "stat": "Works with",
-            "label": "Mac, iPad, and Windows setups",
+            "label": "Mac, iPad, and Windows Setups",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg"
           }
@@ -233,7 +233,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "DuraGuard",
-            "label": "Braided cable durability",
+            "label": "Braided Cable Durability",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_N_074a5803-6fe0-42ca-a912-ba2b8bb81b4e.jpg"
           }
@@ -244,7 +244,7 @@
             "size": "normal",
             "card_style": "light",
             "stat": "2-year",
-            "label": "Warranty coverage",
+            "label": "Warranty Coverage",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_M_088bef3e-5e2b-498c-86cb-6b41450ea920.jpg"
           }
@@ -263,8 +263,8 @@
         "f9"
       ],
       "settings": {
-        "eyebrow": "What EZQuest helps with",
-        "heading": "Ports, power, displays, and everyday setup clarity"
+        "eyebrow": "What EZQuest Helps With",
+        "heading": "Ports, Power, Displays, and Everyday Setup Clarity"
       }
     },
     "feature_banner": {
@@ -272,17 +272,17 @@
       "settings": {
         "image": "shopify://shop_images/Down_Page_Banner.jpg",
         "text_position": "left",
-        "eyebrow": "Desk and travel coverage",
-        "heading": "Choose the right mix of ports, power, and displays.",
+        "eyebrow": "Desk and Travel Coverage",
+        "heading": "Choose the Right Mix of Ports, Power, and Displays.",
         "copy": "From compact travel hubs to desk-ready docks and multi-device chargers, EZQuest keeps modern-device setups cleaner and easier to manage.",
-        "cta_label": "Shop the lineup",
+        "cta_label": "Shop the Lineup",
         "cta_link": ""
       }
     },
     "story": {
       "type": "featured-product-carousel",
       "settings": {
-        "heading": "Start with the most useful EZQuest products",
+        "heading": "Start with the Most Useful EZQuest Products",
         "link_label": "Open setup guide",
         "link_url": "/pages/help-me-choose",
         "collection": "hubs-adapters",
@@ -305,12 +305,12 @@
       "type": "homepage-cinematic-reveal",
       "settings": {
         "background_image": "shopify://shop_images/Down_Page_Banner.jpg",
-        "kicker": "Backed by the right support.",
+        "kicker": "Backed by the Right Support.",
         "headline": "Built different. Works better.",
         "body_text": "EZQuest accessories are engineered for people who need the right connection, every time.",
-        "cta_label": "Shop the range",
+        "cta_label": "Shop the Range",
         "cta_url": "/collections/all",
-        "aria_label": "Brand statement"
+        "aria_label": "Brand Statement"
       }
     },
     "testimonials": {

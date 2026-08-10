@@ -29,7 +29,7 @@
         "show_accessories_row": false,
         "accessories_collection": "",
         "support_eyebrow": "Support",
-        "support_heading": "Support for this product",
+        "support_heading": "Support for This Product",
         "support_copy": "Compatibility, manuals, downloads, and help",
         "youtube_url": "",
         "show_3d_badge": false,
@@ -49,15 +49,15 @@
       "settings": {
         "heading": "FAQ",
         "subhead": "Find answers to the questions we hear most. If something is missing, use the form to reach us directly.",
-        "cta_label": "Contact support",
+        "cta_label": "Contact Support",
         "cta_url": ""
       }
     },
     "bundle": {
       "type": "product-bundle-upsell",
       "settings": {
-        "eyebrow": "Pairs with",
-        "heading": "Complete your setup",
+        "eyebrow": "Pairs With",
+        "heading": "Complete Your Setup",
         "copy": "Curated EZQuest accessories that pair perfectly with this product.",
         "products_to_show": 3
       }
@@ -83,8 +83,8 @@
     "recently_viewed": {
       "type": "recently-viewed",
       "settings": {
-        "kicker": "Continue browsing",
-        "heading": "Recently viewed",
+        "kicker": "Continue Browsing",
+        "heading": "Recently Viewed",
         "max_products": 4
       }
     }

@@ -16,7 +16,7 @@
         "background_color": "#020617",
         "kicker": "Manuals",
         "heading": "",
-        "subheading": "Product manuals and quick-start guides, organized by product family.",
+        "subheading": "Product Manuals and Quick-Start Guides, Organized by Product Family.",
         "height": 360,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
@@ -145,11 +145,11 @@
       "settings": {
         "variant": "light",
         "kicker": "Support",
-        "heading": "Can't find the right manual?",
+        "heading": "Can't Find the Right Manual?",
         "body": "Open support when the documentation still leaves a question open.",
-        "cta_label": "Open support",
+        "cta_label": "Open Support",
         "cta_url": "/pages/support",
-        "cta2_label": "Find downloads",
+        "cta2_label": "Find Downloads",
         "cta2_url": "/pages/downloads"
       }
     }

@@ -111,11 +111,11 @@
       "type": "support-cta-rail",
       "settings": {
         "kicker": "Support",
-        "heading": "Need help choosing firmware?",
+        "heading": "Need Help Choosing Firmware?",
         "body": "Check compatibility or contact support before you update.",
-        "cta_label": "Check compatibility",
+        "cta_label": "Check Compatibility",
         "cta_url": "/pages/compatibility",
-        "cta2_label": "Contact support",
+        "cta2_label": "Contact Support",
         "cta2_url": "/pages/contact"
       }
     }

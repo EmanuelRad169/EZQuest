@@ -23,20 +23,20 @@
     "ticket_form": {
       "type": "ticket-form",
       "settings": {
-        "kicker": "Get help",
-        "heading": "Tell us what's happening",
+        "kicker": "Get Help",
+        "heading": "Tell Us What's Happening",
         "body": "The more detail you provide, the faster we can help. Required fields are marked with an asterisk."
       }
     },
     "cta": {
       "type": "support-cta-rail",
       "settings": {
-        "kicker": "Need a faster answer",
-        "heading": "Check self-service resources first.",
+        "kicker": "Need a Faster Answer",
+        "heading": "Check Self-Service Resources First.",
         "body": "Our FAQ, compatibility checker, and troubleshooting guides resolve most issues without a ticket.",
         "cta_label": "Browse FAQ",
         "cta_url": "/pages/faq",
-        "cta2_label": "Check compatibility",
+        "cta2_label": "Check Compatibility",
         "cta2_url": "/pages/compatibility"
       }
     }

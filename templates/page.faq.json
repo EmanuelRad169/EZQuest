@@ -15,8 +15,8 @@
         "background_image": "shopify://shop_images/DT_Banner_01_c6de8290-f7ef-4bc9-b38f-8a9498d83589.jpg",
         "background_color": "#020617",
         "kicker": "FAQ",
-        "heading": "Frequently asked questions",
-        "subheading": "Quick answers to common product questions.",
+        "heading": "Frequently Asked Questions",
+        "subheading": "Quick Answers to Common Product Questions.",
         "height": 360,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
@@ -39,7 +39,7 @@
           "type": "group",
           "settings": {
             "title": "Shipping & Returns",
-            "subtitle": "Shipping timelines, return eligibility, and refund details.",
+            "subtitle": "Shipping Timelines, Return Eligibility, and Refund Details.",
             "group_handle": "shipping"
           }
         },
@@ -103,7 +103,7 @@
           "type": "group",
           "settings": {
             "title": "Orders",
-            "subtitle": "Tracking, changes, payments, and common order questions.",
+            "subtitle": "Tracking, Changes, Payments, and Common Order Questions.",
             "group_handle": "orders"
           }
         },
@@ -167,7 +167,7 @@
           "type": "group",
           "settings": {
             "title": "Products",
-            "subtitle": "Choosing the right product, compatibility, and feature details.",
+            "subtitle": "Choosing the Right Product, Compatibility, and Feature Details.",
             "group_handle": "products"
           }
         },
@@ -264,9 +264,9 @@
         "prod_8"
       ],
       "settings": {
-        "heading": "Frequently asked questions",
+        "heading": "Frequently Asked Questions",
         "subhead": "Find answers to the questions we hear most. If something is missing, use the form to reach us directly.",
-        "cta_label": "Contact support",
+        "cta_label": "Contact Support",
         "cta_url": ""
       }
     },
@@ -275,11 +275,11 @@
       "settings": {
         "variant": "light",
         "kicker": "Support",
-        "heading": "Still have questions?",
+        "heading": "Still Have Questions?",
         "body": "Send a support request and we'll help you find the right answer.",
         "cta_label": "",
         "cta_url": "/pages/contact",
-        "cta2_label": "Open support hub",
+        "cta2_label": "Open Support Hub",
         "cta2_url": "/pages/support"
       }
     }

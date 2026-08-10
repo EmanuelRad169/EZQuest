@@ -28,7 +28,7 @@
           "type": "card",
           "settings": {
             "eyebrow": "01",
-            "title": "Product help",
+            "title": "Product Help",
             "copy": "Use this for setup questions, compatibility uncertainty, troubleshooting, or product-specific guidance."
           }
         },
@@ -36,7 +36,7 @@
           "type": "card",
           "settings": {
             "eyebrow": "02",
-            "title": "Order help",
+            "title": "Order Help",
             "copy": "Use this for shipping questions, returns, order references, and post-purchase order support."
           }
         },
@@ -44,7 +44,7 @@
           "type": "card",
           "settings": {
             "eyebrow": "03",
-            "title": "Warranty help",
+            "title": "Warranty Help",
             "copy": "Use this for coverage questions, claim context, and warranty-related support."
           }
         }
@@ -55,8 +55,8 @@
         "card_3"
       ],
       "settings": {
-        "eyebrow": "Choose one",
-        "heading": "Three clear request types",
+        "eyebrow": "Choose One",
+        "heading": "Three Clear Request Types",
         "copy": "Pick the reason that matches your need, then send one support request with the right context.",
         "columns_desktop": 3
       }
@@ -64,8 +64,8 @@
     "form": {
       "type": "contact-form-panel",
       "settings": {
-        "eyebrow": "Support form",
-        "heading": "Tell us what you need",
+        "eyebrow": "Support Form",
+        "heading": "Tell Us What You Need",
         "copy": "Choose the request type, add the key details, and keep the message focused on the next step you need.",
         "success_message": "Thanks for reaching out. Your message has been sent."
       }
