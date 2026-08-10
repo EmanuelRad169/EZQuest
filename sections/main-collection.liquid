@@ -549,55 +549,11 @@
       }
 
       function fetchFilteredProducts(url) {
-        if (currentRequest) currentRequest.abort();
-        showSkeleton();
-        var controller = new AbortController();
-        currentRequest = controller;
-
-        fetch(url + (url.indexOf('?') > -1 ? '&' : '?') + 'sections=main', {
-          signal: controller.signal
-        })
-        .then(function(response) {
-          if (!response.ok) throw new Error('filter-fetch-failed');
-          return response.json();
-        })
-        .then(function(data) {
-          if (data['main']) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(data['main'], 'text/html');
-            var newGrid = doc.getElementById('collection-grid');
-            if (newGrid) {
-              collectionGrid = document.getElementById('collection-grid');
-              collectionGrid.innerHTML = newGrid.innerHTML;
-              collectionGrid.className = newGrid.className;
-            }
-            replaceFromResponse(doc, '#collection-filters');
-            replaceFromResponse(doc, '.collection-filter-toolbar');
-            if (window.EZCollectionFilter && window.EZCollectionFilter.refresh) {
-              window.EZCollectionFilter.refresh();
-            }
-            if (window.EZReveal) {
-              collectionGrid.querySelectorAll('.reveal-on-scroll').forEach(function(el) {
-                window.EZReveal.observe(el);
-              });
-            }
-          } else {
-            window.location.href = url;
-          }
-        })
-        .catch(function(err) {
-          if (err.name === 'AbortError') return;
-          window.location.href = url;
-        })
-        .finally(function() {
-          hideSkeleton();
-          currentRequest = null;
-        });
-
-        history.pushState({}, '', url);
-        collectionGrid = document.getElementById('collection-grid');
-        var gridTop = collectionGrid.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top: gridTop, behavior: 'smooth' });
+        // NOTE: the AJAX Section Rendering approach ("?sections=main") returns
+        // {"main":null} for this section, so replacing the grid from that
+        // response wiped it to empty (filters/sort showed no products).
+        // Server-side filtering renders correctly, so navigate normally.
+        window.location.assign(url);
       }
 
       document.addEventListener('change', function(e) {
