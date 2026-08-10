@@ -3,9 +3,9 @@
   <div class="container-shell">
     <div class="editorial-shell">
       <div class="max-w-3xl">
-        <p class="section-kicker">Site Map</p>
-        <h1 class="section-heading mt-5">Everything on EZQuest</h1>
-        <p class="section-copy mt-5">A complete listing of all product families, support resources, and content on this site.</p>
+        <p class="section-kicker">{{ section.settings.kicker }}</p>
+        <h1 class="section-heading mt-5">{{ section.settings.heading }}</h1>
+        <p class="section-copy mt-5">{{ section.settings.intro }}</p>
       </div>
     </div>
 
@@ -80,6 +80,10 @@
 {% schema %}
 {
   "name": "Sitemap",
-  "settings": []
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Site Map" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything on EZQuest" },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "A complete listing of all product families, support resources, and content on this site." }
+  ]
 }
 {% endschema %}
