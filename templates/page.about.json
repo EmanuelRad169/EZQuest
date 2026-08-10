@@ -12,50 +12,28 @@
     "about": {
       "type": "about",
       "settings": {
-        "kicker": "Est. 1994 · Yorba Linda, California",
-        "heading": "Built for People Who Connect Everything.",
-        "body": "EZQuest provides the highest-quality accessories for the Apple, PC, and mobile consumer-electronics markets. Since 1994, our portfolio has spanned USB-C hubs and docks, DuraGuard™ cables, display adapters, GaN power products, and card readers — precision-engineered from premium materials, built with the latest technology, and designed to last.",
-        "stat1_value": "30+",
-        "stat1_label": "Years in Business",
-        "stat2_value": "100+",
-        "stat2_label": "Products Made",
-        "stat3_value": "1–2yr",
-        "stat3_label": "Limited Warranty (Varies by Product)",
         "cta_heading": "Explore What We Make.",
         "cta_body": "Premium accessories for every desk, every device.",
         "cta_label": "Browse Products",
         "cta_url": "/collections/all"
       },
       "blocks": {
-        "pillar_1": {
-          "type": "pillar",
-          "settings": {
-            "title": "Built to Last",
-            "body": "Every product is stress-tested beyond spec. Kevlar-reinforced cables, aircraft-grade aluminum housings, and the DuraGuard system — because accessories should outlast the devices they connect.",
-            "icon_path": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          }
-        },
-        "pillar_2": {
-          "type": "pillar",
-          "settings": {
-            "title": "Works with Everything",
-            "body": "Designed for the full ecosystem — Mac, Windows, iPad, and beyond. We test every product across hundreds of device and OS combinations before it ships.",
-            "icon_path": "M13 10V3L4 14h7v7l9-11h-7z"
-          }
-        },
-        "pillar_3": {
-          "type": "pillar",
-          "settings": {
-            "title": "Real Support",
-            "body": "Our team answers within 1 business day — by phone, email, or chat. Every product is backed by a 1–2 year limited warranty (depending on product) with no runaround.",
-            "icon_path": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"
-          }
-        }
+        "reason_1": { "type": "reason", "settings": { "title": "Over 30 years of innovation", "body": "Helping customers navigate every major evolution in computer connectivity since 1994." }},
+        "reason_2": { "type": "reason", "settings": { "title": "Customer-driven design", "body": "Every product begins by listening to real customer feedback." }},
+        "reason_3": { "type": "reason", "settings": { "title": "No “me too” products", "body": "Every EZQuest product is designed to improve upon what’s already available." }},
+        "reason_4": { "type": "reason", "settings": { "title": "Thoughtful engineering", "body": "Smart features, durable construction, and practical innovations that make a difference." }},
+        "reason_5": { "type": "reason", "settings": { "title": "Premium quality & reliability", "body": "Built for dependable performance and long-term value." }},
+        "reason_6": { "type": "reason", "settings": { "title": "Exceptional customer support", "body": "Our commitment doesn’t end when your order arrives." }},
+        "reason_7": { "type": "reason", "settings": { "title": "Trusted by professionals worldwide", "body": "Solutions designed for creators, businesses, educators, and everyday users alike." }},
+        "promise_1": { "type": "promise", "settings": { "text": "We listen before we design." }},
+        "promise_2": { "type": "promise", "settings": { "text": "We solve real-world problems." }},
+        "promise_3": { "type": "promise", "settings": { "text": "We never create “me too” products." }},
+        "promise_4": { "type": "promise", "settings": { "text": "We engineer every detail with purpose." }},
+        "promise_5": { "type": "promise", "settings": { "text": "We stand behind what we build." }}
       },
       "block_order": [
-        "pillar_1",
-        "pillar_2",
-        "pillar_3"
+        "reason_1", "reason_2", "reason_3", "reason_4", "reason_5", "reason_6", "reason_7",
+        "promise_1", "promise_2", "promise_3", "promise_4", "promise_5"
       ]
     },
     "page_hero": {

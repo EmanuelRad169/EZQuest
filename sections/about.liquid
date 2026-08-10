@@ -7,16 +7,16 @@
     <div class="about-narrative">
       <div class="about-narrative__aside">
         <span class="about-narrative__rule" aria-hidden="true"></span>
-        <p class="about-narrative__kicker">Who We Are</p>
+        <p class="about-narrative__kicker">{{ section.settings.about_kicker }}</p>
       </div>
       <div class="about-narrative__body">
-      <p class="about-narrative__lead">For more than three decades, EZQuest has helped people navigate every major evolution in computer connectivity. From the early days of SCSI to today’s USB-C, Thunderbolt, and USB4 technologies, we’ve remained committed to one mission: designing products that make technology easier, smarter, and more reliable.</p>
-      <p>Founded in 1994 by electronics engineer Ebrahim Zmehrir, EZQuest was built on a simple philosophy: <mark class="ez-hl">listen first, design second</mark>. Rather than following market trends or producing products that simply match what’s already available, we believe every product should solve a genuine customer problem and provide meaningful improvements that make everyday life easier.</p>
-      <p>During the FireWire era, EZQuest became one of the industry’s early innovators, helping creative professionals transition from tape-based workflows to digital video editing. Our products were showcased by Apple at Macworld San Francisco, and our commitment to innovation earned recognition alongside some of the technology industry’s most respected companies.</p>
-      <p>Today, EZQuest designs premium USB-C and Thunderbolt accessories — including hubs, docking stations, adapters, cables, power solutions, and productivity accessories for Mac and PC users, creative professionals, businesses, educators, and technology enthusiasts around the world.</p>
-      <p>Every product begins with one simple question: <strong>What problem are we solving?</strong> If we cannot improve the customer experience, we simply don’t build the product. That’s why you’ll often find thoughtful details that set EZQuest apart — from detachable USB-C cables that improve convenience and extend product life, to reinforced cable strain reliefs engineered for greater durability, to carefully selected port configurations inspired directly by customer feedback.</p>
-      <p>We believe innovation isn’t about adding more features. It’s about adding the right features. At EZQuest, engineering always comes before marketing — every decision we make is guided by long-term reliability, thoughtful design, and real-world usability. And because the customer experience extends far beyond the product itself, packaging, documentation, technical support, and after-sales service all play an important role in building lasting relationships.</p>
-      <p class="about-narrative__closer">While technology will continue to change, our philosophy never will. We listen. We innovate. We improve. And above all, we strive to earn something far more valuable than a sale — we strive to earn your trust.</p>
+      {% if section.settings.about_lead != blank %}
+        <p class="about-narrative__lead">{{ section.settings.about_lead }}</p>
+      {% endif %}
+      {{ section.settings.about_body }}
+      {% if section.settings.about_closer != blank %}
+        <p class="about-narrative__closer">{{ section.settings.about_closer }}</p>
+      {% endif %}
       </div>
     </div>
   </div>
@@ -26,77 +26,65 @@
 <section class="page-section page-section--grey">
   <div class="container-shell">
     <div class="about-mission" data-animate>
-      <p class="about-mission__kicker">Our Mission</p>
-      <p class="about-mission__statement">To design thoughtfully engineered connectivity solutions that solve real-world problems, deliver meaningful innovation, and <mark class="about-mission__hl">earn the trust of our customers</mark> through exceptional quality, reliability, and service.</p>
+      <p class="about-mission__kicker">{{ section.settings.mission_kicker }}</p>
+      <p class="about-mission__statement">{{ section.settings.mission_before }}<mark class="about-mission__hl">{{ section.settings.mission_highlight }}</mark>{{ section.settings.mission_after }}</p>
     </div>
   </div>
 </section>
 
 {% comment %} WHY CHOOSE EZQUEST {% endcomment %}
+{%- assign reasons = section.blocks | where: 'type', 'reason' -%}
+{% if reasons.size > 0 %}
 <section class="page-section page-section--white bg-white">
   <div class="container-shell">
     <div class="about-section-head">
-      <p class="about-intro__kicker">Why EZQuest</p>
-      <h2 class="about-section-head__heading">Why choose EZQuest?</h2>
+      {% if section.settings.why_kicker != blank %}
+        <p class="about-intro__kicker">{{ section.settings.why_kicker }}</p>
+      {% endif %}
+      <h2 class="about-section-head__heading">{{ section.settings.why_heading }}</h2>
     </div>
     <div class="why-choose-grid">
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Over 30 years of innovation</h3>
-        <p class="why-card__body">Helping customers navigate every major evolution in computer connectivity since 1994.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Customer-driven design</h3>
-        <p class="why-card__body">Every product begins by listening to real customer feedback.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">No “me too” products</h3>
-        <p class="why-card__body">Every EZQuest product is designed to improve upon what’s already available.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Thoughtful engineering</h3>
-        <p class="why-card__body">Smart features, durable construction, and practical innovations that make a difference.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Premium quality &amp; reliability</h3>
-        <p class="why-card__body">Built for dependable performance and long-term value.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Exceptional customer support</h3>
-        <p class="why-card__body">Our commitment doesn’t end when your order arrives.</p>
-      </div>
-      <div class="why-card" data-animate>
-        <h3 class="why-card__title">Trusted by professionals worldwide</h3>
-        <p class="why-card__body">Solutions designed for creators, businesses, educators, and everyday users alike.</p>
-      </div>
+      {% for block in reasons %}
+        <div class="why-card" data-animate {{ block.shopify_attributes }}>
+          <h3 class="why-card__title">{{ block.settings.title }}</h3>
+          <p class="why-card__body">{{ block.settings.body }}</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {% comment %} THE EZQUEST PROMISE {% endcomment %}
+{%- assign promises = section.blocks | where: 'type', 'promise' -%}
+{% if promises.size > 0 %}
 <section class="page-section ez-promise">
   <div class="container-shell">
     <div class="ez-promise__inner" data-animate>
       <div class="ez-promise__head">
-        <p class="ez-promise__kicker">The EZQuest Promise</p>
-        <h2 class="ez-promise__heading">Every product must earn its place.</h2>
+        {% if section.settings.promise_kicker != blank %}
+          <p class="ez-promise__kicker">{{ section.settings.promise_kicker }}</p>
+        {% endif %}
+        <h2 class="ez-promise__heading">{{ section.settings.promise_heading }}</h2>
       </div>
       <ul class="ez-promise__list">
-        <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>We listen before we design.</li>
-        <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>We solve real-world problems.</li>
-        <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>We never create “me too” products.</li>
-        <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>We engineer every detail with purpose.</li>
-        <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>We stand behind what we build.</li>
+        {% for block in promises %}
+          <li class="ez-promise__item"><span class="ez-promise__check" aria-hidden="true">✓</span>{{ block.settings.text }}</li>
+        {% endfor %}
       </ul>
-      <p class="ez-promise__finale">We don’t build products simply to gain customers.<br>We build products to <span class="ez-promise__accent">earn lifelong fans</span>.</p>
+      {% if section.settings.promise_finale_1 != blank or section.settings.promise_finale_accent != blank %}
+        <p class="ez-promise__finale">{{ section.settings.promise_finale_1 }}<br>{{ section.settings.promise_finale_pre }} <span class="ez-promise__accent">{{ section.settings.promise_finale_accent }}</span>.</p>
+      {% endif %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {%- render 'page-cta',
   variant: 'light',
-  heading: section.settings.cta_heading | default: 'Explore what we make.',
+  heading: section.settings.cta_heading | default: 'Explore What We Make.',
   subhead: section.settings.cta_body | default: 'Premium accessories for every desk, every device.',
-  primary_label: section.settings.cta_label | default: 'Browse products',
+  primary_label: section.settings.cta_label | default: 'Browse Products',
   primary_url: section.settings.cta_url | default: routes.collections_url
 -%}
 
@@ -105,29 +93,45 @@
   "name": "About EZQuest",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Est. 1994 · Yorba Linda, California" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for people who connect everything." },
-    { "type": "textarea", "id": "body", "label": "Body text" },
-    { "type": "text", "id": "stat1_value", "label": "Stat 1 value", "default": "30+" },
-    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Years in business" },
-    { "type": "text", "id": "stat2_value", "label": "Stat 2 value", "default": "100+" },
-    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Products made" },
-    { "type": "text", "id": "stat3_value", "label": "Stat 3 value", "default": "1–2yr" },
-    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Limited warranty (varies by product)" },
-    { "type": "header", "content": "CTA section" },
-    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Explore what we make." },
-    { "type": "textarea", "id": "cta_body", "label": "CTA body" },
-    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Browse products" },
+    { "type": "header", "content": "Narrative" },
+    { "type": "text", "id": "about_kicker", "label": "Kicker", "default": "Who We Are" },
+    { "type": "textarea", "id": "about_lead", "label": "Lead paragraph", "default": "For more than three decades, EZQuest has helped people navigate every major evolution in computer connectivity. From the early days of SCSI to today’s USB-C, Thunderbolt, and USB4 technologies, we’ve remained committed to one mission: designing products that make technology easier, smarter, and more reliable." },
+    { "type": "richtext", "id": "about_body", "label": "Body", "default": "<p>Founded in 1994 by electronics engineer Ebrahim Zmehrir, EZQuest was built on a simple philosophy: <strong>listen first, design second</strong>. Rather than following market trends, we believe every product should solve a genuine customer problem.</p><p>During the FireWire era, EZQuest became one of the industry’s early innovators, helping creative professionals transition to digital video editing. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, EZQuest designs premium USB-C and Thunderbolt accessories — including hubs, docking stations, adapters, cables, power solutions, and productivity accessories for users around the world.</p><p>Every product begins with one simple question: <strong>What problem are we solving?</strong> If we cannot improve the customer experience, we simply don’t build the product.</p><p>We believe innovation isn’t about adding more features. It’s about adding the right features. At EZQuest, engineering always comes before marketing.</p>" },
+    { "type": "textarea", "id": "about_closer", "label": "Closing paragraph", "default": "While technology will continue to change, our philosophy never will. We listen. We innovate. We improve. And above all, we strive to earn something far more valuable than a sale — we strive to earn your trust." },
+    { "type": "header", "content": "Mission" },
+    { "type": "text", "id": "mission_kicker", "label": "Kicker", "default": "Our Mission" },
+    { "type": "textarea", "id": "mission_before", "label": "Statement (before highlight)", "default": "To design thoughtfully engineered connectivity solutions that solve real-world problems, deliver meaningful innovation, and " },
+    { "type": "text", "id": "mission_highlight", "label": "Highlighted phrase", "default": "earn the trust of our customers" },
+    { "type": "textarea", "id": "mission_after", "label": "Statement (after highlight)", "default": " through exceptional quality, reliability, and service." },
+    { "type": "header", "content": "Why choose EZQuest" },
+    { "type": "text", "id": "why_kicker", "label": "Kicker", "default": "Why EZQuest" },
+    { "type": "text", "id": "why_heading", "label": "Heading", "default": "Why Choose EZQuest?" },
+    { "type": "header", "content": "The EZQuest Promise" },
+    { "type": "text", "id": "promise_kicker", "label": "Kicker", "default": "The EZQuest Promise" },
+    { "type": "text", "id": "promise_heading", "label": "Heading", "default": "Every Product Must Earn Its Place." },
+    { "type": "text", "id": "promise_finale_1", "label": "Finale line 1", "default": "We don’t build products simply to gain customers." },
+    { "type": "text", "id": "promise_finale_pre", "label": "Finale line 2 (before accent)", "default": "We build products to" },
+    { "type": "text", "id": "promise_finale_accent", "label": "Finale accent", "default": "earn lifelong fans" },
+    { "type": "header", "content": "Closing call to action" },
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Explore What We Make." },
+    { "type": "textarea", "id": "cta_body", "label": "CTA body", "default": "Premium accessories for every desk, every device." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Browse Products" },
     { "type": "url", "id": "cta_url", "label": "Button URL" }
   ],
   "blocks": [
     {
-      "type": "pillar",
-      "name": "Value pillar",
+      "type": "reason",
+      "name": "Why-choose reason",
       "settings": [
         { "type": "text", "id": "title", "label": "Title" },
-        { "type": "textarea", "id": "body", "label": "Body" },
-        { "type": "text", "id": "icon_path", "label": "SVG path" }
+        { "type": "textarea", "id": "body", "label": "Body" }
+      ]
+    },
+    {
+      "type": "promise",
+      "name": "Promise item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
       ]
     }
   ],
@@ -135,30 +139,18 @@
     {
       "name": "About EZQuest",
       "blocks": [
-        {
-          "type": "pillar",
-          "settings": {
-            "title": "Built to last",
-            "body": "Every product is stress-tested beyond spec. Kevlar-reinforced cables, aircraft-grade aluminum housings, and the DuraGuard system — because accessories should outlast the devices they connect.",
-            "icon_path": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          }
-        },
-        {
-          "type": "pillar",
-          "settings": {
-            "title": "Works with everything",
-            "body": "Designed for the full ecosystem — Mac, Windows, iPad, and beyond. We test every product across hundreds of device and OS combinations before it ships.",
-            "icon_path": "M13 10V3L4 14h7v7l9-11h-7z"
-          }
-        },
-        {
-          "type": "pillar",
-          "settings": {
-            "title": "Real support",
-            "body": "Our team answers within 1 business day — by phone, email, or chat. Every product comes with a 1–2 year limited warranty depending on product.",
-            "icon_path": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          }
-        }
+        { "type": "reason", "settings": { "title": "Over 30 years of innovation", "body": "Helping customers navigate every major evolution in computer connectivity since 1994." }},
+        { "type": "reason", "settings": { "title": "Customer-driven design", "body": "Every product begins by listening to real customer feedback." }},
+        { "type": "reason", "settings": { "title": "No “me too” products", "body": "Every EZQuest product is designed to improve upon what’s already available." }},
+        { "type": "reason", "settings": { "title": "Thoughtful engineering", "body": "Smart features, durable construction, and practical innovations that make a difference." }},
+        { "type": "reason", "settings": { "title": "Premium quality & reliability", "body": "Built for dependable performance and long-term value." }},
+        { "type": "reason", "settings": { "title": "Exceptional customer support", "body": "Our commitment doesn’t end when your order arrives." }},
+        { "type": "reason", "settings": { "title": "Trusted by professionals worldwide", "body": "Solutions designed for creators, businesses, educators, and everyday users alike." }},
+        { "type": "promise", "settings": { "text": "We listen before we design." }},
+        { "type": "promise", "settings": { "text": "We solve real-world problems." }},
+        { "type": "promise", "settings": { "text": "We never create “me too” products." }},
+        { "type": "promise", "settings": { "text": "We engineer every detail with purpose." }},
+        { "type": "promise", "settings": { "text": "We stand behind what we build." }}
       ]
     }
   ]
