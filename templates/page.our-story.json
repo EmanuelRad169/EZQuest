@@ -12,6 +12,62 @@
     "story": {
       "type": "our-story",
       "blocks": {
+        "s_1": {
+          "type": "stat",
+          "settings": {
+            "value": "30+",
+            "label": "Years in business"
+          }
+        },
+        "s_2": {
+          "type": "stat",
+          "settings": {
+            "value": "100+",
+            "label": "Products made"
+          }
+        },
+        "s_3": {
+          "type": "stat",
+          "settings": {
+            "value": "1–2yr",
+            "label": "Limited warranty (varies by product)"
+          }
+        },
+        "v_1": {
+          "type": "value",
+          "settings": {
+            "title": "We listen first",
+            "body": "Every product begins with understanding our customers’ needs, not following market trends."
+          }
+        },
+        "v_2": {
+          "type": "value",
+          "settings": {
+            "title": "We never build “me too” products",
+            "body": "Every EZQuest product must improve upon what’s already available by adding meaningful value."
+          }
+        },
+        "v_3": {
+          "type": "value",
+          "settings": {
+            "title": "Thoughtful engineering",
+            "body": "Every detail matters, from internal components to packaging, durability, and user experience."
+          }
+        },
+        "v_4": {
+          "type": "value",
+          "settings": {
+            "title": "Innovation with purpose",
+            "body": "Technology should simplify life, not complicate it. Every feature should have a reason for existing."
+          }
+        },
+        "v_5": {
+          "type": "value",
+          "settings": {
+            "title": "Building lifelong relationships",
+            "body": "Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others."
+          }
+        },
         "m_1994": {
           "type": "milestone",
           "settings": {
@@ -54,6 +110,14 @@
         }
       },
       "block_order": [
+        "s_1",
+        "s_2",
+        "s_3",
+        "v_1",
+        "v_2",
+        "v_3",
+        "v_4",
+        "v_5",
         "m_1994",
         "m_2000",
         "m_2012",

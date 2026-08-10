@@ -14,44 +14,47 @@
     <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
       <a href="{{ routes.root_url }}">Home</a>
       <span class="page-hero__breadcrumb-sep" aria-hidden="true">/</span>
-      <span aria-current="page">Our story</span>
+      <span aria-current="page">{{ section.settings.breadcrumb_label }}</span>
     </nav>
-    <p class="page-hero-dark__kicker"><span class="page-hero__pulse" aria-hidden="true"></span>Est. 1994 · Yorba Linda, California</p>
+    {% if section.settings.hero_kicker != blank %}
+      <p class="page-hero-dark__kicker"><span class="page-hero__pulse" aria-hidden="true"></span>{{ section.settings.hero_kicker }}</p>
+    {% endif %}
     <h1 class="page-hero-dark__heading">
-      Built for People Who Connect Everything.
+      {{ section.settings.hero_heading }}
     </h1>
-    <p class="page-hero-dark__body">
-      Since 1994, EZQuest has made it simpler to connect the devices that matter most —
-      with products built to last and a team that stands behind every one.
-    </p>
+    {% if section.settings.hero_body != blank %}
+      <p class="page-hero-dark__body">
+        {{ section.settings.hero_body }}
+      </p>
+    {% endif %}
     <div class="page-hero__actions">
-      <a href="{{ routes.collections_url }}" class="page-hero__cta">Shop Products</a>
-      <a href="/pages/contact" class="page-hero__cta-secondary">Contact us <span aria-hidden="true">&rarr;</span></a>
+      {% if section.settings.hero_cta_label != blank %}
+        <a href="{{ section.settings.hero_cta_url | default: routes.collections_url }}" class="page-hero__cta">{{ section.settings.hero_cta_label }}</a>
+      {% endif %}
+      {% if section.settings.hero_cta2_label != blank %}
+        <a href="{{ section.settings.hero_cta2_url | default: '/pages/contact' }}" class="page-hero__cta-secondary">{{ section.settings.hero_cta2_label }} <span aria-hidden="true">&rarr;</span></a>
+      {% endif %}
     </div>
-    {%- comment -%} Stats relocated to a dedicated band below the hero {%- endcomment -%}
     </div>
   </div>
 </section>
 
 {% comment %} 1b. STATS BAND {% endcomment %}
+{%- assign story_stats = section.blocks | where: 'type', 'stat' -%}
+{% if story_stats.size > 0 %}
 <section class="page-section page-section--grey story-stats-section">
   <div class="container-shell">
     <div class="story-stats-band">
-      <div class="story-stat" data-animate>
-        <p class="story-stat__value">30+</p>
-        <p class="story-stat__label">Years in business</p>
-      </div>
-      <div class="story-stat" data-animate>
-        <p class="story-stat__value">100+</p>
-        <p class="story-stat__label">Products made</p>
-      </div>
-      <div class="story-stat" data-animate>
-        <p class="story-stat__value">1–2yr</p>
-        <p class="story-stat__label">Limited warranty (varies by product)</p>
-      </div>
+      {% for block in story_stats %}
+        <div class="story-stat" data-animate {{ block.shopify_attributes }}>
+          <p class="story-stat__value">{{ block.settings.value }}</p>
+          <p class="story-stat__label">{{ block.settings.label }}</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {% comment %} 2. NARRATIVE — official Our Story {% endcomment %}
 <section class="page-section page-section--white bg-white">
@@ -59,66 +62,57 @@
     <div class="story-narrative" data-animate>
       <div class="story-narrative__aside">
         <span class="about-narrative__rule" aria-hidden="true"></span>
-        <p class="about-narrative__kicker">Our Story</p>
+        <p class="about-narrative__kicker">{{ section.settings.narrative_kicker }}</p>
       </div>
       <div class="story-narrative__body">
-      <p class="story-narrative__lead">Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people.</p>
-      <p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <mark class="ez-hl">They start by listening.</mark></p>
-      <p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive. Long before starting the company, Ebrahim was designing circuit boards, building electronic devices from individual components, and creating custom enclosures. His passion wasn’t simply building electronics it was creating products that made people stop and say, “Wow, that’s exactly what I needed.”</p>
-      <p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco, helping creative professionals embrace the future of digital workflows. Those early years established the foundation for what would become our defining philosophy: embrace new technology, solve meaningful problems, and never stop innovating.</p>
-      <p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, power solutions, and other accessories that simplify everyday technology. While our products have evolved, our philosophy has not.</p>
-      <p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions. That’s why many of our products include thoughtful features customers didn’t even realize they needed from detachable USB-C cables to reinforced strain reliefs engineered for long-term durability.</p>
-      <p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?” Every EZQuest product is designed to add meaningful value and deliver a better everyday experience.</p>
-      <p>Perhaps the greatest compliment we receive isn’t an award it’s hearing from customers who are still using products they purchased decades ago. Those conversations remind us why we do what we do.</p>
-      <p class="story-narrative__closer">Our goal has never been to earn a sale.<br>Our goal is to <span class="story-narrative__accent">earn a fan.</span><br><span class="story-narrative__sub">One customer at a time.</span></p>
+      {% if section.settings.narrative_lead != blank %}
+        <p class="story-narrative__lead">{{ section.settings.narrative_lead }}</p>
+      {% endif %}
+      {{ section.settings.narrative_body }}
+      {% if section.settings.closer_line1 != blank or section.settings.closer_accent != blank %}
+        <p class="story-narrative__closer">{{ section.settings.closer_line1 }}<br>{{ section.settings.closer_line2_pre }} <span class="story-narrative__accent">{{ section.settings.closer_accent }}</span><br><span class="story-narrative__sub">{{ section.settings.closer_sub }}</span></p>
+      {% endif %}
       </div>
     </div>
   </div>
 </section>
 
 {% comment %} 3. CORE VALUES {% endcomment %}
+{%- assign value_blocks = section.blocks | where: 'type', 'value' -%}
+{% if value_blocks.size > 0 %}
 <section class="page-section page-section--grey">
   <div class="container-shell">
     <div class="story-section-intro">
-      <p class="section-intro__kicker story-section-intro__kicker text-left">What We Believe</p>
-      <h2 class="section-intro__heading story-section-intro__heading">Our Core Values.</h2>
+      {% if section.settings.values_kicker != blank %}
+        <p class="section-intro__kicker story-section-intro__kicker text-left">{{ section.settings.values_kicker }}</p>
+      {% endif %}
+      <h2 class="section-intro__heading story-section-intro__heading">{{ section.settings.values_heading }}</h2>
     </div>
     <div class="values-bento">
-      <div class="value-card value-card--1 value-card--feature" data-animate>
-        <span class="value-card__num">01</span>
-        <p class="value-card__title">We listen first</p>
-        <p class="value-card__body">Every product begins with understanding our customers’ needs, not following market trends.</p>
-      </div>
-      <div class="value-card value-card--2" data-animate>
-        <span class="value-card__num">02</span>
-        <p class="value-card__title">We never build “me too” products</p>
-        <p class="value-card__body">Every EZQuest product must improve upon what’s already available by adding meaningful value.</p>
-      </div>
-      <div class="value-card value-card--3" data-animate>
-        <span class="value-card__num">03</span>
-        <p class="value-card__title">Thoughtful engineering</p>
-        <p class="value-card__body">Every detail matters, from internal components to packaging, durability, and user experience.</p>
-      </div>
-      <div class="value-card value-card--4" data-animate>
-        <span class="value-card__num">04</span>
-        <p class="value-card__title">Innovation with purpose</p>
-        <p class="value-card__body">Technology should simplify life, not complicate it. Every feature should have a reason for existing.</p>
-      </div>
-      <div class="value-card value-card--5" data-animate>
-        <span class="value-card__num">05</span>
-        <p class="value-card__title">Building lifelong relationships</p>
-        <p class="value-card__body">Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others.</p>
-      </div>
+      {%- assign vi = 0 -%}
+      {% for block in value_blocks %}
+        {%- assign vi = vi | plus: 1 -%}
+        <div class="value-card value-card--{{ vi }}{% if vi == 1 %} value-card--feature{% endif %}" data-animate {{ block.shopify_attributes }}>
+          <span class="value-card__num">{{ vi | prepend: '0' }}</span>
+          <p class="value-card__title">{{ block.settings.title }}</p>
+          <p class="value-card__body">{{ block.settings.body }}</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {% comment %} 4. TIMELINE {% endcomment %}
+{%- assign milestones = section.blocks | where: 'type', 'milestone' -%}
+{% if milestones.size > 0 %}
 <section class="page-section page-section--white bg-white">
   <div class="container-shell">
     <div class="story-section-intro">
-      <p class="section-intro__kicker story-section-intro__kicker text-left">Our Journey</p>
-      <h2 class="section-intro__heading story-section-intro__heading">30 Years of Connectivity.</h2>
+      {% if section.settings.timeline_kicker != blank %}
+        <p class="section-intro__kicker story-section-intro__kicker text-left">{{ section.settings.timeline_kicker }}</p>
+      {% endif %}
+      <h2 class="section-intro__heading story-section-intro__heading">{{ section.settings.timeline_heading }}</h2>
     </div>
     <div class="milestone-bento">
       {% if section.settings.timeline_image != blank %}
@@ -127,27 +121,26 @@
         </figure>
       {% endif %}
       {%- assign mi = 0 -%}
-      {% for block in section.blocks %}
-        {% if block.type == 'milestone' %}
-          {%- assign mi = mi | plus: 1 -%}
-          <div class="milestone-card milestone-card--{{ mi }}{% if mi == 1 %} milestone-card--feature{% endif %}" data-animate {{ block.shopify_attributes }}>
-            <p class="milestone-card__year">{{ block.settings.year }}</p>
-            <p class="milestone-card__title">{{ block.settings.title }}</p>
-            <p class="milestone-card__body">{{ block.settings.body }}</p>
-          </div>
-        {% endif %}
+      {% for block in milestones %}
+        {%- assign mi = mi | plus: 1 -%}
+        <div class="milestone-card milestone-card--{{ mi }}{% if mi == 1 %} milestone-card--feature{% endif %}" data-animate {{ block.shopify_attributes }}>
+          <p class="milestone-card__year">{{ block.settings.year }}</p>
+          <p class="milestone-card__title">{{ block.settings.title }}</p>
+          <p class="milestone-card__body">{{ block.settings.body }}</p>
+        </div>
       {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {%- render 'page-cta',
   variant: 'light',
-  kicker: 'Our products',
-  heading: 'Explore what we make.',
-  subhead: 'Premium accessories for every desk, every device.',
-  primary_label: 'Browse products',
-  primary_url: routes.collections_url
+  kicker: section.settings.cta_kicker,
+  heading: section.settings.cta_heading,
+  subhead: section.settings.cta_subhead,
+  primary_label: section.settings.cta_label,
+  primary_url: section.settings.cta_url | default: routes.collections_url
 -%}
 
 {% schema %}
@@ -155,10 +148,55 @@
   "name": "Our Story",
   "tag": "section",
   "settings": [
+    { "type": "header", "content": "Hero" },
     { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
-    { "type": "image_picker", "id": "timeline_image", "label": "Timeline image" }
+    { "type": "text", "id": "breadcrumb_label", "label": "Breadcrumb label", "default": "Our story" },
+    { "type": "text", "id": "hero_kicker", "label": "Hero kicker", "default": "Est. 1994 · Yorba Linda, California" },
+    { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Built for People Who Connect Everything." },
+    { "type": "textarea", "id": "hero_body", "label": "Hero subheading", "default": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one." },
+    { "type": "text", "id": "hero_cta_label", "label": "Primary button label", "default": "Shop Products" },
+    { "type": "url", "id": "hero_cta_url", "label": "Primary button link" },
+    { "type": "text", "id": "hero_cta2_label", "label": "Secondary button label", "default": "Contact us" },
+    { "type": "url", "id": "hero_cta2_url", "label": "Secondary button link" },
+    { "type": "header", "content": "Narrative" },
+    { "type": "text", "id": "narrative_kicker", "label": "Kicker", "default": "Our Story" },
+    { "type": "textarea", "id": "narrative_lead", "label": "Lead paragraph", "default": "Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people." },
+    { "type": "richtext", "id": "narrative_body", "label": "Story body", "default": "<p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?”</p><p>Perhaps the greatest compliment we receive isn’t an award — it’s hearing from customers who are still using products they purchased decades ago.</p>" },
+    { "type": "text", "id": "closer_line1", "label": "Closer line 1", "default": "Our goal has never been to earn a sale." },
+    { "type": "text", "id": "closer_line2_pre", "label": "Closer line 2 (before accent)", "default": "Our goal is to" },
+    { "type": "text", "id": "closer_accent", "label": "Closer accent", "default": "earn a fan." },
+    { "type": "text", "id": "closer_sub", "label": "Closer sub-line", "default": "One customer at a time." },
+    { "type": "header", "content": "Core values" },
+    { "type": "text", "id": "values_kicker", "label": "Kicker", "default": "What We Believe" },
+    { "type": "text", "id": "values_heading", "label": "Heading", "default": "Our Core Values." },
+    { "type": "header", "content": "Timeline" },
+    { "type": "text", "id": "timeline_kicker", "label": "Kicker", "default": "Our Journey" },
+    { "type": "text", "id": "timeline_heading", "label": "Heading", "default": "30 Years of Connectivity." },
+    { "type": "image_picker", "id": "timeline_image", "label": "Timeline image" },
+    { "type": "header", "content": "Closing call to action" },
+    { "type": "text", "id": "cta_kicker", "label": "CTA kicker", "default": "Our Products" },
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Explore What We Make." },
+    { "type": "text", "id": "cta_subhead", "label": "CTA subheading", "default": "Premium accessories for every desk, every device." },
+    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Browse Products" },
+    { "type": "url", "id": "cta_url", "label": "CTA button link" }
   ],
   "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "30+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Years in business" }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Core value",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "body", "label": "Description" }
+      ]
+    },
     {
       "type": "milestone",
       "name": "Timeline milestone",
@@ -172,6 +210,14 @@
   "presets": [{
     "name": "Our Story",
     "blocks": [
+      { "type": "stat", "settings": { "value": "30+", "label": "Years in business" }},
+      { "type": "stat", "settings": { "value": "100+", "label": "Products made" }},
+      { "type": "stat", "settings": { "value": "1–2yr", "label": "Limited warranty (varies by product)" }},
+      { "type": "value", "settings": { "title": "We listen first", "body": "Every product begins with understanding our customers’ needs, not following market trends." }},
+      { "type": "value", "settings": { "title": "We never build “me too” products", "body": "Every EZQuest product must improve upon what’s already available by adding meaningful value." }},
+      { "type": "value", "settings": { "title": "Thoughtful engineering", "body": "Every detail matters, from internal components to packaging, durability, and user experience." }},
+      { "type": "value", "settings": { "title": "Innovation with purpose", "body": "Technology should simplify life, not complicate it. Every feature should have a reason for existing." }},
+      { "type": "value", "settings": { "title": "Building lifelong relationships", "body": "Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others." }},
       { "type": "milestone", "settings": { "year": "1994", "title": "EZQuest is founded", "body": "Started in Lake Forest, California with a focus on making connectivity simpler for Mac users." }},
       { "type": "milestone", "settings": { "year": "2000", "title": "Expansion into cables and adapters", "body": "Launched the DuraGuard cable line Kevlar-reinforced cables that outlast everything else on the market." }},
       { "type": "milestone", "settings": { "year": "2012", "title": "USB-C era begins", "body": "Ahead of the industry, we began engineering USB-C hubs and adapters before most manufacturers recognized the shift." }},
