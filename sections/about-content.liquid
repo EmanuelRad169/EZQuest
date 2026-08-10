@@ -165,60 +165,188 @@
 {
   "name": "About content",
   "settings": [
-    { "type": "header", "content": "Brand story" },
-    { "type": "text",     "id": "story_eyebrow",  "label": "Eyebrow",     "default": "Our story" },
-    { "type": "text",     "id": "story_heading",  "label": "Heading",     "default": "Built around how people actually work." },
-    { "type": "textarea", "id": "story_p1",       "label": "Paragraph 1", "default": "EZQuest designs connectivity products for people who rely on their setups every day — hubs, docks, cables, and chargers built to work without thought." },
-    { "type": "textarea", "id": "story_p2",       "label": "Paragraph 2", "default": "We focus on the gap between what modern laptops offer and what real workflows need. One cable in, a clean desk, everything connected. No drivers, no guesswork." },
-    { "type": "textarea", "id": "story_p3",       "label": "Paragraph 3", "default": "Every product is designed to disappear into the setup — present when you need it, invisible when you don't." },
-
-    { "type": "header", "content": "What makes us different" },
-    { "type": "text", "id": "pillars_eyebrow", "label": "Eyebrow", "default": "What makes us different" },
-
-    { "type": "header", "content": "Product philosophy" },
-    { "type": "text",     "id": "philosophy_eyebrow",  "label": "Eyebrow",     "default": "Product philosophy" },
-    { "type": "text",     "id": "philosophy_heading",  "label": "Heading",     "default": "Less friction. More flow." },
-    { "type": "textarea", "id": "philosophy_body",     "label": "Paragraph 1", "default": "We design for the moment where your laptop's port count stops matching your workflow. Portable hubs for the bag, docks for the desk, cables that hold up mid-meeting." },
-    { "type": "textarea", "id": "philosophy_body2",    "label": "Paragraph 2", "default": "Reliability means getting the specs right, testing real-world conditions, and documenting everything clearly so setup is never a guessing game." },
-
-    { "type": "header", "content": "Support & ownership" },
-    { "type": "text",     "id": "support_eyebrow",      "label": "Eyebrow",            "default": "After the purchase" },
-    { "type": "text",     "id": "support_heading",      "label": "Heading",            "default": "Support that stays close." },
-    { "type": "textarea", "id": "support_body",         "label": "Body",               "default": "Manuals, downloads, compatibility guides, and direct help are always one click away. We build the support layer into the product experience — not as an afterthought." },
-    { "type": "text",     "id": "support_link_label",   "label": "Primary CTA label",  "default": "Visit support center" },
-    { "type": "url",      "id": "support_link_url",     "label": "Primary CTA URL" },
-    { "type": "text",     "id": "support_link2_label",  "label": "Secondary CTA label","default": "Browse products" },
-    { "type": "url",      "id": "support_link2_url",    "label": "Secondary CTA URL" }
+    {
+      "type": "header",
+      "content": "Brand story"
+    },
+    {
+      "type": "text",
+      "id": "story_eyebrow",
+      "label": "Eyebrow",
+      "default": "Our story"
+    },
+    {
+      "type": "text",
+      "id": "story_heading",
+      "label": "Heading",
+      "default": "Built around how people actually work"
+    },
+    {
+      "type": "textarea",
+      "id": "story_p1",
+      "label": "Paragraph 1",
+      "default": "EZQuest designs connectivity products for people who rely on their setups every day — hubs, docks, cables, and chargers built to work without thought."
+    },
+    {
+      "type": "textarea",
+      "id": "story_p2",
+      "label": "Paragraph 2",
+      "default": "We focus on the gap between what modern laptops offer and what real workflows need. One cable in, a clean desk, everything connected. No drivers, no guesswork."
+    },
+    {
+      "type": "textarea",
+      "id": "story_p3",
+      "label": "Paragraph 3",
+      "default": "Every product is designed to disappear into the setup — present when you need it, invisible when you don't."
+    },
+    {
+      "type": "header",
+      "content": "What makes us different"
+    },
+    {
+      "type": "text",
+      "id": "pillars_eyebrow",
+      "label": "Eyebrow",
+      "default": "What makes us different"
+    },
+    {
+      "type": "header",
+      "content": "Product philosophy"
+    },
+    {
+      "type": "text",
+      "id": "philosophy_eyebrow",
+      "label": "Eyebrow",
+      "default": "Product philosophy"
+    },
+    {
+      "type": "text",
+      "id": "philosophy_heading",
+      "label": "Heading",
+      "default": "Less friction. More flow"
+    },
+    {
+      "type": "textarea",
+      "id": "philosophy_body",
+      "label": "Paragraph 1",
+      "default": "We design for the moment where your laptop's port count stops matching your workflow. Portable hubs for the bag, docks for the desk, cables that hold up mid-meeting."
+    },
+    {
+      "type": "textarea",
+      "id": "philosophy_body2",
+      "label": "Paragraph 2",
+      "default": "Reliability means getting the specs right, testing real-world conditions, and documenting everything clearly so setup is never a guessing game."
+    },
+    {
+      "type": "header",
+      "content": "Support & ownership"
+    },
+    {
+      "type": "text",
+      "id": "support_eyebrow",
+      "label": "Eyebrow",
+      "default": "After the purchase"
+    },
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Heading",
+      "default": "Support that stays close"
+    },
+    {
+      "type": "textarea",
+      "id": "support_body",
+      "label": "Body",
+      "default": "Manuals, downloads, compatibility guides, and direct help are always one click away. We build the support layer into the product experience — not as an afterthought."
+    },
+    {
+      "type": "text",
+      "id": "support_link_label",
+      "label": "Primary CTA label",
+      "default": "Visit support center"
+    },
+    {
+      "type": "url",
+      "id": "support_link_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "support_link2_label",
+      "label": "Secondary CTA label",
+      "default": "Browse products"
+    },
+    {
+      "type": "url",
+      "id": "support_link2_url",
+      "label": "Secondary CTA URL"
+    }
   ],
   "blocks": [
     {
       "type": "pillar",
       "name": "Differentiator",
       "settings": [
-        { "type": "text",     "id": "title", "label": "Title", "default": "Built for real setups" },
-        { "type": "textarea", "id": "copy",  "label": "Copy",  "default": "Designed around the ports, power paths, and desk layouts that modern workflows actually demand." }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Built for real setups"
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Copy",
+          "default": "Designed around the ports, power paths, and desk layouts that modern workflows actually demand."
+        }
       ]
     },
     {
       "type": "stat",
       "name": "Proof stat",
       "settings": [
-        { "type": "text", "id": "value", "label": "Value", "default": "20+" },
-        { "type": "text", "id": "label", "label": "Label", "default": "Years in business" }
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "20+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Years in business"
+        }
       ]
     },
     {
       "type": "support_link",
       "name": "Support link card",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title",       "default": "Manuals & guides" },
-        { "type": "text", "id": "desc",  "label": "Description", "default": "Setup documentation for every product." },
-        { "type": "url",  "id": "url",   "label": "URL" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Manuals & guides"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description",
+          "default": "Setup documentation for every product."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
       ]
     }
   ],
   "presets": [
-    { "name": "About content" }
+    {
+      "name": "About content"
+    }
   ]
 }
 {% endschema %}

@@ -148,82 +148,337 @@
   "name": "Our Story",
   "tag": "section",
   "settings": [
-    { "type": "header", "content": "Hero" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
-    { "type": "text", "id": "breadcrumb_label", "label": "Breadcrumb label", "default": "Our story" },
-    { "type": "text", "id": "hero_kicker", "label": "Hero kicker", "default": "Est. 1994 · Yorba Linda, California" },
-    { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Built for People Who Connect Everything." },
-    { "type": "textarea", "id": "hero_body", "label": "Hero subheading", "default": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one." },
-    { "type": "text", "id": "hero_cta_label", "label": "Primary button label", "default": "Shop Products" },
-    { "type": "url", "id": "hero_cta_url", "label": "Primary button link" },
-    { "type": "text", "id": "hero_cta2_label", "label": "Secondary button label", "default": "Contact us" },
-    { "type": "url", "id": "hero_cta2_url", "label": "Secondary button link" },
-    { "type": "header", "content": "Narrative" },
-    { "type": "text", "id": "narrative_kicker", "label": "Kicker", "default": "Our Story" },
-    { "type": "textarea", "id": "narrative_lead", "label": "Lead paragraph", "default": "Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people." },
-    { "type": "richtext", "id": "narrative_body", "label": "Story body", "default": "<p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?”</p><p>Perhaps the greatest compliment we receive isn’t an award — it’s hearing from customers who are still using products they purchased decades ago.</p>" },
-    { "type": "text", "id": "closer_line1", "label": "Closer line 1", "default": "Our goal has never been to earn a sale." },
-    { "type": "text", "id": "closer_line2_pre", "label": "Closer line 2 (before accent)", "default": "Our goal is to" },
-    { "type": "text", "id": "closer_accent", "label": "Closer accent", "default": "earn a fan." },
-    { "type": "text", "id": "closer_sub", "label": "Closer sub-line", "default": "One customer at a time." },
-    { "type": "header", "content": "Core values" },
-    { "type": "text", "id": "values_kicker", "label": "Kicker", "default": "What We Believe" },
-    { "type": "text", "id": "values_heading", "label": "Heading", "default": "Our Core Values." },
-    { "type": "header", "content": "Timeline" },
-    { "type": "text", "id": "timeline_kicker", "label": "Kicker", "default": "Our Journey" },
-    { "type": "text", "id": "timeline_heading", "label": "Heading", "default": "30 Years of Connectivity." },
-    { "type": "image_picker", "id": "timeline_image", "label": "Timeline image" },
-    { "type": "header", "content": "Closing call to action" },
-    { "type": "text", "id": "cta_kicker", "label": "CTA kicker", "default": "Our Products" },
-    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Explore What We Make." },
-    { "type": "text", "id": "cta_subhead", "label": "CTA subheading", "default": "Premium accessories for every desk, every device." },
-    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Browse Products" },
-    { "type": "url", "id": "cta_url", "label": "CTA button link" }
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "label": "Breadcrumb label",
+      "default": "Our story"
+    },
+    {
+      "type": "text",
+      "id": "hero_kicker",
+      "label": "Hero kicker",
+      "default": "Est. 1994 · Yorba Linda, California"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "Built for People Who Connect Everything"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_body",
+      "label": "Hero subheading",
+      "default": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_label",
+      "label": "Primary button label",
+      "default": "Shop Products"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta2_label",
+      "label": "Secondary button label",
+      "default": "Contact us"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Narrative"
+    },
+    {
+      "type": "text",
+      "id": "narrative_kicker",
+      "label": "Kicker",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "narrative_lead",
+      "label": "Lead paragraph",
+      "default": "Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people."
+    },
+    {
+      "type": "richtext",
+      "id": "narrative_body",
+      "label": "Story body",
+      "default": "<p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?”</p><p>Perhaps the greatest compliment we receive isn’t an award — it’s hearing from customers who are still using products they purchased decades ago.</p>"
+    },
+    {
+      "type": "text",
+      "id": "closer_line1",
+      "label": "Closer line 1",
+      "default": "Our goal has never been to earn a sale."
+    },
+    {
+      "type": "text",
+      "id": "closer_line2_pre",
+      "label": "Closer line 2 (before accent)",
+      "default": "Our goal is to"
+    },
+    {
+      "type": "text",
+      "id": "closer_accent",
+      "label": "Closer accent",
+      "default": "earn a fan."
+    },
+    {
+      "type": "text",
+      "id": "closer_sub",
+      "label": "Closer sub-line",
+      "default": "One customer at a time."
+    },
+    {
+      "type": "header",
+      "content": "Core values"
+    },
+    {
+      "type": "text",
+      "id": "values_kicker",
+      "label": "Kicker",
+      "default": "What We Believe"
+    },
+    {
+      "type": "text",
+      "id": "values_heading",
+      "label": "Heading",
+      "default": "Our Core Values"
+    },
+    {
+      "type": "header",
+      "content": "Timeline"
+    },
+    {
+      "type": "text",
+      "id": "timeline_kicker",
+      "label": "Kicker",
+      "default": "Our Journey"
+    },
+    {
+      "type": "text",
+      "id": "timeline_heading",
+      "label": "Heading",
+      "default": "30 Years of Connectivity"
+    },
+    {
+      "type": "image_picker",
+      "id": "timeline_image",
+      "label": "Timeline image"
+    },
+    {
+      "type": "header",
+      "content": "Closing call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_kicker",
+      "label": "CTA kicker",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Explore What We Make"
+    },
+    {
+      "type": "text",
+      "id": "cta_subhead",
+      "label": "CTA subheading",
+      "default": "Premium accessories for every desk, every device."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Browse Products"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button link"
+    }
   ],
   "blocks": [
     {
       "type": "stat",
       "name": "Stat",
       "settings": [
-        { "type": "text", "id": "value", "label": "Value", "default": "30+" },
-        { "type": "text", "id": "label", "label": "Label", "default": "Years in business" }
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "30+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Years in business"
+        }
       ]
     },
     {
       "type": "value",
       "name": "Core value",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "textarea", "id": "body", "label": "Description" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description"
+        }
       ]
     },
     {
       "type": "milestone",
       "name": "Timeline milestone",
       "settings": [
-        { "type": "text", "id": "year", "label": "Year" },
-        { "type": "text", "id": "title", "label": "Milestone title" },
-        { "type": "textarea", "id": "body", "label": "Description" }
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Milestone title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description"
+        }
       ]
     }
   ],
-  "presets": [{
-    "name": "Our Story",
-    "blocks": [
-      { "type": "stat", "settings": { "value": "30+", "label": "Years in business" }},
-      { "type": "stat", "settings": { "value": "100+", "label": "Products made" }},
-      { "type": "stat", "settings": { "value": "1–2yr", "label": "Limited warranty (varies by product)" }},
-      { "type": "value", "settings": { "title": "We listen first", "body": "Every product begins with understanding our customers’ needs, not following market trends." }},
-      { "type": "value", "settings": { "title": "We never build “me too” products", "body": "Every EZQuest product must improve upon what’s already available by adding meaningful value." }},
-      { "type": "value", "settings": { "title": "Thoughtful engineering", "body": "Every detail matters, from internal components to packaging, durability, and user experience." }},
-      { "type": "value", "settings": { "title": "Innovation with purpose", "body": "Technology should simplify life, not complicate it. Every feature should have a reason for existing." }},
-      { "type": "value", "settings": { "title": "Building lifelong relationships", "body": "Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others." }},
-      { "type": "milestone", "settings": { "year": "1994", "title": "EZQuest is founded", "body": "Started in Lake Forest, California with a focus on making connectivity simpler for Mac users." }},
-      { "type": "milestone", "settings": { "year": "2000", "title": "Expansion into cables and adapters", "body": "Launched the DuraGuard cable line Kevlar-reinforced cables that outlast everything else on the market." }},
-      { "type": "milestone", "settings": { "year": "2012", "title": "USB-C era begins", "body": "Ahead of the industry, we began engineering USB-C hubs and adapters before most manufacturers recognized the shift." }},
-      { "type": "milestone", "settings": { "year": "2018", "title": "GaN charging technology", "body": "Introduced the UltimatePower GaN charger line smaller, faster, and cooler than anything available at the time." }},
-      { "type": "milestone", "settings": { "year": "2024", "title": "Thunderbolt 5 and USB4 V2", "body": "First to market with full Thunderbolt 5 docking station support 120Gbps bandwidth for the next generation of creative professionals." }}
-    ]
-  }]
+  "presets": [
+    {
+      "name": "Our Story",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "30+",
+            "label": "Years in business"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "100+",
+            "label": "Products made"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "1–2yr",
+            "label": "Limited warranty (varies by product)"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "We listen first",
+            "body": "Every product begins with understanding our customers’ needs, not following market trends."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "We never build “me too” products",
+            "body": "Every EZQuest product must improve upon what’s already available by adding meaningful value."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Thoughtful engineering",
+            "body": "Every detail matters, from internal components to packaging, durability, and user experience."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Innovation with purpose",
+            "body": "Technology should simplify life, not complicate it. Every feature should have a reason for existing."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Building lifelong relationships",
+            "body": "Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "1994",
+            "title": "EZQuest is founded",
+            "body": "Started in Lake Forest, California with a focus on making connectivity simpler for Mac users."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2000",
+            "title": "Expansion into cables and adapters",
+            "body": "Launched the DuraGuard cable line Kevlar-reinforced cables that outlast everything else on the market."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2012",
+            "title": "USB-C era begins",
+            "body": "Ahead of the industry, we began engineering USB-C hubs and adapters before most manufacturers recognized the shift."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2018",
+            "title": "GaN charging technology",
+            "body": "Introduced the UltimatePower GaN charger line smaller, faster, and cooler than anything available at the time."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "title": "Thunderbolt 5 and USB4 V2",
+            "body": "First to market with full Thunderbolt 5 docking station support 120Gbps bandwidth for the next generation of creative professionals."
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

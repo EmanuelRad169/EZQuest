@@ -12,28 +12,105 @@
     "about": {
       "type": "about",
       "settings": {
-        "cta_heading": "Explore What We Make.",
+        "cta_heading": "Explore What We Make",
         "cta_body": "Premium accessories for every desk, every device.",
         "cta_label": "Browse Products",
         "cta_url": "/collections/all"
       },
       "blocks": {
-        "reason_1": { "type": "reason", "settings": { "title": "Over 30 years of innovation", "body": "Helping customers navigate every major evolution in computer connectivity since 1994." }},
-        "reason_2": { "type": "reason", "settings": { "title": "Customer-driven design", "body": "Every product begins by listening to real customer feedback." }},
-        "reason_3": { "type": "reason", "settings": { "title": "No “me too” products", "body": "Every EZQuest product is designed to improve upon what’s already available." }},
-        "reason_4": { "type": "reason", "settings": { "title": "Thoughtful engineering", "body": "Smart features, durable construction, and practical innovations that make a difference." }},
-        "reason_5": { "type": "reason", "settings": { "title": "Premium quality & reliability", "body": "Built for dependable performance and long-term value." }},
-        "reason_6": { "type": "reason", "settings": { "title": "Exceptional customer support", "body": "Our commitment doesn’t end when your order arrives." }},
-        "reason_7": { "type": "reason", "settings": { "title": "Trusted by professionals worldwide", "body": "Solutions designed for creators, businesses, educators, and everyday users alike." }},
-        "promise_1": { "type": "promise", "settings": { "text": "We listen before we design." }},
-        "promise_2": { "type": "promise", "settings": { "text": "We solve real-world problems." }},
-        "promise_3": { "type": "promise", "settings": { "text": "We never create “me too” products." }},
-        "promise_4": { "type": "promise", "settings": { "text": "We engineer every detail with purpose." }},
-        "promise_5": { "type": "promise", "settings": { "text": "We stand behind what we build." }}
+        "reason_1": {
+          "type": "reason",
+          "settings": {
+            "title": "Over 30 years of innovation",
+            "body": "Helping customers navigate every major evolution in computer connectivity since 1994."
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "title": "Customer-driven design",
+            "body": "Every product begins by listening to real customer feedback."
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "title": "No “me too” products",
+            "body": "Every EZQuest product is designed to improve upon what’s already available."
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "title": "Thoughtful engineering",
+            "body": "Smart features, durable construction, and practical innovations that make a difference."
+          }
+        },
+        "reason_5": {
+          "type": "reason",
+          "settings": {
+            "title": "Premium quality & reliability",
+            "body": "Built for dependable performance and long-term value."
+          }
+        },
+        "reason_6": {
+          "type": "reason",
+          "settings": {
+            "title": "Exceptional customer support",
+            "body": "Our commitment doesn’t end when your order arrives."
+          }
+        },
+        "reason_7": {
+          "type": "reason",
+          "settings": {
+            "title": "Trusted by professionals worldwide",
+            "body": "Solutions designed for creators, businesses, educators, and everyday users alike."
+          }
+        },
+        "promise_1": {
+          "type": "promise",
+          "settings": {
+            "text": "We listen before we design."
+          }
+        },
+        "promise_2": {
+          "type": "promise",
+          "settings": {
+            "text": "We solve real-world problems."
+          }
+        },
+        "promise_3": {
+          "type": "promise",
+          "settings": {
+            "text": "We never create “me too” products."
+          }
+        },
+        "promise_4": {
+          "type": "promise",
+          "settings": {
+            "text": "We engineer every detail with purpose."
+          }
+        },
+        "promise_5": {
+          "type": "promise",
+          "settings": {
+            "text": "We stand behind what we build."
+          }
+        }
       },
       "block_order": [
-        "reason_1", "reason_2", "reason_3", "reason_4", "reason_5", "reason_6", "reason_7",
-        "promise_1", "promise_2", "promise_3", "promise_4", "promise_5"
+        "reason_1",
+        "reason_2",
+        "reason_3",
+        "reason_4",
+        "reason_5",
+        "reason_6",
+        "reason_7",
+        "promise_1",
+        "promise_2",
+        "promise_3",
+        "promise_4",
+        "promise_5"
       ]
     },
     "page_hero": {

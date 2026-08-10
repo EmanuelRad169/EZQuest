@@ -169,7 +169,8 @@
             "stat": "4K 60Hz",
             "label": "Display Support",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_G_851c726e-7dc9-4498-a517-d64cf2ce5b0e.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_G_851c726e-7dc9-4498-a517-d64cf2ce5b0e.jpg",
+            "product_link": "gid://shopify/Product/8842164863174"
           }
         },
         "f4": {
@@ -180,7 +181,8 @@
             "stat": "Desk-ready",
             "label": "Docking Hubs",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_L.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_L.jpg",
+            "product_link": "gid://shopify/Product/8842164764870"
           }
         },
         "f5": {
@@ -191,7 +193,8 @@
             "stat": "100W",
             "label": "Power Delivery",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_I_232a3349-793a-4bd9-bc02-126f673a7a51.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_I_232a3349-793a-4bd9-bc02-126f673a7a51.jpg",
+            "product_link": "gid://shopify/Product/8832352485574"
           }
         },
         "f6": {
@@ -202,7 +205,8 @@
             "stat": "Travel-ready",
             "label": "Compact Chargers and Hubs",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_J.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_J.jpg",
+            "product_link": "gid://shopify/Product/8832352387270"
           }
         },
         "f7": {
@@ -213,7 +217,8 @@
             "stat": "2.5GbE",
             "label": "Faster Wired Networking",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_K_da877eab-b9f9-4f67-9803-519fa59f9d01.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_K_da877eab-b9f9-4f67-9803-519fa59f9d01.jpg",
+            "product_link": "gid://shopify/Product/8842166010054"
           }
         },
         "f10": {
@@ -224,7 +229,8 @@
             "stat": "Works with",
             "label": "Mac, iPad, and Windows Setups",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_L.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_L.jpg",
+            "product_link": "gid://shopify/Product/8842164764870"
           }
         },
         "f8": {
@@ -235,7 +241,8 @@
             "stat": "DuraGuard",
             "label": "Braided Cable Durability",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_N_074a5803-6fe0-42ca-a912-ba2b8bb81b4e.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_N_074a5803-6fe0-42ca-a912-ba2b8bb81b4e.jpg",
+            "product_link": "gid://shopify/Product/8842164764870"
           }
         },
         "f9": {
@@ -246,7 +253,8 @@
             "stat": "2-year",
             "label": "Warranty Coverage",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_M_088bef3e-5e2b-498c-86cb-6b41450ea920.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_M_088bef3e-5e2b-498c-86cb-6b41450ea920.jpg",
+            "product_link": "gid://shopify/Product/8832352780486"
           }
         }
       },
@@ -273,7 +281,7 @@
         "image": "shopify://shop_images/Down_Page_Banner.jpg",
         "text_position": "left",
         "eyebrow": "Desk and Travel Coverage",
-        "heading": "Choose the Right Mix of Ports, Power, and Displays.",
+        "heading": "Choose the Right Mix of Ports, Power, and Displays",
         "copy": "From compact travel hubs to desk-ready docks and multi-device chargers, EZQuest keeps modern-device setups cleaner and easier to manage.",
         "cta_label": "Shop the Lineup",
         "cta_link": ""
@@ -305,7 +313,7 @@
       "type": "homepage-cinematic-reveal",
       "settings": {
         "background_image": "shopify://shop_images/Down_Page_Banner.jpg",
-        "kicker": "Backed by the Right Support.",
+        "kicker": "Backed by the Right Support",
         "headline": "Built different. Works better.",
         "body_text": "EZQuest accessories are engineered for people who need the right connection, every time.",
         "cta_label": "Shop the Range",

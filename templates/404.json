@@ -12,7 +12,7 @@
     "main": {
       "type": "main-404",
       "settings": {
-        "heading": "This Page Isn't Connected.",
+        "heading": "This Page Isn't Connected",
         "copy": "The link might have moved or the URL might be wrong. Here is where to go instead."
       }
     },

@@ -32,7 +32,7 @@
       "type": "support-cta-rail",
       "settings": {
         "kicker": "Need a Faster Answer",
-        "heading": "Check Self-Service Resources First.",
+        "heading": "Check Self-Service Resources First",
         "body": "Our FAQ, compatibility checker, and troubleshooting guides resolve most issues without a ticket.",
         "cta_label": "Browse FAQ",
         "cta_url": "/pages/faq",

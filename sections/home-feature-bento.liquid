@@ -21,8 +21,13 @@
           assign card_sublabel = block.settings.sublabel
           assign card_image = block.settings.image
           assign card_style = block.settings.card_style | default: 'light'
+          assign card_link = block.settings.link
+          if block.settings.product_link != blank
+            assign card_link = block.settings.product_link.url
+          endif
         -%}
-        <div class="home-feature-bento-card home-feature-bento-card--{{ card_size }} home-feature-bento-card--{{ card_style }}" {{ block.shopify_attributes }}>
+        {%- capture card_tag -%}{% if card_link != blank %}a{% else %}div{% endif %}{%- endcapture -%}
+        <{{ card_tag }} class="home-feature-bento-card home-feature-bento-card--{{ card_size }} home-feature-bento-card--{{ card_style }}{% if card_link != blank %} home-feature-bento-card--link{% endif %}"{% if card_link != blank %} href="{{ card_link }}" style="text-decoration:none;color:inherit;"{% endif %} {{ block.shopify_attributes }}>
           <div class="home-feature-bento-media">
             {% if card_image != blank %}
               {{ card_image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'home-feature-bento-img', alt: card_label }}
@@ -53,7 +58,7 @@
               {% endif %}
             </div>
           {% endif %}
-        </div>
+        </{{ card_tag }}>
       {% endfor %}
     </div>
 
@@ -98,7 +103,9 @@
         { "type": "text", "id": "stat", "label": "Stat / number", "info": "e.g. 100W or 4K 60Hz" },
         { "type": "text", "id": "label", "label": "Label", "info": "e.g. Power delivery" },
         { "type": "text", "id": "sublabel", "label": "Sub-label", "info": "e.g. dual-display desk support" },
-        { "type": "image_picker", "id": "image", "label": "Image" }
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "product_link", "label": "Linked product", "info": "Makes the tile link to this product (recommended)" },
+        { "type": "url", "id": "link", "label": "Custom link", "info": "Optional — used only if no product is selected above" }
       ]
     }
   ],

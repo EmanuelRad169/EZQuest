@@ -30,7 +30,7 @@
       "type": "support-cta-rail",
       "settings": {
         "kicker": "Go Further",
-        "heading": "Compare the Full Lineup or Get Setup Guidance.",
+        "heading": "Compare the Full Lineup or Get Setup Guidance",
         "body": "Use the compare tool or Help me choose to find the right product before you add to cart.",
         "cta_label": "Compare Lineup",
         "cta_url": "/pages/compare",

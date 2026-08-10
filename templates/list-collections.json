@@ -20,7 +20,7 @@
     "main": {
       "type": "main-list-collections",
       "settings": {
-        "heading": "Choose the EZQuest Product Family for Your Setup.",
+        "heading": "Choose the EZQuest Product Family for Your Setup",
         "copy": "Choose hubs, docks, power, or finishing pieces by the way the workflow actually needs to work.",
         "note": "Use collections to narrow the right family first, then compare models or open support when you need more detail.",
         "accessories_image": "shopify://shop_images/ezquest-card-accessories-collections.png",

@@ -245,74 +245,344 @@
   "name": "Shipping & returns",
   "tag": "section",
   "settings": [
-    { "type": "header", "content": "Hero" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero background image" },
-    { "type": "text", "id": "breadcrumb_label", "label": "Breadcrumb", "default": "Shipping & returns" },
-    { "type": "text", "id": "hero_kicker", "label": "Kicker", "default": "Shipping & returns" },
-    { "type": "text", "id": "hero_heading", "label": "Heading line 1", "default": "Fast Shipping." },
-    { "type": "text", "id": "hero_heading2", "label": "Heading line 2", "default": "Easy Returns." },
-    { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Free shipping on all US orders over $90. 30-day hassle-free returns. 1–2 year limited warranty depending on product." },
-    { "type": "text", "id": "cta1_label", "label": "Primary button label", "default": "Start a Return" },
-    { "type": "url", "id": "cta1_url", "label": "Primary button link" },
-    { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Browse FAQ" },
-    { "type": "url", "id": "cta2_url", "label": "Secondary button link" },
-    { "type": "text", "id": "stat1_value", "label": "Stat 1 value", "default": "Free" },
-    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "shipping over $90 in the US" },
-    { "type": "text", "id": "stat2_value", "label": "Stat 2 value", "default": "30" },
-    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "day return window" },
-    { "type": "text", "id": "stat3_value", "label": "Stat 3 value", "default": "1–2 yr" },
-    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "limited warranty varies by product" },
-    { "type": "header", "content": "Free shipping strip" },
-    { "type": "text", "id": "strip_text", "label": "Strip text", "default": "Free shipping automatically applied on all US orders over $90 — no code needed." },
-    { "type": "header", "content": "Shipping tables" },
-    { "type": "text", "id": "us_label", "label": "US table label", "default": "US shipping rates" },
-    { "type": "text", "id": "intl_label", "label": "International table label", "default": "International shipping" },
-    { "type": "text", "id": "col_total", "label": "Column: order total", "default": "Order total" },
-    { "type": "text", "id": "col_rate", "label": "Column: rate", "default": "Rate" },
-    { "type": "text", "id": "col_delivery", "label": "Column: delivery", "default": "Delivery" },
-    { "type": "textarea", "id": "intl_note", "label": "International note", "default": "International orders may be subject to customs duties and taxes — these are the responsibility of the recipient." },
-    { "type": "header", "content": "How returns work" },
-    { "type": "text", "id": "returns_label", "label": "Returns label", "default": "How returns work" },
-    { "type": "text", "id": "return_window_title", "label": "Return window title", "default": "30-day return window" },
-    { "type": "textarea", "id": "return_window_body", "label": "Return window body", "default": "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund." },
-    { "type": "header", "content": "FAQ" },
-    { "type": "text", "id": "faq_kicker", "label": "Kicker", "default": "Common Questions" },
-    { "type": "text", "id": "faq_heading", "label": "Heading", "default": "Shipping & Returns FAQ" },
-    { "type": "header", "content": "Return policy highlights" },
-    { "type": "text", "id": "policy_kicker", "label": "Kicker", "default": "Return Policy Highlights" },
-    { "type": "text", "id": "policy_heading", "label": "Heading", "default": "What to Know Before You Return" },
-    { "type": "text", "id": "policy_link_label", "label": "Policy link label", "default": "Read the full return & refund policy" },
-    { "type": "url", "id": "policy_link_url", "label": "Policy link URL" },
-    { "type": "header", "content": "Closing call to action" },
-    { "type": "text", "id": "cta_kicker", "label": "CTA kicker", "default": "Support" },
-    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Questions? We’re here." },
-    { "type": "text", "id": "cta_subhead", "label": "CTA subheading", "default": "Our team responds within 1 business day." },
-    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Contact Support" },
-    { "type": "url", "id": "cta_url", "label": "CTA button link" }
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "label": "Breadcrumb",
+      "default": "Shipping & returns"
+    },
+    {
+      "type": "text",
+      "id": "hero_kicker",
+      "label": "Kicker",
+      "default": "Shipping & returns"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading line 1",
+      "default": "Fast Shipping"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading2",
+      "label": "Heading line 2",
+      "default": "Easy Returns"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subheading",
+      "label": "Subheading",
+      "default": "Free shipping on all US orders over $90. 30-day hassle-free returns. 1–2 year limited warranty depending on product."
+    },
+    {
+      "type": "text",
+      "id": "cta1_label",
+      "label": "Primary button label",
+      "default": "Start a Return"
+    },
+    {
+      "type": "url",
+      "id": "cta1_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "cta2_label",
+      "label": "Secondary button label",
+      "default": "Browse FAQ"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Stat 1 value",
+      "default": "Free"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Stat 1 label",
+      "default": "shipping over $90 in the US"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Stat 2 value",
+      "default": "30"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Stat 2 label",
+      "default": "day return window"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Stat 3 value",
+      "default": "1–2 yr"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Stat 3 label",
+      "default": "limited warranty varies by product"
+    },
+    {
+      "type": "header",
+      "content": "Free shipping strip"
+    },
+    {
+      "type": "text",
+      "id": "strip_text",
+      "label": "Strip text",
+      "default": "Free shipping automatically applied on all US orders over $90 — no code needed."
+    },
+    {
+      "type": "header",
+      "content": "Shipping tables"
+    },
+    {
+      "type": "text",
+      "id": "us_label",
+      "label": "US table label",
+      "default": "US shipping rates"
+    },
+    {
+      "type": "text",
+      "id": "intl_label",
+      "label": "International table label",
+      "default": "International shipping"
+    },
+    {
+      "type": "text",
+      "id": "col_total",
+      "label": "Column: order total",
+      "default": "Order total"
+    },
+    {
+      "type": "text",
+      "id": "col_rate",
+      "label": "Column: rate",
+      "default": "Rate"
+    },
+    {
+      "type": "text",
+      "id": "col_delivery",
+      "label": "Column: delivery",
+      "default": "Delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "intl_note",
+      "label": "International note",
+      "default": "International orders may be subject to customs duties and taxes — these are the responsibility of the recipient."
+    },
+    {
+      "type": "header",
+      "content": "How returns work"
+    },
+    {
+      "type": "text",
+      "id": "returns_label",
+      "label": "Returns label",
+      "default": "How returns work"
+    },
+    {
+      "type": "text",
+      "id": "return_window_title",
+      "label": "Return window title",
+      "default": "30-day return window"
+    },
+    {
+      "type": "textarea",
+      "id": "return_window_body",
+      "label": "Return window body",
+      "default": "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund."
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_kicker",
+      "label": "Kicker",
+      "default": "Common Questions"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "Heading",
+      "default": "Shipping & Returns FAQ"
+    },
+    {
+      "type": "header",
+      "content": "Return policy highlights"
+    },
+    {
+      "type": "text",
+      "id": "policy_kicker",
+      "label": "Kicker",
+      "default": "Return Policy Highlights"
+    },
+    {
+      "type": "text",
+      "id": "policy_heading",
+      "label": "Heading",
+      "default": "What to Know Before You Return"
+    },
+    {
+      "type": "text",
+      "id": "policy_link_label",
+      "label": "Policy link label",
+      "default": "Read the full return & refund policy"
+    },
+    {
+      "type": "url",
+      "id": "policy_link_url",
+      "label": "Policy link URL"
+    },
+    {
+      "type": "header",
+      "content": "Closing call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_kicker",
+      "label": "CTA kicker",
+      "default": "Support"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Questions? We’re here"
+    },
+    {
+      "type": "text",
+      "id": "cta_subhead",
+      "label": "CTA subheading",
+      "default": "Our team responds within 1 business day."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Contact Support"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button link"
+    }
   ],
   "blocks": [
-    { "type": "us_rate", "name": "US shipping row", "settings": [
-      { "type": "text", "id": "total", "label": "Order total" },
-      { "type": "text", "id": "rate", "label": "Rate" },
-      { "type": "text", "id": "delivery", "label": "Delivery" },
-      { "type": "checkbox", "id": "is_free", "label": "Show rate as free", "default": false }
-    ]},
-    { "type": "intl_rate", "name": "International shipping row", "settings": [
-      { "type": "text", "id": "total", "label": "Order total" },
-      { "type": "text", "id": "rate", "label": "Rate" },
-      { "type": "text", "id": "delivery", "label": "Delivery" }
-    ]},
-    { "type": "step", "name": "Return step", "settings": [
-      { "type": "text", "id": "title", "label": "Title" },
-      { "type": "textarea", "id": "body", "label": "Body" }
-    ]},
-    { "type": "faq", "name": "FAQ item", "settings": [
-      { "type": "text", "id": "question", "label": "Question" },
-      { "type": "textarea", "id": "answer", "label": "Answer" }
-    ]},
-    { "type": "policy", "name": "Policy highlight", "settings": [
-      { "type": "text", "id": "text", "label": "Text" }
-    ]}
+    {
+      "type": "us_rate",
+      "name": "US shipping row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "total",
+          "label": "Order total"
+        },
+        {
+          "type": "text",
+          "id": "rate",
+          "label": "Rate"
+        },
+        {
+          "type": "text",
+          "id": "delivery",
+          "label": "Delivery"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_free",
+          "label": "Show rate as free",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "intl_rate",
+      "name": "International shipping row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "total",
+          "label": "Order total"
+        },
+        {
+          "type": "text",
+          "id": "rate",
+          "label": "Rate"
+        },
+        {
+          "type": "text",
+          "id": "delivery",
+          "label": "Delivery"
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Return step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "policy",
+      "name": "Policy highlight",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
   ],
   "max_blocks": 50
 }

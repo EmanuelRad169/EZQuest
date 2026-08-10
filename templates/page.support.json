@@ -43,7 +43,7 @@
       "settings": {
         "variant": "light",
         "kicker": "Still Need Help?",
-        "heading": "Our Team Responds Within 1 Business Day.",
+        "heading": "Our Team Responds Within 1 Business Day",
         "body": "Every message is read by a real person. No bots, no ticket queues.",
         "cta_label": "Contact Support",
         "cta_url": "/pages/contact",
