@@ -100,12 +100,14 @@
   }
 }
 
-/* Horizontal thumb strip below main image */
+/* Thumb strip below main image — wraps to multiple rows so every image is
+   visible instead of being hidden in a horizontal scroll. */
 .product-gallery-grid--rail {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
+  overflow: visible;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;

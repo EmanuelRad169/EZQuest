@@ -170,7 +170,7 @@
             "label": "Display Support",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_G_851c726e-7dc9-4498-a517-d64cf2ce5b0e.jpg",
-            "product_link": "gid://shopify/Product/8842164863174"
+            "link": "/products/usb-c-dual-display-12-in-1-multimedia-hub-pro-series"
           }
         },
         "f4": {
@@ -182,7 +182,7 @@
             "label": "Docking Hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg",
-            "product_link": "gid://shopify/Product/8842164764870"
+            "link": "/products/usb-4-dual-display-8-in-1-hub-pro-series"
           }
         },
         "f5": {
@@ -194,7 +194,7 @@
             "label": "Power Delivery",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_I_232a3349-793a-4bd9-bc02-126f673a7a51.jpg",
-            "product_link": "gid://shopify/Product/8832352485574"
+            "link": "/products/worldtravel-65w-gan-5-port-pd-wall-charger"
           }
         },
         "f6": {
@@ -206,7 +206,7 @@
             "label": "Compact Chargers and Hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_J.jpg",
-            "product_link": "gid://shopify/Product/8832352387270"
+            "link": "/products/ultraslim-wall-charger-dual-usb-c-70w"
           }
         },
         "f7": {
@@ -218,7 +218,7 @@
             "label": "Faster Wired Networking",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_K_da877eab-b9f9-4f67-9803-519fa59f9d01.jpg",
-            "product_link": "gid://shopify/Product/8842166010054"
+            "link": "/products/usb-c-to-2-5-gigabit-ethernet-adapter"
           }
         },
         "f10": {
@@ -230,7 +230,7 @@
             "label": "Mac, iPad, and Windows Setups",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg",
-            "product_link": "gid://shopify/Product/8842164764870"
+            "link": "/products/usb-4-dual-display-8-in-1-hub-pro-series"
           }
         },
         "f8": {
@@ -242,7 +242,7 @@
             "label": "Braided Cable Durability",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_N_074a5803-6fe0-42ca-a912-ba2b8bb81b4e.jpg",
-            "product_link": "gid://shopify/Product/8842164764870"
+            "link": "/products/usb-4-dual-display-8-in-1-hub-pro-series"
           }
         },
         "f9": {
@@ -254,7 +254,7 @@
             "label": "Warranty Coverage",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_M_088bef3e-5e2b-498c-86cb-6b41450ea920.jpg",
-            "product_link": "gid://shopify/Product/8832352780486"
+            "link": "/products/duraguard-stereo-audio-cable"
           }
         }
       },
