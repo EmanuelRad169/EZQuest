@@ -147,7 +147,8 @@
             "stat": "8-in-1",
             "label": "Hub Expansion",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_E_53e16a4a-1b01-4981-95d4-4250d8ec2a70.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_E_53e16a4a-1b01-4981-95d4-4250d8ec2a70.jpg",
+            "link": "/products/usb-c-multimedia-hub-adapter-8-ports"
           }
         },
         "f2": {
@@ -158,7 +159,8 @@
             "stat": "USB-C",
             "label": "Fast Charging & Sync",
             "sublabel": "",
-            "image": "shopify://shop_images/DT_Family_Card_F_0a1a49f9-77e6-4e40-9035-4ccbffb89906.jpg"
+            "image": "shopify://shop_images/DT_Family_Card_F_0a1a49f9-77e6-4e40-9035-4ccbffb89906.jpg",
+            "link": "/products/mini-30w-gan-usb-c-pd-wall-charger"
           }
         },
         "f3": {
