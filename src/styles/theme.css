@@ -13189,11 +13189,12 @@ body.template-index .home-hero-slide {
   display: grid;
   gap: 1.5rem;
   align-items: center;
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #fff, rgba(248, 250, 252, 0.96));
-  padding: clamp(1.25rem, 3vw, 2rem);
-  box-shadow: var(--shadow-soft);
+  /* No outer card — sits flush on the page (product cards carry their own frames). */
+  border: 0;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -18538,18 +18539,10 @@ body.has-pdp-zoom-open [id*="tidio"] {
   background: #000 !important;
 }
 
-/* Round the branded "Buy with Shop" (Shop Pay) button to match the pill
-   Add-to-cart button. It's a web component, so clip the container/host to a
-   pill (and set the exposed part radius where supported). */
-.product-form-payment .shopify-payment-button,
-.product-form-payment .shopify-payment-button__button--branded,
-.product-form-payment shop-pay-button {
-  border-radius: 980px !important;
-  overflow: hidden !important;
-}
-.product-form-payment shop-pay-button::part(button) {
-  border-radius: 980px !important;
-}
+/* The branded "Buy with Shop" button is a Shopify-controlled web component;
+   forcing a pill radius via the theme clipped it and looked broken, so it's
+   left at Shopify's clean default. (The unbranded "Buy it now" button, which
+   the theme fully controls, is pill-rounded above.) */
 
 /* Product pages are gallery-first (no dark page-hero), so the header must be
    solid from the top instead of a transparent overlay — otherwise the white
