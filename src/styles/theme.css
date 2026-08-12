@@ -6366,6 +6366,16 @@
     gap: 4px;
     pointer-events: none;
   }
+  /* Brand / tech badges live in the bottom-right corner so they never
+     collide with the sale / status badge in the top-left. */
+  .product-badges--br {
+    top: auto;
+    left: auto;
+    bottom: 10px;
+    right: 10px;
+    align-items: flex-end;
+  }
+  .product-badges:empty { display: none; }
 
   .product-badge {
     display: inline-block;
@@ -12830,14 +12840,50 @@ body.template-index .home-hero-slide {
 
 /* ── Section kicker: amber color + spec-compliant weight/tracking/line ──────── */
 .section-kicker {
-  color: var(--ez-amber, #FED300);
-  font-weight: 500;
+  /* Pure amber (#FED300) on white is ~1.3:1 contrast — illegible. Use a
+     darker gold that passes AA on light backgrounds while keeping the brand
+     feel. The amber accent dash (::before) stays bright. */
+  color: #8a6d0c;
+  font-weight: 600;
   letter-spacing: 0.08em;
 }
 
 .section-kicker::before {
   width: 1.25rem; /* 20px */
   height: 1.5px;
+}
+
+/* ── Inline text-link rule ───────────────────────────────────────────────────
+   Content links need a clear affordance (underline + hover colour) so they're
+   distinguishable from body text. Scoped to prose / content areas so it never
+   touches buttons, cards, chips, swatches or nav links. ── */
+.rte a,
+.article-content a,
+.policy-content a,
+.about-narrative__body a,
+.story-narrative__body a,
+.story-narrative__lead a,
+.product-bundle-upsell__body a,
+.page-faq-content a,
+.faq-more-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(15, 23, 42, 0.35);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.rte a:hover,
+.article-content a:hover,
+.policy-content a:hover,
+.about-narrative__body a:hover,
+.story-narrative__body a:hover,
+.story-narrative__lead a:hover,
+.product-bundle-upsell__body a:hover,
+.page-faq-content a:hover,
+.faq-more-link:hover {
+  color: #8a6d0c;
+  text-decoration-color: #8a6d0c;
 }
 
 /* ── Section empty state: dashed placeholder for content-pending sections ──── */

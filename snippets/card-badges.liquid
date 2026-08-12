@@ -1,0 +1,43 @@
+{%- comment -%}
+  Renders product card badges in two corners so they never overlap:
+  - Top-left  : status / sale  (Sold out, -NN%, Best seller, New)
+  - Bottom-right: brand / tech (USB4, Thunderbolt, GaN, DuraGuard, Dual 4K, 100W+)
+  Params: product_badge_list (array), product
+{%- endcomment -%}
+<div class="product-badges" aria-label="Product highlights">
+  {% for badge in product_badge_list limit: 3 %}
+    {% unless badge == blank %}
+      {% case badge %}
+        {% when 'soldout' %}
+          <span class="product-badge product-badge--soldout">Sold out</span>
+        {% when 'sale' %}
+          {% assign discount_pct = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
+          <span class="product-badge product-badge--sale">-{{ discount_pct }}%</span>
+        {% when 'bestseller' %}
+          <span class="product-badge product-badge--best">Best seller</span>
+        {% when 'new' %}
+          <span class="product-badge product-badge--new">New</span>
+      {% endcase %}
+    {% endunless %}
+  {% endfor %}
+</div>
+<div class="product-badges product-badges--br" aria-hidden="true">
+  {% for badge in product_badge_list limit: 3 %}
+    {% unless badge == blank %}
+      {% case badge %}
+        {% when 'usb4' %}
+          <span class="product-badge product-badge--tech">USB4</span>
+        {% when 'thunderbolt' %}
+          <span class="product-badge product-badge--tech">Thunderbolt</span>
+        {% when 'gan' %}
+          <span class="product-badge product-badge--tech">GaN</span>
+        {% when 'duraguard' %}
+          <span class="product-badge product-badge--tech">DuraGuard</span>
+        {% when 'dual-display' %}
+          <span class="product-badge product-badge--tech">Dual 4K</span>
+        {% when 'highwatt' %}
+          <span class="product-badge product-badge--tech">100W+</span>
+      {% endcase %}
+    {% endunless %}
+  {% endfor %}
+</div>
