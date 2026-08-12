@@ -351,7 +351,7 @@
                                   type="number"
                                   id="filter-price-min"
                                   name="{{ filter.min_value.param_name }}"
-                                  value="{{ filter.min_value.value | divided_by: 100 | default: '' }}"
+                                  value="{% if filter.min_value.value != blank %}{{ filter.min_value.value | divided_by: 100 }}{% endif %}"
                                   min="0"
                                   max="{{ filter.range_max | divided_by: 100 }}"
                                   placeholder="0"
@@ -368,7 +368,7 @@
                                   type="number"
                                   id="filter-price-max"
                                   name="{{ filter.max_value.param_name }}"
-                                  value="{{ filter.max_value.value | divided_by: 100 | default: '' }}"
+                                  value="{% if filter.max_value.value != blank %}{{ filter.max_value.value | divided_by: 100 }}{% endif %}"
                                   min="0"
                                   max="{{ filter.range_max | divided_by: 100 }}"
                                   placeholder="{{ filter.range_max | divided_by: 100 }}"
@@ -537,7 +537,12 @@
         var sortSelect = document.getElementById('CollectionSort');
         if (sortSelect && sortSelect.value) params.set('sort_by', sortSelect.value);
         var toDelete = [];
-        params.forEach(function(v, k) { if (!v) toDelete.push(k); });
+        params.forEach(function(v, k) {
+          // Drop empty params, and any price bound of "0" — an empty price
+          // filter must not submit as gte=0/lte=0, which matches nothing.
+          if (!v) toDelete.push(k);
+          else if (k.indexOf('filter.v.price') === 0 && v === '0') toDelete.push(k);
+        });
         toDelete.forEach(function(k) { params.delete(k); });
         return window.location.pathname + '?' + params.toString();
       }
