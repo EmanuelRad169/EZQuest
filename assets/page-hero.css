@@ -107,6 +107,12 @@
   flex: 0 0 auto;
 }
 
+/* Mobile: hide the hero trust chips so the hero stays compact above the fold.
+   The same reassurances appear elsewhere (footer/announcement/cart). */
+@media (max-width: 767px) {
+  .page-hero__trust { display: none; }
+}
+
 /* Staggered entrance (reduced-motion safe) */
 @media (prefers-reduced-motion: no-preference) {
   .page-hero__inner > * {
