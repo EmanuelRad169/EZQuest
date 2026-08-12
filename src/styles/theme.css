@@ -10355,6 +10355,17 @@
       pointer-events: auto;
       transform: none;
     }
+
+    /* On touch, tapping the card/button triggers :focus-within, which on
+       desktop applies transform: translateX(-50%) to re-center the absolute
+       button. On mobile the button is static, so that transform shoved it
+       half its width off-screen. Keep it put. */
+    .product-card:hover .quick-add-btn,
+    .product-card:focus-within .quick-add-btn,
+    .product-card-tile:hover .quick-add-btn,
+    .product-card-tile:focus-within .quick-add-btn {
+      transform: none;
+    }
   }
 
   /* Badge — minimal pill, top-left of image */
