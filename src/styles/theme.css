@@ -6374,6 +6374,8 @@
     bottom: 10px;
     right: 10px;
     align-items: flex-end;
+    /* Sit below the "View options" / quick-add pill (z-index 2) when they overlap. */
+    z-index: 1;
   }
   .product-badges:empty { display: none; }
 
@@ -6421,8 +6423,9 @@
   }
 
   .product-badge--tech {
-    background: #e6f1fb;
-    color: #0c447c;
+    /* Match the top-corner sale badge palette: amber background, black text. */
+    background: var(--ez-amber, #FED300);
+    color: #111;
   }
 
   .product-card-featured-rating-badge {
@@ -18641,6 +18644,28 @@ body.template-product .site-header--hero-overlay .site-header-locale__select{col
 .site-header--hero-overlay.is-scrolled .site-header-locale__select:focus,
 body.template-product .site-header--hero-overlay .site-header-locale__select:hover,
 body.template-product .site-header--hero-overlay .site-header-locale__select:focus{background-color:rgba(0,0,0,.06)}
+/* Locale caret as a CSS chevron so it inherits the header colour state
+   (white at rest, dark on scroll / menu-open / product pages) — the old inline
+   background chevron was hard-coded white and stayed white on light headers. */
+.site-header-locale{position:relative}
+.site-header-locale::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  top:50%;
+  width:6px;height:6px;
+  border-right:1.5px solid #fff;
+  border-bottom:1.5px solid #fff;
+  transform:translateY(-70%) rotate(45deg);
+  pointer-events:none;
+  transition:border-color .15s ease;
+}
+.site-header--hero-overlay.is-scrolled .site-header-locale::after,
+.site-header--hero-overlay.is-menu-open .site-header-locale::after,
+.site-header--hero-overlay:has(.mega-menu-trigger[aria-expanded='true']) .site-header-locale::after,
+body.template-product .site-header--hero-overlay .site-header-locale::after{
+  border-color:rgba(0,0,0,.88);
+}
 @media (max-width:1023px){.site-header-locale{display:none}}
 
 /* Hide ComparExpert free-tier "Powered by Helptochoose" branding */
