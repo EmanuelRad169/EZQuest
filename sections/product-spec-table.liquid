@@ -51,7 +51,7 @@
 
       <div class="spec-table-shell">
         <div class="spec-table-head">
-          <p class="section-kicker">Technical Profile</p>
+          <p class="section-kicker">{{ section.settings.table_kicker | default: 'Technical Profile' }}</p>
         </div>
 
         <div class="spec-table-body">
@@ -77,6 +77,7 @@
 {
   "name": "Product spec table",
   "settings": [
+    { "type": "text", "id": "table_kicker", "label": "Table kicker", "default": "Technical Profile" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Technical sheet" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Technical sheet" },
     { "type": "textarea", "id": "copy", "label": "Copy", "default": "Review the key ports, charging, display, and host details that matter most before you commit." },

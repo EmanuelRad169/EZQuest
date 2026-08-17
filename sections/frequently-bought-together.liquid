@@ -65,7 +65,7 @@
         </div>
 
         <div class="fbt-summary">
-          <p class="fbt-summary__label">Total price</p>
+          <p class="fbt-summary__label">{{ section.settings.total_label | default: 'Total price' }}</p>
           <p class="fbt-summary__price" id="fbt-total"></p>
           <div class="fbt-checkboxes" id="fbt-checkboxes"></div>
           <button
@@ -74,7 +74,7 @@
             id="fbt-add-all"
             aria-label="Add selected items to cart"
           >
-            Add all to cart
+            {{ section.settings.add_all_label | default: 'Add all to cart' }}
           </button>
           {% if section.settings.note != blank %}
             <p class="fbt-summary__note">{{ section.settings.note | escape }}</p>
@@ -108,6 +108,18 @@
       "id": "note",
       "label": "Note",
       "default": "Ships together · Free over $90"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total-price label",
+      "default": "Total price"
+    },
+    {
+      "type": "text",
+      "id": "add_all_label",
+      "label": "Add-all button",
+      "default": "Add all to cart"
     }
   ],
   "blocks": [

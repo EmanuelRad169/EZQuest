@@ -149,7 +149,7 @@
             assign story_eyebrow = block.settings.eyebrow
             assign story_visual_variant = 'hero'
             if story_eyebrow == blank and section.settings.show_sequence
-              assign story_eyebrow = 'Feature'
+              assign story_eyebrow = section.settings.structured_eyebrow | default: 'Feature'
             endif
             if forloop.index == 2
               assign story_visual_variant = 'ports'
@@ -202,7 +202,7 @@
           <article class="compare-card scroll-snap-item">
             {% render 'owned-product-visual', product_handle: product.handle, product_title: fallback_title, variant: story_visual_variant, kind: 'story', width: 1200, height: 900, class: 'hero-media-frame aspect-card w-full object-cover' %}
             <div class="mt-5 flex items-center justify-between gap-4">
-              <p class="section-kicker">Feature</p>
+              <p class="section-kicker">{{ section.settings.structured_eyebrow | default: 'Feature' }}</p>
               {% if section.settings.show_sequence %}
                 <span class="text-sm font-medium text-slate-400">{{ i | prepend: '0' }}</span>
               {% endif %}

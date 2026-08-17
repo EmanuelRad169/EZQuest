@@ -116,12 +116,12 @@
 
         {%- comment -%} ── No results ── {%- endcomment -%}
         <div class="search-empty">
-          <p class="section-kicker">No Results</p>
-          <h2 class="search-empty__heading">No matches for &ldquo;{{ search.terms | escape }}&rdquo;</h2>
-          <p class="search-empty__body">Try a product name, connection type, compatibility keyword, or support topic.</p>
+          <p class="section-kicker">{{ section.settings.no_results_kicker | default: 'No Results' }}</p>
+          <h2 class="search-empty__heading">{{ section.settings.no_results_prefix | default: 'No matches for' }} &ldquo;{{ search.terms | escape }}&rdquo;</h2>
+          <p class="search-empty__body">{{ section.settings.no_results_body | default: 'Try a product name, connection type, compatibility keyword, or support topic.' }}</p>
 
           <div class="search-empty__suggestions">
-            <h3 class="search-empty__sub">Popular searches</h3>
+            <h3 class="search-empty__sub">{{ section.settings.popular_heading | default: 'Popular searches' }}</h3>
             <div class="search-empty__chips">
               <a href="{{ routes.search_url }}?q=usb-c+hub&type=product,article,page" class="search-empty__chip">USB-C Hub</a>
               <a href="{{ routes.search_url }}?q=charger&type=product,article,page" class="search-empty__chip">Charger</a>
@@ -133,7 +133,7 @@
           </div>
 
           <div class="search-empty__categories">
-            <h3 class="search-empty__sub">Browse by category</h3>
+            <h3 class="search-empty__sub">{{ section.settings.categories_heading | default: 'Browse by category' }}</h3>
             <div class="search-empty__cat-grid">
               <a href="{{ routes.collections_url }}/hubs-adapters" class="search-empty__cat">Hubs &amp; Adapters</a>
               <a href="{{ routes.collections_url }}/chargers" class="search-empty__cat">Chargers</a>
@@ -143,8 +143,8 @@
           </div>
 
           <div class="search-empty__actions">
-            <a href="/pages/support" class="button-secondary">Open support center</a>
-            <a href="/pages/compare" class="site-meta-link">Compare products</a>
+            <a href="/pages/support" class="button-secondary">{{ section.settings.support_button | default: 'Open support center' }}</a>
+            <a href="/pages/compare" class="site-meta-link">{{ section.settings.compare_link | default: 'Compare products' }}</a>
           </div>
         </div>
 
@@ -162,12 +162,12 @@
 
       {%- comment -%} ── Pre-search state ── {%- endcomment -%}
       <div class="search-empty-shell">
-        <p class="section-kicker">Search the Storefront</p>
+        <p class="section-kicker">{{ section.settings.presearch_kicker | default: 'Search the Storefront' }}</p>
         <h2 class="mt-4 text-2xl font-medium tracking-tight text-slate-950">
-          Start with a product name, resource type, or support topic
+          {{ section.settings.presearch_heading | default: 'Start with a product name, resource type, or support topic' }}
         </h2>
         <p class="mt-3 text-sm leading-7 text-slate-600">
-          Use search as the fastest bridge between shopping, setup guidance, downloads, and support.
+          {{ section.settings.presearch_copy | default: 'Use search as the fastest bridge between shopping, setup guidance, downloads, and support.' }}
         </p>
       </div>
 
@@ -208,6 +208,19 @@
 {% schema %}
 {
   "name": "Main search",
-  "settings": []
+  "settings": [
+    { "type": "header", "content": "No-results state" },
+    { "type": "text", "id": "no_results_kicker", "label": "Kicker", "default": "No Results" },
+    { "type": "text", "id": "no_results_prefix", "label": "Heading prefix (before search term)", "default": "No matches for" },
+    { "type": "text", "id": "no_results_body", "label": "Body", "default": "Try a product name, connection type, compatibility keyword, or support topic." },
+    { "type": "text", "id": "popular_heading", "label": "Popular-searches heading", "default": "Popular searches" },
+    { "type": "text", "id": "categories_heading", "label": "Browse-by-category heading", "default": "Browse by category" },
+    { "type": "text", "id": "support_button", "label": "Support button", "default": "Open support center" },
+    { "type": "text", "id": "compare_link", "label": "Compare link", "default": "Compare products" },
+    { "type": "header", "content": "Pre-search state" },
+    { "type": "text", "id": "presearch_kicker", "label": "Kicker", "default": "Search the Storefront" },
+    { "type": "text", "id": "presearch_heading", "label": "Heading", "default": "Start with a product name, resource type, or support topic" },
+    { "type": "textarea", "id": "presearch_copy", "label": "Copy", "default": "Use search as the fastest bridge between shopping, setup guidance, downloads, and support." }
+  ]
 }
 {% endschema %}
