@@ -348,7 +348,8 @@
 .ez-mega-shop__tile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 10px 14px;
   display: block;
 }
 .ez-mega-shop__tile-media svg {
