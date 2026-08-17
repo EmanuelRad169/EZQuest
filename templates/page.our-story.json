@@ -126,7 +126,31 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/ezquest-story-hero.png",
-        "timeline_image": "shopify://shop_images/F3CE834E-3F7F-4070-880A-5BCE8EA6E738.png"
+        "breadcrumb_label": "Our story",
+        "hero_kicker": "Est. 1994 · Yorba Linda, California",
+        "hero_heading": "Built for People Who Connect Everything",
+        "hero_body": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one.",
+        "hero_cta_label": "Shop Products",
+        "hero_cta_url": "",
+        "hero_cta2_label": "Contact us",
+        "hero_cta2_url": "",
+        "narrative_kicker": "Our Story",
+        "narrative_lead": "Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people.",
+        "narrative_body": "<p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?”</p><p>Perhaps the greatest compliment we receive isn’t an award, it’s hearing from customers who are still using products they purchased decades ago.</p>",
+        "closer_line1": "Our goal has never been to earn a sale.",
+        "closer_line2_pre": "Our goal is to",
+        "closer_accent": "earn a fan.",
+        "closer_sub": "One customer at a time.",
+        "values_kicker": "What We Believe",
+        "values_heading": "Our Core Values",
+        "timeline_kicker": "Our Journey",
+        "timeline_heading": "30 Years of Connectivity",
+        "timeline_image": "shopify://shop_images/F3CE834E-3F7F-4070-880A-5BCE8EA6E738.png",
+        "cta_kicker": "Our Products",
+        "cta_heading": "Explore What We Make",
+        "cta_subhead": "Premium accessories for every desk, every device.",
+        "cta_label": "Browse Products",
+        "cta_url": ""
       }
     }
   },
