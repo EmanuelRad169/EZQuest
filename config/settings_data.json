@@ -21,24 +21,25 @@
     "support_warranty_url": "/pages/warranty",
     "content_for_index": [],
     "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
       "6143736321357441667": {
         "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc",
         "disabled": false,
         "settings": {}
       },
+      "940650814580334357": {
+        "type": "shopify://apps/product-compare/blocks/app-embed-block/2ec083cc-5677-4d10-a2af-c02464aa361b",
+        "disabled": false,
+        "settings": {}
+      },
       "6096544053266484610": {
         "type": "shopify://apps/comparexpert/blocks/app-embed/c855b225-94ed-4209-962c-0fcdc53b09bf",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "widget_layout": "bottom_bar",
           "widget_bottom_offset": 20,
           "widget_side_offset": 20,
           "widget_z_index": 99999999,
+          "hide_shopify_preview_bar": true,
           "label_item": "Item",
           "label_items": "Items",
           "label_selected": "selected",
