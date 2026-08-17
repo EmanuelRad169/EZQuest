@@ -234,7 +234,7 @@
   }
 }());
 
-// ── Desktop circular lens hover zoom ──────────────────────────────────────
+// ── Desktop full-image hover zoom (whole square magnifies in place, old-site style) ──
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   if (window.innerWidth < 1024) return;
@@ -242,14 +242,14 @@
   var container = document.querySelector('[data-zoom-container]');
   if (!container) return;
 
-  // Inject lens element
-  var lens = document.createElement('div');
-  lens.className = 'pdp-zoom-lens';
-  lens.setAttribute('aria-hidden', 'true');
-  container.appendChild(lens);
+  var ZOOM = 2.3; // magnification factor of the whole image
 
-  var LENS_SIZE = 280; // px — must match --lens-size in pdp.css
-  var ZOOM_PX   = 1800; // background-size: higher = more zoom
+  // Overlay image that shows the magnified, high-resolution view.
+  var surface = document.createElement('img');
+  surface.className = 'pdp-zoom-surface';
+  surface.setAttribute('aria-hidden', 'true');
+  surface.alt = '';
+  container.appendChild(surface);
 
   var rafId = null;
   var pendingEvent = null;
@@ -258,7 +258,8 @@
   if (hintText) hintText.textContent = 'Hover to zoom';
 
   function getImg() {
-    return container.querySelector('img');
+    // The visible product image (skip the overlay itself)
+    return container.querySelector('img:not(.pdp-zoom-surface)');
   }
 
   function highResSrc(img) {
@@ -273,73 +274,62 @@
     }
   }
 
-  function setLensImage(img) {
+  function loadSurface(img) {
+    if (!img) return;
     var src = highResSrc(img);
-    lens.style.backgroundImage = "url('" + src + "')";
-    lens.style.backgroundSize = ZOOM_PX + 'px ' + ZOOM_PX + 'px';
-    var preload = new Image();
-    preload.src = src;
+    if (surface.getAttribute('src') !== src) surface.src = src;
   }
 
-  function updateLens(e) {
+  function updateZoom(e) {
     rafId = null;
     var img = getImg();
     if (!img || !isActive) return;
 
-    var imgRect = img.getBoundingClientRect();
-    var cRect   = container.getBoundingClientRect();
+    var rect = img.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
 
-    var x = e.clientX - imgRect.left;
-    var y = e.clientY - imgRect.top;
-
-    if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
-      lens.classList.remove('is-active');
+    // Cursor outside the rendered image → no zoom
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+      surface.classList.remove('is-active');
+      surface.style.transform = '';
       return;
     }
-    lens.classList.add('is-active');
 
-    // Lens position relative to container, centered on cursor, clamped to image bounds
-    var originX = imgRect.left - cRect.left;
-    var originY = imgRect.top  - cRect.top;
-    var lensX = originX + Math.max(0, Math.min(imgRect.width  - LENS_SIZE, x - LENS_SIZE / 2));
-    var lensY = originY + Math.max(0, Math.min(imgRect.height - LENS_SIZE, y - LENS_SIZE / 2));
-
-    lens.style.left = lensX + 'px';
-    lens.style.top  = lensY + 'px';
-
-    // Background-position: shift the high-res image so the area under the cursor shows
-    var ratioX = ZOOM_PX / imgRect.width;
-    var ratioY = ZOOM_PX / imgRect.height;
-    var bgX = -(x * ratioX) + LENS_SIZE / 2;
-    var bgY = -(y * ratioY) + LENS_SIZE / 2;
-    lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+    surface.classList.add('is-active');
+    // Zoom toward the point under the cursor
+    var ox = (x / rect.width) * 100;
+    var oy = (y / rect.height) * 100;
+    surface.style.transformOrigin = ox + '% ' + oy + '%';
+    surface.style.transform = 'scale(' + ZOOM + ')';
   }
 
   container.addEventListener('mouseenter', function () {
     var img = getImg();
     if (!img) return;
     isActive = true;
-    setLensImage(img);
+    loadSurface(img);
   });
 
   container.addEventListener('mouseleave', function () {
     isActive = false;
-    lens.classList.remove('is-active');
+    surface.classList.remove('is-active');
+    surface.style.transform = '';
   });
 
   container.addEventListener('mousemove', function (e) {
     pendingEvent = e;
     if (rafId == null) {
-      rafId = requestAnimationFrame(function () { updateLens(pendingEvent); });
+      rafId = requestAnimationFrame(function () { updateZoom(pendingEvent); });
     }
   });
 
-  // After thumb switch, update the lens background to the new image
+  // After a thumbnail switch, point the overlay at the newly shown image
   document.addEventListener('click', function (e) {
     if (!e.target.closest('[data-pdp-thumb]')) return;
     setTimeout(function () {
       var img = getImg();
-      if (img) setLensImage(img);
+      if (img) loadSurface(img);
     }, 180);
   });
 }());

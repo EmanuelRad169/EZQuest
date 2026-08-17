@@ -1197,27 +1197,25 @@
   color: #27500a;
 }
 
-/* ── Hover zoom — circular lens overlay ── */
+/* ── Hover zoom — full-image inner zoom (whole square magnifies in place) ── */
 
-.pdp-zoom-lens {
-  --lens-size: 280px;
+.pdp-zoom-surface {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--lens-size);
-  height: var(--lens-size);
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.88);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-color: #fff;
-  display: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  transform-origin: center center;
+  will-change: transform;
   z-index: 5;
 }
 
-.pdp-zoom-lens.is-active {
-  display: block;
+.pdp-zoom-surface.is-active {
+  opacity: 1;
 }
 
 /* Keep buy-box fully visible — no fade */
@@ -1227,10 +1225,10 @@
   z-index: 10;
 }
 
-/* Crosshair cursor on desktop hover */
+/* Zoom-in cursor + clip the magnified overlay on desktop hover */
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-  .pdp-gallery-main { cursor: crosshair; }
-  .pdp-gallery-main img { cursor: crosshair; }
+  .pdp-gallery-main { cursor: zoom-in; overflow: hidden; }
+  .pdp-gallery-main img { cursor: zoom-in; }
 }
 
 /* ============================================ */

@@ -80,16 +80,8 @@
           "type": "menu_sub_link",
           "settings": {
             "column_title": "USB-C",
-            "label": "Card Readers",
+            "label": "Card Readers & Enclosures",
             "url": "/collections/usb-c-card-readers"
-          }
-        },
-        "sub_usbc_enclos": {
-          "type": "menu_sub_link",
-          "settings": {
-            "column_title": "USB-C",
-            "label": "Enclosures",
-            "url": "/collections/usb-c-enclosures"
           }
         },
         "col_cables": {
@@ -116,14 +108,6 @@
             "column_title": "Cables/Adapters",
             "label": "DisplayPort",
             "url": "/collections/displayport-cables-adapters"
-          }
-        },
-        "sub_cab_mdp": {
-          "type": "menu_sub_link",
-          "settings": {
-            "column_title": "Cables/Adapters",
-            "label": "Mini DisplayPort",
-            "url": "/collections/mini-displayport-cables"
           }
         },
         "sub_cab_audio": {
@@ -167,11 +151,9 @@
         "sub_usbc_cables",
         "sub_usbc_adapters",
         "sub_usbc_readers",
-        "sub_usbc_enclos",
         "col_cables",
         "sub_cab_hdmi",
         "sub_cab_dp",
-        "sub_cab_mdp",
         "sub_cab_audio",
         "col_power",
         "sub_pow_wall",
