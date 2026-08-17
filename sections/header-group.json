@@ -80,7 +80,7 @@
           "type": "menu_sub_link",
           "settings": {
             "column_title": "USB-C",
-            "label": "Card Readers & Enclosures",
+            "label": "USB-C Card Readers & Enclosures",
             "url": "/collections/usb-c-card-readers"
           }
         },

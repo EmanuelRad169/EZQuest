@@ -218,21 +218,70 @@
     endfor
   -%}
 
+  {%- liquid
+    # Subcategory tab groups — when viewing a sub-collection, show its sibling
+    # tabs and auto-highlight the one currently open (e.g. HDMI -> HDMI active).
+    assign subcat_handles = ''
+    assign subcat_labels = ''
+
+    assign grp_usbc_handles = 'usb-c-hubs,usb-c-cables-collection,usb-c-adapters,usb-c-card-readers'
+    assign grp_usbc_labels  = 'Hubs,Cables,Adapters,Card Readers & Enclosures'
+    assign grp_cab_handles  = 'hdmi-cables-adapters,displayport-cables-adapters,audio-cables'
+    assign grp_cab_labels   = 'HDMI,DisplayPort,Audio'
+    assign grp_pow_handles  = 'wall-chargers,car-chargers'
+    assign grp_pow_labels   = 'Wall Chargers,Car Chargers'
+
+    assign usbc_list = grp_usbc_handles | split: ','
+    assign cab_list  = grp_cab_handles | split: ','
+    assign pow_list  = grp_pow_handles | split: ','
+
+    if usbc_list contains collection.handle
+      assign subcat_handles = grp_usbc_handles
+      assign subcat_labels = grp_usbc_labels
+      assign subcat_group_label = 'USB-C'
+    elsif cab_list contains collection.handle
+      assign subcat_handles = grp_cab_handles
+      assign subcat_labels = grp_cab_labels
+      assign subcat_group_label = 'Cables & Adapters'
+    elsif pow_list contains collection.handle
+      assign subcat_handles = grp_pow_handles
+      assign subcat_labels = grp_pow_labels
+      assign subcat_group_label = 'Power'
+    endif
+  -%}
+
   <div class="collection-subnav">
     <div class="container-shell collection-subnav__inner">
 
-        <nav class="collection-subnav__tabs" aria-label="Collection families">
-          {% for family_handle in family_handle_list %}
-            {% assign family_collection = collections[family_handle] %}
-            {% if family_collection != blank %}
-              <a href="{{ family_collection.url }}"
-                 class="collection-subnav__tab{% if family_handle == collection.handle %} is-active{% endif %}"
-                 {% if family_handle == collection.handle %}aria-current="page"{% endif %}>
-                {{ family_collection.title }}<span class="collection-subnav__count"> ({{ family_collection.products_count }})</span>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </nav>
+        {% if subcat_handles != '' %}
+          {%- assign sc_h = subcat_handles | split: ',' -%}
+          {%- assign sc_l = subcat_labels | split: ',' -%}
+          <nav class="collection-subnav__tabs" aria-label="{{ subcat_group_label }} subcategories">
+            {% for sc_handle in sc_h %}
+              {% assign sc_collection = collections[sc_handle] %}
+              {% if sc_collection != blank %}
+                <a href="{{ sc_collection.url }}"
+                   class="collection-subnav__tab{% if sc_handle == collection.handle %} is-active{% endif %}"
+                   {% if sc_handle == collection.handle %}aria-current="page"{% endif %}>
+                  {{ sc_l[forloop.index0] }}<span class="collection-subnav__count"> ({{ sc_collection.products_count }})</span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        {% else %}
+          <nav class="collection-subnav__tabs" aria-label="Collection families">
+            {% for family_handle in family_handle_list %}
+              {% assign family_collection = collections[family_handle] %}
+              {% if family_collection != blank %}
+                <a href="{{ family_collection.url }}"
+                   class="collection-subnav__tab{% if family_handle == collection.handle %} is-active{% endif %}"
+                   {% if family_handle == collection.handle %}aria-current="page"{% endif %}>
+                  {{ family_collection.title }}<span class="collection-subnav__count"> ({{ family_collection.products_count }})</span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        {% endif %}
 
         <div class="collection-subnav__actions">
           {% if collection.filters.size > 0 %}
