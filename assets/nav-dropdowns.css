@@ -358,9 +358,9 @@
   stroke-width: 2;
   flex-shrink: 0;
 }
-.ez-mega-shop__tile--hubs    .ez-mega-shop__tile-media { background: linear-gradient(135deg, #E8E8EE 0%, #D5D5DD 100%); }
-.ez-mega-shop__tile--chargers .ez-mega-shop__tile-media { background: linear-gradient(135deg, #FAE8C8 0%, #F2D199 100%); }
-.ez-mega-shop__tile--cables  .ez-mega-shop__tile-media { background: linear-gradient(135deg, #D8EFDF 0%, #B5DCC4 100%); }
+.ez-mega-shop__tile--hubs    .ez-mega-shop__tile-media { background: #ffffff; }
+.ez-mega-shop__tile--chargers .ez-mega-shop__tile-media { background: #ffffff; }
+.ez-mega-shop__tile--cables  .ez-mega-shop__tile-media { background: #ffffff; }
 .ez-mega-shop__tile--hubs    .ez-mega-shop__tile-media svg { color: #1f2937; }
 .ez-mega-shop__tile--chargers .ez-mega-shop__tile-media svg { color: #78350f; }
 .ez-mega-shop__tile--cables  .ez-mega-shop__tile-media svg { color: #14532d; }
