@@ -5,24 +5,24 @@
     <div class="support-body__content pt-0">
   <div class="shub-stats grid grid-cols-4 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden mb-12 max-[768px]:grid-cols-2">
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">1–2 yr</span>
-      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">Warranty (varies by product)</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat1_number | default: '1–2 yr' }}</span>
+      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat1_label | default: 'Warranty (varies by product)' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">1 day</span>
-      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">Typical support response</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat2_number | default: '1 day' }}</span>
+      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat2_label | default: 'Typical support response' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">0</span>
-      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">Drivers required (most products)</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat3_number | default: '0' }}</span>
+      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat3_label | default: 'Drivers required (most products)' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">60+</span>
-      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">Products with documentation</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat4_number | default: '60+' }}</span>
+      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat4_label | default: 'Products with documentation' }}</span>
     </div>
   </div>
 
-  <p class="section-label text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-6 support-hub__topic-label mt-12">Browse by topic</p>
+  <p class="section-label text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-6 support-hub__topic-label mt-12">{{ section.settings.topic_label | default: 'Browse by topic' }}</p>
 
   <div class="shub-grid grid grid-cols-3 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden max-[900px]:grid-cols-2 max-[540px]:grid-cols-1">
     {% assign support_links = 'Downloads,Get drivers utilities and setup files,/pages/downloads,download|Manuals,Full product documentation and specs,/pages/manuals,manual|Firmware,Update your device software,/pages/firmware,firmware|User Guides,Step-by-step setup and usage,/pages/user-guides,guide|Compatibility,Check devices ports and systems,/pages/compatibility,compat|Warranty,Coverage terms and claim process,/pages/warranty,warranty|FAQ,Quick answers to common questions,/pages/faq,faq|Contact,Reach the EZQuest team directly,/pages/contact,contact' | split: '|' %}
@@ -73,7 +73,17 @@
   "name": "Support hub",
   "tag": "section",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Hero image" }
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "header", "content": "Stats bar" },
+    { "type": "text", "id": "stat1_number", "label": "Stat 1 number", "default": "1–2 yr" },
+    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Warranty (varies by product)" },
+    { "type": "text", "id": "stat2_number", "label": "Stat 2 number", "default": "1 day" },
+    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Typical support response" },
+    { "type": "text", "id": "stat3_number", "label": "Stat 3 number", "default": "0" },
+    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Drivers required (most products)" },
+    { "type": "text", "id": "stat4_number", "label": "Stat 4 number", "default": "60+" },
+    { "type": "text", "id": "stat4_label", "label": "Stat 4 label", "default": "Products with documentation" },
+    { "type": "text", "id": "topic_label", "label": "Topic grid label", "default": "Browse by topic" }
   ],
   "presets": [
     { "name": "Support hub" }
