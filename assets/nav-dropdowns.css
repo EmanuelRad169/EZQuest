@@ -339,7 +339,7 @@
 }
 
 .ez-mega-shop__tile-media {
-  flex: 0 0 60%;
+  flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
   display: flex;
