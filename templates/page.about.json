@@ -9,14 +9,30 @@
  */
 {
   "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "background_color": "#020617",
+        "kicker": "About",
+        "heading": "Built to Simplify Your Connections",
+        "subheading": "Since 1994, EZQuest has made it simpler to connect the devices that matter most.",
+        "height": 320,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "Shop Products",
+        "cta_link": "/collections",
+        "cta_secondary_label": "Our Story",
+        "cta_secondary_link": "/pages/our-story",
+        "show_trust": true,
+        "trust_1": "Up to 2-year warranty",
+        "trust_2": "30-day returns",
+        "trust_3": "Free shipping over $90",
+        "trust_4": ""
+      }
+    },
     "about": {
       "type": "about",
-      "settings": {
-        "cta_heading": "Explore What We Make",
-        "cta_body": "Premium accessories for every desk, every device.",
-        "cta_label": "Browse Products",
-        "cta_url": "/collections/all"
-      },
       "blocks": {
         "reason_1": {
           "type": "reason",
@@ -111,21 +127,27 @@
         "promise_3",
         "promise_4",
         "promise_5"
-      ]
-    },
-    "page_hero": {
-      "type": "page-hero",
+      ],
       "settings": {
-        "background_color": "#020617",
-        "overlay_opacity": 35,
-        "height": 320,
-        "heading": "Built to Simplify Your Connections",
-        "subheading": "Since 1994, EZQuest has made it simpler to connect the devices that matter most.",
-        "kicker": "About",
-        "cta_label": "Shop Products",
-        "cta_link": "/collections",
-        "cta_secondary_label": "Our Story",
-        "cta_secondary_link": "/pages/our-story"
+        "about_kicker": "Who We Are",
+        "about_lead": "For more than three decades, EZQuest has helped people navigate every major evolution in computer connectivity. From the early days of SCSI to today’s USB-C, Thunderbolt, and USB4 technologies, we’ve remained committed to one mission: designing products that make technology easier, smarter, and more reliable.",
+        "about_body": "<p>Founded in 1994 by electronics engineer Ebrahim Zmehrir, EZQuest was built on a simple philosophy: listen first, design second. Rather than following market trends, we believe every product should solve a genuine customer problem.</p><p>During the FireWire era, EZQuest became one of the industry’s early innovators, helping creative professionals transition to digital video editing. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, EZQuest designs premium USB-C and Thunderbolt accessories including hubs, docking stations, adapters, cables, power solutions, and productivity accessories for users around the world.</p><p>Every product begins with one simple question: What problem are we solving? If we cannot improve the customer experience, we simply don’t build the product.</p><p>We believe innovation isn’t about adding more features. It’s about adding the right features. At EZQuest, engineering always comes before marketing.</p>",
+        "about_closer": "While technology will continue to change, our philosophy never will. We listen. We innovate. We improve. And above all, we strive to earn something far more valuable than a sale, we strive to earn your trust.",
+        "mission_kicker": "Our Mission",
+        "mission_before": "To design thoughtfully engineered connectivity solutions that solve real-world problems, deliver meaningful innovation, and",
+        "mission_highlight": "earn the trust of our customers",
+        "mission_after": "through exceptional quality, reliability, and service.",
+        "why_kicker": "Why EZQuest",
+        "why_heading": "Why Choose EZQuest?",
+        "promise_kicker": "The EZQuest Promise",
+        "promise_heading": "Every Product Must Earn Its Place",
+        "promise_finale_1": "We don’t build products simply to gain customers.",
+        "promise_finale_pre": "We build products to",
+        "promise_finale_accent": "earn lifelong fans",
+        "cta_heading": "Explore What We Make",
+        "cta_body": "Premium accessories for every desk, every device.",
+        "cta_label": "Browse Products",
+        "cta_url": "/collections/all"
       }
     }
   },
