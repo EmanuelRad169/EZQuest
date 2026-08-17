@@ -5,9 +5,9 @@
 {% comment %} ── HERO ─────────────────────────────────────── {% endcomment %}
 <section class="ts-hero bg-[linear-gradient(135deg,var(--ez-light)_0%,#ffffff_100%)] border-b border-black/[6%] pt-[clamp(52px,6vw,84px)] pb-[clamp(36px,4vw,52px)]">
   <div class="ts-hero__inner max-w-[80rem] mx-auto px-[clamp(1.25rem,5vw,2rem)]">
-    <p class="ts-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3.5">Troubleshooting</p>
-    <h1 class="ts-hero__heading text-[clamp(32px,5vw,60px)] font-medium tracking-[-0.04em] leading-[1.05] text-[var(--ez-black)] mb-4 max-w-[18ch]">Fix it by symptom</h1>
-    <p class="ts-hero__sub text-[clamp(15px,1.5vw,17px)] text-[var(--ez-grey)] leading-[1.65] max-w-[54ch] m-0">Start with the symptom you see. Take the shortest recovery step. Escalate to support only if the issue stays.</p>
+    <p class="ts-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3.5">{{ section.settings.hero_kicker | default: 'Troubleshooting' }}</p>
+    <h1 class="ts-hero__heading text-[clamp(32px,5vw,60px)] font-medium tracking-[-0.04em] leading-[1.05] text-[var(--ez-black)] mb-4 max-w-[18ch]">{{ section.settings.hero_heading | default: 'Fix it by symptom' }}</h1>
+    <p class="ts-hero__sub text-[clamp(15px,1.5vw,17px)] text-[var(--ez-grey)] leading-[1.65] max-w-[54ch] m-0">{{ section.settings.hero_sub | default: 'Start with the symptom you see. Take the shortest recovery step. Escalate to support only if the issue stays.' }}</p>
   </div>
 </section>
 
@@ -171,9 +171,9 @@
 {% comment %} ── WHERE TO GO FROM HERE ──────────────────── {% endcomment %}
 <section class="ts-resources bg-[var(--ez-light)] py-[clamp(52px,6vw,80px)]">
   <div class="ts-resources__inner max-w-[80rem] mx-auto px-[clamp(1.25rem,5vw,2rem)]">
-    <p class="ts-resources__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">Next Step</p>
-    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">Where to go from here</h2>
-    <p class="ts-resources__sub text-[15px] text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] mb-10">If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation.</p>
+    <p class="ts-resources__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.next_kicker | default: 'Next Step' }}</p>
+    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">{{ section.settings.next_heading | default: 'Where to go from here' }}</h2>
+    <p class="ts-resources__sub text-[15px] text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] mb-10">{{ section.settings.next_sub | default: "If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation." }}</p>
     <div class="ts-resource-grid grid grid-cols-3 gap-4 max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
 
       <a href="/pages/downloads" class="ts-resource-card group bg-white border border-black/[7%] rounded-[18px] p-6 flex items-start gap-4 no-underline transition-[border-color,box-shadow] duration-200 hover:border-[var(--ez-amber-35)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)]">
@@ -229,14 +229,35 @@
 <section class="wtb-cta">
   <div class="page-cta__inner container-shell">
     <div class="page-cta__copy">
-      <p class="page-cta__kicker">Support</p>
-      <p class="wtb-cta__text">Still need help?</p>
+      <p class="page-cta__kicker">{{ section.settings.cta_kicker | default: 'Support' }}</p>
+      <p class="wtb-cta__text">{{ section.settings.cta_text | default: 'Still need help?' }}</p>
     </div>
-    <a href="/pages/contact" class="btn btn--primary">
-      Submit a request
+    <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="btn btn--primary">
+      {{ section.settings.cta_label | default: 'Submit a request' }}
       {%- render 'icon', name: 'arrow-right', size: 16 -%}
     </a>
   </div>
 </section>
 
-{% schema %}{"name":"Troubleshooting guide","tag":"section","settings":[],"presets":[{"name":"Troubleshooting guide"}]}{% endschema %}
+{% schema %}
+{
+  "name": "Troubleshooting guide",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_kicker", "label": "Kicker", "default": "Troubleshooting" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Fix it by symptom" },
+    { "type": "textarea", "id": "hero_sub", "label": "Subheading", "default": "Start with the symptom you see. Take the shortest recovery step. Escalate to support only if the issue stays." },
+    { "type": "header", "content": "Where to go from here" },
+    { "type": "text", "id": "next_kicker", "label": "Kicker", "default": "Next Step" },
+    { "type": "text", "id": "next_heading", "label": "Heading", "default": "Where to go from here" },
+    { "type": "textarea", "id": "next_sub", "label": "Subheading", "default": "If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation." },
+    { "type": "header", "content": "Bottom CTA" },
+    { "type": "text", "id": "cta_kicker", "label": "Kicker", "default": "Support" },
+    { "type": "text", "id": "cta_text", "label": "Text", "default": "Still need help?" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Submit a request" },
+    { "type": "url", "id": "cta_url", "label": "Button URL" }
+  ],
+  "presets": [{ "name": "Troubleshooting guide" }]
+}
+{% endschema %}
