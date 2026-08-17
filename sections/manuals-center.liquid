@@ -2,13 +2,12 @@
 
 <section class="support-hero relative overflow-hidden bg-[var(--ez-light)] pt-[clamp(48px,6vw,80px)] pb-[clamp(32px,4vw,48px)]">
   <div class="support-hero__wrap w-full">
-    <p class="support-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">Manuals</p>
+    <p class="support-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.hero_kicker | default: 'Manuals' }}</p>
     <h1 class="support-hero__heading text-[clamp(28px,4.5vw,52px)] font-medium tracking-[-0.035em] leading-[1.08] text-[var(--ez-black)] mb-3.5 max-w-[18ch]">
-      Product manuals &amp;<br>documentation
+      {{ section.settings.hero_heading | default: 'Product manuals & documentation' }}
     </h1>
     <p class="support-hero__sub text-[clamp(15px,1.5vw,17px)] text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] m-0">
-      Full setup guides, spec sheets, and reference manuals
-      for every current EZQuest product.
+      {{ section.settings.hero_sub | default: 'Full setup guides, spec sheets, and reference manuals for every current EZQuest product.' }}
     </p>
   </div>
 </section>
@@ -83,17 +82,29 @@
 
 {%- render 'page-cta',
   variant: 'dark',
-  kicker: 'Manuals',
-  heading: 'Missing a manual?',
-  subhead: 'Let us know the product and we’ll send it.',
-  primary_label: 'Request manual',
-  primary_url: '/pages/contact'
+  kicker: section.settings.cta_kicker | default: 'Manuals',
+  heading: section.settings.cta_heading | default: 'Missing a manual?',
+  subhead: section.settings.cta_subhead | default: 'Let us know the product and we’ll send it.',
+  primary_label: section.settings.cta_label | default: 'Request manual',
+  primary_url: section.settings.cta_url | default: '/pages/contact'
 -%}
 
 {% schema %}
 {
   "name": "Manuals",
   "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_kicker", "label": "Kicker", "default": "Manuals" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Product manuals & documentation" },
+    { "type": "textarea", "id": "hero_sub", "label": "Subheading", "default": "Full setup guides, spec sheets, and reference manuals for every current EZQuest product." },
+    { "type": "header", "content": "Bottom CTA" },
+    { "type": "text", "id": "cta_kicker", "label": "Kicker", "default": "Manuals" },
+    { "type": "text", "id": "cta_heading", "label": "Heading", "default": "Missing a manual?" },
+    { "type": "text", "id": "cta_subhead", "label": "Subhead", "default": "Let us know the product and we’ll send it." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Request manual" },
+    { "type": "url", "id": "cta_url", "label": "Button URL" }
+  ],
   "blocks": [
     {
       "type": "manual",

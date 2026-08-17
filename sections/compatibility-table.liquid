@@ -2,13 +2,12 @@
 
 <section class="support-hero relative overflow-hidden bg-[var(--ez-light)] pt-[clamp(48px,6vw,80px)] pb-[clamp(32px,4vw,48px)]">
   <div class="support-hero__wrap w-full">
-    <p class="support-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">Compatibility</p>
+    <p class="support-hero__kicker text-[11px] font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.hero_kicker | default: 'Compatibility' }}</p>
     <h1 class="support-hero__heading text-[clamp(28px,4.5vw,52px)] font-medium tracking-[-0.035em] leading-[1.08] text-[var(--ez-black)] mb-3.5 max-w-[18ch]">
-      Device compatibility<br>checker
+      {{ section.settings.hero_heading | default: 'Device compatibility checker' }}
     </h1>
     <p class="support-hero__sub text-[clamp(15px,1.5vw,17px)] text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] m-0">
-      Find out if your device, port, or operating system
-      works with an EZQuest product before you buy.
+      {{ section.settings.hero_sub | default: 'Find out if your device, port, or operating system works with an EZQuest product before you buy.' }}
     </p>
   </div>
 </section>
@@ -128,11 +127,11 @@
 
 {%- render 'page-cta',
   variant: 'dark',
-  kicker: 'Compatibility',
-  heading: 'Don’t see your device?',
-  subhead: 'Send us your device details and we’ll verify compatibility for you.',
-  primary_label: 'Ask about compatibility',
-  primary_url: '/pages/contact'
+  kicker: section.settings.cta_kicker | default: 'Compatibility',
+  heading: section.settings.cta_heading | default: 'Don’t see your device?',
+  subhead: section.settings.cta_subhead | default: 'Send us your device details and we’ll verify compatibility for you.',
+  primary_label: section.settings.cta_label | default: 'Ask about compatibility',
+  primary_url: section.settings.cta_url | default: '/pages/contact'
 -%}
 
 <style>
@@ -174,4 +173,22 @@
 })();
 </script>
 
-{% schema %}{"name":"Compatibility","tag":"section","settings":[],"presets":[{"name":"Compatibility"}]}{% endschema %}
+{% schema %}
+{
+  "name": "Compatibility",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_kicker", "label": "Kicker", "default": "Compatibility" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Device compatibility checker" },
+    { "type": "textarea", "id": "hero_sub", "label": "Subheading", "default": "Find out if your device, port, or operating system works with an EZQuest product before you buy." },
+    { "type": "header", "content": "Bottom CTA" },
+    { "type": "text", "id": "cta_kicker", "label": "Kicker", "default": "Compatibility" },
+    { "type": "text", "id": "cta_heading", "label": "Heading", "default": "Don’t see your device?" },
+    { "type": "text", "id": "cta_subhead", "label": "Subhead", "default": "Send us your device details and we’ll verify compatibility for you." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Ask about compatibility" },
+    { "type": "url", "id": "cta_url", "label": "Button URL" }
+  ],
+  "presets": [{ "name": "Compatibility" }]
+}
+{% endschema %}

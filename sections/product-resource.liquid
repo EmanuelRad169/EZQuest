@@ -51,19 +51,19 @@
   {% comment %} ── PAGE TEMPLATE: JS router + picker fallback ── {% endcomment %}
   <div class="pr-picker container-shell" id="pr-picker-root">
     <div class="pr-picker__content">
-      <p class="section-kicker">Resources</p>
-      <h1 class="pr-picker__title">Find your product resources</h1>
+      <p class="section-kicker">{{ section.settings.picker_kicker | default: 'Resources' }}</p>
+      <h1 class="pr-picker__title">{{ section.settings.picker_heading | default: 'Find your product resources' }}</h1>
       <p class="pr-picker__copy">
-        Enter the product handle from your packaging, or scan the QR code to go directly to setup, downloads, and support for your device.
+        {{ section.settings.picker_copy | default: 'Enter the product handle from your packaging, or scan the QR code to go directly to setup, downloads, and support for your device.' }}
       </p>
       <form class="pr-picker__form" id="pr-picker-form">
         <input
           type="text"
           id="pr-picker-input"
           class="pr-picker__input"
-          placeholder="e.g. usb-c-hub-7-in-1"
+          placeholder="{{ section.settings.picker_placeholder | default: 'e.g. usb-c-hub-7-in-1' | escape }}"
           aria-label="Product handle">
-        <button type="submit" class="btn btn--primary">Go</button>
+        <button type="submit" class="btn btn--primary">{{ section.settings.picker_button | default: 'Go' }}</button>
       </form>
       <p class="pr-picker__hint" id="pr-picker-hint" hidden>
         Product not found. Check the handle and try again, or visit
@@ -264,6 +264,13 @@
 {
   "name": "Product resource page",
   "tag": "div",
-  "settings": []
+  "settings": [
+    { "type": "header", "content": "Lookup panel" },
+    { "type": "text", "id": "picker_kicker", "label": "Kicker", "default": "Resources" },
+    { "type": "text", "id": "picker_heading", "label": "Heading", "default": "Find your product resources" },
+    { "type": "textarea", "id": "picker_copy", "label": "Copy", "default": "Enter the product handle from your packaging, or scan the QR code to go directly to setup, downloads, and support for your device." },
+    { "type": "text", "id": "picker_placeholder", "label": "Input placeholder", "default": "e.g. usb-c-hub-7-in-1" },
+    { "type": "text", "id": "picker_button", "label": "Button label", "default": "Go" }
+  ]
 }
 {% endschema %}
