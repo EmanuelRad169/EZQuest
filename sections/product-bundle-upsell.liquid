@@ -1,6 +1,7 @@
 {%- liquid
   assign related_collection = product.collections.first
   assign rec_limit = section.settings.products_to_show | default: 3
+  assign curated_related = product.metafields.custom.related.value
 -%}
 
 <section
@@ -20,7 +21,16 @@
       </div>
 
       <div class="product-bundle-upsell-grid grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3" role="list" data-rec-grid>
-        {%- if recommendations.performed -%}
+        {%- if curated_related != blank and curated_related.size > 0 -%}
+          {%- comment -%} Curated Frequently-Bought-Together from custom.related (EZQuest master sheet). Falls back to auto-recommendations when empty. {%- endcomment -%}
+          {%- assign curated_count = 0 -%}
+          {%- for rel in curated_related -%}
+            {%- if rel != blank and rel.id != product.id and curated_count < rec_limit -%}
+              {%- assign curated_count = curated_count | plus: 1 -%}
+              {% render 'card-product', product: rel, card_style: 'featured-strip', card_context: 'collection', image_rollover: true %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif recommendations.performed -%}
           {%- comment -%} Rendered via the Product Recommendations API (intent=complementary). {%- endcomment -%}
           {%- for rec in recommendations.products -%}
             {% render 'card-product', product: rec, card_style: 'featured-strip', card_context: 'collection', image_rollover: true %}
@@ -42,7 +52,7 @@
     </div>
   </div>
 
-  {%- unless recommendations.performed -%}
+  {%- if curated_related == blank and recommendations.performed == false -%}
     <script>
       (function () {
         var cs = document.currentScript;
@@ -74,7 +84,7 @@
           .catch(function () { reveal(); });
       })();
     </script>
-  {%- endunless -%}
+  {%- endif -%}
 </section>
 
 {% schema %}

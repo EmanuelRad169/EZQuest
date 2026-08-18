@@ -26,7 +26,7 @@ Two commits are staged locally and need pushing (see "Deploy" at the end).
 | PDP / Compare element | Primary source | Fallback | If empty |
 |---|---|---|---|
 | Tagline under title (PDP + mobile) | `custom.short_description` | — | Hidden (no placeholder) |
-| Overview tab | `custom.product_highlight` | `custom.product_features` | Tab hidden |
+| Overview tab | `custom.product_highlight` | — (no fallback) | Tab hidden |
 | Features / read-more box | `custom.product_features` | — | Section hidden |
 | Highlight cards (numbered) | `ezquest.feature_highlights` | — | Tab hidden |
 | Compare "Key features" | `custom.key_features` | — | Shows "—" |
@@ -59,7 +59,7 @@ The 8 live kits had key features but were missing several client-facing fields. 
 
 Kits (all now with tagline + key features): Mobile Pro Travel Kit, Creator Storage Kit, Ultimate Desktop Dock Kit, 4K Display Connect Kit, Charge Everywhere Kit, USB-C Essentials Starter Kit, Dual-Monitor Workstation Kit, Ultimate Travel Power Kit.
 
-**Deliberately left for you (not auto-filled — editorial/legal):** `custom.warranty_years` (varies by the bundled components — assert the correct term yourself), plus `ezquest.compare_charging_power`, `compare_portability`, and `custom.best_for` where you want the compare row filled. Kits show "—" for these until set, which is correct.
+**Deliberately left for you (not auto-filled — editorial/legal):** `custom.warranty_years` (varies by the bundled components — assert the correct term yourself), plus `ezquest.compare_charging_power`, `ezquest.compare_portability`, and `ezquest.best_for` where you want the compare row filled. Kits show "—" for these until set, which is correct.
 
 Kits have no specs/compatibility/downloads, so those PDP tabs stay hidden — no empty tabs.
 
@@ -106,3 +106,57 @@ git pull --rebase origin main && git push origin main
 ```
 
 The KIT metafield values are already written to the live store (via Admin API) and take effect immediately.
+
+---
+
+## 8. Final pre-deploy QA pass (2026-08-17)
+
+### `best_for` — canonical field resolved
+One Shopify definition exists: **`ezquest.best_for`** (single-line text). There is **no** `custom.best_for` definition. Every code reference (`sections/ez-compare.liquid`, `snippets/compare-cell.liquid`) already uses `ezquest.best_for`. **Canonical: `ezquest.best_for`. No duplicate, no migration required.**
+
+### Overview de-duplication
+Overview now sources **only** `custom.product_highlight` (fallback to `product_features` removed). `product_features` stays exclusive to the Features/read-more box. Verified across all 65 active products: all 57 non-kit products have `product_highlight` (Overview shows), and the 8 kits have none (Overview hidden — they use key features). Overview and Features can no longer show the same copy.
+
+### Source-priority confirmation (no field can render twice)
+| Element | Source | Verified |
+|---|---|---|
+| Tagline | `custom.short_description` | ✅ |
+| Overview | `custom.product_highlight` (no fallback) | ✅ |
+| Buybox / read-more features | `custom.product_features` | ✅ |
+| Buybox key features + Compare key features | `custom.key_features` | ✅ |
+| Highlight cards (legacy, off by default) | `ezquest.feature_highlights` | ✅ |
+| Specifications | `ezquest.spec_rows` → `custom.product_specifications` | ✅ one renders |
+| Compatibility | `ezquest.compatibility_summary` → `custom.product_compatibility_html` | ✅ one renders |
+| Downloads | `ezquest.downloads` → `custom.download_files` | ✅ one renders |
+| Best For | `ezquest.best_for` | ✅ |
+| Reviews / rating | `reviews.rating` / `reviews.rating_count` only | ✅ |
+
+Each priced/fallback pair renders exactly one source via `if/else`, so no duplication is possible. (Note: the legacy off-by-default "Highlight" tab renders the same `product_highlight` as Overview; leave it disabled to avoid showing that field twice.)
+
+### KIT inventory / purchasability (not modified — reported only)
+All products are stock-managed by the **Finale Inventory Connector**; the Shopify count of 0 is expected. All 8 live kits have **Continue selling when out of stock ON**, so they are purchasable.
+
+| KIT SKU | Inventory | Continue selling | Purchasable |
+|---|---|---|---|
+| KIT-MOBILE-PRO | 0 | ON | YES |
+| KIT-CREATOR-STORAGE | 0 | ON | YES |
+| KIT-DESKTOP-DOCK | 0 | ON | YES |
+| KIT-4K-DISPLAY | 0 | ON | YES |
+| KIT-CHARGE-EVERYWHERE | 0 | ON | YES |
+| KIT-USBC-STARTER | 0 | ON | YES |
+| KIT-DUAL-MONITOR | 0 | ON | YES |
+| KIT-TRAVEL-POWER | 0 | ON | YES |
+| *EZQuest Laptop Productivity Kit* | 0 | ON | **NO — DRAFT** (not on storefront) |
+
+### Draft product
+`EZQuest Laptop Productivity Kit` is confirmed **DRAFT** — it cannot appear on the storefront. Not published, not deleted.
+
+### Static / structural QA (verified now)
+- Liquid tag balance across `main-product.liquid` (if/for/capture/comment/schema) — all matched.
+- `assets/ez-compare.js` — `node --check` passes.
+- Spec table has an HTML fallback, so it can never render blank even if a metaobject row is malformed.
+- Missing compare values render `—`.
+- No commerce logic touched: pricing, compare-at, variants, add-to-cart, SKU, images, review app, Amazon URL all unchanged.
+
+### Live visual QA — pending your push to a preview theme
+The theme edits are committed locally but **not on any Shopify theme yet**, so a live desktop/mobile visual spot-check of the *new* code can't be run until it's deployed. **Recommendation:** push to your **unpublished / development** theme (not the live theme), preview it, and I can then run the desktop + mobile PDP/Compare visual pass via the browser against that preview URL. Do not publish to production until that visual pass is done and approved.
