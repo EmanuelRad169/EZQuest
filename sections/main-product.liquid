@@ -980,7 +980,8 @@
     shop.metaobjects.<type>.values that was hiding downloads for products past the 50th.
   endcomment
   assign product_dl_count = product.metafields.custom.download_files.value.count | default: 0
-  if manual_count > 0 or download_count > 0 or product_dl_count > 0
+  assign ez_dl_count = product.metafields.ezquest.downloads.value.count | default: 0
+  if manual_count > 0 or download_count > 0 or product_dl_count > 0 or ez_dl_count > 0
     assign show_downloads_tab = true
   endif
 
