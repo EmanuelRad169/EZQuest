@@ -1,6 +1,9 @@
 {%- liquid
   assign headline_lines = section.settings.headline | split: '|'
 -%}
+{% style %}
+  .cinematic-reveal-kicker.section-kicker { color: var(--ez-amber, #fed300) !important; }
+{% endstyle %}
 <section
   class="cinematic-reveal-section section--dark"
   data-cinematic-reveal

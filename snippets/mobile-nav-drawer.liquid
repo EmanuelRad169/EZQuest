@@ -15,8 +15,14 @@
   #mobile-nav-drawer .mega-mobile-service-value {
     color: #0a0a0a;
   }
-  /* Black pill chips on the yellow support block */
+  /* Black pill chips on the yellow support block — full-width, stacked */
+  #mobile-nav-drawer .mega-mobile-service-meta {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
   #mobile-nav-drawer .mega-mobile-service-meta a {
+    width: 100%;
+    justify-content: center;
     background: #0a0a0a;
     color: #ffffff;
     border-color: #0a0a0a;
@@ -24,6 +30,12 @@
   }
   #mobile-nav-drawer .mega-mobile-service-meta a:hover {
     background: #1d1d1f;
+  }
+  /* "Compare" is a link (single span = first & last child), so the generic
+     `.mega-mobile-trigger > span:last-child` chevron-grey rule was fading it.
+     Force it to match the other menu labels. */
+  #mobile-nav-drawer .mega-mobile-trigger--link > span:last-child {
+    color: #0f172a;
   }
 {% endstyle %}
 <div id="mobile-nav-drawer" class="fixed inset-0 z-50" hidden data-drawer>

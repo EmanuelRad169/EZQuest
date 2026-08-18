@@ -142,9 +142,20 @@
 .ezc-add-result__meta { display: block; font-size: 12px; color: var(--ez-grey, #777); }
 .ezc-add-result--none { padding: 14px 8px; color: var(--ez-grey, #777); font-size: 14px; }
 
-/* Mobile */
+/* Mobile: horizontal scroll with a sticky label column and fixed, comfortable
+   product columns so cards stay readable and swipe cleanly side by side. */
 @media (max-width: 640px) {
-  .ezc-corner, .ezc-rowlabel { width: 120px; min-width: 120px; }
-  .ez-compare-table th, .ez-compare-table td { padding: 12px 14px; }
-  .ezc-col__media { max-width: 120px; }
+  .ez-compare-scroll { border-radius: 12px; scroll-snap-type: x proximity; scroll-padding-left: 112px; }
+  .ez-compare-table { min-width: 0; width: max-content; }
+  .ezc-corner, .ezc-rowlabel { width: 112px; min-width: 112px; }
+  .ezc-col { width: 168px; scroll-snap-align: start; }
+  .ezc-col--add { width: 132px; }
+  .ez-compare-table th, .ez-compare-table td { padding: 12px 12px; }
+  .ezc-col__media { max-width: 128px; }
+  .ezc-col__title { font-size: 14px; }
+  .ezc-col__price { font-size: 14px; margin-bottom: 10px; }
+  .ezc-buy { padding: 9px 10px; font-size: 12px; }
+  .ez-compare-table tbody td { font-size: 13px; }
+  .ezc-features li { font-size: 12px; line-height: 1.4; }
+  .ezc-remove { top: 6px; right: 6px; width: 22px; height: 22px; font-size: 16px; }
 }
