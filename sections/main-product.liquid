@@ -1471,21 +1471,18 @@
       }
     }
 
-    // Disable option values that can't form an available variant given the
-    // current selection in the other dropdowns.
+    // Only disable an option value when NO available variant carries it at all.
+    // (Sparse matrices — e.g. Silver only exists in one length — must stay
+    // selectable; the change handler above resolves to the correct combo and
+    // syncs the other dropdowns. Disabling per current-selection would trap the
+    // user and make valid variants like Silver / 2 Meter unreachable.)
     selects.forEach(function (s) {
-      var pos = s.getAttribute('data-option-position');
+      var idx = parseInt(s.getAttribute('data-option-position'), 10) - 1;
       Array.prototype.slice.call(s.options).forEach(function (opt) {
         var val = opt.value;
-        var ok = variants.some(function (v) {
-          if (!v.available) return false;
-          return v.options.every(function (ov, i) {
-            var p = String(i + 1);
-            if (p === pos) return ov === val;
-            return vals[p] === ov;
-          });
+        opt.disabled = !variants.some(function (v) {
+          return v.available && v.options[idx] === val;
         });
-        opt.disabled = !ok;
       });
     });
   }
