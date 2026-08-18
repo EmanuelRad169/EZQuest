@@ -91,7 +91,7 @@
         "category_1": {
           "type": "collection_card",
           "settings": {
-            "collection": "hubs-adapters",
+            "collection": "hubs",
             "image": "shopify://shop_images/DT_Family_Card_A.jpg",
             "title": "",
             "link": ""
@@ -100,7 +100,7 @@
         "category_2": {
           "type": "collection_card",
           "settings": {
-            "collection": "docking-stations",
+            "collection": "adapters",
             "image": "shopify://shop_images/DT_Family_Card_B.jpg",
             "title": "",
             "link": ""
@@ -109,7 +109,7 @@
         "category_3": {
           "type": "collection_card",
           "settings": {
-            "collection": "chargers-power",
+            "collection": "chargers",
             "image": "shopify://shop_images/DT_Family_Card_C.jpg",
             "title": "",
             "link": ""
@@ -118,7 +118,7 @@
         "category_4": {
           "type": "collection_card",
           "settings": {
-            "collection": "accessories",
+            "collection": "cables",
             "image": "shopify://shop_images/DT_Family_Card_D.jpg",
             "title": "",
             "link": ""
