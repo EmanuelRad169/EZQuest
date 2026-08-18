@@ -11,7 +11,7 @@
   'use strict';
 
   var KEY = 'ez_compare_v1';
-  var MAX = 4;
+  var MAX = 3;
   var COMPARE_URL = '/pages/compare';
 
   var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
