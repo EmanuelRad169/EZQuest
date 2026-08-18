@@ -22,9 +22,11 @@
 "{{ product.id }}": {
 "title": {{ product.title | json }},
 "url": {{ product.url | json }},
-"img": {% if product.featured_image %}{{ product.featured_image | image_url: width: 260 | json }}{% else %}""{% endif %},
+"img": {% if product.featured_image %}{{ product.featured_image | image_url: width: 320 | json }}{% else %}""{% endif %},
 "price": {{ product.price | money | json }},
 {% if product.compare_at_price > product.price %}"compareAt": {{ product.compare_at_price | money | json }},{% endif %}
+"vid": {{ product.selected_or_first_available_variant.id | json }},
+"available": {{ product.available | json }},
 "sku": {{ product.selected_or_first_available_variant.sku | json }},
 "type": {{ product.type | json }},
 "vendor": {{ product.vendor | json }},
