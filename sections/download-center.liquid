@@ -45,6 +45,12 @@
       {%- endfor -%}
     </div>
 
+    <div class="dl-search-wrap" style="margin-bottom:1.25rem;">
+      <input type="search" id="dl-search" placeholder="Search by product or file name…" aria-label="Search downloads" autocomplete="off"
+        style="width:100%;max-width:440px;padding:11px 14px 11px 40px;border:1.5px solid rgba(0,0,0,.12);border-radius:12px;font-size:14px;background:#fff url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%2394969C%22 stroke-width=%221.6%22 stroke-linecap=%22round%22><circle cx=%227%22 cy=%227%22 r=%225%22/><path d=%22M11 11l3 3%22/></svg>') 13px center no-repeat;outline:none;" />
+      <p id="dl-search-empty" class="data-table__meta" style="display:none;margin:.75rem 0 0;">No files match your search.</p>
+    </div>
+
     <div class="data-table-wrap">
       <table class="data-table" id="dl-table">
         <thead>
@@ -187,16 +193,34 @@
 
 <script>
 (function(){
+  var currentFilter = 'all', currentSearch = '';
+  function applyFilters(){
+    var visible = 0;
+    document.querySelectorAll('#dl-table tbody tr[data-category]').forEach(function(row){
+      var okCat = (currentFilter === 'all' || row.dataset.category === currentFilter);
+      var okSearch = (currentSearch === '' || row.textContent.toLowerCase().indexOf(currentSearch) !== -1);
+      var show = okCat && okSearch;
+      row.style.display = show ? '' : 'none';
+      if (show) { visible++; }
+    });
+    var empty = document.getElementById('dl-search-empty');
+    if (empty) { empty.style.display = (visible === 0) ? '' : 'none'; }
+  }
   document.querySelectorAll('.filter-pill').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('is-active'); });
       this.classList.add('is-active');
-      var filter = this.dataset.filter;
-      document.querySelectorAll('#dl-table tbody tr[data-category]').forEach(function(row){
-        row.style.display = (filter === 'all' || row.dataset.category === filter) ? '' : 'none';
-      });
+      currentFilter = this.dataset.filter;
+      applyFilters();
     });
   });
+  var search = document.getElementById('dl-search');
+  if (search) {
+    search.addEventListener('input', function(){
+      currentSearch = this.value.trim().toLowerCase();
+      applyFilters();
+    });
+  }
 })();
 </script>
 
