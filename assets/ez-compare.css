@@ -7,18 +7,10 @@
    Self-contained; remove ez-compare.css + ez-compare.js to revert.
    ============================================================ */
 
-/* Hide Compareder's default per-card "Add to compare" checkbox strip */
-.coder-compareder-compare { display: none !important; }
-
-/* Hide Compareder's floating right-edge tab (access moves to the header icon) */
-.coder-comparable-button-right,
-.coder-comparable-button {
-  position: fixed !important;
-  left: -9999px !important;
-  top: -9999px !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+/* Hide ALL Compareder app UI — this native compare replaces it.
+   (Safe to keep even after Compareder is uninstalled.) */
+[class*="coder-comparable"],
+[class*="coder-compareder"] { display: none !important; }
 
 /* Per-card compare icon, sitting next to the heart */
 .product-card__wishlist { display: flex; gap: 6px; align-items: center; }

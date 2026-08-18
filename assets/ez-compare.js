@@ -18,6 +18,14 @@
     '<rect x="2.5" y="3.5" width="10" height="13" rx="2"/><rect x="11.5" y="7.5" width="10" height="13" rx="2"/>' +
     '<path d="M5 10h4.5"/><path d="m7.8 8 2.2 2-2.2 2"/><path d="M19 14h-4.5"/><path d="m16.2 12-2.2 2 2.2 2"/></svg>';
 
+  // Suppress any stray Compareder native alert() dialogs (route compare messages to the toast)
+  var origAlert = window.alert;
+  window.alert = function (m) {
+    var s = String(m);
+    if (/compar|product|at least|maximum/i.test(s)) { showToast(s); }
+    else { origAlert.call(window, m); }
+  };
+
   /* ---- list storage ---- */
   function getList() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function setList(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} document.dispatchEvent(new CustomEvent('ez-compare:change')); }
