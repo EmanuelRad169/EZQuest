@@ -941,13 +941,12 @@
   assign show_downloads_tab   = false
 
   comment
-    Overview tab shows the HIGHLIGHT content (custom.product_highlight), falling back to
-    the feature content if a product has no highlight. (Swapped with the read-more box.)
+    Overview tab shows ONLY the highlight content (custom.product_highlight). No fallback to
+    custom.product_features — that field stays exclusive to the detailed Features/read-more
+    box — so Overview and Features can never render the same copy. Overview tab is hidden
+    when custom.product_highlight is empty.
   endcomment
   assign overview_html = highlight_html
-  if overview_html == blank
-    assign overview_html = features_html
-  endif
   assign has_overview_content = false
   if overview_html and overview_html != ''
     assign has_overview_content = true
