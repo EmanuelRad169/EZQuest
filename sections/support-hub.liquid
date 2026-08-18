@@ -3,18 +3,14 @@
 <div class="support-body support-body--hub pt-[clamp(28px,4vw,44px)] pb-[clamp(48px,6vw,80px)]">
   <div class="container-shell">
     <div class="support-body__content pt-0">
-  <div class="shub-stats grid grid-cols-4 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden mb-12 max-[768px]:grid-cols-2">
+  <div class="shub-stats grid grid-cols-3 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden mb-12 max-[768px]:grid-cols-2">
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat1_number | default: '1–2 yr' }}</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat1_number | default: '1–2 Year' }}</span>
       <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat1_label | default: 'Warranty (varies by product)' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat2_number | default: '1 day' }}</span>
+      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat2_number | default: '1 Day' }}</span>
       <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat2_label | default: 'Typical support response' }}</span>
-    </div>
-    <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
-      <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat3_number | default: '0' }}</span>
-      <span class="shub-stat__label text-[13px] text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat3_label | default: 'Drivers required (most products)' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
       <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat4_number | default: '60+' }}</span>
@@ -22,7 +18,7 @@
     </div>
   </div>
 
-  <p class="section-label text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-6 support-hub__topic-label mt-12">{{ section.settings.topic_label | default: 'Browse by topic' }}</p>
+  <p class="section-label text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-6 support-hub__topic-label mt-12">{{ section.settings.topic_label | default: 'Browse By Topic' }}</p>
 
   <div class="shub-grid grid grid-cols-3 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden max-[900px]:grid-cols-2 max-[540px]:grid-cols-1">
     {% assign support_links = 'Downloads,Get drivers utilities and setup files,/pages/downloads,download|Manuals,Full product documentation and specs,/pages/manuals,manual|Firmware,Update your device software,/pages/firmware,firmware|User Guides,Step-by-step setup and usage,/pages/user-guides,guide|Compatibility,Check devices ports and systems,/pages/compatibility,compat|Warranty,Coverage terms and claim process,/pages/warranty,warranty|FAQ,Quick answers to common questions,/pages/faq,faq|Contact,Reach the EZQuest team directly,/pages/contact,contact' | split: '|' %}
