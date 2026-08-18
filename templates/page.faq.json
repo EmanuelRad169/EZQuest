@@ -47,7 +47,7 @@
           "type": "faq",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes. Free standard shipping is available on all orders over $35 within the contiguous US. Orders under that threshold ship at a flat rate shown at checkout.",
+            "answer": "Yes. Free standard shipping is available on all orders over $90 within the contiguous US. Orders under that threshold ship at a flat rate shown at checkout.",
             "group": "shipping"
           }
         },
@@ -55,7 +55,7 @@
           "type": "faq",
           "settings": {
             "question": "How long does delivery take?",
-            "answer": "Most orders are processed within 1 business day. Standard delivery typically arrives within 3–7 business days. Expedited options are available at checkout.",
+            "answer": "Most orders ship within 2 business days via USPS or UPS. Standard US delivery typically arrives within 2–7 business days; international orders take 4–8 business days depending on the country. Expedited options are available at checkout.",
             "group": "shipping"
           }
         },
@@ -63,7 +63,7 @@
           "type": "faq",
           "settings": {
             "question": "Do you ship internationally?",
-            "answer": "We currently ship within the United States. International availability varies by product and region — check back as we continue to expand.",
+            "answer": "Yes — we ship to most countries worldwide. International delivery typically takes 4–8 business days depending on the destination; any duties or taxes are shown at checkout.",
             "group": "shipping"
           }
         },
@@ -199,7 +199,7 @@
           "type": "faq",
           "settings": {
             "question": "Does the hub support external displays?",
-            "answer": "Display support depends on the specific model. Hubs with HDMI or DisplayPort outputs support one or more monitors — check the product spec sheet for resolution and refresh rate limits. Thunderbolt models generally offer the most display flexibility.",
+            "answer": "Display support depends on the specific model. Hubs with HDMI, DisplayPort or some USB-C outputs support one or more monitors — check the product spec sheet for resolution and refresh rate limits. Thunderbolt models generally offer the most display flexibility.",
             "group": "products"
           }
         },
@@ -215,7 +215,7 @@
           "type": "faq",
           "settings": {
             "question": "What is covered under the EZQuest warranty?",
-            "answer": "EZQuest products are backed by a 2-year limited warranty covering manufacturing defects. Physical damage, misuse, and normal wear are not covered. Visit the Warranty page for full terms and how to file a claim.",
+            "answer": "EZQuest products are backed by a 1- or 2-year limited warranty, depending on the product, covering defects in materials and workmanship. Physical damage, misuse, and normal wear and tear are not covered. Visit our Warranty page for complete terms and instructions on how to file a claim.",
             "group": "products"
           }
         },
