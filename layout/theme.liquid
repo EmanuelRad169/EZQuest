@@ -323,6 +323,7 @@
     {% # theme-check-disable RemoteAsset %}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" defer="defer"></script>
     {% # theme-check-enable RemoteAsset %}
+    {{ 'ez-compare.css' | asset_url | stylesheet_tag }}
 </head>
   <body class="page-shell template-{{ template | split: '.' | first | handle }}{% if request.design_mode %} design-mode{% endif %}">
     <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
@@ -350,6 +351,7 @@
     <script src="{{ 'mega-menu.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'scroll-animate.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'ez-compare.js' | asset_url }}" defer="defer"></script>
     {% render 'newsletter-popup' %}
     {% render 'quick-view-modal' %}
   </body>

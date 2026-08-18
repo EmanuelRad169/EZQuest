@@ -32,25 +32,13 @@
         "trust_4": ""
       }
     },
-    "17820811407903cc7e": {
-      "type": "apps",
-      "blocks": {
-        "comparexpert_comparison_table_builder_N3tTj9": {
-          "type": "shopify://apps/comparexpert/blocks/comparison-table-builder/c855b225-94ed-4209-962c-0fcdc53b09bf",
-          "settings": {
-            "heading": "Build Your Comparison",
-            "default_slots": "2"
-          }
-        }
-      },
-      "block_order": [
-        "comparexpert_comparison_table_builder_N3tTj9"
-      ],
-      "custom_css": [
-        ".htc-static-table-container {padding: 5rem 0;}",
-        "h3 {display: none;}"
-      ],
-      "settings": {}
+    "compare": {
+      "type": "ez-compare",
+      "settings": {
+        "kicker": "Compare",
+        "heading": "Compare products side by side",
+        "body": "Add products with the compare icon while you browse, then review ports, power, and specs here."
+      }
     },
     "cta": {
       "type": "support-cta-rail",
@@ -68,7 +56,7 @@
   },
   "order": [
     "hero",
-    "17820811407903cc7e",
+    "compare",
     "cta"
   ]
 }

@@ -1,0 +1,114 @@
+/* ============================================================
+   EZQuest — Compare UI layer over the Compareder app
+   - Per-card compare icon next to the wishlist heart
+   - Header compare icon with live count
+   - Hides Compareder's default checkbox + floating side tab
+   - Styled toast replaces Compareder's native alert() dialogs
+   Self-contained; remove ez-compare.css + ez-compare.js to revert.
+   ============================================================ */
+
+/* Hide Compareder's default per-card "Add to compare" checkbox strip */
+.coder-compareder-compare { display: none !important; }
+
+/* Hide Compareder's floating right-edge tab (access moves to the header icon) */
+.coder-comparable-button-right,
+.coder-comparable-button {
+  position: fixed !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Per-card compare icon, sitting next to the heart */
+.product-card__wishlist { display: flex; gap: 6px; align-items: center; }
+
+.ez-card-compare {
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #111;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.ez-card-compare:hover { background: #fff; }
+.ez-card-compare.is-active { background: var(--ez-amber, #FED300); color: #111; }
+.ez-card-compare svg { width: 17px; height: 17px; display: block; }
+
+/* Header compare icon count badge */
+.site-header-compare-button { position: relative; }
+.site-header-compare-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--ez-amber, #FED300);
+  color: #111;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Styled toast (replaces native browser alert dialogs) */
+.ez-compare-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(10px);
+  background: #111;
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.3;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  max-width: 88vw;
+  text-align: center;
+}
+.ez-compare-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---- /pages/compare comparison table ---- */
+.ez-compare-head { margin-bottom: clamp(20px, 3vw, 32px); }
+.ez-compare-heading { font-size: clamp(26px, 4vw, 40px); font-weight: 600; letter-spacing: -0.02em; margin: 6px 0 8px; color: var(--ez-black, #111); }
+.ez-compare-body { color: var(--ez-grey, #555); max-width: 60ch; font-size: 15px; }
+
+.ez-compare-empty { text-align: center; padding: clamp(40px, 7vw, 80px) 20px; color: var(--ez-grey, #555); }
+.ez-compare-empty p { margin: 0 0 8px; }
+.ez-compare-empty__btn { display: inline-block; margin-top: 18px; background: var(--ez-black, #111); color: #fff; padding: 12px 22px; border-radius: 100px; font-weight: 600; text-decoration: none; }
+
+.ez-compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ez-compare-table { width: 100%; border-collapse: collapse; min-width: 520px; }
+.ez-compare-table th, .ez-compare-table td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,.08); }
+.ez-compare-table thead th { border-bottom: 1px solid rgba(0,0,0,.12); }
+.ezc-corner { width: 150px; }
+.ezc-head { position: relative; width: calc((100% - 150px) / var(--cols)); }
+.ezc-remove { position: absolute; top: 6px; right: 8px; border: none; background: rgba(0,0,0,.05); color: #111; width: 24px; height: 24px; border-radius: 50%; font-size: 18px; line-height: 1; cursor: pointer; }
+.ezc-remove:hover { background: rgba(0,0,0,.1); }
+.ezc-head__media { display: block; width: 100%; aspect-ratio: 1/1; background: #fff; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+.ezc-head__media img { width: 100%; height: 100%; object-fit: contain; }
+.ezc-head__title { display: block; font-weight: 600; color: var(--ez-black, #111); text-decoration: none; line-height: 1.3; margin-bottom: 6px; }
+.ezc-head__title:hover { text-decoration: underline; }
+.ezc-head__cta { font-size: 13px; color: var(--ez-grey, #555); text-decoration: none; }
+.ezc-rowlabel { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ez-grey, #555); white-space: nowrap; }
+.ez-compare-table td { font-size: 14px; color: var(--ez-black, #222); }
+.ezc-price { font-weight: 600; }
+.ezc-was { color: var(--ez-grey, #999); margin-left: 6px; }
+.ez-compare-actions { margin-top: 18px; }
+.ez-compare-clear { background: none; border: 1px solid rgba(0,0,0,.15); border-radius: 100px; padding: 9px 18px; font-size: 13px; cursor: pointer; color: var(--ez-black, #111); }
+.ez-compare-clear:hover { border-color: rgba(0,0,0,.35); }
