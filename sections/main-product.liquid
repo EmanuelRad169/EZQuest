@@ -44,7 +44,6 @@
       assign ownership_heading = section.settings.support_heading | default: 'Support stays close'
       assign ownership_copy = section.settings.support_copy | default: 'Compatibility, manuals, downloads, and help.'
       assign setup_label = 'Everyday'
-      assign setup_statement = 'Clean connectivity for everyday devices.'
       assign spec_count = 0
       assign product_spec_rows = blank
       assign manual_count = 0
@@ -155,19 +154,16 @@
         when 'usb-c-travel-hub'
           assign use_owned_product_gallery = true
           assign setup_label = 'Travel'
-          assign setup_statement = 'Compact ports and power for work on the move.'
           assign role_decision_note = 'Made for work on the move.'
           assign ownership_heading = 'Support for the move'
         when 'usb-c-pro-dock'
           assign use_owned_product_gallery = true
           assign setup_label = 'Desk'
-          assign setup_statement = 'Ports, power, and displays for the desk.'
           assign role_decision_note = 'Made for the desk.'
           assign ownership_heading = 'Support for the desk'
         when 'usb-c-multimedia-hub'
           assign use_owned_product_gallery = true
           assign setup_label = 'Everyday'
-          assign setup_statement = 'Balanced ports and power for everyday desks.'
           assign role_decision_note = 'Made for everyday desks.'
           assign ownership_heading = 'Support for everyday desks'
       endcase
@@ -421,9 +417,13 @@
               </div>
             </div>
 
-            <div class="product-buybox-price-row flex flex-col gap-2">
-              <p class="product-buybox-setup-statement">{{ setup_statement }}</p>
-            </div>
+            {%- comment -%} Tagline: editable per product via custom.short_description. Hidden when empty (no hardcoded copy). {%- endcomment -%}
+            {%- assign pdp_tagline = product.metafields.custom.short_description -%}
+            {%- if pdp_tagline != blank -%}
+              <div class="product-buybox-price-row flex flex-col gap-2">
+                <p class="product-buybox-setup-statement">{{ pdp_tagline }}</p>
+              </div>
+            {%- endif -%}
 
             {%- comment -%} Read-more box shows the FEATURE content (custom.product_features), falling back to the description. {%- endcomment -%}
             {%- assign buybox_readmore = product.metafields.custom.product_features.value -%}
@@ -678,7 +678,7 @@
 
           {%- capture product_fit_content -%}
             <div class="product-mobile-detail-stack">
-              <p class="product-mobile-detail-copy">{{ setup_statement }}</p>
+              {%- if pdp_tagline != blank -%}<p class="product-mobile-detail-copy">{{ pdp_tagline }}</p>{%- endif -%}
               {% if compatibility_summary_html != blank %}
                 <div class="product-mobile-detail-copy product-mobile-detail-copy--list">{{ compatibility_summary_html }}</div>
               {% elsif product_positioning_text != blank %}
@@ -955,13 +955,23 @@
   if has_overview_content and section.settings.show_overview != false
     assign show_overview_tab = true
   endif
-  if has_specs and section.settings.show_specifications != false
-    assign show_specs_tab = true
+  comment
+    Specifications source priority: ezquest.spec_rows (structured metaobjects) →
+    custom.product_specifications (legacy HTML). Tab hidden if neither exists.
+  endcomment
+  if section.settings.show_specifications != false
+    if spec_count > 0 or has_specs
+      assign show_specs_tab = true
+    endif
   endif
   if has_highlight and section.settings.show_highlight
     assign show_highlight_tab = true
   endif
-  if has_compat
+  comment
+    Compatibility source priority: ezquest.compatibility_summary (structured) →
+    custom.product_compatibility_html (legacy fallback). Tab hidden if neither exists.
+  endcomment
+  if compatibility_summary_html != blank or has_compat
     assign show_compat_tab = true
   endif
   comment
@@ -1016,7 +1026,21 @@
 
       {%- if show_specs_tab -%}
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="specs" id="pdp-specs" tabindex="0">
-          <div class="pdp-content-prose">{{ specs_html }}</div>
+          {%- capture spec_rows_html -%}
+            {%- if spec_count > 0 -%}
+              {%- for row in product_spec_rows -%}
+                {%- assign row_label = row.label.value -%}
+                {%- assign row_value = row.spec_value.value -%}
+                {%- if row_label != blank -%}<tr><th scope="row">{{ row_label }}</th><td>{{ row_value | newline_to_br }}</td></tr>{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- assign spec_rows_html = spec_rows_html | strip -%}
+          {%- if spec_rows_html != blank -%}
+            <table class="pdp-spec-rows">{{ spec_rows_html }}</table>
+          {%- else -%}
+            <div class="pdp-content-prose">{{ specs_html }}</div>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
@@ -1028,7 +1052,7 @@
 
       {%- if show_compat_tab -%}
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="compat" id="pdp-compat" tabindex="0">
-          <div class="pdp-content-prose">{{ compat_html }}</div>
+          <div class="pdp-content-prose">{% if compatibility_summary_html != blank %}{{ compatibility_summary_html }}{% else %}{{ compat_html }}{% endif %}</div>
         </div>
       {%- endif -%}
 

@@ -2275,3 +2275,10 @@
   background: rgba(16, 185, 129, 0.12);
   color: #059669;
 }
+
+/* ── PDP Specifications table (from ezquest.spec_rows metaobjects) ── */
+.pdp-spec-rows { width: 100%; border-collapse: collapse; }
+.pdp-spec-rows th, .pdp-spec-rows td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,.08); font-size: 14px; line-height: 1.5; }
+.pdp-spec-rows th { width: 38%; font-weight: 600; color: var(--ez-grey, #555); white-space: nowrap; }
+.pdp-spec-rows td { color: var(--ez-black, #111); }
+@media (max-width: 560px){ .pdp-spec-rows th { width: 44%; white-space: normal; } }

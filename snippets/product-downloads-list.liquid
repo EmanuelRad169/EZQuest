@@ -11,7 +11,11 @@
   (list of ezquest_download metaobjects). This avoids Shopify's 50-item cap on
   shop.metaobjects.<type>.values, which silently dropped products past the 50th.
 {%- endcomment -%}
-{%- assign all_downloads = product.metafields.custom.download_files.value -%}
+{%- comment -%} Source priority: ezquest.downloads (canonical) → custom.download_files (legacy fallback). {%- endcomment -%}
+{%- assign all_downloads = product.metafields.ezquest.downloads.value -%}
+{%- if all_downloads == blank or all_downloads.count == 0 -%}
+  {%- assign all_downloads = product.metafields.custom.download_files.value -%}
+{%- endif -%}
 
 {%- capture dl_list_html -%}
   {%- for dl in all_downloads -%}
