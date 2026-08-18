@@ -31,6 +31,7 @@
 "type": {{ product.type | json }},
 "vendor": {{ product.vendor | json }},
 "connector": {{ product.metafields.ezquest.compare_connector_type.value | json }},
+"features": {{ product.metafields.custom.product_features.value | json }},
 "form": {{ product.metafields.ezquest.compare_form_factor.value | json }},
 "power": {{ product.metafields.ezquest.compare_charging_power.value | json }},
 "portability": {{ product.metafields.ezquest.compare_portability.value | json }},

@@ -82,6 +82,7 @@
     ['SKU / Part #', function (p) { return p.sku || '—'; }],
     ['Type', function (p) { return p.type || '—'; }],
     ['Connector', function (p) { return p.connector || '—'; }],
+    ['Key features', function (p) { return p.features ? '<div class="ezc-features">' + p.features + '</div>' : '—'; }, function (p) { return p.features || ''; }],
     ['Form factor', function (p) { return p.form || '—'; }],
     ['Charging power', function (p) { return p.power || '—'; }],
     ['Portability', function (p) { return p.portability || '—'; }],

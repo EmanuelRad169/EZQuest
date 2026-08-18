@@ -117,6 +117,9 @@
 
 /* Row labels + cells */
 .ezc-rowlabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ez-grey, #777); white-space: nowrap; }
+.ezc-features ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ezc-features li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.45; color: var(--ez-black, #222); }
+.ezc-features li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--ez-amber, #FED300); }
 .ez-compare-table tbody td { font-size: 14px; color: var(--ez-black, #222); line-height: 1.5; }
 
 /* Difference highlight */
