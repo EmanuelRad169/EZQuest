@@ -26,9 +26,9 @@
         "cta_secondary_label": "",
         "cta_secondary_link": "",
         "show_trust": true,
-        "trust_1": "1-year warranty",
-        "trust_2": "30-day returns",
-        "trust_3": "Free shipping over $90",
+        "trust_1": "Up To 2 Year Warranty",
+        "trust_2": "30 Day Returns",
+        "trust_3": "Free Shipping Over $90",
         "trust_4": ""
       }
     },
@@ -231,7 +231,7 @@
           "type": "faq",
           "settings": {
             "question": "Do your cables support fast charging?",
-            "answer": "Yes. EZQuest USB-C cables rated for 60W or 100W support USB Power Delivery fast charging. The charging speed also depends on your charger and device — both need to support the same wattage to reach full speed.",
+            "answer": "Yes. EZQuest USB-C cables are rated for up to 100W or 240W, depending on the cable, and support USB Power Delivery (PD) fast charging. Charging speed also depends on your charger and device — both must support the required wattage to achieve maximum charging speed.",
             "group": "products"
           }
         }
