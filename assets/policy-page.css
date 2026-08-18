@@ -182,7 +182,7 @@
 .shopify-policy__body a,
 .shopify-policy__body .rte a,
 .policy-prose a {
-  color: var(--ez-amber);
+  color: #0A66C2;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -257,7 +257,7 @@
 .policy-sidebar__link:last-child { border-bottom: none; }
 .policy-sidebar__link:hover { color: var(--ez-black); }
 .policy-sidebar__link.is-active {
-  color: var(--ez-amber);
+  color: #0A66C2;
   font-weight: 500;
 }
 
