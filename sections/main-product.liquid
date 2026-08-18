@@ -1454,8 +1454,20 @@
         sel.dispatchEvent(new Event('change', { bubbles: true }));
       }
       if (match.image) {
-        var mainImg = root.querySelector('[data-pdp-main-image] img');
-        if (mainImg && mainImg.src !== match.image) { mainImg.src = match.image; mainImg.removeAttribute('srcset'); }
+        var stage = root.querySelector('[data-pdp-main-image]');
+        var mainImg = stage && stage.querySelector('img');
+        if (mainImg && mainImg.src !== match.image) {
+          var pic = mainImg.closest('picture');
+          if (pic) { Array.prototype.forEach.call(pic.querySelectorAll('source'), function (s) { s.removeAttribute('srcset'); }); }
+          mainImg.removeAttribute('srcset');
+          mainImg.src = match.image;
+        }
+      }
+      // Keep the "Selected: …" reinforcement line in sync with the chosen variant.
+      var rein = root.querySelector('[data-product-variant-reinforcement]');
+      if (rein) {
+        var vt = (match.options || []).join(' / ');
+        rein.textContent = 'Selected: ' + vt + ' · ' + (match.available ? 'In stock' : 'Sold out');
       }
     }
 
