@@ -80,6 +80,18 @@
     });
 
     if (resetBtn) resetBtn.addEventListener('click', resetState);
+
+    // Same-page deep-link changes (e.g. following a #device-id link while already on the page)
+    window.addEventListener('hashchange', function () {
+      var h = location.hash.slice(1);
+      if (!h) return;
+      var device = devices.find(function (d) { return d.id === h; });
+      if (device) { selectDevice(device); return; }
+      if (h.indexOf('p-') === 0 && PLATFORM_PSEUDO[h.slice(2)]) {
+        selectedDevice = PLATFORM_PSEUDO[h.slice(2)];
+        renderResults(selectedDevice);
+      }
+    });
   }
 
   // --- Platform mapping + verdict classification ---
