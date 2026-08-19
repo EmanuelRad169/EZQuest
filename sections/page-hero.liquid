@@ -73,7 +73,7 @@
 {%- style -%}
   #shopify-section-{{ section.id }} .page-hero {
     background-color: {{ section.settings.background_color | default: '#020617' }};
-    min-height: {% if request.page_type == 'product' %}240px{% else %}{{ section.settings.height | default: 360 }}px{% endif %};
+    min-height: {% if request.page_type == 'product' %}200px{% else %}{{ section.settings.height | default: 280 }}px{% endif %};
     {%- if hero_background_url != blank -%}
       background-image: url('{{ hero_background_url }}');
       background-size: cover;

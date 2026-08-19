@@ -17,7 +17,7 @@
         "kicker": "Compatibility Checker",
         "heading": "Will It Work with Your Setup?",
         "subheading": "Tell us what you're using. We'll show you exactly what fits — and what to skip.",
-        "height": 320,
+        "height": 250,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
         "eyebrow_pulse": true,

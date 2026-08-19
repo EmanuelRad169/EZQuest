@@ -14,7 +14,7 @@
 /* Page hero — light, editorial */
 .page-hero-light {
   background: linear-gradient(135deg,var(--ez-light) 0%,#ffffff 100%);
-  padding: clamp(44px,5vw,72px) clamp(1.25rem,3vw,2.5rem);
+  padding: clamp(32px,4vw,52px) clamp(1.25rem,3vw,2.5rem);
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 .page-hero-light__kicker {
@@ -76,8 +76,8 @@
   overflow: hidden;
   background: var(--ez-dark);
   margin-top: -108px;
-  padding-top: calc(108px + clamp(48px,5vw,72px));
-  padding-bottom: clamp(48px,5vw,72px);
+  padding-top: calc(108px + clamp(32px,4vw,52px));
+  padding-bottom: clamp(32px,4vw,52px);
 }
 .page-hero-dark__media { position: absolute; inset: 0; z-index: 0; }
 .page-hero-dark__image { width: 100%; height: 100%; object-fit: cover; }
@@ -432,7 +432,7 @@
 
 .wtb-hero {
   background: linear-gradient(135deg, var(--ez-light) 0%, #fff 100%);
-  padding: clamp(56px,7vw,88px) 0;
+  padding: clamp(40px,5vw,60px) 0;
   border-bottom: 0.5px solid rgba(0,0,0,0.06);
 }
 

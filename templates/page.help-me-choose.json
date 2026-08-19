@@ -17,7 +17,7 @@
         "kicker": "Choose a Setup",
         "heading": "Built for Your Workflow",
         "subheading": "Choose the role first, then move into the family and the product built for that setup.",
-        "height": 360,
+        "height": 220,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
         "eyebrow_pulse": true,

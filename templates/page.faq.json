@@ -17,7 +17,7 @@
         "kicker": "FAQ",
         "heading": "Frequently Asked Questions",
         "subheading": "Quick Answers to Common Product Questions.",
-        "height": 360,
+        "height": 220,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
         "eyebrow_pulse": true,
