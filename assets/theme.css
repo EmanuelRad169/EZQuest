@@ -167,7 +167,7 @@
 /* body + meta */
 .wrapper-review-loader .ra-rv-cm{font-size:.875rem!important;line-height:1.65!important;color:#475569!important;margin-top:.5rem!important;padding-left:0!important;padding-right:0!important}
 .wrapper-review-loader .ra-rv-dat{font-size:.75rem!important;color:#94a3b8!important;padding-left:0!important;margin-top:.375rem!important}
-.wrapper-review-loader .flg-cs-s{border-radius:2px;opacity:.7;vertical-align:middle}
+.wrapper-review-loader .flg-cs-s,.wrapper-review-loader img[src*="flag"]{display:none!important}
 .wrapper-review-loader .ra-rv-pht{padding-left:0!important;margin-top:.75rem!important}
 .wrapper-review-loader .ra-rv-pht img{width:84px!important;height:84px!important;object-fit:cover!important;border-radius:10px!important;border:1px solid rgba(0,0,0,.06)!important;margin-right:.5rem}
 
