@@ -5,10 +5,7 @@
       assign collection_group_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure||HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable|Audio^audio-cables^duraguard-stereo-audio-cable||Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display' | split: '||'
     -%}
 
-    <div class="collections-index-header">
-      <p class="section-kicker">{{ section.settings.kicker | default: 'Shop by Category' }}</p>
-      <h2 class="collections-index-title">{{ section.settings.heading | default: 'Collections' }}</h2>
-    </div>
+    <h2 class="visually-hidden">{{ section.settings.heading | default: 'Collections' }}</h2>
 
     <div class="collections-directory">
       {% for collection_group_title in collection_group_titles %}
