@@ -58,7 +58,6 @@
             <th>Product</th>
             <th>File name</th>
             <th>Type</th>
-            <th>Version</th>
             <th>Compatible with</th>
             <th></th>
           </tr>
@@ -83,7 +82,6 @@
                 <td data-label="Type">
                   <span class="file-badge">{{ type_val | default: '—' }}</span>
                 </td>
-                <td class="data-table__muted" data-label="Version">{{ entry.version.value | default: '—' }}</td>
                 <td class="data-table__meta" data-label="Compatible">{{ platforms }}</td>
                 <td>
                   {%- if file_url != blank -%}
@@ -129,7 +127,6 @@
             <th>File name</th>
             <th>Type</th>
             <th>Size</th>
-            <th>Version</th>
             <th>Compatible with</th>
             <th></th>
           </tr>
@@ -156,7 +153,6 @@
                   <span class="file-badge {{ ext_class }}">{{ ext }}</span>
                 </td>
                 <td class="data-table__muted" data-label="Size">{{ block.settings.file_size }}</td>
-                <td class="data-table__muted" data-label="Version">{{ block.settings.version | default: '—' }}</td>
                 <td class="data-table__meta" data-label="Compatible">{{ block.settings.compatibility | default: 'Mac · Windows' }}</td>
                 <td>
                   {% if block.settings.file_url != blank and block.settings.file_url != '#' %}

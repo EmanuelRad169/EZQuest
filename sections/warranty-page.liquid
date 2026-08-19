@@ -8,7 +8,7 @@
 
       <div class="warranty-panel warranty-panel--intro">
         <p class="text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.intro_eyebrow | default: 'Warranty coverage' }}</p>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-medium tracking-[-.03em] leading-[1.05] text-[var(--ez-black)] mb-3">{{ section.settings.intro_heading | default: 'Clear coverage, simple claim steps, no guesswork.' }}</h2>
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-medium tracking-[-.03em] leading-[1.05] text-[var(--ez-black)] mb-3">{{ section.settings.intro_heading | default: 'Clear Coverage, Simple Claim Steps, No Guesswork.' }}</h2>
         <p class="text-sm md:text-base leading-[1.75] text-[var(--ez-grey)] max-w-3xl m-0">
           {{ section.settings.intro_copy | default: 'Review what is covered, what is excluded, and exactly how to submit a claim. If a product issue is actually a setup or compatibility problem, we’ll point you to support before you waste time filing the wrong request.' }}
         </p>
@@ -173,7 +173,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
   "settings": [
     { "type": "header", "content": "Intro" },
     { "type": "text", "id": "intro_eyebrow", "label": "Eyebrow", "default": "Warranty coverage" },
-    { "type": "text", "id": "intro_heading", "label": "Heading", "default": "Clear coverage, simple claim steps, no guesswork." },
+    { "type": "text", "id": "intro_heading", "label": "Heading", "default": "Clear Coverage, Simple Claim Steps, No Guesswork." },
     { "type": "textarea", "id": "intro_copy", "label": "Intro copy", "default": "Review what is covered, what is excluded, and exactly how to submit a claim. If a product issue is actually a setup or compatibility problem, we’ll point you to support before you waste time filing the wrong request." },
     { "type": "header", "content": "Coverage stats" },
     { "type": "text", "id": "stats_heading", "label": "Stats heading", "default": "Coverage at a glance" },

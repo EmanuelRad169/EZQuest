@@ -41,7 +41,7 @@
             "eyebrow": "Most Balanced",
             "title": "Everyday Hybrid Desk",
             "copy": "Best for daily desks that need ports, power, and display without a full dock.",
-            "primary_label": "Shop Hubs & Adapters",
+            "primary_label": "Shop Hubs",
             "primary_url": "/collections/hubs",
             "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
@@ -53,7 +53,7 @@
             "eyebrow": "Most Portable",
             "title": "Mobile and Travel-First",
             "copy": "Best for hotel desks, meetings, and lightweight carry kits.",
-            "primary_label": "Shop Hubs & Adapters",
+            "primary_label": "Shop Portable Hubs",
             "primary_url": "/collections/hubs",
             "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
@@ -77,7 +77,7 @@
             "eyebrow": "Power First",
             "title": "Charging and Power Layer",
             "copy": "Best for setups that need reliable power before additional ports.",
-            "primary_label": "Shop Chargers & Power",
+            "primary_label": "Shop Chargers",
             "primary_url": "/collections/chargers",
             "secondary_label": "View Support",
             "secondary_url": "/pages/support"
@@ -89,7 +89,7 @@
             "eyebrow": "Finish the Setup",
             "title": "Cables and Accessories",
             "copy": "Best for tightening cable paths or completing the last step.",
-            "primary_label": "Shop Accessories",
+            "primary_label": "Shop Cables",
             "primary_url": "/collections/cables",
             "secondary_label": "View Support",
             "secondary_url": "/pages/support"
