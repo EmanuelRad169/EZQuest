@@ -129,13 +129,14 @@
 
 /* ── Summary panel: score + histogram on one soft surface ── */
 .wrapper-review-loader .dt-rat-tg{background:#f8fafc;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
-.wrapper-review-loader .ez-tx-numbr{display:inline-flex!important;align-items:center;justify-content:center;font-family:Rubik,sans-serif!important;font-size:1.875rem!important;font-weight:600!important;background:var(--ez-amber,#fed300)!important;color:#111!important;border-radius:14px!important;min-width:4.25rem;min-height:4.25rem;box-shadow:none!important}
+.wrapper-review-loader .ez-tx-numbr{display:inline!important;background:none!important;color:#475569!important;font-family:var(--font-base)!important;font-size:.875rem!important;font-weight:400!important;border-radius:0!important;min-width:0!important;min-height:0!important;padding:0!important;box-shadow:none!important}
 .wrapper-review-loader .numb-rl,.wrapper-review-loader .sum-mz-r{font-size:.875rem!important;color:#475569!important}
 .wrapper-review-loader .ez-ave-wrapper svg,.wrapper-review-loader .ez-av-st-f{color:var(--ez-amber,#fed300)!important;fill:var(--ez-amber,#fed300)!important}
 /* histogram rows */
 .wrapper-review-loader .str-lab{font-size:.75rem!important;font-weight:600!important;color:#475569!important}
 .wrapper-review-loader .w3-light-grey{background-color:rgba(15,23,42,.07)!important;border-radius:999px!important;overflow:hidden;height:7px!important}
-.wrapper-review-loader .w3-orange,.wrapper-review-loader .sta-perc{background-color:var(--ez-amber,#fed300)!important;border-radius:999px!important;height:7px!important}
+.wrapper-review-loader .w3-orange{background-color:var(--ez-amber,#fed300)!important;border-radius:999px!important;height:7px!important}
+.wrapper-review-loader .sta-perc{background:none!important;border:none!important;box-shadow:none!important;height:auto!important;border-radius:0!important}
 /* count: plain text, no chip */
 .wrapper-review-loader .nub-of-s{border:none!important;background:none!important;box-shadow:none!important;padding:0!important;font-size:.75rem!important;font-weight:600!important;color:#64748b!important}
 
@@ -200,3 +201,13 @@
   .wrapper-review-loader .wr-a-rv-bt:hover,.wrapper-review-loader .wr-a-rv-bt:active,
   .wrapper-review-loader .a-rv-reviews-slider img:hover,.wrapper-review-loader .ez-ld-btn:active{transform:none!important}
 }
+
+/* Reviews summary — strip remaining app chrome (cards, shadows, borders) */
+.wrapper-review-loader .dt-rat-tg{background:none!important;border:none!important;box-shadow:none!important;padding:0 0 1.25rem!important;border-radius:0!important}
+/* star row: no card / shadow / border */
+.wrapper-review-loader .ez-ave-wrapper,.wrapper-review-loader .ez-ave-light-star,.wrapper-review-loader .ez-ave-dark-star,
+.wrapper-review-loader .star-num-val,.wrapper-review-loader .star-num-val *{background:none!important;box-shadow:none!important;border:none!important;border-radius:0!important}
+/* count numbers: plain text, no box, no bar above */
+.wrapper-review-loader .sta-perc>span,.wrapper-review-loader .nub-of-s,.wrapper-review-loader .numb-det span{border:none!important;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;font-size:.75rem!important;font-weight:600!important;color:#64748b!important}
+/* nothing in the summary casts a shadow */
+.wrapper-review-loader .rat-deti,.wrapper-review-loader .bar-prc-st,.wrapper-review-loader .sum-vot-wra,.wrapper-review-loader .numb-rl,.wrapper-review-loader .numb-det{background:none!important;box-shadow:none!important;border:none!important}
