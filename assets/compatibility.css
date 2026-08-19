@@ -407,18 +407,6 @@
   will-change: transform, box-shadow;
 }
 
-.compat-card::before {
-  content: '';
-  position: absolute;
-  left: 0.875rem;
-  top: 0;
-  width: 2.5rem;
-  height: 2px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, rgba(254,211,0,0.9), rgba(254,211,0,0.04));
-  z-index: 1;
-}
-
 .compat-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 22px 70px rgba(15,23,42,0.08);
@@ -428,10 +416,6 @@
 .compat-card--dim {
   opacity: 0.55;
   pointer-events: none;
-}
-
-.compat-card--dim::before {
-  display: none;
 }
 
 .compat-card--dim:hover {
@@ -582,17 +566,6 @@
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s, border-color 0.2s;
-}
-
-.compat-fallback-card::before {
-  content: '';
-  position: absolute;
-  left: 1.25rem;
-  top: 0;
-  width: 3rem;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(254,211,0,0.9), rgba(254,211,0,0.04));
-  border-radius: 99px;
 }
 
 .compat-fallback-card:hover {

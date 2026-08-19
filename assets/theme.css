@@ -4,3 +4,6 @@
 /* In-page content links: readable link-blue (client: yellow hard to read on white) */
 .richtext-content a,.article-body a,.faq-answer a,.rte a,.ticket-sidebar-card__list a{color:#0A66C2 !important;text-decoration-color:#0A66C2 !important}
 .shopify-policy__body a,.policy-prose a{color:#0A66C2 !important;text-decoration-color:#0A66C2 !important}
+
+/* Remove decorative yellow accent lines site-wide (client request) */
+.compare-card:before,.compatibility-card:before,.info-card:before,.resource-card:before,.support-link-card:before,.blog-stack-card:before,.editorial-card:before,.support-tile:before,.home-confidence-card:before,.resources-article-card:before,.mega-menu-product-card:before,.mega-menu-collection-card:before,.mega-menu-compare-hero:before,.mega-menu-promo-card:before,.section-kicker:before,.home-hero-copy-kicker:before,.resources-actions-kicker:before,.compat-card::before,.compat-fallback-card::before{display:none!important}
