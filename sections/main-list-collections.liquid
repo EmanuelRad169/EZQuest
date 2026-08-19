@@ -1,72 +1,69 @@
 <section class="section-shell collections-index-section">
   <div class="container-shell">
     {%- liquid
-      assign collection_group_titles = 'USB-C|Cables/Adapters|Power' | split: '|'
-      assign collection_group_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure||HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable|Audio^audio-cables^duraguard-stereo-audio-cable||Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display' | split: '||'
+      comment
+        Bento layout — one unified grid, no empty cells on a 4-col desktop canvas:
+        Hubs 2x2 | Cables 2x1 / Adapters 1 / Card Readers 1 (rows 1-2)
+        HDMI 1 / DisplayPort 1 / Mini DisplayPort 1 / Audio 1 (row 3)
+        Enclosure 1 / Wall Charger 2x1 / Car Charger 1 (row 4)
+        Item format: Title^handle^product-handle^span(big|wide|std)^group-tag
+      endcomment
+      assign collection_bento_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub^big^USB-C|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable^wide^USB-C|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter^std^USB-C|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42^std^USB-C|HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable^std^Cables|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable^std^Cables|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable^std^Cables|Audio^audio-cables^duraguard-stereo-audio-cable^std^Cables|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure^std^USB-C|Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger^wide^Power|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display^std^Power' | split: '|'
     -%}
 
     <h2 class="visually-hidden">{{ section.settings.heading | default: 'Collections' }}</h2>
 
-    <div class="collections-directory">
-      {% for collection_group_title in collection_group_titles %}
-        {% assign collection_group_payload = collection_group_items[forloop.index0] | split: '|' %}
-        <section class="collections-directory-group">
-          <div class="collections-directory-group-head">
-            <h2 class="collections-directory-group-title">{{ collection_group_title }}</h2>
-            <div class="collections-directory-group-divider" aria-hidden="true"></div>
-          </div>
+    <div class="collections-bento reveal-stagger">
+      {% for collection_bento_item in collection_bento_items %}
+        {%- liquid
+          assign collection_card_parts = collection_bento_item | split: '^'
+          assign collection_card_title = collection_card_parts[0] | strip
+          assign collection_card_handle = collection_card_parts[1] | strip
+          assign collection_card_product = collection_card_parts[2] | strip
+          assign collection_card_span = collection_card_parts[3] | strip
+          assign collection_card_tag = collection_card_parts[4] | strip
+          assign collection_card_image = blank
+          assign col = collections[collection_card_handle]
 
-          <div class="collections-grid reveal-stagger">
-            {% for collection_group_item in collection_group_payload %}
-              {%- liquid
-                assign collection_group_parts = collection_group_item | split: '^'
-                assign collection_card_title = collection_group_parts[0] | strip
-                assign collection_card_handle = collection_group_parts[1] | strip
-                assign collection_card_product = collection_group_parts[2] | strip
-                assign collection_card_image = blank
-                assign col = collections[collection_card_handle]
-
-                if collection_card_title == 'Hubs'
-                  assign collection_card_image = section.settings.hubs_image
-                elsif collection_card_title == 'Wall Charger' or collection_card_title == 'Car Charger'
-                  assign collection_card_image = section.settings.chargers_image
-                elsif collection_card_title == 'Cables' or collection_card_title == 'HDMI' or collection_card_title == 'DisplayPort' or collection_card_title == 'Mini DisplayPort' or collection_card_title == 'Audio'
-                  assign collection_card_image = section.settings.cables_image
-                elsif collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
-                  assign collection_card_image = section.settings.accessories_image
-                endif
-              -%}
-              {% if col == blank %}
-                {% continue %}
-              {% endif %}
-              <a href="{{ col.url }}" class="collection-card">
-                <div class="collection-card-media">
-                  {% if collection_card_image != blank %}
-                    {{ collection_card_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: collection_card_title, class: 'collection-card-image' }}
-                  {% elsif collection_card_product != blank %}
-                    {% render 'owned-product-visual',
-                      product_handle: collection_card_product,
-                      product_title: collection_card_title,
-                      variant: 'hero',
-                      width: 800,
-                      height: 800,
-                      class: 'collection-card-image'
-                    %}
-                  {% elsif col.image != blank %}
-                    {{ col.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: collection_card_title, class: 'collection-card-image' }}
-                  {% else %}
-                    {% render 'owned-collection-visual', collection_handle: col.handle, collection_title: collection_card_title, width: 800, height: 800, class: 'collection-card-image' %}
-                  {% endif %}
-                </div>
-                <div class="collection-card-body">
-                  <h2 class="collection-card-title">{{ collection_card_title }}</h2>
-                  <span class="collection-card-meta">{{ col.title }}</span>
-                </div>
-                <span class="collection-card-arrow" aria-hidden="true">→</span>
-              </a>
-            {% endfor %}
+          if collection_card_title == 'Hubs'
+            assign collection_card_image = section.settings.hubs_image
+          elsif collection_card_title == 'Wall Charger' or collection_card_title == 'Car Charger'
+            assign collection_card_image = section.settings.chargers_image
+          elsif collection_card_title == 'Cables' or collection_card_title == 'HDMI' or collection_card_title == 'DisplayPort' or collection_card_title == 'Mini DisplayPort' or collection_card_title == 'Audio'
+            assign collection_card_image = section.settings.cables_image
+          elsif collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
+            assign collection_card_image = section.settings.accessories_image
+          endif
+        -%}
+        {% if col == blank %}
+          {% continue %}
+        {% endif %}
+        <a href="{{ col.url }}" class="collection-card collection-card--bento bento-{{ collection_card_span }}">
+          <div class="collection-card-media">
+            {% if collection_card_image != blank %}
+              {{ collection_card_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: collection_card_title, class: 'collection-card-image' }}
+            {% elsif collection_card_product != blank %}
+              {% render 'owned-product-visual',
+                product_handle: collection_card_product,
+                product_title: collection_card_title,
+                variant: 'hero',
+                width: 800,
+                height: 800,
+                class: 'collection-card-image'
+              %}
+            {% elsif col.image != blank %}
+              {{ col.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: collection_card_title, class: 'collection-card-image' }}
+            {% else %}
+              {% render 'owned-collection-visual', collection_handle: col.handle, collection_title: collection_card_title, width: 800, height: 800, class: 'collection-card-image' %}
+            {% endif %}
           </div>
-        </section>
+          <div class="collection-card-body">
+            <span class="collection-card-tag">{{ collection_card_tag }}</span>
+            <h2 class="collection-card-title">{{ collection_card_title }}</h2>
+            <span class="collection-card-meta">{{ col.title }}</span>
+          </div>
+          <span class="collection-card-arrow" aria-hidden="true">→</span>
+        </a>
       {% endfor %}
     </div>
   </div>
