@@ -2,7 +2,7 @@
   <div class="container-shell">
     {%- liquid
       assign collection_group_titles = 'USB-C|Cables/Adapters|Power' | split: '|'
-      assign collection_group_items = 'Hubs^hubs-adapters^usb-c-multimedia-7-in-1-hub|Cables^accessories^duraguard-usb-c-to-usb-a-charge-and-sync-cable|Adapters^hubs-adapters^usb-c-to-hdmi-4k-60hz-adapter|Card Readers^hubs-adapters^usb-c-card-reader-ss42|Enclosure^hubs-adapters^magnetic-usb-c-m-2-nvme-ssd-enclosure||HDMI^accessories^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable|DisplayPort^accessories^usb-c-to-displayport-4k-60hz-cable|Mini DisplayPort^accessories^mini-displayport-to-hdmi-4k-60hz-cable|Audio^accessories^duraguard-stereo-audio-cable||Wall Charger^chargers-power^worldtravel-65w-gan-5-port-pd-wall-charger|Car Charger^chargers-power^ultimatepower-usb-c-72w-car-charger-dual-port-with-display' | split: '||'
+      assign collection_group_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure||HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable|Audio^audio-cables^duraguard-stereo-audio-cable||Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display' | split: '||'
     -%}
 
     <div class="collections-index-header">
@@ -29,13 +29,13 @@
                 assign collection_card_image = blank
                 assign col = collections[collection_card_handle]
 
-                if collection_card_handle == 'hubs-adapters' and collection_card_title == 'Hubs'
+                if collection_card_title == 'Hubs'
                   assign collection_card_image = section.settings.hubs_image
-                elsif collection_card_handle == 'chargers-power'
+                elsif collection_card_title == 'Wall Charger' or collection_card_title == 'Car Charger'
                   assign collection_card_image = section.settings.chargers_image
                 elsif collection_card_title == 'Cables' or collection_card_title == 'HDMI' or collection_card_title == 'DisplayPort' or collection_card_title == 'Mini DisplayPort' or collection_card_title == 'Audio'
                   assign collection_card_image = section.settings.cables_image
-                elsif collection_card_handle == 'accessories' or collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
+                elsif collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
                   assign collection_card_image = section.settings.accessories_image
                 endif
               -%}

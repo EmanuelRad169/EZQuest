@@ -42,7 +42,7 @@
             "title": "Everyday Hybrid Desk",
             "copy": "Best for daily desks that need ports, power, and display without a full dock.",
             "primary_label": "Shop Hubs & Adapters",
-            "primary_url": "/collections/hubs-adapters",
+            "primary_url": "/collections/hubs",
             "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
@@ -54,7 +54,7 @@
             "title": "Mobile and Travel-First",
             "copy": "Best for hotel desks, meetings, and lightweight carry kits.",
             "primary_label": "Shop Hubs & Adapters",
-            "primary_url": "/collections/hubs-adapters",
+            "primary_url": "/collections/hubs",
             "secondary_label": "Compare Options",
             "secondary_url": "/pages/compare"
           }
@@ -78,7 +78,7 @@
             "title": "Charging and Power Layer",
             "copy": "Best for setups that need reliable power before additional ports.",
             "primary_label": "Shop Chargers & Power",
-            "primary_url": "/collections/chargers-power",
+            "primary_url": "/collections/chargers",
             "secondary_label": "View Support",
             "secondary_url": "/pages/support"
           }
@@ -90,7 +90,7 @@
             "title": "Cables and Accessories",
             "copy": "Best for tightening cable paths or completing the last step.",
             "primary_label": "Shop Accessories",
-            "primary_url": "/collections/accessories",
+            "primary_url": "/collections/cables",
             "secondary_label": "View Support",
             "secondary_url": "/pages/support"
           }

@@ -19,7 +19,7 @@
             "heading": "USB-C Hubs, Docks, Chargers, and Cables for Modern Devices",
             "copy": "Add the ports, power, and display support your desk or travel kit actually needs.",
             "primary_label": "Shop Everyday Setups",
-            "primary_url": "/collections/hubs-adapters",
+            "primary_url": "/collections/hubs",
             "secondary_label": "Shop Best-Selling Hub",
             "secondary_url": "/products/usb-c-multimedia-hub",
             "image": "shopify://shop_images/DT_Banner_01_d4d5e4dd-db12-4c47-bfb0-273c1d3e8e0f.jpg",
@@ -47,7 +47,7 @@
             "heading": "Keep Laptops, Tablets, and Phones Charged",
             "copy": "Choose compact travel chargers or higher-output wall chargers for multi-device desks.",
             "primary_label": "Shop Chargers & Power",
-            "primary_url": "/collections/chargers-power",
+            "primary_url": "/collections/chargers",
             "secondary_label": "Find the Right Charger",
             "secondary_url": "/pages/help-me-choose",
             "image": "shopify://shop_images/DT_Banner_03_0b965f33-5228-45b6-9803-234143821790.jpg",
@@ -61,9 +61,9 @@
             "heading": "Keep the right ports and power in your travel kit",
             "copy": "Compact chargers, cables, and adapters for hotel desks, meetings, and carry-light days.",
             "primary_label": "Shop Travel-Ready Power",
-            "primary_url": "/collections/chargers-power",
+            "primary_url": "/collections/chargers",
             "secondary_label": "Shop Hubs & Adapters",
-            "secondary_url": "/collections/hubs-adapters",
+            "secondary_url": "/collections/hubs",
             "image": "shopify://shop_images/DT_Banner_04_7c7145ca-003e-43f6-8325-cd8fc93fc2cc.png",
             "image_mobile": "shopify://shop_images/Mob_Banner_04_4ba785cf-8ee1-4320-a6e6-be96c62d8c32.jpg"
           }
@@ -80,7 +80,7 @@
         "heading": "USB-C Hubs, Docks, Chargers, and Cables for Modern Devices",
         "copy": "Add the ports, power, and display support your desk or travel kit actually needs.",
         "primary_label": "Shop Everyday Setups",
-        "primary_url": "/collections/hubs-adapters",
+        "primary_url": "/collections/hubs",
         "secondary_label": "Shop Best-Selling Hub",
         "secondary_url": "/products/usb-c-multimedia-hub"
       }
