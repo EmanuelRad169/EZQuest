@@ -158,3 +158,14 @@
 
 /* Motion safety */
 @media (prefers-reduced-motion:reduce){.wrapper-review-loader .wr-a-rv-bt,.wrapper-review-loader .ez-ld-btn{transition:none!important}.wrapper-review-loader .wr-a-rv-bt:hover,.wrapper-review-loader .wr-a-rv-bt:active,.wrapper-review-loader .ez-ld-btn:active{transform:none!important}}
+
+/* EZ Amazon Reviews: skin completion — review body, dates, photos, pagination */
+.wrapper-review-loader .ra-rv-cm{font-size:.875rem!important;line-height:1.65!important;color:#475569!important;margin-top:.25rem}
+.wrapper-review-loader .ra-rv-dat{font-size:.75rem!important;color:#94a3b8!important}
+.wrapper-review-loader .ra-rv-pht img{border-radius:10px!important;border:1px solid rgba(0,0,0,.06)!important}
+.wrapper-review-loader .a-rv-reviews-slider img{border-radius:12px!important;border:1px solid rgba(0,0,0,.06)!important;transition:transform .18s cubic-bezier(0,0,.2,1)}
+.wrapper-review-loader .a-rv-reviews-slider img:hover{transform:scale(1.03)}
+.wrapper-review-loader .numb-rl,.wrapper-review-loader .sum-mz-r{font-size:.875rem!important;color:#475569!important}
+.wrapper-review-loader .rv-loader button,.wrapper-review-loader .loader-review button,.wrapper-review-loader .rv-d-but-next,.wrapper-review-loader .rv-d-but-prev{border:1.5px solid rgba(0,0,0,.15)!important;border-radius:100px!important;background:#fff!important;color:#0a0e16!important;font-weight:600!important;font-size:.875rem!important;box-shadow:none!important;transition:background-color .18s ease-out,border-color .18s ease-out!important}
+.wrapper-review-loader .rv-loader button:hover,.wrapper-review-loader .loader-review button:hover{background:var(--ez-amber,#fed300)!important;border-color:var(--ez-amber,#fed300)!important}
+@media (prefers-reduced-motion:reduce){.wrapper-review-loader .a-rv-reviews-slider img{transition:none!important}.wrapper-review-loader .a-rv-reviews-slider img:hover{transform:none!important}}
