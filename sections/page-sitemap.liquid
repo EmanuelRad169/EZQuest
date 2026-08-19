@@ -15,8 +15,8 @@
         <h2 class="sitemap-group__heading">Shop</h2>
         <ul class="sitemap-group__list">
           <li><a href="{{ routes.collections_url }}">All products</a></li>
-          <li><a href="{{ routes.collections_url }}/hubs-adapters">Hubs &amp; Adapters</a></li>
-          <li><a href="{{ routes.collections_url }}/chargers-power">Chargers &amp; Power</a></li>
+          <li><a href="{{ routes.collections_url }}/hubs">Hubs</a></li>
+          <li><a href="{{ routes.collections_url }}/chargers">Chargers</a></li>
           <li><a href="{{ routes.collections_url }}/accessories">Accessories &amp; Cables</a></li>
           {%- for product in collections.all.products limit: 30 -%}
             <li><a href="{{ product.url }}">{{ product.title }}</a></li>

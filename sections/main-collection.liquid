@@ -27,13 +27,13 @@
 
         if intro_copy == blank
           case collection.handle
-            when 'hubs-adapters'
+            when 'hubs'
               assign intro_copy = 'USB-C hubs and adapters for lighter desks, travel kits, and everyday expansion.'
             when 'docking-stations'
               assign intro_copy = 'Desk-ready docks that bring displays, charging, Ethernet, and peripherals into one cleaner footprint.'
-            when 'chargers-power'
+            when 'chargers'
               assign intro_copy = 'Charging essentials for lighter travel kits, cleaner desks, and reliable everyday power.'
-            when 'accessories'
+            when 'cables'
               assign intro_copy = 'Cables and finishing pieces that make the setup feel complete and dependable.'
             else
               assign intro_copy = 'EZQuest products with the right mix of ports, power, and display support.'
@@ -41,7 +41,7 @@
         endif
 
         case collection.handle
-          when 'hubs-adapters'
+          when 'hubs'
             assign fallback_product_handles = 'usb-c-multimedia-hub,usb-c-travel-hub'
             assign promo_handle = 'docking-stations'
             assign promo_title = 'Ready for a full desk?'
@@ -50,19 +50,19 @@
             assign promo_image = section.settings.promo_ready_for_desk_image
           when 'docking-stations'
             assign fallback_product_handles = 'usb-c-pro-dock'
-            assign promo_handle = 'chargers-power'
+            assign promo_handle = 'chargers'
             assign promo_title = 'Power, refined'
             assign promo_copy = 'Pair the desk with chargers and power accessories that keep every device ready.'
             assign promo_link_label = 'View chargers and power'
             assign promo_image = section.settings.promo_power_up_image
-          when 'chargers-power'
-            assign promo_handle = 'accessories'
+          when 'chargers'
+            assign promo_handle = 'cables'
             assign promo_title = 'Finish the setup'
             assign promo_copy = 'Add the cables and accessories that keep power clean and dependable.'
             assign promo_link_label = 'View accessories'
             assign promo_image = section.settings.promo_duraguard_cables_image
-          when 'accessories'
-            assign promo_handle = 'hubs-adapters'
+          when 'cables'
+            assign promo_handle = 'hubs'
             assign promo_title = 'Expand the setup'
             assign promo_copy = 'Add hubs and adapters when the setup needs more ports and more reach.'
             assign promo_link_label = 'View hubs and adapters'
@@ -224,7 +224,7 @@
     assign subcat_handles = ''
     assign subcat_labels = ''
 
-    assign grp_usbc_handles = 'usb-c-hubs,usb-c-cables-collection,usb-c-adapters,usb-c-card-readers'
+    assign grp_usbc_handles = 'hubs,cables,adapters,usb-c-card-readers'
     assign grp_usbc_labels  = 'Hubs,Cables,Adapters,Card Readers & Enclosures'
     assign grp_cab_handles  = 'hdmi-cables-adapters,displayport-cables-adapters,audio-cables'
     assign grp_cab_labels   = 'HDMI,DisplayPort,Audio'

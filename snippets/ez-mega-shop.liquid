@@ -1,5 +1,5 @@
 {%- liquid
-  assign col_usbc   = collections['usb-c-hubs']
+  assign col_usbc   = collections['hubs']
   assign col_cables = collections['hdmi-cables-adapters']
   assign col_power  = collections['wall-chargers']
   assign fp         = section.settings.mega_menu_featured_product
@@ -35,7 +35,7 @@
     {% comment %} ── Category tiles — 3 gradient cards ─────── {% endcomment %}
     <div class="ez-mega-shop__tiles">
 
-      <a href="{{ col_usbc.url | default: '/collections/usb-c-hubs' }}"
+      <a href="{{ col_usbc.url | default: '/collections/hubs' }}"
          class="ez-mega-shop__tile ez-mega-shop__tile--hubs"
          aria-label="{{ col_usbc.title | default: 'USB-C' }}">
         <div class="ez-mega-shop__tile-media" aria-hidden="true">
@@ -96,7 +96,7 @@
         <p class="ez-mega-shop__subcat-head">USB-C</p>
         <ul class="nav-dd__links" role="list">
           <li>
-            <a href="{{ routes.collections_url }}/usb-c-hubs" class="nav-dd__link">
+            <a href="{{ routes.collections_url }}/hubs" class="nav-dd__link">
               <span class="nav-dd__link-text">
                 <span class="nav-dd__link-title">Hubs</span>
                 <span class="nav-dd__link-sub">Multiport Connectivity</span>
@@ -104,7 +104,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ routes.collections_url }}/usb-c-cables-collection" class="nav-dd__link">
+            <a href="{{ routes.collections_url }}/cables" class="nav-dd__link">
               <span class="nav-dd__link-text">
                 <span class="nav-dd__link-title">Cables</span>
                 <span class="nav-dd__link-sub">USB-C Cables</span>
@@ -112,7 +112,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ routes.collections_url }}/usb-c-adapters" class="nav-dd__link">
+            <a href="{{ routes.collections_url }}/adapters" class="nav-dd__link">
               <span class="nav-dd__link-text">
                 <span class="nav-dd__link-title">Adapters</span>
                 <span class="nav-dd__link-sub">Port-Converters</span>
@@ -128,7 +128,7 @@
             </a>
           </li>
         </ul>
-        <a href="{{ routes.collections_url }}/usb-c-hubs" class="ez-mega-shop__subcat-seeall">All USB-C →</a>
+        <a href="{{ routes.collections_url }}/hubs" class="ez-mega-shop__subcat-seeall">All USB-C →</a>
       </div>
 
       <div class="ez-mega-shop__subcat-col">

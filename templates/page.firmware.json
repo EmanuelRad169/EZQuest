@@ -27,7 +27,7 @@
           "type": "family",
           "settings": {
             "label": "Hubs & Adapters",
-            "handle": "hubs-adapters"
+            "handle": "hubs"
           }
         },
         "fam_2": {
@@ -41,14 +41,14 @@
           "type": "family",
           "settings": {
             "label": "Chargers & Power",
-            "handle": "chargers-power"
+            "handle": "chargers"
           }
         },
         "fam_4": {
           "type": "family",
           "settings": {
             "label": "Accessories",
-            "handle": "accessories"
+            "handle": "cables"
           }
         },
         "file_f1": {

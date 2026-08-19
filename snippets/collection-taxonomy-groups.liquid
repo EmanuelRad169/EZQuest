@@ -107,7 +107,7 @@
   endcapture
 
   if taxonomy_groups_found == 0
-    assign fallback_group_payloads = 'Hubs^hubs-adapters~Cables^accessories~Adapters^hubs-adapters~Card Readers^hubs-adapters~Enclosure^hubs-adapters||HDMI^accessories~DisplayPort^accessories~Mini DisplayPort^accessories~Audio^accessories||Wall Charger^chargers-power~Car Charger^chargers-power' | split: '||'
+    assign fallback_group_payloads = 'Hubs^hubs~Cables^cables~Adapters^hubs~Card Readers^hubs~Enclosure^hubs||HDMI^cables~DisplayPort^cables~Mini DisplayPort^cables~Audio^accessories||Wall Charger^chargers~Car Charger^chargers' | split: '||'
 
     capture taxonomy_groups_markup
       for taxonomy_column_title in taxonomy_column_titles

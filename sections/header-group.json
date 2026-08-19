@@ -57,7 +57,7 @@
           "settings": {
             "column_title": "USB-C",
             "label": "USB-C Hubs",
-            "url": "/collections/usb-c-hubs"
+            "url": "/collections/hubs"
           }
         },
         "sub_usbc_cables": {
@@ -65,7 +65,7 @@
           "settings": {
             "column_title": "USB-C",
             "label": "USB-C Cables",
-            "url": "/collections/usb-c-cables-collection"
+            "url": "/collections/cables"
           }
         },
         "sub_usbc_adapters": {
@@ -73,7 +73,7 @@
           "settings": {
             "column_title": "USB-C",
             "label": "USB-C Adapters",
-            "url": "/collections/usb-c-adapters"
+            "url": "/collections/adapters"
           }
         },
         "sub_usbc_readers": {

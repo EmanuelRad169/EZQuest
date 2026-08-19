@@ -5,9 +5,9 @@
   assign dock_product = all_products['usb-c-pro-dock']
   assign travel_product = all_products['usb-c-travel-hub']
 
-  assign hubs_collection = collections['hubs-adapters']
+  assign hubs_collection = collections['hubs']
   assign docks_collection = collections['docking-stations']
-  assign power_collection = collections['chargers-power']
+  assign power_collection = collections['chargers']
 
   assign sorted_use_case_keys = '' | split: ''
 
@@ -75,7 +75,7 @@
                             <rect x="2" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
                             <path d="M5 12v2M11 12v2M2 7h12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
                           </svg>
-                        {% when 'chargers-power' %}
+                        {% when 'chargers' %}
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                             <path d="M8 2v4l2.5 1L8 14v-4L5.5 9 8 2z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
@@ -127,7 +127,7 @@
                       assign use_case_destination_url = docks_collection.url
                       assign use_case_destination_label = 'See desk-ready docks'
                       assign use_case_best_for = 'Desk setups'
-                    when 'chargers-power'
+                    when 'chargers'
                       assign use_case_destination_url = power_collection.url
                       assign use_case_destination_label = 'Shop charging setups'
                       assign use_case_best_for = 'Charging'
@@ -198,23 +198,23 @@
                 <span class="mega-col__title">USB-C</span>
               </div>
               <nav class="mega-col__links">
-                <a href="{{ collections['hubs-adapters'].url }}" class="mega-col__link">
+                <a href="{{ collections['hubs'].url }}" class="mega-col__link">
                   <span>Hubs</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Cable" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Cable" class="mega-col__link">
                   <span>Cables</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Adapter" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Adapter" class="mega-col__link">
                   <span>Adapters</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Card+Reader" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Card+Reader" class="mega-col__link">
                   <span>Card Readers</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Enclosure" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Enclosure" class="mega-col__link">
                   <span>Enclosure</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -232,19 +232,19 @@
                 <span class="mega-col__title">Cables &amp; Adapters</span>
               </div>
               <nav class="mega-col__links">
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=HDMI" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=HDMI" class="mega-col__link">
                   <span>HDMI</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=DisplayPort" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=DisplayPort" class="mega-col__link">
                   <span>DisplayPort</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Mini+DisplayPort" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Mini+DisplayPort" class="mega-col__link">
                   <span>Mini DisplayPort</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['accessories'].url }}?filter.p.product_type=Audio" class="mega-col__link">
+                <a href="{{ collections['cables'].url }}?filter.p.product_type=Audio" class="mega-col__link">
                   <span>Audio</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -262,11 +262,11 @@
                 <span class="mega-col__title">Power</span>
               </div>
               <nav class="mega-col__links">
-                <a href="{{ collections['chargers-power'].url }}?filter.p.product_type=Wall+Charger" class="mega-col__link">
+                <a href="{{ collections['chargers'].url }}?filter.p.product_type=Wall+Charger" class="mega-col__link">
                   <span>Wall Charger</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="{{ collections['chargers-power'].url }}?filter.p.product_type=Car+Charger" class="mega-col__link">
+                <a href="{{ collections['chargers'].url }}?filter.p.product_type=Car+Charger" class="mega-col__link">
                   <span>Car Charger</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>

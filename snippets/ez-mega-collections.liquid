@@ -74,7 +74,7 @@
     <div class="ez-mega__panels">
 
       <div class="ez-mega__panel is-active" id="col-usbc" role="tabpanel">
-        {% for product in collections['hubs-adapters'].products limit: 8 %}
+        {% for product in collections['hubs'].products limit: 8 %}
           {%- assign card_img = product.featured_image | default: product.images.first -%}
           {% if card_img == blank %}{% continue %}{% endif %}
           <a href="{{ product.url }}" class="ez-mega__card">
@@ -92,7 +92,7 @@
       </div>
 
       <div class="ez-mega__panel" id="col-cables" role="tabpanel" hidden>
-        {% for product in collections['accessories'].products limit: 8 %}
+        {% for product in collections['cables'].products limit: 8 %}
           {%- assign card_img = product.featured_image | default: product.images.first -%}
           {% if card_img == blank %}{% continue %}{% endif %}
           <a href="{{ product.url }}" class="ez-mega__card">
@@ -110,7 +110,7 @@
       </div>
 
       <div class="ez-mega__panel" id="col-power" role="tabpanel" hidden>
-        {% for product in collections['chargers-power'].products limit: 8 %}
+        {% for product in collections['chargers'].products limit: 8 %}
           {%- assign card_img = product.featured_image | default: product.images.first -%}
           {% if card_img == blank %}{% continue %}{% endif %}
           <a href="{{ product.url }}" class="ez-mega__card">
