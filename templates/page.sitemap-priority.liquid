@@ -14,7 +14,7 @@
       </url>
     {% endfor %}
   {% endpaginate %}
-  {% assign priority_collections = 'hubs,docking-stations,chargers,cables' | split: ',' %}
+  {% assign priority_collections = 'hubs,adapters,chargers,cables' | split: ',' %}
   {% for collection_handle in priority_collections %}
     {% assign priority_collection = collections[collection_handle] %}
     {% if priority_collection != blank %}

@@ -34,7 +34,7 @@
           "type": "family",
           "settings": {
             "label": "Docking Stations",
-            "handle": "docking-stations"
+            "handle": "hubs"
           }
         },
         "fam_3": {

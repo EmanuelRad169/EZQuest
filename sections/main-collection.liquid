@@ -28,9 +28,9 @@
         if intro_copy == blank
           case collection.handle
             when 'hubs'
-              assign intro_copy = 'USB-C hubs and adapters for lighter desks, travel kits, and everyday expansion.'
-            when 'docking-stations'
-              assign intro_copy = 'Desk-ready docks that bring displays, charging, Ethernet, and peripherals into one cleaner footprint.'
+              assign intro_copy = 'USB-C hubs for lighter desks, travel kits, and everyday expansion.'
+            when 'adapters'
+              assign intro_copy = 'Adapters, card readers, and enclosures that connect displays, drives, and legacy gear.'
             when 'chargers'
               assign intro_copy = 'Charging essentials for lighter travel kits, cleaner desks, and reliable everyday power.'
             when 'cables'
@@ -43,18 +43,17 @@
         case collection.handle
           when 'hubs'
             assign fallback_product_handles = 'usb-c-multimedia-hub,usb-c-travel-hub'
-            assign promo_handle = 'docking-stations'
-            assign promo_title = 'Ready for a full desk?'
-            assign promo_copy = 'See the docks built for displays, Ethernet, charging, and a cleaner desk.'
-            assign promo_link_label = 'View docking stations'
-            assign promo_image = section.settings.promo_ready_for_desk_image
-          when 'docking-stations'
-            assign fallback_product_handles = 'usb-c-pro-dock'
             assign promo_handle = 'chargers'
             assign promo_title = 'Power, refined'
             assign promo_copy = 'Pair the desk with chargers and power accessories that keep every device ready.'
-            assign promo_link_label = 'View chargers and power'
+            assign promo_link_label = 'View chargers'
             assign promo_image = section.settings.promo_power_up_image
+          when 'adapters'
+            assign promo_handle = 'cables'
+            assign promo_title = 'Finish the setup'
+            assign promo_copy = 'Add the cables that keep video and power clean and dependable.'
+            assign promo_link_label = 'View cables'
+            assign promo_image = section.settings.promo_duraguard_cables_image
           when 'chargers'
             assign promo_handle = 'cables'
             assign promo_title = 'Finish the setup'
