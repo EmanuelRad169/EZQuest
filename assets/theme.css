@@ -129,7 +129,7 @@
 
 /* ── Summary panel: score + histogram on one soft surface ── */
 .wrapper-review-loader .dt-rat-tg{background:#f8fafc;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
-.wrapper-review-loader .ez-tx-numbr{display:inline!important;background:none!important;color:#475569!important;font-family:var(--font-base)!important;font-size:.875rem!important;font-weight:400!important;border-radius:0!important;min-width:0!important;min-height:0!important;padding:0!important;box-shadow:none!important}
+.wrapper-review-loader .ez-tx-numbr{display:inline!important;background:none!important;color:#0a0e16!important;font-family:var(--font-base)!important;font-size:1.125rem!important;font-weight:600!important;border-radius:0!important;min-width:0!important;min-height:0!important;padding:0!important;box-shadow:none!important}
 .wrapper-review-loader .numb-rl,.wrapper-review-loader .sum-mz-r{font-size:.875rem!important;color:#475569!important}
 .wrapper-review-loader .ez-ave-wrapper svg,.wrapper-review-loader .ez-av-st-f{color:var(--ez-amber,#fed300)!important;fill:var(--ez-amber,#fed300)!important}
 /* histogram rows */
@@ -211,3 +211,7 @@
 .wrapper-review-loader .sta-perc>span,.wrapper-review-loader .nub-of-s,.wrapper-review-loader .numb-det span{border:none!important;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;font-size:.75rem!important;font-weight:600!important;color:#64748b!important}
 /* nothing in the summary casts a shadow */
 .wrapper-review-loader .rat-deti,.wrapper-review-loader .bar-prc-st,.wrapper-review-loader .sum-vot-wra,.wrapper-review-loader .numb-rl,.wrapper-review-loader .numb-det{background:none!important;box-shadow:none!important;border:none!important}
+
+/* Reviews summary: 3.7 score = large amber tile */
+.wrapper-review-loader .star-num-val>span:first-child,
+.wrapper-review-loader .star-num-val .numb-rl{display:inline-flex!important;align-items:center;justify-content:center;background:var(--ez-amber,#fed300)!important;color:#111!important;font-family:Rubik,sans-serif!important;font-size:3rem!important;font-weight:700!important;line-height:1!important;letter-spacing:-.03em;min-width:6rem;min-height:6rem;border-radius:18px!important;box-shadow:none!important;padding:.5rem!important}
