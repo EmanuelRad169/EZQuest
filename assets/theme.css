@@ -62,3 +62,9 @@
 
 /* Headings: balanced line wrapping */
 .section-heading,.display-heading,.page-cta__heading{text-wrap:balance}
+
+/* ── Hero typography normalization: one canonical hero heading style ── */
+.page-hero__heading,.page-hero-dark__heading,.page-hero-light__heading,.wtb-hero__heading,.page-hero-heading{font-size:clamp(1.875rem,4.5vw,3.75rem);font-weight:500;line-height:1.05;letter-spacing:-.035em}
+.policy-hero__heading,.about-hero-heading,.account-hero__heading{font-weight:500;letter-spacing:-.035em}
+.home-hero-copy-heading{font-weight:500;letter-spacing:-.035em}
+@media (max-width:767px){.page-hero__heading,.page-hero-dark__heading,.page-hero-light__heading,.wtb-hero__heading{font-size:clamp(1.5rem,6vw,2.25rem);line-height:1.12}}
