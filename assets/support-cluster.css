@@ -89,28 +89,25 @@
 
 .file-badge {
   display: inline-block;
-  padding: .2rem .625rem;
-  border-radius: 6px;
-  background: rgba(0,0,0,.04);
+  padding: 0;
+  background: none;
   color: var(--ez-grey);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .file-badge--zip {
-  background: rgba(37,99,235,.07);
   color: var(--ez-info-text);
 }
 
 .file-badge--exe {
-  background: rgba(124,58,237,.07);
   color: #6d28d9;
 }
 
 .file-badge--other {
-  background: rgba(220,38,38,.07);
   color: var(--ez-error-text);
 }
 
@@ -142,11 +139,10 @@
 
 .product-pill {
   display: inline-block;
-  padding: .2rem .75rem;
-  border-radius: 9999px;
-  background: rgba(0,0,0,.04);
-  color: var(--ez-grey);
-  font-size: 0.75rem;
+  padding: 0;
+  background: none;
+  color: var(--ez-black, #1d1d1f);
+  font-size: 0.85rem;
   font-weight: 500;
 }
 a.product-pill--link {
@@ -155,9 +151,12 @@ a.product-pill--link {
   transition: background-color .15s ease, color .15s ease;
 }
 a.product-pill--link:hover,
-a.product-pill--link:focus-visible {
-  background: rgba(254, 211, 0, 0.18);
+a.product-pill--link:hover,
+.product-pill--link:focus-visible {
+  background: none;
   color: var(--ez-black, #1d1d1f);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Status indicators */
