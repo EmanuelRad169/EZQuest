@@ -109,10 +109,13 @@
 .wrapper-review-loader .ez-tx-numbr{font-size:.875rem!important;color:#64748b!important;border-radius:0!important;background:none!important}
 .wrapper-review-loader .ez-ave-dark-star,.wrapper-review-loader .ez-av-st-f{color:var(--ez-amber,#fed300)!important}
 
+/* Summary wrapper: no card/panel behind it */
+.wrapper-review-loader .dt-rat-tg,.wrapper-review-loader .sum-vot-wra,.wrapper-review-loader .bar-prc-st{background:transparent!important;border:none!important;box-shadow:none!important}
+
 /* Rating distribution bars */
 .wrapper-review-loader .w3-light-grey{background-color:rgba(0,0,0,.06)!important;border-radius:999px!important;overflow:hidden;height:8px!important}
 .wrapper-review-loader .w3-orange{background-color:var(--ez-amber,#fed300)!important;height:8px!important}
-.wrapper-review-loader .sta-perc,.wrapper-review-loader .nub-of-s{border:1px solid rgba(0,0,0,.08)!important;border-radius:8px!important;font-size:.75rem!important;color:#475569!important;background:#fff!important}
+.wrapper-review-loader .sta-perc,.wrapper-review-loader .nub-of-s{border:none!important;border-radius:0!important;font-size:.875rem!important;color:#475569!important;background:none!important;box-shadow:none!important}
 .wrapper-review-loader .str-lab{font-size:.875rem!important;color:#0a0e16!important}
 
 /* Photo strip + review photos */
