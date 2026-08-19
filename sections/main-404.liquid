@@ -1,63 +1,43 @@
-<section class="not-found section--dark" aria-label="Page not found">
-  <div class="page-width not-found__inner">
+<section class="nf404" aria-label="Page not found">
+  <div class="nf404__inner">
 
-    <div class="not-found__actions">
-      <a href="{{ routes.root_url }}" class="btn btn--primary not-found__btn-primary">
-        Go home
-      </a>
-      <a href="{{ routes.collections_url }}" class="btn btn--secondary not-found__btn-secondary">
-        Browse all products
-      </a>
+    <div class="nf404__figure" aria-hidden="true">
+      <span class="nf404__digits">404</span>
+
+      <span class="nf404__chip nf404__chip--1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </span>
+      <span class="nf404__chip nf404__chip--2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <span class="nf404__chip nf404__chip--3">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="8" rx="1"/><line x1="10" y1="5" x2="10" y2="7"/><line x1="14" y1="5" x2="14" y2="7"/><path d="M9 10v3a3 3 0 0 0 6 0v-3"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
+      </span>
+      <span class="nf404__chip nf404__chip--4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      </span>
+      <span class="nf404__dot"></span>
     </div>
 
-    <form action="{{ routes.search_url }}" method="get" role="search" class="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row">
-      <label for="not-found-search" class="sr-only">Search products and support</label>
-      <input
-        id="not-found-search"
-        type="search"
-        name="q"
-        placeholder="Search hubs, chargers, cables, support"
-        class="min-h-12 flex-1 rounded-full border border-white/20 bg-white px-5 text-sm font-medium text-slate-950 placeholder:text-slate-500"
-      >
-      <button type="submit" class="btn btn--primary not-found__btn-primary">Search</button>
-    </form>
+    <h1 class="nf404__heading">{{ section.settings.heading | default: 'Oops! Page not found' }}</h1>
+    <p class="nf404__copy">{{ section.settings.copy | default: "The page you're looking for moved, was renamed, or never existed. Let's get you back to the good stuff." }}</p>
 
-    <div class="not-found__families">
-      <p class="not-found__families-label">Or browse by family:</p>
-      <div class="not-found__family-links">
-        <a href="{{ routes.collections_url }}/hubs" class="not-found__family-pill">Hubs</a>
-        <a href="{{ routes.collections_url }}/docking-stations" class="not-found__family-pill">Docking Stations</a>
-        <a href="{{ routes.collections_url }}/chargers" class="not-found__family-pill">Chargers</a>
-        <a href="{{ routes.collections_url }}/accessories" class="not-found__family-pill">Accessories</a>
-        <a href="/pages/support" class="not-found__family-pill">Support</a>
-      </div>
+    <div class="nf404__actions">
+      <a href="{{ routes.root_url }}" class="btn btn--primary nf404__cta">{{ section.settings.cta_label | default: 'Go back to Homepage' }}</a>
     </div>
+    <a href="{{ routes.collections_url }}" class="nf404__quiet-link">Or browse all products →</a>
 
   </div>
 </section>
 
-
 {% schema %}
 {
-  "name": "404 page",
+  "name": "404 hero",
+  "tag": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "This page isn't connected"
-    },
-    {
-      "type": "textarea",
-      "id": "copy",
-      "label": "Supporting copy",
-      "default": "The link might have moved or the URL might be wrong. Here is where to go instead."
-    }
-  ],
-  "presets": [
-    {
-      "name": "404 page"
-    }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Oops! Page not found" },
+    { "type": "textarea", "id": "copy", "label": "Copy", "default": "The page you're looking for moved, was renamed, or never existed. Let's get you back to the good stuff." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Go back to Homepage" }
   ]
 }
 {% endschema %}

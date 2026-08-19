@@ -18,3 +18,23 @@
 .collections-bento .bento-wide{grid-column:span 2}
 .collection-card-tag{display:block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:hsla(0,0%,100%,.6);margin-bottom:.35rem}
 @media (min-width:1024px){.collections-bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:13.5rem;gap:1.25rem}}
+
+/* ── 404 full hero ─────────────────────────────────────────── */
+.nf404{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 180px);padding:4rem 1.5rem;background:#fff;text-align:center}
+.nf404__inner{max-width:40rem;margin:0 auto}
+.nf404__figure{position:relative;display:inline-block;margin-bottom:1.5rem}
+.nf404__digits{font-family:Rubik,sans-serif;font-weight:700;font-size:clamp(8rem,22vw,15rem);line-height:.9;letter-spacing:-.04em;color:#0a0e16;display:block}
+.nf404__chip{position:absolute;display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:.9rem;background:#eef2f8;color:#0a0e16;box-shadow:0 8px 24px rgba(10,14,22,.08);animation:nf404-float 5s ease-in-out infinite}
+.nf404__chip--1{left:-1.25rem;top:28%;border-radius:999px;animation-delay:0s}
+.nf404__chip--2{right:14%;top:-8%;transform:rotate(12deg);animation-delay:1.2s}
+.nf404__chip--3{left:16%;top:-14%;border-radius:999px;background:#fef6d8;animation-delay:2.1s}
+.nf404__chip--4{right:-1.5rem;bottom:6%;border-radius:999px;animation-delay:3s}
+.nf404__dot{position:absolute;top:-2.4rem;left:50%;transform:translateX(-50%);width:.85rem;height:1.15rem;border-radius:999px;background:#0a0e16}
+@keyframes nf404-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.nf404__chip{animation:none}}
+.nf404__heading{font-family:Rubik,sans-serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-.02em;color:#0a0e16;margin:0 0 .75rem}
+.nf404__copy{font-size:.95rem;line-height:1.6;color:#64748b;max-width:30rem;margin:0 auto 1.75rem}
+.nf404__actions{margin-bottom:1rem}
+.nf404__cta{min-width:14rem}
+.nf404__quiet-link{font-size:.85rem;color:#64748b;text-decoration:underline;text-underline-offset:3px}
+.nf404__quiet-link:hover{color:#0a0e16}
