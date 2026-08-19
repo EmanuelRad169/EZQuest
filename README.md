@@ -111,3 +111,12 @@ Optional `.env.local` overrides can still exist for ad hoc CLI flags, but the de
 ## Next Milestone
 
 Phase 2 should begin with implementation of the global shell, homepage, collection page, product page, and the first support-center templates.
+
+## Repo structure
+
+- `assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/` — the Shopify theme (deployed via Shopify CLI / GitHub integration)
+- `src/styles/` + `tailwind.config.cjs` — CSS source compiled into `assets/`
+- `scripts/` — maintenance and QA scripts (`dev`, `audit`, `shopify-admin`, `migration`)
+- `tests/` — Playwright QA + visual regression baselines
+- `docs/` — project docs: `PROJECT-BRIEF.md`, `reports/` (handoff + audits), `policies/` (store policy sources), `data/` (review/press import CSVs), migration and architecture notes
+- `.env.local`, `shopify.theme.toml` — local credentials/config (gitignored; see the `.example` files)
