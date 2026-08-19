@@ -7,3 +7,6 @@
 
 /* Remove decorative yellow accent lines site-wide (client request) */
 .compare-card:before,.compatibility-card:before,.info-card:before,.resource-card:before,.support-link-card:before,.blog-stack-card:before,.editorial-card:before,.support-tile:before,.home-confidence-card:before,.resources-article-card:before,.mega-menu-product-card:before,.mega-menu-collection-card:before,.mega-menu-compare-hero:before,.mega-menu-promo-card:before,.section-kicker:before,.home-hero-copy-kicker:before,.resources-actions-kicker:before,.compat-card::before,.compat-fallback-card::before{display:none!important}
+
+/* /collections directory grid: fixed 4 columns on desktop */
+@media (min-width:1024px){.collections-directory .collections-grid{grid-template-columns:repeat(4,1fr)}}

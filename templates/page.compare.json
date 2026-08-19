@@ -35,8 +35,8 @@
     "compare": {
       "type": "ez-compare",
       "settings": {
-        "kicker": "Compare",
-        "heading": "Compare products side by side",
+        "kicker": "",
+        "heading": "",
         "body": ""
       }
     },
