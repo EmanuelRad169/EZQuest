@@ -80,13 +80,7 @@
 </section>
 {% endif %}
 
-{%- render 'page-cta',
-  variant: 'light',
-  heading: section.settings.cta_heading | default: 'Explore What We Make.',
-  subhead: section.settings.cta_body | default: 'Premium accessories for every desk, every device.',
-  primary_label: section.settings.cta_label | default: 'Browse Products',
-  primary_url: section.settings.cta_url | default: routes.collections_url
--%}
+{%- render 'page-cta', variant: 'light', heading: section.settings.cta_heading, default: routes.collections_url, subhead: section.settings.cta_body, primary_label: section.settings.cta_label, primary_url: section.settings.cta_url -%}
 
 {% schema %}
 {
@@ -344,3 +338,22 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'page-cta',
+      variant: 'light',
+      heading: section.settings.cta_heading | default: 'Explore What We Make.',
+      subhead: section.settings.cta_body | default: 'Premium accessories for every desk, every device.',
+      primary_label: section.settings.cta_label | default: 'Browse Products',
+      primary_url: section.settings.cta_url | default: routes.collections_url
+    -%}
+  to: "{%- render 'page-cta', variant: 'light', heading: section.settings.cta_heading,
+    default: routes.collections_url, subhead: section.settings.cta_body, primary_label:
+    section.settings.cta_label, primary_url: section.settings.cta_url -%}"
+  position: 3470..3703
+{% endcomment %}

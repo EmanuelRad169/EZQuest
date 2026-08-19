@@ -172,10 +172,10 @@
 
                       <div class="home-hero-actions mt-6 flex flex-wrap items-center gap-4 lg:mt-8" data-hero-actions>
                         {% if slide_primary_label != blank %}
-                          {% render 'button', label: slide_primary_label, url: block.settings.primary_url | default: section.settings.primary_url | default: '/pages/help-me-choose', style: 'primary-on-dark' %}
+                          {% render 'button', label: slide_primary_label, url: block.settings.primary_url, default: '/pages/help-me-choose', style: 'primary-on-dark' %}
                         {% endif %}
                         {% if slide_secondary_label != blank %}
-                          {% render 'button', label: slide_secondary_label, url: block.settings.secondary_url | default: section.settings.secondary_url | default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}
+                          {% render 'button', label: slide_secondary_label, url: block.settings.secondary_url, default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}
                         {% endif %}
                       </div>
                     </div>
@@ -265,10 +265,10 @@
                     <p class="home-hero-copy-text mt-4 max-w-copy text-body-sm text-white/80 md:max-w-copy-row md:text-body lg:mt-5 lg:max-w-copy-md lg:text-body-lg xl:max-w-prose" data-hero-copy>{{ hero_copy }}</p>
                     <div class="home-hero-actions mt-6 flex flex-wrap items-center gap-4 lg:mt-8" data-hero-actions>
                       {% if section.settings.primary_label != blank %}
-                        {% render 'button', label: section.settings.primary_label, url: section.settings.primary_url | default: '/pages/help-me-choose', style: 'primary-on-dark' %}
+                        {% render 'button', label: section.settings.primary_label, url: section.settings.primary_url, default: '/pages/help-me-choose', style: 'primary-on-dark' %}
                       {% endif %}
                       {% if section.settings.secondary_label != blank %}
-                        {% render 'button', label: section.settings.secondary_label, url: section.settings.secondary_url | default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}
+                        {% render 'button', label: section.settings.secondary_label, url: section.settings.secondary_url, default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}
                       {% endif %}
                     </div>
                   </div>
@@ -530,3 +530,32 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'button', label: slide_primary_label, url: block.settings.primary_url
+    | default: section.settings.primary_url | default: '/pages/help-me-choose', style:
+    'primary-on-dark' %}"
+  to: "{% render 'button', label: slide_primary_label, url: block.settings.primary_url,
+    default: '/pages/help-me-choose', style: 'primary-on-dark' %}"
+  position: 10613..10755
+- from: "{% render 'button', label: slide_secondary_label, url: block.settings.secondary_url
+    | default: section.settings.secondary_url | default: '/pages/compare', style:
+    'secondary-on-dark', size: 'sm' %}"
+  to: "{% render 'button', label: slide_secondary_label, url: block.settings.secondary_url,
+    default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}"
+  position: 10882..11035
+- from: "{% render 'button', label: section.settings.primary_label, url: section.settings.primary_url
+    | default: '/pages/help-me-choose', style: 'primary-on-dark' %}"
+  to: "{% render 'button', label: section.settings.primary_label, url: section.settings.primary_url,
+    default: '/pages/help-me-choose', style: 'primary-on-dark' %}"
+  position: 16970..17125
+- from: "{% render 'button', label: section.settings.secondary_label, url: section.settings.secondary_url
+    | default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}"
+  to: "{% render 'button', label: section.settings.secondary_label, url: section.settings.secondary_url,
+    default: '/pages/compare', style: 'secondary-on-dark', size: 'sm' %}"
+  position: 17257..17423
+{% endcomment %}

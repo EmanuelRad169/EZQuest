@@ -667,7 +667,7 @@
             {% for block in perks %}
               <div class="collection-perk" {{ block.shopify_attributes }}>
                 <span class="collection-perk-icon" aria-hidden="true">
-                  {% render 'icon', name: block.settings.icon | default: 'shield' %}
+                  {% render 'icon', name: block.settings.icon, default: 'shield' %}
                 </span>
                 <div class="collection-perk-copy">
                   <strong>{{ block.settings.title }}</strong>
@@ -824,3 +824,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon', name: block.settings.icon | default: 'shield' %}"
+  to: "{% render 'icon', name: block.settings.icon, default: 'shield' %}"
+  position: 33243..33308
+{% endcomment %}

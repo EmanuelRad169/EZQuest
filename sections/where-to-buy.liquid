@@ -72,13 +72,7 @@
 
 {% comment %} ── CTA ──────────────────────────────── {% endcomment %}
 {% if section.settings.show_cta %}
-  {%- render 'page-cta',
-    variant: 'light',
-    kicker: 'Partnership',
-    heading: section.settings.cta_text | default: 'Interested in carrying EZQuest products?',
-    primary_label: section.settings.cta_label | default: 'Become a reseller',
-    primary_url: section.settings.cta_url | default: '/pages/contact'
-  -%}
+  {%- render 'page-cta', variant: 'light', kicker: 'Partnership', heading: section.settings.cta_text, default: '/pages/contact', primary_label: section.settings.cta_label, primary_url: section.settings.cta_url -%}
 {% endif %}
 
 {% schema %}
@@ -338,3 +332,22 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'page-cta',
+        variant: 'light',
+        kicker: 'Partnership',
+        heading: section.settings.cta_text | default: 'Interested in carrying EZQuest products?',
+        primary_label: section.settings.cta_label | default: 'Become a reseller',
+        primary_url: section.settings.cta_url | default: '/pages/contact'
+      -%}
+  to: "{%- render 'page-cta', variant: 'light', kicker: 'Partnership', heading: section.settings.cta_text,
+    default: '/pages/contact', primary_label: section.settings.cta_label, primary_url:
+    section.settings.cta_url -%}"
+  position: 2725..2936
+{% endcomment %}

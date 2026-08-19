@@ -143,7 +143,7 @@
                   {% assign ext = block.settings.file_url | split: '.' | last | upcase %}
                   {%- liquid
                     assign ext_class = 'file-badge--other'
-                    case ext | downcase
+                    case ext
                       when 'zip'
                         assign ext_class = 'file-badge--zip'
                       when 'exe'
@@ -285,3 +285,13 @@
   "presets": [{"name":"Downloads"}]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                    case ext | downcase"
+  to: "                    case ext"
+  position: 6715..6743
+{% endcomment %}

@@ -32,14 +32,28 @@
 {% if resolved_image != blank %}
   {{ resolved_image | image_url: width: resolved_width, format: 'pjpg' | image_tag: loading: resolved_loading, fetchpriority: resolved_fetchpriority, class: resolved_class, alt: resolved_alt, width: resolved_width, height: resolved_height, widths: '480, 720, 900, 1200', sizes: '(min-width: 1280px) 24vw, (min-width: 768px) 33vw, 50vw' }}
 {% else %}
-  {% render 'owned-product-visual',
-    product: product,
-    product_handle: product.handle,
-    product_title: product.title | default: 'EZQuest Product',
-    variant: resolved_variant,
-    width: resolved_width,
-    class: resolved_class,
-    loading: resolved_loading,
-    fetchpriority: resolved_fetchpriority
-  %}
+  {% render 'owned-product-visual', product: product, product_handle: product.handle, product_title: product.title, default: 'EZQuest Product', variant: resolved_variant, width: resolved_width, class: resolved_class, loading: resolved_loading, fetchpriority: resolved_fetchpriority %}
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'owned-product-visual',
+        product: product,
+        product_handle: product.handle,
+        product_title: product.title | default: 'EZQuest Product',
+        variant: resolved_variant,
+        width: resolved_width,
+        class: resolved_class,
+        loading: resolved_loading,
+        fetchpriority: resolved_fetchpriority
+      %}
+  to: "{% render 'owned-product-visual', product: product, product_handle: product.handle,
+    product_title: product.title, default: 'EZQuest Product', variant: resolved_variant,
+    width: resolved_width, class: resolved_class, loading: resolved_loading, fetchpriority:
+    resolved_fetchpriority %}"
+  position: 1515..1797
+{% endcomment %}

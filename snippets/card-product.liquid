@@ -360,15 +360,7 @@
     </div>
   {% else %}
     <div class="product-thumb-card product-card-image-wrapper">
-      {% render 'owned-product-visual',
-        product_handle: product.handle,
-        product_title: product.title | default: 'EZQuest connectivity essential',
-        variant: image_variant,
-        kind: 'product',
-        width: 900,
-        height: 675,
-        class: 'product-card-image aspect-card w-full object-cover'
-      %}
+      {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, default: 'EZQuest connectivity essential', variant: image_variant, kind: 'product', width: 900, height: 675, class: 'product-card-image aspect-card w-full object-cover' %}
     </div>
   {% endif %}
 
@@ -398,3 +390,25 @@
 
 </article>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'owned-product-visual',
+            product_handle: product.handle,
+            product_title: product.title | default: 'EZQuest connectivity essential',
+            variant: image_variant,
+            kind: 'product',
+            width: 900,
+            height: 675,
+            class: 'product-card-image aspect-card w-full object-cover'
+          %}
+  to: "{% render 'owned-product-visual', product_handle: product.handle, product_title:
+    product.title, default: 'EZQuest connectivity essential', variant: image_variant,
+    kind: 'product', width: 900, height: 675, class: 'product-card-image aspect-card
+    w-full object-cover' %}"
+  position: 15896..16163
+{% endcomment %}
