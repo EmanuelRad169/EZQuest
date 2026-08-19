@@ -6,9 +6,9 @@
         Hubs 2x2 | Cables 2x1 / Adapters 1 / Card Readers 1 (rows 1-2)
         HDMI 1 / DisplayPort 1 / Mini DisplayPort 1 / Audio 1 (row 3)
         Enclosure 1 / Wall Charger 2x1 / Car Charger 1 (row 4)
-        Item format: Title^handle^product-handle^span(big|wide|std)^group-tag
+        Item format: Title^handle^product-handle^span(big|wide|std)^group-tag^image-setting-id
       endcomment
-      assign collection_bento_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub^big^USB-C|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable^wide^USB-C|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter^std^USB-C|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42^std^USB-C|HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable^std^Cables|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable^std^Cables|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable^std^Cables|Audio^audio-cables^duraguard-stereo-audio-cable^std^Cables|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure^std^USB-C|Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger^wide^Power|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display^std^Power' | split: '|'
+      assign collection_bento_items = 'Hubs^hubs^usb-c-multimedia-7-in-1-hub^big^USB-C^image_hubs|Cables^cables^duraguard-usb-c-to-usb-a-charge-and-sync-cable^wide^USB-C^image_cables|Adapters^adapters^usb-c-to-hdmi-4k-60hz-adapter^std^USB-C^image_adapters|Card Readers^usb-c-card-readers^usb-c-card-reader-ss42^std^USB-C^image_card_readers|HDMI^hdmi-cables-adapters^ultra-hd-high-speed-certified-hdmi-8k-60hz-cable^std^Cables^image_hdmi|DisplayPort^displayport-cables-adapters^usb-c-to-displayport-4k-60hz-cable^std^Cables^image_displayport|Mini DisplayPort^mini-displayport-cables^mini-displayport-to-hdmi-4k-60hz-cable^std^Cables^image_mini_displayport|Audio^audio-cables^duraguard-stereo-audio-cable^std^Cables^image_audio|Enclosure^usb-c-enclosures^magnetic-usb-c-m-2-nvme-ssd-enclosure^std^USB-C^image_enclosure|Wall Charger^wall-chargers^worldtravel-65w-gan-5-port-pd-wall-charger^wide^Power^image_wall_charger|Car Charger^car-chargers^ultimatepower-usb-c-72w-car-charger-dual-port-with-display^std^Power^image_car_charger' | split: '|'
     -%}
 
     <h2 class="visually-hidden">{{ section.settings.heading | default: 'Collections' }}</h2>
@@ -22,17 +22,25 @@
           assign collection_card_product = collection_card_parts[2] | strip
           assign collection_card_span = collection_card_parts[3] | strip
           assign collection_card_tag = collection_card_parts[4] | strip
-          assign collection_card_image = blank
+          assign collection_card_setting = collection_card_parts[5] | strip
           assign col = collections[collection_card_handle]
 
-          if collection_card_title == 'Hubs'
-            assign collection_card_image = section.settings.hubs_image
-          elsif collection_card_title == 'Wall Charger' or collection_card_title == 'Car Charger'
-            assign collection_card_image = section.settings.chargers_image
-          elsif collection_card_title == 'Cables' or collection_card_title == 'HDMI' or collection_card_title == 'DisplayPort' or collection_card_title == 'Mini DisplayPort' or collection_card_title == 'Audio'
-            assign collection_card_image = section.settings.cables_image
-          elsif collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
-            assign collection_card_image = section.settings.accessories_image
+          comment
+            Per-tile image (Theme editor). Falls back to the legacy family images,
+            then to the product/collection visual renderers below.
+          endcomment
+          assign collection_card_image = section.settings[collection_card_setting]
+
+          if collection_card_image == blank
+            if collection_card_title == 'Hubs'
+              assign collection_card_image = section.settings.hubs_image
+            elsif collection_card_title == 'Wall Charger' or collection_card_title == 'Car Charger'
+              assign collection_card_image = section.settings.chargers_image
+            elsif collection_card_title == 'Cables' or collection_card_title == 'HDMI' or collection_card_title == 'DisplayPort' or collection_card_title == 'Mini DisplayPort' or collection_card_title == 'Audio'
+              assign collection_card_image = section.settings.cables_image
+            elsif collection_card_title == 'Adapters' or collection_card_title == 'Card Readers' or collection_card_title == 'Enclosure'
+              assign collection_card_image = section.settings.accessories_image
+            endif
           endif
         -%}
         {% if col == blank %}
@@ -96,6 +104,25 @@
       "id": "note",
       "label": "Header note",
       "default": "Start with the family built for your setup, then use compare or support only when you need more detail."
+    },
+    {
+      "type": "header",
+      "content": "Card images (one per tile)"
+    },
+    { "type": "image_picker", "id": "image_hubs", "label": "Hubs" },
+    { "type": "image_picker", "id": "image_cables", "label": "Cables" },
+    { "type": "image_picker", "id": "image_adapters", "label": "Adapters" },
+    { "type": "image_picker", "id": "image_card_readers", "label": "Card Readers" },
+    { "type": "image_picker", "id": "image_hdmi", "label": "HDMI" },
+    { "type": "image_picker", "id": "image_displayport", "label": "DisplayPort" },
+    { "type": "image_picker", "id": "image_mini_displayport", "label": "Mini DisplayPort" },
+    { "type": "image_picker", "id": "image_audio", "label": "Audio" },
+    { "type": "image_picker", "id": "image_enclosure", "label": "Enclosure" },
+    { "type": "image_picker", "id": "image_wall_charger", "label": "Wall Charger" },
+    { "type": "image_picker", "id": "image_car_charger", "label": "Car Charger" },
+    {
+      "type": "header",
+      "content": "Legacy family images (fallback)"
     },
     {
       "type": "image_picker",
