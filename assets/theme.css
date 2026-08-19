@@ -38,3 +38,13 @@
 .nf404__cta{min-width:14rem}
 .nf404__quiet-link{font-size:.85rem;color:rgba(245,245,247,.55);text-decoration:underline;text-underline-offset:3px}
 .nf404__quiet-link:hover{color:#fff}
+
+/* Home confidence grid: compact pass (same design, less air) */
+.home-confidence-grid{grid-auto-rows:190px}
+.home-confidence-card{padding:20px;min-height:150px}
+.home-confidence-card:not(.home-confidence-card--hero){gap:10px}
+.home-confidence-card--hero{padding:24px 28px}
+.home-confidence-card-icon{width:48px;height:48px}
+.home-confidence-card-icon svg{width:20px;height:20px}
+.home-confidence-card-title{margin-bottom:4px}
+@media (max-width:767px){.home-confidence-grid{grid-auto-rows:auto}.home-confidence-card--hero{min-height:0}}
