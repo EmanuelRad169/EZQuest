@@ -970,7 +970,7 @@
     Compatibility source priority: ezquest.compatibility_summary (structured) →
     custom.product_compatibility_html (legacy fallback). Tab hidden if neither exists.
   endcomment
-  if compatibility_summary_html != blank or has_compat
+  if compatibility_summary_html != blank or has_compat or product.metafields.custom.compatibility.value
     assign show_compat_tab = true
   endif
   comment
@@ -1052,6 +1052,7 @@
 
       {%- if show_compat_tab -%}
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="compat" id="pdp-compat" tabindex="0">
+          {%- render 'product-compat-matrix', product: product -%}
           <div class="pdp-content-prose">{% if compatibility_summary_html != blank %}{{ compatibility_summary_html }}{% else %}{{ compat_html }}{% endif %}</div>
         </div>
       {%- endif -%}

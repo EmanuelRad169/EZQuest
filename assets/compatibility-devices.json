@@ -1,4 +1,12 @@
 [
+  { "id": "mbp-m4-14", "name": "MacBook Pro M4 14\"", "platform": "mac", "year": 2024, "ports": ["usb-c-tb4", "hdmi", "sd"] },
+  { "id": "mbp-m4-16", "name": "MacBook Pro M4 16\"", "platform": "mac", "year": 2024, "ports": ["usb-c-tb4", "hdmi", "sd"] },
+  { "id": "mba-m4", "name": "MacBook Air M4", "platform": "mac", "year": 2025, "ports": ["usb-c-tb4"] },
+  { "id": "iphone-16-pro", "name": "iPhone 16 Pro", "platform": "iphone", "year": 2024, "ports": ["usb-c"] },
+  { "id": "iphone-16", "name": "iPhone 16", "platform": "iphone", "year": 2024, "ports": ["usb-c"] },
+  { "id": "ipad-air-m3", "name": "iPad Air M3", "platform": "ipad", "year": 2025, "ports": ["usb-c"] },
+  { "id": "samsung-galaxy-s25-ultra", "name": "Samsung Galaxy S25 Ultra", "platform": "android", "year": 2025, "ports": ["usb-c"] },
+  { "id": "surface-laptop-7", "name": "Microsoft Surface Laptop 7", "platform": "windows", "year": 2024, "ports": ["usb-c-tb4", "usb-a"] },
   { "id": "mbp-m3-14", "name": "MacBook Pro M3 14\"", "platform": "mac", "year": 2023, "ports": ["usb-c-tb4", "hdmi", "sd"] },
   { "id": "mbp-m3-16", "name": "MacBook Pro M3 16\"", "platform": "mac", "year": 2023, "ports": ["usb-c-tb4", "hdmi", "sd"] },
   { "id": "mbp-m2-14", "name": "MacBook Pro M2 14\"", "platform": "mac", "year": 2023, "ports": ["usb-c-tb4", "hdmi", "sd"] },

@@ -1,6 +1,6 @@
 <script type="application/json" id="compat-products-data">
 [
-  {%- for product in collections.all.products limit: 100 -%}
+  {%- for product in collections.all.products limit: 250 -%}
   {
     "id": {{ product.id | json }},
     "handle": {{ product.handle | json }},
@@ -10,10 +10,7 @@
     "image": {{ product.featured_image | image_url: width: 400 | json }},
     "image_alt": {{ product.featured_image.alt | default: product.title | json }},
     "available": {{ product.available | json }},
-    "compat_full": {{ product.metafields.custom.compatibility_full.value | default: '[]' | json }},
-    "compat_partial": {{ product.metafields.custom.compatibility_partial.value | default: '[]' | json }},
-    "compat_none": {{ product.metafields.custom.compatibility_unsupported.value | default: '[]' | json }},
-    "compat_alt": {{ product.metafields.custom.compatibility_alternative.value | default: '' | json }}
+    "compat": {{ product.metafields.custom.compatibility.value | json }}
   }{% unless forloop.last %},{% endunless %}
   {%- endfor -%}
 ]

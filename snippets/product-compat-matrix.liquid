@@ -1,0 +1,86 @@
+{% comment %}
+  Structured per-platform compatibility table, driven by the same
+  custom.compatibility JSON metafield that powers /pages/compatibility
+  (synced from the Products Master sheet, COMPATIBILITY tab).
+
+  Also renders a "Works with your <device>" banner when the shopper has
+  previously picked a device on the compatibility checker (localStorage).
+
+  Usage: {% render 'product-compat-matrix', product: product %}
+{% endcomment %}
+{%- assign compat = product.metafields.custom.compatibility.value -%}
+{%- if compat -%}
+<div class="pdp-compat-matrix" data-compat-matrix>
+  <div class="pdp-compat-matrix__banner" data-compat-banner hidden>
+    <span class="pdp-compat-matrix__banner-icon" data-compat-banner-icon aria-hidden="true"></span>
+    <span data-compat-banner-text></span>
+    <a href="/pages/compatibility" class="pdp-compat-matrix__banner-link" data-compat-banner-link>Change device</a>
+  </div>
+
+  <table class="pdp-compat-matrix__table">
+    <thead>
+      <tr><th scope="col">Platform</th><th scope="col">Compatibility</th><th scope="col">Notes</th></tr>
+    </thead>
+    <tbody>
+      {%- assign platform_keys = 'macos,windows,ipados,ios,android,chromeos,linux' | split: ',' -%}
+      {%- assign platform_labels = 'macOS,Windows,iPadOS,iOS / iPhone,Android,ChromeOS,Linux' | split: ',' -%}
+      {%- for key in platform_keys -%}
+        {%- assign entry = compat[key] -%}
+        {%- if entry -%}
+          {%- assign idx = forloop.index0 -%}
+          <tr>
+            <th scope="row">{{ platform_labels[idx] }}</th>
+            <td>
+              {%- case entry.v -%}
+                {%- when 'yes' -%}<span class="pdp-compat-badge pdp-compat-badge--yes">✓ Compatible</span>
+                {%- when 'partial' -%}<span class="pdp-compat-badge pdp-compat-badge--partial">⚠ With notes</span>
+                {%- else -%}<span class="pdp-compat-badge pdp-compat-badge--no">✕ Not supported</span>
+              {%- endcase -%}
+            </td>
+            <td class="pdp-compat-matrix__note">{{ entry.note }}</td>
+          </tr>
+        {%- endif -%}
+      {%- endfor -%}
+    </tbody>
+  </table>
+
+  <p class="pdp-compat-matrix__cta">
+    Not sure? <a href="/pages/compatibility">Check your exact device on the compatibility checker →</a>
+  </p>
+
+  <script type="application/json" data-compat-matrix-json>{{ compat | json }}</script>
+  <script>
+    (function () {
+      var root = document.currentScript.closest('[data-compat-matrix]');
+      if (!root) return;
+      var stored;
+      try { stored = JSON.parse(localStorage.getItem('ezq-device')); } catch (e) { return; }
+      if (!stored || !stored.platform) return;
+      var compat;
+      try { compat = JSON.parse(root.querySelector('[data-compat-matrix-json]').textContent); } catch (e) { return; }
+      var keyMap = { mac: 'macos', windows: 'windows', chromeos: 'chromeos', ipad: 'ipados', iphone: 'ios', android: 'android', linux: 'linux' };
+      var entry = compat[keyMap[stored.platform]];
+      if (!entry || !entry.v) return;
+      var v = entry.v, note = entry.note || '';
+      var ports = stored.ports || [];
+      var hasUSBC = ports.some(function (p) { return p.indexOf('usb-c') === 0; });
+      var hasLightning = ports.indexOf('lightning') !== -1;
+      if (v === 'partial' && ports.length && /usb-c/i.test(note) && !/hdmi/i.test(note)) {
+        var ym = note.match(/\((\d{4}) or newer\)?/);
+        if (hasLightning && !hasUSBC) { v = 'no'; }
+        else if (hasUSBC && (!ym || (stored.year && stored.year >= parseInt(ym[1], 10)))) { v = 'yes'; note = ''; }
+      }
+      var banner = root.querySelector('[data-compat-banner]');
+      var text = root.querySelector('[data-compat-banner-text]');
+      var icon = root.querySelector('[data-compat-banner-icon]');
+      var link = root.querySelector('[data-compat-banner-link]');
+      if (!banner || !text) return;
+      if (v === 'yes') { icon.textContent = '✓'; banner.classList.add('is-yes'); text.textContent = 'Works with your ' + stored.name; }
+      else if (v === 'partial') { icon.textContent = '⚠'; banner.classList.add('is-partial'); text.textContent = 'Works with your ' + stored.name + (note ? ' — ' + note : ''); }
+      else { icon.textContent = '✕'; banner.classList.add('is-no'); text.textContent = 'Not recommended for your ' + stored.name + (note ? ' — ' + note : ''); }
+      if (link) link.href = '/pages/compatibility#' + (stored.id || '');
+      banner.removeAttribute('hidden');
+    })();
+  </script>
+</div>
+{%- endif -%}

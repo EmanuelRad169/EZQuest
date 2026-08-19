@@ -38,11 +38,24 @@
       }
     }
 
-    // Deep-link via URL hash
+    // Deep-link via URL hash (#device-id or #p-platform), else restore last device
     const hash = location.hash.slice(1);
     if (hash) {
       const device = devices.find(function (d) { return d.id === hash; });
-      if (device) selectDevice(device);
+      if (device) {
+        selectDevice(device);
+      } else if (hash.indexOf('p-') === 0) {
+        var pseudo = PLATFORM_PSEUDO[hash.slice(2)];
+        if (pseudo) { selectedDevice = pseudo; renderResults(pseudo); }
+      }
+    } else {
+      try {
+        var stored = JSON.parse(localStorage.getItem('ezq-device'));
+        if (stored && stored.id) {
+          var known = devices.find(function (d) { return d.id === stored.id; });
+          if (known) selectDevice(known);
+        }
+      } catch (e) {}
     }
 
     // Bind events
@@ -67,6 +80,59 @@
     });
 
     if (resetBtn) resetBtn.addEventListener('click', resetState);
+  }
+
+  // --- Platform mapping + verdict classification ---
+  // device.platform → key in the custom.compatibility product metafield
+  var PLATFORM_KEY = {
+    mac: 'macos',
+    windows: 'windows',
+    chromeos: 'chromeos',
+    ipad: 'ipados',
+    iphone: 'ios',
+    android: 'android',
+    linux: 'linux'
+  };
+
+  // Sheet verdict + device facts (port, year) → final verdict.
+  // Generic platform "partial" notes resolve to definitive answers when we
+  // know the actual device: USB-C iPad 2018+ → yes; Lightning iPhone vs a
+  // USB-C-only product → no.
+  function classify(p, device) {
+    var compat = p.compat;
+    if (!compat) return null; // product without compatibility data (e.g. bundles)
+    if (typeof compat === 'string') {
+      try { compat = JSON.parse(compat); } catch (e) { return null; }
+      p.compat = compat;
+    }
+    var key = PLATFORM_KEY[device.platform];
+    var entry = key && compat[key];
+    if (!entry || !entry.v) return null;
+    var v = entry.v;
+    var note = entry.note || '';
+
+    if (v === 'partial' && device.ports && device.ports.length) {
+      var hasUSBC = device.ports.some(function (pt) { return pt.indexOf('usb-c') === 0; });
+      var hasLightning = device.ports.indexOf('lightning') !== -1;
+      var hasHDMI = device.ports.indexOf('hdmi') !== -1;
+      var needsHDMI = /hdmi (port|adapter|connection)/i.test(note);
+      var needsUSBC = /usb-c/i.test(note) && !needsHDMI;
+      var yearMatch = note.match(/\((\d{4}) or newer\)?/);
+
+      if (needsUSBC) {
+        if (hasLightning && !hasUSBC) {
+          v = 'no'; // e.g. Lightning iPhone vs USB-C-only product
+        } else if (hasUSBC && (!yearMatch || (device.year && device.year >= parseInt(yearMatch[1], 10)))) {
+          v = 'yes';
+          note = '';
+        }
+      } else if (needsHDMI && hasHDMI && !/adapter/i.test(note)) {
+        v = 'yes';
+        note = '';
+      }
+    }
+
+    return { v: v, note: note };
   }
 
   // --- Fuzzy filter ---
@@ -154,6 +220,15 @@
   }
 
   // --- Platform chips ---
+  // Clicking a chip filters the search dropdown AND immediately shows
+  // platform-level results (raw sheet verdicts, no device refinement).
+  var PLATFORM_PSEUDO = {
+    mac: { id: 'p-mac', name: 'Mac (macOS)', platform: 'mac' },
+    windows: { id: 'p-windows', name: 'Windows PCs', platform: 'windows' },
+    chromeos: { id: 'p-chromeos', name: 'Chromebooks (ChromeOS)', platform: 'chromeos' },
+    ipad: { id: 'p-ipad', name: 'iPad (search your exact model above for iPhone results)', platform: 'ipad' }
+  };
+
   function onChipClick(chip) {
     if (activeChip === chip) {
       activeChip = null;
@@ -168,6 +243,14 @@
     if (dropdown.querySelectorAll('li').length) {
       dropdown.removeAttribute('hidden');
     }
+    if (activeChip) {
+      var pseudo = PLATFORM_PSEUDO[chip.dataset.platform];
+      if (pseudo) {
+        selectedDevice = pseudo;
+        history.replaceState(null, '', '#' + pseudo.id);
+        renderResults(pseudo);
+      }
+    }
   }
 
   // --- Device selection ---
@@ -177,6 +260,9 @@
     hideDropdown();
     if (activeChip) { activeChip.classList.remove('is-active'); activeChip = null; }
     history.replaceState(null, '', '#' + device.id);
+    try {
+      localStorage.setItem('ezq-device', JSON.stringify({ id: device.id, name: device.name, platform: device.platform, ports: device.ports || null, year: device.year || null }));
+    } catch (e) {}
     renderResults(device);
   }
 
@@ -192,28 +278,16 @@
     var partialGrid = document.querySelector('[data-compat-grid="partial"]');
     var noneGrid = document.querySelector('[data-compat-grid="none"]');
 
-    var fullProducts = products.filter(function (p) {
-      try {
-        var ids = typeof p.compat_full === 'string' ? JSON.parse(p.compat_full) : p.compat_full;
-        return Array.isArray(ids) && ids.includes(device.id);
-      } catch (e) { return false; }
-    });
-
-    var partialProducts = products.filter(function (p) {
-      try {
-        var items = typeof p.compat_partial === 'string' ? JSON.parse(p.compat_partial) : p.compat_partial;
-        if (!Array.isArray(items)) return false;
-        return items.some(function (item) {
-          return (typeof item === 'string' ? item : item.device_id) === device.id;
-        });
-      } catch (e) { return false; }
-    });
-
-    var noneProducts = products.filter(function (p) {
-      try {
-        var ids = typeof p.compat_none === 'string' ? JSON.parse(p.compat_none) : p.compat_none;
-        return Array.isArray(ids) && ids.includes(device.id);
-      } catch (e) { return false; }
+    var fullProducts = [];
+    var partialProducts = [];
+    var noneProducts = [];
+    products.forEach(function (p) {
+      var verdict = classify(p, device);
+      if (!verdict) return;
+      p._verdict = verdict;
+      if (verdict.v === 'yes') fullProducts.push(p);
+      else if (verdict.v === 'partial') partialProducts.push(p);
+      else if (verdict.v === 'no') noneProducts.push(p);
     });
 
     var hasAny = fullProducts.length || partialProducts.length || noneProducts.length;
@@ -243,19 +317,11 @@
   function buildCard(p, type, device) {
     var dimClass = type === 'none' ? 'compat-card--dim' : '';
     var noteHtml = '';
-    if (type === 'partial') {
-      try {
-        var items = typeof p.compat_partial === 'string' ? JSON.parse(p.compat_partial) : p.compat_partial;
-        var item = Array.isArray(items)
-          ? items.find(function (i) { return (typeof i === 'string' ? i : i.device_id) === device.id; })
-          : null;
-        var note = item && typeof item === 'object' ? item.note : null;
-        if (note) noteHtml = '<div class="compat-card-note">' + escapeHtml(note) + '</div>';
-      } catch (e) {}
+    var note = p._verdict && p._verdict.note;
+    if (note && (type === 'partial' || type === 'none')) {
+      noteHtml = '<div class="compat-card-note">' + escapeHtml(note) + '</div>';
     }
-    var altHtml = type === 'none' && p.compat_alt
-      ? '<a href="' + escapeHtml(p.compat_alt) + '" class="compat-card-alt">Try an alternative instead →</a>'
-      : '';
+    var altHtml = '';
     var dimOverlay = type === 'none'
       ? '<div class="compat-card-dim-overlay" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="1.5"/></svg></div>'
       : '';
