@@ -29,7 +29,7 @@
   position: absolute; top: 0; right: 0;
   min-width: 16px; height: 16px; padding: 0 4px;
   border-radius: 9px; background: var(--ez-amber, #FED300); color: #111;
-  font-size: 10px; font-weight: 700; line-height: 16px; text-align: center; pointer-events: none;
+  font-size: 12px; font-weight: 700; line-height: 16px; text-align: center; pointer-events: none;
 }
 
 /* ---------- Toast (replaces native browser dialogs) ---------- */
@@ -45,25 +45,25 @@
 
 /* ---------- /pages/compare ---------- */
 .ez-compare-page .ez-compare-head { margin-bottom: clamp(16px, 2.5vw, 24px); }
-.ez-compare-heading { font-size: clamp(26px, 4vw, 40px); font-weight: 600; letter-spacing: -0.02em; margin: 6px 0 8px; color: var(--ez-black, #111); }
-.ez-compare-body { color: var(--ez-grey, #555); max-width: 62ch; font-size: 15px; line-height: 1.6; }
+.ez-compare-heading { font-size: clamp(24px, 4vw, 36px); font-weight: 600; letter-spacing: -0.02em; margin: 6px 0 8px; color: var(--ez-black, #111); }
+.ez-compare-body { color: var(--ez-grey, #555); max-width: 62ch; font-size: 16px; line-height: 1.6; }
 
 /* Empty state */
 .ez-compare-empty { text-align: center; padding: clamp(48px, 8vw, 96px) 20px; color: var(--ez-grey, #555); }
 .ez-compare-empty__icon { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(0,0,0,.04); color: #111; margin-bottom: 16px; }
 .ez-compare-empty__icon svg { width: 24px; height: 24px; }
-.ez-compare-empty__title { font-size: 22px; font-weight: 600; color: var(--ez-black, #111); margin: 0 0 8px; }
+.ez-compare-empty__title { font-size: 20px; font-weight: 600; color: var(--ez-black, #111); margin: 0 0 8px; }
 .ez-compare-empty p { margin: 0 auto; max-width: 44ch; }
 .ez-compare-empty__btn { display: inline-block; margin-top: 20px; background: var(--ez-black, #111); color: #fff; padding: 12px 24px; border-radius: 100px; font-weight: 600; text-decoration: none; }
 .ez-compare-empty__btn:hover { opacity: .9; }
 
 /* Toolbar */
 .ez-compare-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-.ez-compare-bar__count { font-size: 13px; color: var(--ez-grey, #666); font-weight: 500; }
+.ez-compare-bar__count { font-size: 14px; color: var(--ez-grey, #666); font-weight: 500; }
 .ez-compare-bar__actions { display: flex; gap: 10px; }
 .ez-compare-hl, .ez-compare-clear {
   background: #fff; border: 1px solid rgba(0,0,0,.14); border-radius: 100px;
-  padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--ez-black, #111);
+  padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--ez-black, #111);
   transition: border-color .15s ease, background .15s ease;
 }
 .ez-compare-hl:hover, .ez-compare-clear:hover { border-color: rgba(0,0,0,.35); }
@@ -90,35 +90,35 @@
 .ezc-col { position: relative; }
 .ezc-col__media { display: block; width: 100%; max-width: 210px; aspect-ratio: 1 / 1; background: #fff; border-radius: 12px; overflow: hidden; margin: 0 auto 14px; }
 .ezc-col__media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-.ezc-col__title { display: block; font-weight: 600; font-size: 15px; color: var(--ez-black, #111); text-decoration: none; line-height: 1.35; margin-bottom: 8px; }
+.ezc-col__title { display: block; font-weight: 600; font-size: 16px; color: var(--ez-black, #111); text-decoration: none; line-height: 1.35; margin-bottom: 8px; }
 .ezc-col__title:hover { text-decoration: underline; }
-.ezc-col__price { margin-bottom: 12px; font-size: 15px; }
+.ezc-col__price { margin-bottom: 12px; font-size: 16px; }
 .ezc-price { font-weight: 700; color: var(--ez-black, #111); }
 .ezc-was { color: var(--ez-grey, #999); font-weight: 400; margin-left: 6px; }
 
 .ezc-buy {
   display: inline-block; width: 100%; text-align: center;
   background: var(--ez-black, #111); color: #fff; border: none; border-radius: 100px;
-  padding: 10px 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity .15s ease;
+  padding: 10px 14px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity .15s ease;
 }
 .ezc-buy:hover { opacity: .88; }
 .ezc-buy:disabled { opacity: .6; cursor: default; }
-.ezc-soldout { display: inline-block; font-size: 13px; color: var(--ez-grey, #999); font-weight: 500; }
+.ezc-soldout { display: inline-block; font-size: 14px; color: var(--ez-grey, #999); font-weight: 500; }
 
 /* Add-product slot column */
 .ezc-addslot {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
   width: 100%; min-height: 160px; border: 1.5px dashed rgba(0,0,0,.18); border-radius: 12px;
-  background: #fff; color: var(--ez-grey, #666); cursor: pointer; font-size: 13px; font-weight: 600;
+  background: #fff; color: var(--ez-grey, #666); cursor: pointer; font-size: 14px; font-weight: 600;
   transition: border-color .15s ease, color .15s ease;
 }
 .ezc-addslot:hover { border-color: rgba(0,0,0,.4); color: var(--ez-black, #111); }
-.ezc-addslot__plus { font-size: 26px; line-height: 1; font-weight: 400; }
+.ezc-addslot__plus { font-size: 24px; line-height: 1; font-weight: 400; }
 
 /* Row labels + cells */
-.ezc-rowlabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ez-grey, #777); white-space: nowrap; }
+.ezc-rowlabel { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ez-grey, #777); white-space: nowrap; }
 .ezc-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.ezc-features li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.45; color: var(--ez-black, #222); }
+.ezc-features li { position: relative; padding-left: 16px; font-size: 14px; line-height: 1.45; color: var(--ez-black, #222); }
 .ezc-features li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--ez-amber, #FED300); }
 .ez-compare-table tbody td { font-size: 14px; color: var(--ez-black, #222); line-height: 1.5; }
 
@@ -131,7 +131,7 @@
 .ezc-add-panel__inner { position: relative; width: 100%; max-width: 460px; background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 24px 60px rgba(0,0,0,.25); }
 .ezc-add-panel__close { position: absolute; top: 12px; right: 14px; border: none; background: none; font-size: 24px; line-height: 1; cursor: pointer; color: var(--ez-grey, #666); }
 .ezc-add-panel__label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--ez-black, #111); }
-.ezc-add-panel__input { width: 100%; height: 46px; padding: 0 16px; border: 1.5px solid rgba(0,0,0,.14); border-radius: 100px; font-size: 15px; outline: none; }
+.ezc-add-panel__input { width: 100%; height: 46px; padding: 0 16px; border: 1.5px solid rgba(0,0,0,.14); border-radius: 100px; font-size: 16px; outline: none; }
 .ezc-add-panel__input:focus { border-color: var(--ez-amber, #FED300); }
 .ezc-add-panel__results { list-style: none; margin: 12px 0 0; padding: 0; max-height: 320px; overflow-y: auto; }
 .ezc-add-result { display: flex; align-items: center; gap: 12px; width: 100%; padding: 8px; border: none; background: none; cursor: pointer; text-align: left; border-radius: 10px; }
@@ -155,7 +155,7 @@
   .ezc-col__title { font-size: 14px; }
   .ezc-col__price { font-size: 14px; margin-bottom: 10px; }
   .ezc-buy { padding: 9px 10px; font-size: 12px; }
-  .ez-compare-table tbody td { font-size: 13px; }
+  .ez-compare-table tbody td { font-size: 14px; }
   .ezc-features li { font-size: 12px; line-height: 1.4; }
   .ezc-remove { top: 6px; right: 6px; width: 22px; height: 22px; font-size: 16px; }
 }

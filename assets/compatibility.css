@@ -15,7 +15,7 @@
 }
 
 .compat-header__kicker {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -24,7 +24,7 @@
 }
 
 .compat-header__heading {
-  font-size: clamp(28px, 4.5vw, 52px);
+  font-size: clamp(30px, 4.5vw, 48px);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.08;
@@ -34,7 +34,7 @@
 }
 
 .compat-header__sub {
-  font-size: clamp(15px, 1.5vw, 17px);
+  font-size: clamp(16px, 1.5vw, 16px);
   color: var(--ez-grey);
   line-height: 1.6;
   max-width: 52ch;
@@ -63,7 +63,7 @@
 }
 
 .compat-search-label {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -94,7 +94,7 @@
   padding: 0 1.125rem 0 2.875rem;
   border: 1.5px solid var(--ez-border, #e5e5e5);
   border-radius: 0.625rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--ez-dark, #1d1d1f);
   background: #fff;
   outline: none;
@@ -146,7 +146,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.625rem 1rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--ez-dark, #1d1d1f);
   cursor: pointer;
   outline: none;
@@ -176,7 +176,7 @@
 }
 
 .compat-platforms-label {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--ez-grey);
   white-space: nowrap;
 }
@@ -229,7 +229,7 @@
 }
 
 .compat-empty__heading {
-  font-size: clamp(1.25rem, 3vw, 1.625rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--ez-dark, #1d1d1f);
@@ -301,7 +301,7 @@
 }
 
 .compat-results-device {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ez-dark, #1d1d1f);
   margin: 0;
@@ -488,7 +488,7 @@
   padding: 0.5rem 0.875rem;
   background: #fefce8;
   border-top: 1px solid #fef08a;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #854d0e;
   line-height: 1.4;
 }
@@ -498,7 +498,7 @@
   padding: 0.5rem 0.875rem;
   background: var(--ez-light, #f5f5f7);
   border-top: 1px solid var(--ez-border, #e5e5e5);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--ez-dark, #1d1d1f);
   text-decoration: none;
   pointer-events: auto;
@@ -582,14 +582,14 @@
 }
 
 .compat-fallback-card__body {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--ez-grey);
   margin: 0 0 1.125rem;
   line-height: 1.5;
 }
 
 .compat-fallback-card__link {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ez-dark, #1d1d1f);
   text-decoration: none;
@@ -617,7 +617,7 @@
   }
 
   .compat-chip {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
   }
 
   .compat-results-header {

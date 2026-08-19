@@ -15,7 +15,7 @@
 }
 
 .error-page__code {
-  font-size: clamp(80px, 15vw, 180px);
+  font-size: clamp(72px, 15vw, 72px);
   font-weight: 500;
   letter-spacing: -0.04em;
   color: rgba(255, 255, 255, 0.06);
@@ -25,7 +25,7 @@
 }
 
 .error-page__heading {
-  font-size: clamp(28px, 5vw, 52px);
+  font-size: clamp(30px, 5vw, 48px);
   font-weight: 500;
   letter-spacing: -0.03em;
   color: #f5f5f7;
@@ -34,7 +34,7 @@
 }
 
 .error-page__body {
-  font-size: clamp(15px, 1.5vw, 17px);
+  font-size: clamp(16px, 1.5vw, 16px);
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.65;
   max-width: 50ch;
@@ -59,7 +59,7 @@
 }
 
 .error-page__links-label {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.55);
   margin-bottom: 0.75rem;
 }
@@ -72,7 +72,7 @@
 }
 
 .error-page__pill {
-  font-size: 13px;
+  font-size: 14px;
   padding: 6px 14px;
   border: 0.5px solid rgba(255, 255, 255, 0.15);
   border-radius: 100px;

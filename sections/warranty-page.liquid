@@ -7,15 +7,15 @@
     <div class="warranty-policy space-y-6">
 
       <div class="warranty-panel warranty-panel--intro">
-        <p class="text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.intro_eyebrow | default: 'Warranty coverage' }}</p>
+        <p class="text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.intro_eyebrow | default: 'Warranty coverage' }}</p>
         <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-medium tracking-[-.03em] leading-[1.05] text-[var(--ez-black)] mb-3">{{ section.settings.intro_heading | default: 'Clear coverage, simple claim steps, no guesswork.' }}</h2>
-        <p class="text-sm md:text-[15px] leading-[1.75] text-[var(--ez-grey)] max-w-3xl m-0">
+        <p class="text-sm md:text-base leading-[1.75] text-[var(--ez-grey)] max-w-3xl m-0">
           {{ section.settings.intro_copy | default: 'Review what is covered, what is excluded, and exactly how to submit a claim. If a product issue is actually a setup or compatibility problem, we’ll point you to support before you waste time filing the wrong request.' }}
         </p>
       </div>
 
       <div class="warranty-panel warranty-panel--stats">
-        <p class="text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.stats_heading | default: 'Coverage at a glance' }}</p>
+        <p class="text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.stats_heading | default: 'Coverage at a glance' }}</p>
         <div class="warranty-stat-row">
           <div class="warranty-stat">
             <span class="warranty-stat__label">{{ section.settings.stat1_label | default: 'Coverage' }}</span>
@@ -37,7 +37,7 @@
 
       <div class="warranty-proof-grid grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="warranty-panel rounded-[24px] border border-black/[7%] bg-white p-6 md:p-7 shadow-[0_12px_40px_rgba(15,23,42,.03)]">
-          <h2 class="warranty-section__heading text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.covered_heading | default: 'What is covered' }}</h2>
+          <h2 class="warranty-section__heading text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.covered_heading | default: 'What is covered' }}</h2>
           {%- assign covered_items = section.settings.covered_items | default: 'Manufacturing defects in materials and workmanship
 Material failures under normal use
 Premature wear under normal operating conditions
@@ -51,7 +51,7 @@ Functional issues not caused by user error or physical damage' | newline_to_br |
         </div>
 
         <div class="warranty-panel rounded-[24px] border border-black/[7%] bg-white p-6 md:p-7 shadow-[0_12px_40px_rgba(15,23,42,.03)]">
-          <h2 class="warranty-section__heading text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.excluded_heading | default: 'What is not covered' }}</h2>
+          <h2 class="warranty-section__heading text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.excluded_heading | default: 'What is not covered' }}</h2>
           {%- assign excluded_items = section.settings.excluded_items | default: 'Physical damage from drops or impact
 Liquid damage
 Damage from non-standard use or modifications
@@ -67,7 +67,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
       </div>
 
       <div class="warranty-panel">
-        <h2 class="warranty-section__heading text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.claim_steps_heading | default: 'How to file a claim' }}</h2>
+        <h2 class="warranty-section__heading text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-4">{{ section.settings.claim_steps_heading | default: 'How to file a claim' }}</h2>
         <ol class="warranty-steps">
           <li>
             <span class="warranty-step__number">1</span>
@@ -121,8 +121,8 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
             <path d="M10 14l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <p class="warranty-claim-card__eyebrow text-[11px] font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-2">{{ section.settings.claim_eyebrow | default: 'Claim Support' }}</p>
-        <h3 class="warranty-claim-card__heading text-[20px] font-medium tracking-[-0.02em] text-[var(--ez-black)] m-0 mb-[.625rem]">{{ section.settings.claim_heading | default: 'Start a warranty claim' }}</h3>
+        <p class="warranty-claim-card__eyebrow text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-2">{{ section.settings.claim_eyebrow | default: 'Claim Support' }}</p>
+        <h3 class="warranty-claim-card__heading text-xl font-medium tracking-[-0.02em] text-[var(--ez-black)] m-0 mb-[.625rem]">{{ section.settings.claim_heading | default: 'Start a warranty claim' }}</h3>
         <p class="warranty-claim-card__body text-sm text-[var(--ez-grey)] leading-[1.65] m-0 mb-6">
           {{ section.settings.claim_body | default: 'If your product has a defect covered under the limited warranty, contact us here. We respond within 1 business day on weekdays.' }}
         </p>
@@ -139,7 +139,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           </svg>
         </div>
         <div>
-          <p class="info-card__title text-[15px] font-medium text-[var(--ez-black)] mb-1 tracking-[-0.01em]">{{ section.settings.info1_title | default: '30-day no-questions return' }}</p>
+          <p class="info-card__title text-base font-medium text-[var(--ez-black)] mb-1 tracking-[-0.01em]">{{ section.settings.info1_title | default: '30-day no-questions return' }}</p>
           <p class="info-card__body text-sm text-[var(--ez-grey)] leading-[1.6] m-0">
             {{ section.settings.info1_body | default: 'Not the right fit? Return any product within 30 days of delivery — unused, in original packaging.' }}
           </p>
@@ -154,7 +154,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           </svg>
         </div>
         <div>
-          <p class="info-card__title text-[15px] font-medium text-[var(--ez-black)] mb-1 tracking-[-0.01em]">{{ section.settings.info2_title | default: 'Questions about coverage?' }}</p>
+          <p class="info-card__title text-base font-medium text-[var(--ez-black)] mb-1 tracking-[-0.01em]">{{ section.settings.info2_title | default: 'Questions about coverage?' }}</p>
           <p class="info-card__body text-sm text-[var(--ez-grey)] leading-[1.6] m-0">
             {{ section.settings.info2_body | default: "Email or call us and we'll confirm your warranty status and walk you through the next step." }}
           </p>
