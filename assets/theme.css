@@ -51,3 +51,11 @@
 
 /* Remove yellow underline in cinematic reveal headline */
 .cinematic-reveal-line:last-child .cinematic-reveal-line-inner:after{display:none!important}
+
+/* Decision bento (help-me-choose): compact — trim card min-heights */
+@media (min-width:768px){
+.decision-card--0,.decision-card--1{min-height:190px}
+.decision-card--2,.decision-card--3,.decision-card--4{min-height:170px}
+.decision-card--5{min-height:0}
+}
+@media (max-width:767px){.decision-card--0,.decision-card--1,.decision-card--2,.decision-card--3,.decision-card--4{min-height:0}}
