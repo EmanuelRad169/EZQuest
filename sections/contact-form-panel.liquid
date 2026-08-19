@@ -1,7 +1,7 @@
 {{ 'support-cluster.css' | asset_url | stylesheet_tag }}
 
 <div class="support-body container-shell pt-[clamp(48px,6vw,80px)] pb-[clamp(48px,6vw,80px)]">
-  <div class="contact-panel rounded-3xl border border-black/[6%] bg-white p-6 lg:p-8">
+  <div class="contact-panel">
     <div class="max-w-2xl">
       {% if section.settings.eyebrow != blank %}
         <p class="text-xs font-semibold tracking-[.08em] uppercase text-[var(--ez-grey)] m-0">{{ section.settings.eyebrow }}</p>
@@ -14,11 +14,11 @@
       {% endif %}
     </div>
 
-    <div class="contact-layout mt-8 space-y-6 lg:mt-10">
+    <div class="contact-layout mt-8 lg:mt-10">
 
       <div class="contact-info">
 
-        <div class="contact-channels grid grid-cols-3 gap-5 max-[900px]:grid-cols-1">
+        <div class="contact-channels">
 
         <div class="contact-channel flex items-start gap-3.5">
           <div class="contact-channel__icon w-9 h-9 rounded-[10px] bg-black/[4%] border border-black/[8%] text-[var(--ez-grey)] flex items-center justify-center shrink-0" aria-hidden="true">

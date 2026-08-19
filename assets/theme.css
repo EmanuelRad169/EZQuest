@@ -68,3 +68,9 @@
 .policy-hero__heading,.about-hero-heading,.account-hero__heading{font-weight:500;letter-spacing:-.035em}
 .home-hero-copy-heading{font-weight:500;letter-spacing:-.035em}
 @media (max-width:767px){.page-hero__heading,.page-hero-dark__heading,.page-hero-light__heading,.wtb-hero__heading{font-size:clamp(1.5rem,6vw,2.25rem);line-height:1.12}}
+
+/* Contact page: single card (form only), channels as left rail */
+.contact-layout{display:grid;gap:2rem;align-items:start}
+.contact-channels{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media (min-width:640px) and (max-width:1023px){.contact-channels{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1024px){.contact-layout{grid-template-columns:300px minmax(0,1fr);gap:3.5rem}.contact-form-card{max-width:44rem}}
