@@ -48,3 +48,6 @@
 .home-confidence-card-icon svg{width:20px;height:20px}
 .home-confidence-card-title{margin-bottom:4px}
 @media (max-width:767px){.home-confidence-grid{grid-auto-rows:auto}.home-confidence-card--hero{min-height:0}}
+
+/* Remove yellow underline in cinematic reveal headline */
+.cinematic-reveal-line:last-child .cinematic-reveal-line-inner:after{display:none!important}
