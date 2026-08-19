@@ -350,11 +350,13 @@
 }
 .page-cta__inner {
   position: relative; z-index: 1;
+  width: 100%;
   display: flex; align-items: center;
   justify-content: space-between;
   gap: 40px;
 }
-.page-cta__copy { max-width: 560px; }
+.page-cta__copy { flex: 1 1 auto; max-width: 640px; }
+.page-cta__copy:empty { display: none; }
 .page-cta__kicker {
   font-size: 11px; font-weight: 600;
   letter-spacing: 1.5px; text-transform: uppercase;
@@ -373,6 +375,8 @@
 /* ── Variants ─────────────────────────────────────────────────────────── */
 
 /* Light (default) */
+.page-cta--light .btn--secondary { border: 1.5px solid rgba(0,0,0,0.2); }
+.page-cta--light .btn--secondary:hover { border-color: #111; background: rgba(0,0,0,0.04); }
 .page-cta--light {
   background: linear-gradient(90deg, rgba(254,211,0,0.08) 0%, rgba(245,245,247,1) 35%, rgba(245,245,247,1) 100%);
   border-top: 0.5px solid rgba(0,0,0,0.07);
@@ -404,22 +408,7 @@
 
 /* One clear primary CTA: demote the secondary to a subordinate text link on the
    light variant so it doesn't read as an equal-weight button (ui-ux-pro-max). */
-.page-cta--light .page-cta__actions .btn--secondary {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  color: #334155;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  width: auto;
-  padding-inline: 4px;
-}
 .page-cta--light .page-cta__actions .btn--secondary:hover,
-.page-cta--light .page-cta__actions .btn--secondary:focus-visible {
-  background: transparent;
-  border-color: transparent;
-  color: #020617;
-}
 
 /* Free shipping highlight strip */
 .free-shipping-strip {
