@@ -95,3 +95,28 @@
 @keyframes ezq-fade-down{from{transform:translateY(-6px);opacity:0}to{transform:none;opacity:1}}
 .announcement-bar{animation:ezq-fade-down .28s cubic-bezier(0,0,.2,1)}
 @media (prefers-reduced-motion:reduce){.btn,.btn-download,.button-primary,.button-secondary,.site-header-icon-button{transition:none}.btn:hover,.btn:active,.btn-download:active,.button-primary:hover,.button-primary:active,.button-secondary:hover,.button-secondary:active{transform:none}.site-header-cart-count,.site-header-wishlist-count,.announcement-bar{animation:none}}
+
+/* ── EZ Amazon Reviews widget: EZQuest brand skin (app renders in DOM; safe to restyle) ── */
+.wrapper-review-loader{font-family:var(--font-base)!important}
+/* Write a review button -> brand amber pill */
+.wrapper-review-loader .wr-a-rv-bt{background:var(--ez-amber,#fed300)!important;color:#111!important;border:none!important;border-radius:100px!important;padding:.7rem 1.5rem!important;font-weight:600!important;font-size:.875rem!important;letter-spacing:0!important;text-transform:none!important;box-shadow:none!important;transition:transform .18s cubic-bezier(0,0,.2,1)!important}
+.wrapper-review-loader .wr-a-rv-bt:hover{background:#ffc700!important;transform:translateY(-1px)}
+.wrapper-review-loader .wr-a-rv-bt:active{transform:scale(.97)}
+/* Review cards */
+.wrapper-review-loader .ra-rv-wapp{background:#fff!important;border:1px solid rgba(0,0,0,.07)!important;border-radius:16px!important;box-shadow:none!important;padding:1.25rem 1.5rem!important;margin-bottom:1rem!important}
+/* Reviewer name: plain bold text, no box */
+.wrapper-review-loader .nam-wrper b,.wrapper-review-loader .nam-wrper span{background:none!important;border:none!important;box-shadow:none!important;padding:0!important;font-weight:600!important;font-size:.875rem!important;color:#0a0e16!important}
+/* Summary tile + bars in brand amber */
+.wrapper-review-loader .ez-tx-numbr{border-radius:12px!important}
+.wrapper-review-loader .w3-orange{background-color:var(--ez-amber,#fed300)!important}
+.wrapper-review-loader .w3-light-grey{background-color:rgba(0,0,0,.06)!important;border-radius:999px!important;overflow:hidden}
+.wrapper-review-loader .sta-perc{border-radius:999px!important}
+.wrapper-review-loader .nub-of-s{border:1px solid rgba(0,0,0,.1)!important;border-radius:8px!important}
+/* Sort dropdown -> theme input style */
+.wrapper-review-loader select.form-control{border:1px solid rgba(0,0,0,.12)!important;border-radius:10px!important;padding:.55rem .9rem!important;font-size:.875rem!important;box-shadow:none!important;height:auto!important}
+/* Review + gallery photos */
+.wrapper-review-loader .a-rv-review-image,.wrapper-review-loader .btn-image-list-item img,.wrapper-review-loader .re-big-image{border-radius:10px!important}
+/* Thumb (helpful) buttons -> quiet ghost pills */
+.wrapper-review-loader .product-thumb-card{border:1px solid rgba(0,0,0,.12)!important;border-radius:999px!important;background:#fff!important;box-shadow:none!important}
+/* Modal polish */
+.wrapper-review-loader .modal-content{border-radius:16px!important;border:none!important}
