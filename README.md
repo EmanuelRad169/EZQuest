@@ -118,5 +118,5 @@ Phase 2 should begin with implementation of the global shell, homepage, collecti
 - `src/styles/` + `tailwind.config.cjs` — CSS source compiled into `assets/`
 - `scripts/` — maintenance and QA scripts (`dev`, `audit`, `shopify-admin`, `migration`)
 - `tests/` — Playwright QA + visual regression baselines
-- `docs/` — project docs: `PROJECT-BRIEF.md`, `reports/` (handoff + audits), `policies/` (store policy sources), `data/` (review/press import CSVs), migration and architecture notes
+- `docs/` — project data: `policies/` (store policy sources), `data/` (review/press import CSVs), `redirects/` (redirect maps), `migration/` (legacy content/SKU maps), audit data
 - `.env.local`, `shopify.theme.toml` — local credentials/config (gitignored; see the `.example` files)
