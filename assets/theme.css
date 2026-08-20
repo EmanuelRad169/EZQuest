@@ -17,7 +17,7 @@
 .collections-bento .bento-big,.collections-bento .bento-wide{grid-column:auto}
 .collection-card-tag{display:block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:hsla(0,0%,100%,.6);margin-bottom:.35rem}
 @media (min-width:768px){.collections-bento{grid-template-columns:repeat(3,1fr)}}
-@media (min-width:1024px){.collections-bento{grid-template-columns:repeat(4,1fr);gap:1.25rem}}
+@media (min-width:1024px){.collections-bento{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
 
 /* ── 404 full hero ─────────────────────────────────────────── */
 .nf404{display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-top:-108px;min-height:100vh;padding:calc(4rem + 108px) 1.5rem 4rem;text-align:center;background-color:#060a16;background-image:radial-gradient(115% 120% at 88% 12%,rgba(254,211,0,.14) 0,rgba(254,211,0,0) 46%),radial-gradient(100% 110% at 10% 92%,rgba(56,116,255,.18) 0,rgba(56,116,255,0) 52%),linear-gradient(160deg,#161618 0%,#0f1114 60%,#0a0c10 100%)}
