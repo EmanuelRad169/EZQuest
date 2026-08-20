@@ -9,6 +9,29 @@
  */
 {
   "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/C10008_View_1_Desktop.jpg",
+        "background_color": "#020617",
+        "kicker": "Where To Buy",
+        "heading": "Where to Buy EZQuest",
+        "subheading": "Shop online or find an authorised retailer or distributor near you — worldwide.",
+        "height": 320,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "Shop Online",
+        "cta_link": "/collections",
+        "cta_secondary_label": "Become a Reseller",
+        "cta_secondary_link": "/pages/contact",
+        "show_trust": true,
+        "trust_1": "Up To 2 Year Warranty",
+        "trust_2": "30 Day Returns",
+        "trust_3": "Free Shipping Over $90",
+        "trust_4": ""
+      }
+    },
     "where-to-buy": {
       "type": "where-to-buy",
       "blocks": {
@@ -187,21 +210,6 @@
         "cta_text": "Interested in carrying EZQuest products?",
         "cta_label": "Become a Reseller",
         "cta_url": "/pages/contact"
-      }
-    },
-    "page_hero": {
-      "type": "page-hero",
-      "settings": {
-        "background_color": "#020617",
-        "overlay_opacity": 35,
-        "height": 250,
-        "heading": "Where to Buy EZQuest",
-        "subheading": "Shop online or find an authorised retailer or distributor near you — worldwide.",
-        "kicker": "Where To Buy",
-        "cta_label": "Shop Online",
-        "cta_link": "/collections",
-        "cta_secondary_label": "Become a Reseller",
-        "cta_secondary_link": "/pages/contact"
       }
     }
   },
