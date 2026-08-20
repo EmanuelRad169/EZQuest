@@ -11,7 +11,9 @@
   "sections": {
     "main": {
       "type": "shipping-returns",
-      "settings": {}
+      "settings": {
+        "hero_image": "shopify://shop_images/C40012_View_1_Desktop.jpg"
+      }
     }
   },
   "order": [
