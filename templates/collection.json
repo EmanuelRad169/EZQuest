@@ -9,6 +9,30 @@
  */
 {
   "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/P10065_View_1_Desktop.jpg",
+        "image": "shopify://shop_images/P10065_View_1_Desktop.jpg",
+        "background_color": "#020617",
+        "kicker": "Collection",
+        "heading": "",
+        "subheading": "",
+        "height": 360,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "",
+        "cta_link": "",
+        "cta_secondary_label": "",
+        "cta_secondary_link": "",
+        "show_trust": true,
+        "trust_1": "Up To 2 Year Warranty",
+        "trust_2": "30 Day Returns",
+        "trust_3": "Free Shipping Over $90",
+        "trust_4": ""
+      }
+    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -20,6 +44,9 @@
         "show_collection_image": true,
         "show_sort": true,
         "show_support_panel": false,
+        "banner_eyebrow": "",
+        "banner_heading": "",
+        "banner_copy": "",
         "promo_ready_for_desk_image": "shopify://shop_images/ezquest-promo-ready-for-desk.jpg",
         "promo_power_up_image": "shopify://shop_images/ezquest-promo-power-up.jpg",
         "promo_duraguard_cables_image": "shopify://shop_images/ezquest-promo-duraguard-cables.jpg",
@@ -29,6 +56,7 @@
     "cta": {
       "type": "support-cta-rail",
       "settings": {
+        "variant": "light",
         "kicker": "Go Further",
         "heading": "Compare the Full Lineup or Get Setup Guidance",
         "body": "Use the compare tool or Help me choose to find the right product before you add to cart.",
@@ -36,17 +64,6 @@
         "cta_url": "/pages/compare",
         "cta2_label": "Help Me Choose",
         "cta2_url": "/pages/help-me-choose"
-      }
-    },
-    "page_hero": {
-      "type": "page-hero",
-      "settings": {
-        "background_color": "#020617",
-        "kicker": "Collection",
-        "heading": "",
-        "subheading": "",
-        "height": 220,
-        "overlay_opacity": 35
       }
     }
   },
