@@ -12,21 +12,41 @@
     "hero": {
       "type": "page-hero",
       "settings": {
+        "background_color": "#020617",
         "kicker": "Shop by Family",
         "heading": "Find the Right EZQuest Product",
-        "subheading": "Browse by product family, then compare models or open support when you need more detail."
+        "subheading": "Browse by product family, then compare models or open support when you need more detail.",
+        "height": 360,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "",
+        "cta_link": "",
+        "cta_secondary_label": "",
+        "cta_secondary_link": "",
+        "show_trust": true,
+        "trust_1": "Up To 2 Year Warranty",
+        "trust_2": "30 Day Returns",
+        "trust_3": "Free Shipping Over $90",
+        "trust_4": ""
       }
     },
     "main": {
       "type": "main-list-collections",
       "settings": {
+        "kicker": "Shop by Category",
         "heading": "Choose the EZQuest Product Family for Your Setup",
         "copy": "Choose hubs, docks, power, or finishing pieces by the way the workflow actually needs to work.",
         "note": "Use collections to narrow the right family first, then compare models or open support when you need more detail.",
-        "accessories_image": "shopify://shop_images/ezquest-card-accessories-collections.png",
-        "cables_image": "shopify://shop_images/ezquest-card-cables-collections.png",
+        "image_hubs": "shopify://shop_images/1_Hubs_Card.jpg",
+        "image_cables": "shopify://shop_images/2_Cables-C40012_New_view.jpg",
+        "image_adapters": "shopify://shop_images/3_Adapters_Card.jpg",
+        "image_card_readers": "shopify://shop_images/4_Card_Reader.jpg",
+        "image_enclosure": "shopify://shop_images/5_Enclosure.jpg",
+        "hubs_image": "shopify://shop_images/ezquest-card-hubs-collections.png",
         "chargers_image": "shopify://shop_images/ezquest-card-chargers-collections.png",
-        "hubs_image": "shopify://shop_images/ezquest-card-hubs-collections.png"
+        "cables_image": "shopify://shop_images/ezquest-card-cables-collections.png",
+        "accessories_image": "shopify://shop_images/ezquest-card-accessories-collections.png"
       }
     }
   },
