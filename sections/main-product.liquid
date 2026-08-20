@@ -289,15 +289,15 @@
 
             <div class="product-gallery-grid product-gallery-grid--rail">
               {% if lead_media != blank %}
-                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true">
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" aria-label="View image 1 of {{ product.title | escape }}">
                   {% render 'media', media: lead_media, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', fetchpriority: 'high', max_width: 200, widths: '100, 200', sizes: '80px' %}
                 </button>
               {% elsif product.featured_image != blank %}
-                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true">
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" aria-label="View image 1 of {{ product.title | escape }}">
                   {% render 'media', image: product.featured_image, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', fetchpriority: 'high', max_width: 200, widths: '100, 200', sizes: '80px' %}
                 </button>
               {% elsif use_owned_product_gallery and lead_media == blank and product.featured_image == blank %}
-                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true">
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" aria-label="View image 1 of {{ product.title | escape }}">
                   {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, variant: 'hero', width: 320, height: 320, class: 'aspect-square w-full object-cover' %}
                 </button>
               {% endif %}
@@ -305,19 +305,19 @@
               {% if product.media.size > 1 %}
                 {% for media_item in product.media %}
                   {% unless lead_media != blank and media_item.id == lead_media.id %}
-                    <button type="button" class="product-thumb-card" data-pdp-thumb>
+                    <button type="button" class="product-thumb-card" data-pdp-thumb aria-label="View image {{ forloop.index | plus: 1 }} of {{ product.title | escape }}">
                       {% render 'media', media: media_item, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', max_width: 200, widths: '100, 200', sizes: '80px' %}
                     </button>
                   {% endunless %}
                 {% endfor %}
               {% elsif use_owned_product_gallery and lead_media == blank and product.featured_image == blank %}
-                <button type="button" class="product-thumb-card" data-pdp-thumb>
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-label="View setup view of {{ product.title | escape }}">
                   {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, variant: 'setup', width: 320, height: 320, class: 'aspect-square w-full object-cover' %}
                 </button>
-                <button type="button" class="product-thumb-card" data-pdp-thumb>
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-label="View ports view of {{ product.title | escape }}">
                   {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, variant: 'ports', width: 320, height: 320, class: 'aspect-square w-full object-cover' %}
                 </button>
-                <button type="button" class="product-thumb-card" data-pdp-thumb>
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-label="View scale view of {{ product.title | escape }}">
                   {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, variant: 'scale', width: 320, height: 320, class: 'aspect-square w-full object-cover' %}
                 </button>
               {% endif %}
