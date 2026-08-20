@@ -60,6 +60,16 @@
 .page-hero--has-image::before {
   opacity: .45;
 }
+/* page-hero background image (section sets --hero-bg; this renders it) */
+.page-hero--has-image::before{
+  content:"";
+  position:absolute; inset:0; z-index:0;
+  background-image:var(--hero-bg);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
 .page-hero--has-image::after {
   content: "";
   position: absolute; inset: 0; z-index: 0;
