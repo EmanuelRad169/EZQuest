@@ -12,13 +12,35 @@
     "hero": {
       "type": "page-hero",
       "settings": {
-        "image": "shopify://shop_images/ezquest-support-hero.png",
+        "image": "shopify://shop_images/C40012_View_1_Desktop.jpg",
         "background_color": "#020617",
         "kicker": "Contact",
         "heading": "Contact Support",
         "subheading": "Tell us what you need and we will route your message to the right specialist within one business day.",
-        "height": 250,
-        "overlay_opacity": 35
+        "height": 320,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "",
+        "cta_link": "",
+        "cta_secondary_label": "",
+        "cta_secondary_link": "",
+        "show_trust": true,
+        "trust_1": "Up To 2 Year Warranty",
+        "trust_2": "30 Day Returns",
+        "trust_3": "Free Shipping Over $90",
+        "trust_4": "",
+        "slider_autoplay": true,
+        "slider_interval": 6
+      }
+    },
+    "form": {
+      "type": "contact-form-panel",
+      "settings": {
+        "eyebrow": "Support Form",
+        "heading": "Tell Us What You Need",
+        "copy": "Choose the request type, add the key details, and keep the message focused on the next step you need.",
+        "success_message": "Thanks for reaching out. Your message has been sent."
       }
     },
     "details": {
@@ -29,7 +51,9 @@
           "settings": {
             "eyebrow": "01",
             "title": "Product Help",
-            "copy": "Use this for setup questions, compatibility uncertainty, troubleshooting, or product-specific guidance."
+            "copy": "Use this for setup questions, compatibility uncertainty, troubleshooting, or product-specific guidance.",
+            "link_label": "Learn more",
+            "link_url": ""
           }
         },
         "card_2": {
@@ -37,7 +61,9 @@
           "settings": {
             "eyebrow": "02",
             "title": "Order Help",
-            "copy": "Use this for shipping questions, returns, order references, and post-purchase order support."
+            "copy": "Use this for shipping questions, returns, order references, and post-purchase order support.",
+            "link_label": "Learn more",
+            "link_url": ""
           }
         },
         "card_3": {
@@ -45,7 +71,9 @@
           "settings": {
             "eyebrow": "03",
             "title": "Warranty Help",
-            "copy": "Use this for coverage questions, claim context, and warranty-related support."
+            "copy": "Use this for coverage questions, claim context, and warranty-related support.",
+            "link_label": "Learn more",
+            "link_url": ""
           }
         }
       },
@@ -58,22 +86,15 @@
         "eyebrow": "Choose One",
         "heading": "Three Clear Request Types",
         "copy": "Pick the reason that matches your need, then send one support request with the right context.",
-        "columns_desktop": 3
-      }
-    },
-    "form": {
-      "type": "contact-form-panel",
-      "settings": {
-        "eyebrow": "",
-        "heading": "",
-        "copy": "",
-        "success_message": "Thanks for reaching out. Your message has been sent."
+        "columns_desktop": 3,
+        "link_label": "",
+        "link_url": ""
       }
     }
   },
   "order": [
     "hero",
-    "details",
-    "form"
+    "form",
+    "details"
   ]
 }

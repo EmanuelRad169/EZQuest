@@ -11,7 +11,34 @@
   "sections": {
     "main": {
       "type": "shipping-returns",
-      "settings": {}
+      "settings": {
+        "hero_heading": "Fast shipping.<br>Easy returns.",
+        "hero_subheading": "Free shipping on all US orders over $90. 30-day hassle-free returns. 1–2 year limited warranty depending on product.",
+        "cta_primary_label": "Start a return",
+        "cta_primary_url": "",
+        "cta_secondary_label": "Browse FAQ",
+        "cta_secondary_url": "",
+        "stat1_value": "Free",
+        "stat1_label": "Shipping Over $90 in the US",
+        "stat2_value": "30",
+        "stat2_label": "Day Return-Window",
+        "stat3_value": "1–2 Year",
+        "stat3_label": "Limited Warranty Varies by Product",
+        "strip_message": "Free shipping automatically applied on all US orders over $90, no code needed.",
+        "intl_note": "International orders may be subject to customs duties and taxes — these are the responsibility of the recipient.",
+        "step1_title": "Contact us",
+        "step1_body": "Email support@ezq.com with your order number and reason for return. We respond within 1 business day.",
+        "step2_title": "Get your RMA",
+        "step2_body": "We'll email you a Return Materials Authorization number and step-by-step return instructions.",
+        "step3_title": "Ship it back",
+        "step3_body": "Write your RMA number on the outside of the package. Use a trackable shipping method — we can't accept responsibility for lost returns.",
+        "step4_title": "Get your refund",
+        "step4_body": "Once received and inspected, refunds process within 5–7 business days back to your original payment method.",
+        "note_title": "30-day return window",
+        "note_body": "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund.",
+        "policy_link_label": "Read the full return & refund policy",
+        "policy_link_url": ""
+      }
     }
   },
   "order": [
