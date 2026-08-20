@@ -1,7 +1,10 @@
 /* Our Story hero slider — fade slides, dots, swipe, autoplay (pauses off-screen/hover) */
 (function () {
-  var root = document.querySelector('[data-story-slider]');
-  if (!root) return;
+  var cleanup = null;
+  function init() {
+    if (cleanup) { cleanup(); cleanup = null; }
+    var root = document.querySelector('[data-story-slider]');
+    if (!root) return;
   var slides = Array.prototype.slice.call(root.querySelectorAll('[data-story-slide]'));
   if (slides.length < 2) return;
   var dots = Array.prototype.slice.call(document.querySelectorAll('[data-story-dot]'));
@@ -46,4 +49,8 @@
   }
   document.addEventListener('visibilitychange', function () { paused = document.hidden; });
   start();
+  cleanup = stop;
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+  document.addEventListener('shopify:section:load', init);
 })();
