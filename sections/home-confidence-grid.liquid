@@ -1,75 +1,70 @@
+{%- comment -%}
+  Home confidence grid — merchant-editable trust cards.
+  Blocks: "promise" (dark hero card, limit 1) + "card" (standard trust card).
+  Add / remove / reorder / hide via the Theme Editor. Empty fields hide cleanly.
+{%- endcomment -%}
 <section class="section-shell pt-10 lg:pt-16 home-confidence-section">
   <div class="container-shell">
 
     <div class="home-confidence-grid mt-8 reveal-stagger">
 
-      {%- comment -%} Row 1 · Col 1 — Fast shipping {%- endcomment -%}
-      <article class="home-confidence-card home-confidence-card--shipping">
-        <div class="home-confidence-card-copy">
-          <h3 class="home-confidence-card-title">Fast shipping</h3>
-          <p class="home-confidence-card-sub">Orders ship within 1–2 business days with full tracking provided.</p>
-        </div>
-        <div class="home-confidence-card-icon" style="--icon-bg:#FEF3C7;--icon-color:#92400E">
-          {% render 'icon', name: 'truck', size: 28 %}
-        </div>
-      </article>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
 
-      {%- comment -%} Row 1 · Cols 2–3 — 2-Year Warranty HERO {%- endcomment -%}
-      <article class="home-confidence-card home-confidence-card--hero">
-        <div class="home-confidence-hero-watermark" aria-hidden="true">
-          <svg width="240" height="240" viewBox="0 0 18 18" fill="none">
-            <path d="M9 2.9 13.9 4.6v3.6c0 3-2 5.65-4.9 6.9-2.9-1.25-4.9-3.9-4.9-6.9V4.6L9 2.9Z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="home-confidence-hero-copy">
-          <p class="home-confidence-hero-eyebrow">EZQuest Promise</p>
-          <p class="home-confidence-hero-title">1–2yr warranty</p>
-          <p class="home-confidence-hero-sub">Varies by product. No fine print.</p>
-        </div>
-        <div class="home-confidence-hero-bottom">
-          <svg class="home-confidence-hero-badge" width="72" height="72" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M9 2.9 13.9 4.6v3.6c0 3-2 5.65-4.9 6.9-2.9-1.25-4.9-3.9-4.9-6.9V4.6L9 2.9Z" fill="var(--ez-amber,#FED300)"/>
-            <path d="M6.5 9.2L8.3 11l3.2-3.2" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div>
-            <p class="home-confidence-hero-badge-label">1–2yr coverage</p>
-            <a href="/pages/warranty" class="btn btn--link-on-dark">View warranty</a>
-          </div>
-        </div>
-      </article>
+          {%- when 'promise' -%}
+            <article class="home-confidence-card home-confidence-card--hero" {{ block.shopify_attributes }}>
+              <div class="home-confidence-hero-watermark" aria-hidden="true">
+                <svg width="240" height="240" viewBox="0 0 18 18" fill="none">
+                  <path d="M9 2.9 13.9 4.6v3.6c0 3-2 5.65-4.9 6.9-2.9-1.25-4.9-3.9-4.9-6.9V4.6L9 2.9Z" fill="#fff"/>
+                </svg>
+              </div>
+              <div class="home-confidence-hero-copy">
+                {%- if block.settings.eyebrow != blank -%}
+                  <p class="home-confidence-hero-eyebrow">{{ block.settings.eyebrow }}</p>
+                {%- endif -%}
+                {%- if block.settings.title != blank -%}
+                  <p class="home-confidence-hero-title">{{ block.settings.title }}</p>
+                {%- endif -%}
+                {%- if block.settings.subtext != blank -%}
+                  <p class="home-confidence-hero-sub">{{ block.settings.subtext }}</p>
+                {%- endif -%}
+              </div>
+              <div class="home-confidence-hero-bottom">
+                <svg class="home-confidence-hero-badge" width="72" height="72" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M9 2.9 13.9 4.6v3.6c0 3-2 5.65-4.9 6.9-2.9-1.25-4.9-3.9-4.9-6.9V4.6L9 2.9Z" fill="var(--ez-amber,#FED300)"/>
+                  <path d="M6.5 9.2L8.3 11l3.2-3.2" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  {%- if block.settings.badge_label != blank -%}
+                    <p class="home-confidence-hero-badge-label">{{ block.settings.badge_label }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.link_label != blank -%}
+                    <a href="{{ block.settings.link_url | default: '/pages/warranty' }}" class="btn btn--link-on-dark">{{ block.settings.link_label }}</a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </article>
 
-      {%- comment -%} Row 2 · Col 1 — Easy returns {%- endcomment -%}
-      <article class="home-confidence-card home-confidence-card--returns">
-        <div class="home-confidence-card-copy">
-          <h3 class="home-confidence-card-title">Easy returns</h3>
-          <p class="home-confidence-card-sub">Hassle-free returns within 30 days. No questions asked.</p>
-        </div>
-        <div class="home-confidence-card-icon" style="--icon-bg:#DBEAFE;--icon-color:#1E40AF">
-          {% render 'icon', name: 'refresh-cw', size: 28 %}
-        </div>
-      </article>
+          {%- when 'card' -%}
+            <article class="home-confidence-card" {{ block.shopify_attributes }}>
+              <div class="home-confidence-card-copy">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="home-confidence-card-title">{{ block.settings.heading }}</h3>
+                {%- endif -%}
+                {%- if block.settings.body != blank -%}
+                  <p class="home-confidence-card-sub">{{ block.settings.body }}</p>
+                {%- endif -%}
+                {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+                  <a href="{{ block.settings.link_url }}" class="home-confidence-card-link">{{ block.settings.link_label }}</a>
+                {%- endif -%}
+              </div>
+              <div class="home-confidence-card-icon" style="--icon-bg:{{ block.settings.icon_bg | default: '#FEF3C7' }};--icon-color:{{ block.settings.icon_color | default: '#92400E' }}">
+                {% render 'icon', name: block.settings.icon, size: 28 %}
+              </div>
+            </article>
 
-      {%- comment -%} Row 2 · Col 2 — Manuals & downloads {%- endcomment -%}
-      <article class="home-confidence-card home-confidence-card--manuals">
-        <div class="home-confidence-card-copy">
-          <h3 class="home-confidence-card-title">Manuals &amp; downloads</h3>
-          <p class="home-confidence-card-sub">Setup guides, firmware, and docs ready when you need them.</p>
-        </div>
-        <div class="home-confidence-card-icon" style="--icon-bg:#E0E7FF;--icon-color:#3730A3">
-          {% render 'icon', name: 'file-text', size: 28 %}
-        </div>
-      </article>
-
-      {%- comment -%} Row 2 · Col 3 — Customer support {%- endcomment -%}
-      <article class="home-confidence-card home-confidence-card--support">
-        <div class="home-confidence-card-copy">
-          <h3 class="home-confidence-card-title">Live support</h3>
-          <p class="home-confidence-card-sub">Real humans, fast replies. Help by email, chat, or phone.</p>
-        </div>
-        <div class="home-confidence-card-icon" style="--icon-bg:#D1FAE5;--icon-color:#065F46">
-          {% render 'icon', name: 'support', size: 28 %}
-        </div>
-      </article>
+        {%- endcase -%}
+      {%- endfor -%}
 
     </div>
   </div>
@@ -79,9 +74,57 @@
 {
   "name": "Home confidence grid",
   "settings": [],
+  "blocks": [
+    {
+      "type": "promise",
+      "name": "Promise card (dark)",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "EZQuest Promise" },
+        { "type": "text", "id": "title", "label": "Title", "default": "1–2yr warranty" },
+        { "type": "text", "id": "subtext", "label": "Subtext", "default": "Varies by product. No fine print." },
+        { "type": "text", "id": "badge_label", "label": "Badge label", "default": "1–2yr coverage" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "View warranty" },
+        { "type": "url", "id": "link_url", "label": "Link destination" }
+      ]
+    },
+    {
+      "type": "card",
+      "name": "Trust card",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Fast shipping" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Orders ship within 1–2 business days with full tracking provided." },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Truck (shipping)" },
+            { "value": "refresh-cw", "label": "Arrows (returns)" },
+            { "value": "file-text", "label": "Document (manuals)" },
+            { "value": "support", "label": "Headset (support)" },
+            { "value": "shield-check", "label": "Shield check (warranty)" },
+            { "value": "download", "label": "Download" },
+            { "value": "bolt", "label": "Bolt (power)" },
+            { "value": "cable", "label": "Cable" },
+            { "value": "battery-charging", "label": "Battery charging" }
+          ]
+        },
+        { "type": "color", "id": "icon_bg", "label": "Icon background", "default": "#FEF3C7" },
+        { "type": "color", "id": "icon_color", "label": "Icon color", "default": "#92400E" },
+        { "type": "text", "id": "link_label", "label": "Link label (optional)" },
+        { "type": "url", "id": "link_url", "label": "Link destination (optional)" }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Home confidence grid"
+      "name": "Home confidence grid",
+      "blocks": [
+        { "type": "card", "settings": { "heading": "Fast shipping", "body": "Orders ship within 1–2 business days with full tracking provided.", "icon": "truck", "icon_bg": "#FEF3C7", "icon_color": "#92400E" } },
+        { "type": "promise" },
+        { "type": "card", "settings": { "heading": "Easy returns", "body": "Hassle-free returns within 30 days. No questions asked.", "icon": "refresh-cw", "icon_bg": "#DBEAFE", "icon_color": "#1E40AF" } },
+        { "type": "card", "settings": { "heading": "Manuals & downloads", "body": "Setup guides, firmware, and docs ready when you need them.", "icon": "file-text", "icon_bg": "#E0E7FF", "icon_color": "#3730A3" } },
+        { "type": "card", "settings": { "heading": "Live support", "body": "Real humans, fast replies. Help by email, chat, or phone.", "icon": "support", "icon_bg": "#D1FAE5", "icon_color": "#065F46" } }
+      ]
     }
   ]
 }

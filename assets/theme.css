@@ -226,3 +226,6 @@
   .home-confidence-hero-bottom{position:static;transform:none;flex-direction:row;align-items:center;text-align:left;gap:1rem;margin-top:1rem}
   .home-confidence-hero-bottom>div{text-align:left}
 }
+
+/* Confidence card optional link */
+.home-confidence-card-link{display:inline-block;margin-top:.5rem;font-size:.875rem;font-weight:600;color:#0a0e16;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(254,211,0,.9)}

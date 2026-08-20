@@ -27,27 +27,27 @@
       <span aria-current="page">Shipping &amp; returns</span>
     </nav>
     <p class="page-hero__kicker"><span class="page-hero__pulse" aria-hidden="true"></span>Shipping &amp; returns</p>
-    <h1 class="page-hero__heading">Fast shipping.<br>Easy returns.</h1>
-    <p class="page-hero__subheading">
-      Free shipping on all US orders over $90.
-      30-day hassle-free returns. 1–2 year limited warranty depending on product.
-    </p>
+    <h1 class="page-hero__heading">{{ section.settings.hero_heading | default: "Fast shipping.<br>Easy returns." }}</h1>
+    {%- assign sr_sub = section.settings.hero_subheading | default: 'Free shipping on all US orders over $90. 30-day hassle-free returns. 1–2 year limited warranty depending on product.' -%}
+    {%- if sr_sub != blank -%}<p class="page-hero__subheading">{{ sr_sub }}</p>{%- endif -%}
     <div class="page-hero__actions">
-      <a href="/pages/contact" class="page-hero__cta">Start a return</a>
-      <a href="/pages/faq" class="page-hero__cta-secondary">Browse FAQ <span aria-hidden="true">&rarr;</span></a>
+      {%- assign sr_cta1 = section.settings.cta_primary_label | default: 'Start a return' -%}
+      {%- if sr_cta1 != blank -%}<a href="{{ section.settings.cta_primary_url | default: '/pages/contact' }}" class="page-hero__cta">{{ sr_cta1 }}</a>{%- endif -%}
+      {%- assign sr_cta2 = section.settings.cta_secondary_label | default: 'Browse FAQ' -%}
+      {%- if sr_cta2 != blank -%}<a href="{{ section.settings.cta_secondary_url | default: '/pages/faq' }}" class="page-hero__cta-secondary">{{ sr_cta2 }} <span aria-hidden="true">&rarr;</span></a>{%- endif -%}
     </div>
     <div class="sr-hero-stats">
       <div>
-        <p class="sr-hero-stat__value">Free</p>
-        <p class="sr-hero-stat__label">Shipping Over $90 in the US</p>
+        <p class="sr-hero-stat__value">{{ section.settings.stat1_value | default: "Free" }}</p>
+        <p class="sr-hero-stat__label">{{ section.settings.stat1_label | default: "Shipping Over $90 in the US" }}</p>
       </div>
       <div>
-        <p class="sr-hero-stat__value">30</p>
-        <p class="sr-hero-stat__label">Day Return-Window</p>
+        <p class="sr-hero-stat__value">{{ section.settings.stat2_value | default: "30" }}</p>
+        <p class="sr-hero-stat__label">{{ section.settings.stat2_label | default: "Day Return-Window" }}</p>
       </div>
       <div>
-        <p class="sr-hero-stat__value">1–2 Year</p>
-        <p class="sr-hero-stat__label">Limited Warranty Varies by Product</p>
+        <p class="sr-hero-stat__value">{{ section.settings.stat3_value | default: "1–2 Year" }}</p>
+        <p class="sr-hero-stat__label">{{ section.settings.stat3_label | default: "Limited Warranty Varies by Product" }}</p>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
       <path d="M8.5 3.5L3 10h5.5L7 16.5l9.5-9H11L12.5 3.5z" fill="var(--ez-amber)"/>
     </svg>
   </span>
-  <p>Free shipping automatically applied on all US orders over $90, no code needed.</p>
+  <p>{{ section.settings.strip_message | default: "Free shipping automatically applied on all US orders over $90, no code needed." }}</p>
 </div>
 
 {% comment %} 3. 2-COL CONTENT {% endcomment %}
@@ -93,7 +93,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:12px;color:var(--ez-grey);margin-top:.75rem;line-height:1.5;">International orders may be subject to customs duties and taxes — these are the responsibility of the recipient.</p>
+      <p style="font-size:12px;color:var(--ez-grey);margin-top:.75rem;line-height:1.5;">{{ section.settings.intl_note | default: "International orders may be subject to customs duties and taxes — these are the responsibility of the recipient." }}</p>
     </div>
 
     <div>
@@ -102,35 +102,35 @@
         <div class="return-step">
           <div class="return-step__num">1</div>
           <div>
-            <p class="return-step__title">Contact us</p>
-            <p class="return-step__body">Email support@ezq.com with your order number and reason for return. We respond within 1 business day.</p>
+            <p class="return-step__title">{{ section.settings.step1_title | default: "Contact us" }}</p>
+            <p class="return-step__body">{{ section.settings.step1_body | default: "Email support@ezq.com with your order number and reason for return. We respond within 1 business day." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">2</div>
           <div>
-            <p class="return-step__title">Get your RMA</p>
-            <p class="return-step__body">We'll email you a Return Materials Authorization number and step-by-step return instructions.</p>
+            <p class="return-step__title">{{ section.settings.step2_title | default: "Get your RMA" }}</p>
+            <p class="return-step__body">{{ section.settings.step2_body | default: "We'll email you a Return Materials Authorization number and step-by-step return instructions." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">3</div>
           <div>
-            <p class="return-step__title">Ship it back</p>
-            <p class="return-step__body">Write your RMA number on the outside of the package. Use a trackable shipping method — we can't accept responsibility for lost returns.</p>
+            <p class="return-step__title">{{ section.settings.step3_title | default: "Ship it back" }}</p>
+            <p class="return-step__body">{{ section.settings.step3_body | default: "Write your RMA number on the outside of the package. Use a trackable shipping method — we can't accept responsibility for lost returns." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">4</div>
           <div>
-            <p class="return-step__title">Get your refund</p>
-            <p class="return-step__body">Once received and inspected, refunds process within 5–7 business days back to your original payment method.</p>
+            <p class="return-step__title">{{ section.settings.step4_title | default: "Get your refund" }}</p>
+            <p class="return-step__body">{{ section.settings.step4_body | default: "Once received and inspected, refunds process within 5–7 business days back to your original payment method." }}</p>
           </div>
         </div>
       </div>
       <div style="margin-top:2rem;padding:1.25rem;background:var(--ez-light);border-radius:14px;">
-        <p style="font-size:13px;font-weight:500;color:var(--ez-black);margin-bottom:.375rem;">30-day return window</p>
-        <p style="font-size:13px;color:var(--ez-grey);line-height:1.6;">Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund.</p>
+        <p style="font-size:13px;font-weight:500;color:var(--ez-black);margin-bottom:.375rem;">{{ section.settings.note_title | default: "30-day return window" }}</p>
+        <p style="font-size:13px;color:var(--ez-grey);line-height:1.6;">{{ section.settings.note_body | default: "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund." }}</p>
       </div>
     </div>
 
@@ -189,7 +189,8 @@
       <li>Bulk orders of 10 or more units of the same product are not eligible for refund</li>
       <li>Free prepaid return shipping label provided for all approved US returns</li>
     </ul>
-    <a href="/policies/refund-policy" class="sr-policy-link">Read the full return &amp; refund policy &rarr;</a>
+    {%- assign sr_pol = section.settings.policy_link_label | default: 'Read the full return & refund policy' -%}
+    {%- if sr_pol != blank -%}<a href="{{ section.settings.policy_link_url | default: '/policies/refund-policy' }}" class="sr-policy-link">{{ sr_pol }} &rarr;</a>{%- endif -%}
   </div>
 </section>
 
@@ -263,6 +264,179 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero background image"
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_heading",
+      "label": "Heading (HTML allowed)",
+      "default": "Fast shipping.<br>Easy returns."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subheading",
+      "label": "Subheading",
+      "default": "Free shipping on all US orders over $90. 30-day hassle-free returns. 1\u20132 year limited warranty depending on product."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary button label",
+      "default": "Start a return"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary link label",
+      "default": "Browse FAQ"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary link destination"
+    },
+    {
+      "type": "header",
+      "content": "Hero stats"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Stat 1 value",
+      "default": "Free"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Stat 1 label",
+      "default": "Shipping Over $90 in the US"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Stat 2 value",
+      "default": "30"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Stat 2 label",
+      "default": "Day Return-Window"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Stat 3 value",
+      "default": "1\u20132 Year"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Stat 3 label",
+      "default": "Limited Warranty Varies by Product"
+    },
+    {
+      "type": "header",
+      "content": "Messaging"
+    },
+    {
+      "type": "textarea",
+      "id": "strip_message",
+      "label": "Free-shipping strip message",
+      "default": "Free shipping automatically applied on all US orders over $90, no code needed."
+    },
+    {
+      "type": "textarea",
+      "id": "intl_note",
+      "label": "International shipping note",
+      "default": "International orders may be subject to customs duties and taxes \u2014 these are the responsibility of the recipient."
+    },
+    {
+      "type": "header",
+      "content": "How returns work"
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Step 1 title",
+      "default": "Contact us"
+    },
+    {
+      "type": "textarea",
+      "id": "step1_body",
+      "label": "Step 1 body",
+      "default": "Email support@ezq.com with your order number and reason for return. We respond within 1 business day."
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Step 2 title",
+      "default": "Get your RMA"
+    },
+    {
+      "type": "textarea",
+      "id": "step2_body",
+      "label": "Step 2 body",
+      "default": "We'll email you a Return Materials Authorization number and step-by-step return instructions."
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Step 3 title",
+      "default": "Ship it back"
+    },
+    {
+      "type": "textarea",
+      "id": "step3_body",
+      "label": "Step 3 body",
+      "default": "Write your RMA number on the outside of the package. Use a trackable shipping method \u2014 we can't accept responsibility for lost returns."
+    },
+    {
+      "type": "text",
+      "id": "step4_title",
+      "label": "Step 4 title",
+      "default": "Get your refund"
+    },
+    {
+      "type": "textarea",
+      "id": "step4_body",
+      "label": "Step 4 body",
+      "default": "Once received and inspected, refunds process within 5\u20137 business days back to your original payment method."
+    },
+    {
+      "type": "text",
+      "id": "note_title",
+      "label": "Return-window note title",
+      "default": "30-day return window"
+    },
+    {
+      "type": "textarea",
+      "id": "note_body",
+      "label": "Return-window note body",
+      "default": "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund."
+    },
+    {
+      "type": "header",
+      "content": "Policy link"
+    },
+    {
+      "type": "text",
+      "id": "policy_link_label",
+      "label": "Policy link label",
+      "default": "Read the full return & refund policy"
+    },
+    {
+      "type": "url",
+      "id": "policy_link_url",
+      "label": "Policy link destination"
     }
   ]
 }

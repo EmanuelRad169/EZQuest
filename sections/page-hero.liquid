@@ -92,7 +92,32 @@
 
 {{ 'page-hero.css' | asset_url | stylesheet_tag }}
 
+{%- assign hero_slides = section.blocks | where: 'type', 'slide' -%}
 <section class="page-hero {% if use_gradient %}page-hero--gradient{% endif %}" aria-label="{{ hero_heading | escape }}">
+  {%- if hero_slides.size > 0 -%}
+    <div class="story-hero-slider" data-story-slider data-autoplay="{{ section.settings.slider_autoplay | default: true }}" data-interval="{{ section.settings.slider_interval | default: 6 }}" aria-hidden="true">
+      {%- for block in hero_slides -%}
+        <div class="story-hero-slide{% if forloop.first %} is-active{% endif %}" data-story-slide {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <picture>
+              {%- if block.settings.image_mobile != blank -%}
+                <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 900 }}">
+              {%- endif -%}
+              <img src="{{ block.settings.image | image_url: width: 2400 }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="1200">
+            </picture>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if hero_slides.size > 1 -%}
+      <div class="story-hero-dots" data-story-dots role="tablist" aria-label="Hero slides">
+        {%- for block in hero_slides -%}
+          <button type="button" class="story-hero-dot{% if forloop.first %} is-active{% endif %}" data-story-dot="{{ forloop.index0 }}" role="tab" aria-label="Slide {{ forloop.index }}"{% if forloop.first %} aria-selected="true"{% endif %}></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    <script src="{{ 'story-hero-slider.js' | asset_url }}" defer></script>
+  {%- endif -%}
   <div class="page-hero__overlay"></div>
 
   {%- unless request.page_type == 'product' -%}
@@ -203,23 +228,120 @@
       "step": 5,
       "default": 35
     },
-    { "type": "header", "content": "Conversion" },
-    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
-    { "type": "checkbox", "id": "eyebrow_pulse", "label": "Eyebrow pulse dot", "default": true },
-    { "type": "text", "id": "cta_label", "label": "Primary button label" },
-    { "type": "url", "id": "cta_link", "label": "Primary button link" },
-    { "type": "text", "id": "cta_secondary_label", "label": "Secondary link label" },
-    { "type": "url", "id": "cta_secondary_link", "label": "Secondary link URL" },
-    { "type": "header", "content": "Trust strip" },
-    { "type": "checkbox", "id": "show_trust", "label": "Show trust strip", "default": true },
-    { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "Up To 2 Year Warranty" },
-    { "type": "text", "id": "trust_2", "label": "Trust item 2", "default": "30 Day Returns" },
-    { "type": "text", "id": "trust_3", "label": "Trust item 3", "default": "Free Shipping Over $90" },
-    { "type": "text", "id": "trust_4", "label": "Trust item 4" }
+    {
+      "type": "header",
+      "content": "Conversion"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Show breadcrumb",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "eyebrow_pulse",
+      "label": "Eyebrow pulse dot",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Primary button label"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary link label"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary link URL"
+    },
+    {
+      "type": "header",
+      "content": "Trust strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust",
+      "label": "Show trust strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "Up To 2 Year Warranty"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "30 Day Returns"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "Free Shipping Over $90"
+    },
+    {
+      "type": "text",
+      "id": "trust_4",
+      "label": "Trust item 4"
+    },
+    {
+      "type": "header",
+      "content": "Hero slider (add Hero slide blocks)"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Auto-advance slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slider_interval",
+      "label": "Seconds per slide",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 6
+    }
   ],
   "presets": [
     {
       "name": "Page hero"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Hero slide",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop image",
+          "info": "2400x1200 recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image (optional)",
+          "info": "Shown under 768px"
+        }
+      ]
     }
   ]
 }

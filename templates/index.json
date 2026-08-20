@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -309,7 +300,67 @@
     },
     "confidence": {
       "type": "home-confidence-grid",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "card_shipping": {
+          "type": "card",
+          "settings": {
+            "heading": "Fast shipping",
+            "body": "Orders ship within 1\u20132 business days with full tracking provided.",
+            "icon": "truck",
+            "icon_bg": "#FEF3C7",
+            "icon_color": "#92400E"
+          }
+        },
+        "promise": {
+          "type": "promise",
+          "settings": {
+            "eyebrow": "EZQuest Promise",
+            "title": "1\u20132yr warranty",
+            "subtext": "Varies by product. No fine print.",
+            "badge_label": "1\u20132yr coverage",
+            "link_label": "View warranty",
+            "link_url": "/pages/warranty"
+          }
+        },
+        "card_returns": {
+          "type": "card",
+          "settings": {
+            "heading": "Easy returns",
+            "body": "Hassle-free returns within 30 days. No questions asked.",
+            "icon": "refresh-cw",
+            "icon_bg": "#DBEAFE",
+            "icon_color": "#1E40AF"
+          }
+        },
+        "card_manuals": {
+          "type": "card",
+          "settings": {
+            "heading": "Manuals & downloads",
+            "body": "Setup guides, firmware, and docs ready when you need them.",
+            "icon": "file-text",
+            "icon_bg": "#E0E7FF",
+            "icon_color": "#3730A3"
+          }
+        },
+        "card_support": {
+          "type": "card",
+          "settings": {
+            "heading": "Live support",
+            "body": "Real humans, fast replies. Help by email, chat, or phone.",
+            "icon": "support",
+            "icon_bg": "#D1FAE5",
+            "icon_color": "#065F46"
+          }
+        }
+      },
+      "block_order": [
+        "card_shipping",
+        "promise",
+        "card_returns",
+        "card_manuals",
+        "card_support"
+      ]
     },
     "cinematic_reveal": {
       "type": "homepage-cinematic-reveal",
@@ -331,7 +382,7 @@
           "settings": {
             "reviewer_name": "Michail T.",
             "rating": 5,
-            "review_text": "A very strong power bank, able to charge a gaming laptop... Very useful that you can plug in 3 cables as you can charge laptop and phone at the same time. Overall really happy — thumbs up!",
+            "review_text": "A very strong power bank, able to charge a gaming laptop... Very useful that you can plug in 3 cables as you can charge laptop and phone at the same time. Overall really happy \u2014 thumbs up!",
             "product": ""
           }
         },
@@ -358,7 +409,7 @@
           "settings": {
             "reviewer_name": "Joe",
             "rating": 4,
-            "review_text": "I love the form factor of this charger — it's compact for travel or minimalist space usage on a desk. It charges at 25W for my iPhone 17 and has an extension port if I want to plug something else in.",
+            "review_text": "I love the form factor of this charger \u2014 it's compact for travel or minimalist space usage on a desk. It charges at 25W for my iPhone 17 and has an extension port if I want to plug something else in.",
             "product": ""
           }
         },
