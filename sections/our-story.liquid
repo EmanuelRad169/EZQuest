@@ -1,10 +1,43 @@
 {{ 'pages.css' | asset_url | stylesheet_tag }}
 {{ 'page-hero.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'story-hero-slider.js' | asset_url }}" defer></script>
 
-{% comment %} 1. HERO {% endcomment %}
+{% comment %} 1. HERO — background slider (slides = section blocks) {% endcomment %}
 {% assign story_hero_image = section.settings.hero_image %}
-<section class="page-hero-dark{% if story_hero_image != blank %} page-hero-dark--has-image{% else %} page-hero--gradient{% endif %}">
-  {% if story_hero_image != blank %}
+{% assign story_slides = section.blocks | where: 'type', 'slide' %}
+<section class="page-hero-dark{% if story_slides.size > 0 or story_hero_image != blank %} page-hero-dark--has-image{% else %} page-hero--gradient{% endif %}">
+  {% if story_slides.size > 0 %}
+    <div class="story-hero-slider" data-story-slider data-autoplay="{{ section.settings.slider_autoplay | default: true }}" data-interval="{{ section.settings.slider_interval | default: 6 }}" aria-hidden="true">
+      {% for block in story_slides %}
+        {%- liquid
+          assign slide_i = forloop.index
+          assign fallback_desktop = 'story-slide-' | append: slide_i | append: '-desktop.jpg'
+          assign fallback_mobile  = 'story-slide-' | append: slide_i | append: '-mobile.jpg'
+        -%}
+        <div class="story-hero-slide{% if forloop.first %} is-active{% endif %}" data-story-slide {{ block.shopify_attributes }}>
+          <picture>
+            {% if block.settings.image_mobile != blank %}
+              <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 900 }}">
+            {% elsif slide_i <= 5 %}
+              <source media="(max-width: 767px)" srcset="{{ fallback_mobile | asset_url }}">
+            {% endif %}
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 2400 }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="1200">
+            {% elsif slide_i <= 5 %}
+              <img src="{{ fallback_desktop | asset_url }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="1200">
+            {% endif %}
+          </picture>
+        </div>
+      {% endfor %}
+    </div>
+    {% if story_slides.size > 1 %}
+      <div class="story-hero-dots" data-story-dots role="tablist" aria-label="Hero slides">
+        {% for block in story_slides %}
+          <button type="button" class="story-hero-dot{% if forloop.first %} is-active{% endif %}" data-story-dot="{{ forloop.index0 }}" role="tab" aria-label="Slide {{ forloop.index }}"{% if forloop.first %} aria-selected="true"{% endif %}></button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% elsif story_hero_image != blank %}
     <div class="page-hero-dark__media" aria-hidden="true">
       {{ story_hero_image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', alt: '', class: 'page-hero-dark__image' }}
     </div>
@@ -167,7 +200,7 @@
       "type": "text",
       "id": "hero_kicker",
       "label": "Hero kicker",
-      "default": "Est. 1994 · Yorba Linda, California"
+      "default": "Est. 1994 \u00b7 Yorba Linda, California"
     },
     {
       "type": "text",
@@ -179,7 +212,7 @@
       "type": "textarea",
       "id": "hero_body",
       "label": "Hero subheading",
-      "default": "Since 1994, EZQuest has made it simpler to connect the devices that matter most — with products built to last and a team that stands behind every one."
+      "default": "Since 1994, EZQuest has made it simpler to connect the devices that matter most \u2014 with products built to last and a team that stands behind every one."
     },
     {
       "type": "text",
@@ -217,13 +250,13 @@
       "type": "textarea",
       "id": "narrative_lead",
       "label": "Lead paragraph",
-      "default": "Technology has changed dramatically since EZQuest was founded in 1994. We’ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people."
+      "default": "Technology has changed dramatically since EZQuest was founded in 1994. We\u2019ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people."
     },
     {
       "type": "richtext",
       "id": "narrative_body",
       "label": "Story body",
-      "default": "<p>EZQuest began with a simple belief that great products don’t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don’t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating “me-too” products. If a product already exists, our question isn’t, “Can we make one too?” It’s, “How can we make it better?”</p><p>Perhaps the greatest compliment we receive isn’t an award — it’s hearing from customers who are still using products they purchased decades ago.</p>"
+      "default": "<p>EZQuest began with a simple belief that great products don\u2019t start with engineering drawings. <strong>They start by listening.</strong></p><p>Founder Ebrahim Zmehrir, an electronics engineer with a lifelong passion for designing and building technology, established EZQuest with a vision of making computer connectivity easier, more reliable, and more intuitive.</p><p>As technology evolved, so did EZQuest. During the transition from analog to digital video editing, EZQuest became one of the pioneers in FireWire storage solutions. Our products were showcased by Apple at Macworld San Francisco.</p><p>Today, our focus is on USB-C and Thunderbolt connectivity solutions, including hubs, docking stations, adapters, cables, and power solutions that simplify everyday technology. While our products have evolved, our philosophy has not.</p><p>Every EZQuest product begins with customer feedback. We don\u2019t design products based on assumptions or trends. We listen to professionals, creators, businesses, educators, and everyday users to understand their challenges before creating solutions.</p><p>We have never believed in creating \u201cme-too\u201d products. If a product already exists, our question isn\u2019t, \u201cCan we make one too?\u201d It\u2019s, \u201cHow can we make it better?\u201d</p><p>Perhaps the greatest compliment we receive isn\u2019t an award \u2014 it\u2019s hearing from customers who are still using products they purchased decades ago.</p>"
     },
     {
       "type": "text",
@@ -318,9 +351,48 @@
       "type": "url",
       "id": "cta_url",
       "label": "CTA button link"
+    },
+    {
+      "type": "header",
+      "content": "Hero slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Auto-advance slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slider_interval",
+      "label": "Seconds per slide",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 6
     }
   ],
   "blocks": [
+    {
+      "type": "slide",
+      "name": "Hero slide",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop image",
+          "info": "2400x1200 recommended. Leave empty to use the bundled banner for this slide position."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image",
+          "info": "Portrait/square crop shown under 768px."
+        }
+      ]
+    },
     {
       "type": "stat",
       "name": "Stat",
@@ -398,7 +470,7 @@
         {
           "type": "stat",
           "settings": {
-            "value": "1–2yr",
+            "value": "1\u20132yr",
             "label": "Limited warranty (varies by product)"
           }
         },
@@ -406,14 +478,14 @@
           "type": "value",
           "settings": {
             "title": "We listen first",
-            "body": "Every product begins with understanding our customers’ needs, not following market trends."
+            "body": "Every product begins with understanding our customers\u2019 needs, not following market trends."
           }
         },
         {
           "type": "value",
           "settings": {
-            "title": "We never build “me too” products",
-            "body": "Every EZQuest product must improve upon what’s already available by adding meaningful value."
+            "title": "We never build \u201cme too\u201d products",
+            "body": "Every EZQuest product must improve upon what\u2019s already available by adding meaningful value."
           }
         },
         {
@@ -434,7 +506,7 @@
           "type": "value",
           "settings": {
             "title": "Building lifelong relationships",
-            "body": "Our success isn’t measured by how many customers we have, but by how many people proudly recommend EZQuest to others."
+            "body": "Our success isn\u2019t measured by how many customers we have, but by how many people proudly recommend EZQuest to others."
           }
         },
         {
