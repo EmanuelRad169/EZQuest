@@ -11,35 +11,9 @@
   "sections": {
     "main": {
       "type": "shipping-returns",
-      "settings": {},
-      "blocks": {
-        "us_1": { "type": "us_rate", "settings": { "total": "Under $25", "rate": "$4.97", "delivery": "2–7 business days" }},
-        "us_2": { "type": "us_rate", "settings": { "total": "$25 – $50", "rate": "$6.54", "delivery": "2–7 business days" }},
-        "us_3": { "type": "us_rate", "settings": { "total": "$50 – $89.99", "rate": "$7.97", "delivery": "2–7 business days" }},
-        "us_4": { "type": "us_rate", "settings": { "total": "$90 and over", "rate": "Free", "delivery": "2–7 business days", "is_free": true }},
-        "intl_1": { "type": "intl_rate", "settings": { "total": "Under $25", "rate": "$14.99", "delivery": "5–15 days" }},
-        "intl_2": { "type": "intl_rate", "settings": { "total": "$25 – $50", "rate": "$19.99", "delivery": "5–15 days" }},
-        "intl_3": { "type": "intl_rate", "settings": { "total": "$50 – $100", "rate": "$23.99", "delivery": "5–15 days" }},
-        "intl_4": { "type": "intl_rate", "settings": { "total": "Over $250", "rate": "$35.99", "delivery": "5–15 days" }},
-        "step_1": { "type": "step", "settings": { "title": "Contact us", "body": "Email support@ezq.com with your order number and reason for return. We respond within 1 business day." }},
-        "step_2": { "type": "step", "settings": { "title": "Get your RMA", "body": "We'll email you a Return Materials Authorization number and step-by-step return instructions." }},
-        "step_3": { "type": "step", "settings": { "title": "Ship it back", "body": "Write your RMA number on the outside of the package. Use a trackable shipping method — we can't accept responsibility for lost returns." }},
-        "step_4": { "type": "step", "settings": { "title": "Get your refund", "body": "Once received and inspected, refunds process within 5–7 business days back to your original payment method." }},
-        "faq_1": { "type": "faq", "settings": { "question": "When will my order ship?", "answer": "Orders placed before 2pm PST on business days typically ship same day. Orders placed Friday after 2pm, Saturday, or Sunday ship the following Monday." }},
-        "faq_2": { "type": "faq", "settings": { "question": "Can I return a product I've already opened?", "answer": "Yes — if the product is in like-new condition within 30 days. If the product has a defect, it's covered by the 1–2 year limited warranty (depending on product) regardless of whether it's been opened." }},
-        "faq_3": { "type": "faq", "settings": { "question": "Does free shipping apply to international orders?", "answer": "Free shipping applies to US orders only. International shipping rates are calculated at checkout based on order weight and destination." }},
-        "policy_1": { "type": "policy", "settings": { "text": "Undamaged products qualify for a full refund within 30 days of purchase" }},
-        "policy_2": { "type": "policy", "settings": { "text": "Must include all original accessories, cables, and retail packaging" }},
-        "policy_3": { "type": "policy", "settings": { "text": "Bulk orders of 10 or more units of the same product are not eligible for refund" }},
-        "policy_4": { "type": "policy", "settings": { "text": "Free prepaid return shipping label provided for all approved US returns" }}
-      },
-      "block_order": [
-        "us_1", "us_2", "us_3", "us_4",
-        "intl_1", "intl_2", "intl_3", "intl_4",
-        "step_1", "step_2", "step_3", "step_4",
-        "faq_1", "faq_2", "faq_3",
-        "policy_1", "policy_2", "policy_3", "policy_4"
-      ]
+      "settings": {
+        "hero_image": "shopify://shop_images/C40012_View_1_Desktop.jpg"
+      }
     }
   },
   "order": [
