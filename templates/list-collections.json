@@ -43,11 +43,12 @@
         "image_adapters": "shopify://shop_images/3_Adapters_Card.jpg",
         "image_card_readers": "shopify://shop_images/4_Card_Reader.jpg",
         "image_hdmi": "shopify://shop_images/EF879BB8-667B-45D2-B7F3-2E563D7B4940.png",
+        "image_displayport": "shopify://shop_images/DisplayPort.jpg",
+        "image_mini_displayport": "shopify://shop_images/MiniDisplayPort.jpg",
+        "image_audio": "shopify://shop_images/audio.jpg",
         "image_enclosure": "shopify://shop_images/5_Enclosure.jpg",
-        "hubs_image": "shopify://shop_images/ezquest-card-hubs-collections.png",
-        "chargers_image": "shopify://shop_images/ezquest-card-chargers-collections.png",
-        "cables_image": "shopify://shop_images/ezquest-card-cables-collections.png",
-        "accessories_image": "shopify://shop_images/ezquest-card-accessories-collections.png"
+        "image_wall_charger": "shopify://shop_images/WallCharger.jpg",
+        "image_car_charger": "shopify://shop_images/CarCharger.jpg"
       }
     }
   },
