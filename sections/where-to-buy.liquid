@@ -81,11 +81,6 @@
   "tag": "section",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero background image"
-    },
-    {
       "type": "text",
       "id": "heading",
       "label": "Page heading",
@@ -135,9 +130,18 @@
           "id": "category",
           "label": "Category",
           "options": [
-            { "value": "us_retailer", "label": "U.S. Retailer" },
-            { "value": "intl_reseller", "label": "International Reseller" },
-            { "value": "intl_distributor", "label": "International Distributor" }
+            {
+              "value": "us_retailer",
+              "label": "U.S. Retailer"
+            },
+            {
+              "value": "intl_reseller",
+              "label": "International Reseller"
+            },
+            {
+              "value": "intl_distributor",
+              "label": "International Distributor"
+            }
           ],
           "default": "us_retailer"
         },
@@ -151,13 +155,13 @@
           "type": "image_picker",
           "id": "logo",
           "label": "Logo image",
-          "info": "Upload a logo here — OR use the asset filename below"
+          "info": "Upload a logo here \u2014 OR use the asset filename below"
         },
         {
           "type": "text",
           "id": "logo_asset",
           "label": "Logo asset filename",
-          "info": "e.g. BuyFrom-001.jpg — only used if no logo image uploaded above"
+          "info": "e.g. BuyFrom-001.jpg \u2014 only used if no logo image uploaded above"
         },
         {
           "type": "url",
@@ -168,7 +172,7 @@
           "type": "text",
           "id": "region",
           "label": "Region / country label",
-          "info": "e.g. Lebanon · Leave blank for U.S. retailers"
+          "info": "e.g. Lebanon \u00b7 Leave blank for U.S. retailers"
         }
       ]
     }
@@ -311,7 +315,7 @@
           "type": "retailer",
           "settings": {
             "category": "intl_distributor",
-            "name": "Quintec Distribución",
+            "name": "Quintec Distribuci\u00f3n",
             "logo_asset": "BuyFrom-014.jpg",
             "url": "https://www.quintec.cl/",
             "region": "Chile"
