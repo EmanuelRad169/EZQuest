@@ -16,7 +16,7 @@
         "background_color": "#020617",
         "kicker": "Where To Buy",
         "heading": "Where to Buy EZQuest",
-        "subheading": "Shop online or find an authorised retailer or distributor near you — worldwide.",
+        "subheading": "Shop online or find an authorised retailer or distributor near you \u2014 worldwide.",
         "height": 320,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
@@ -117,16 +117,6 @@
             "region": ""
           }
         },
-        "smalldog": {
-          "type": "retailer",
-          "settings": {
-            "category": "us_retailer",
-            "name": "Small Dog Electronics",
-            "logo_asset": "BuyFrom-009.jpg",
-            "url": "http://www.smalldog.com/mfg/?MfrName=Ezquest",
-            "region": ""
-          }
-        },
         "adkom": {
           "type": "retailer",
           "settings": {
@@ -147,31 +137,11 @@
             "region": "Kuwait"
           }
         },
-        "macway": {
-          "type": "retailer",
-          "settings": {
-            "category": "intl_reseller",
-            "name": "Macway",
-            "logo_asset": "BuyFrom-012.jpg",
-            "url": "http://www.macway.com/fr/searches?keywords=ezquest",
-            "region": "France"
-          }
-        },
-        "imachines": {
-          "type": "retailer",
-          "settings": {
-            "category": "intl_reseller",
-            "name": "iMachines",
-            "logo_asset": "BuyFrom-013.jpg",
-            "url": "http://www.i-machines.com/",
-            "region": "Bahrain & Saudi Arabia"
-          }
-        },
         "quintec": {
           "type": "retailer",
           "settings": {
             "category": "intl_distributor",
-            "name": "Quintec Distribución",
+            "name": "Quintec Distribuci\u00f3n",
             "logo_asset": "BuyFrom-014.jpg",
             "url": "http://www.quintecdistribucion.cl/catalogo.php?busqueda=ezquest",
             "region": "Chile"
@@ -186,6 +156,36 @@
             "url": "http://www.icongroup.co.il/",
             "region": "Israel"
           }
+        },
+        "digikey": {
+          "type": "retailer",
+          "settings": {
+            "category": "us_retailer",
+            "name": "DigiKey",
+            "region": "",
+            "url": "https://www.digikey.com/en/supplier-centers/ezquest-inc",
+            "logo_asset": "digikey.jpg"
+          }
+        },
+        "pearl": {
+          "type": "retailer",
+          "settings": {
+            "category": "intl_reseller",
+            "name": "Pearl",
+            "region": "France",
+            "url": "https://www.pearl.fr/recherche/ezquest",
+            "logo_asset": "pearl.jpg"
+          }
+        },
+        "viastara": {
+          "type": "retailer",
+          "settings": {
+            "category": "intl_reseller",
+            "name": "Viastara",
+            "region": "",
+            "url": "https://www.viastara.com/brands",
+            "logo_asset": "viastara.jpg"
+          }
         }
       },
       "block_order": [
@@ -197,11 +197,11 @@
         "rakuten",
         "macranch",
         "dino",
-        "smalldog",
+        "digikey",
         "adkom",
         "digits",
-        "macway",
-        "imachines",
+        "pearl",
+        "viastara",
         "quintec",
         "icongroup"
       ],
