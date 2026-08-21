@@ -568,10 +568,13 @@ function animateMediaReveal(element, options) {
     }
 
     function syncButtonState(isAvailable, priceText) {
-      const buttonLabel = isAvailable ? 'Add to cart' : 'Sold out';
+      const isPreorder = productRoot.dataset.preorder === 'true';
+      const buttonLabel = isPreorder ? 'Pre-Order' : (isAvailable ? 'Add to cart' : 'Sold out');
+      // Pre-order items stay purchasable even when Shopify reports the variant unavailable.
+      const buttonEnabled = isPreorder || isAvailable;
 
       if (primaryButton) {
-        primaryButton.disabled = !isAvailable;
+        primaryButton.disabled = !buttonEnabled;
       }
 
       if (primaryButtonLabel) {
@@ -587,7 +590,7 @@ function animateMediaReveal(element, options) {
         primaryButtonDivider.hidden = !isAvailable;
       }
 
-      stickyButton.disabled = !isAvailable;
+      stickyButton.disabled = !buttonEnabled;
 
       if (stickyButtonLabel) {
         stickyButtonLabel.textContent = buttonLabel;

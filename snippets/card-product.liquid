@@ -69,6 +69,10 @@
     assign product_age_seconds = now_seconds | minus: published_seconds
     assign product_days_old = product_age_seconds | divided_by: 86400
 
+    if product_tags_normalized contains 'preorder' or product_tags_normalized contains 'pre-order'
+      assign product_badge_codes = product_badge_codes | append: 'preorder,'
+      assign is_preorder_card = true
+    endif
     unless product.available
       assign product_badge_codes = product_badge_codes | append: 'soldout,'
     endunless
@@ -140,10 +144,13 @@
       endif
     endif
 
-    unless product.available
+    if is_preorder_card
+      assign quick_add_label = 'Pre-Order'
+      assign quick_add_attributes = 'name="add"'
+    elsif product.available == false
       assign quick_add_label = 'Sold out'
       assign quick_add_attributes = 'name="add" disabled="disabled"'
-    endunless
+    endif
   endif
 -%}
 

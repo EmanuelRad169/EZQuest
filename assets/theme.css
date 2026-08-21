@@ -229,3 +229,17 @@
 
 /* Confidence card optional link */
 .home-confidence-card-link{display:inline-block;margin-top:.5rem;font-size:.875rem;font-weight:600;color:#0a0e16;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(254,211,0,.9)}
+
+/* ── Pre-order (tag: preorder) ───────────────────────────────────────── */
+.product-badge--preorder{
+  background:#0f172a;color:#fed300;border:1px solid #0f172a;
+  font-weight:600;letter-spacing:.02em;
+}
+.pdp-preorder-badge{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:.85rem;
+  padding:.4rem .75rem;border-radius:9999px;
+  background:#0f172a;color:#fed300;
+  font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+  line-height:1;
+}
+.pdp-preorder-badge svg{width:14px;height:14px}

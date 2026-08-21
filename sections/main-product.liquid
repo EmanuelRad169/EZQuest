@@ -11,7 +11,7 @@
     .buybox-sticky { position: static !important; top: auto !important; }
   }
 {%- endstyle -%}
-<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}">
+<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}" data-preorder="{% if product.tags contains 'preorder' or product.tags contains 'pre-order' %}true{% else %}false{% endif %}">
   <div class="container-shell">
     <div class="hidden lg:block">
       {% render 'breadcrumbs' %}
@@ -33,6 +33,11 @@
       assign amazon_rating = product.metafields.custom.amazon_rating
       assign amazon_count  = product.metafields.custom.amazon_review_count | default: 0
       assign selected_variant = product.selected_or_first_available_variant
+      assign is_preorder = false
+      assign product_tags_pre = product.tags | join: ',' | downcase | replace: ' ', '-' | replace: '_', '-'
+      if product_tags_pre contains 'preorder' or product_tags_pre contains 'pre-order'
+        assign is_preorder = true
+      endif
       assign product_form_id = 'ProductForm-' | append: section.id
       assign mobile_proof_line = blank
       assign proof_fallback_line = blank
@@ -369,6 +374,9 @@
                 <p class="product-buybox__kicker mb-3 text-caption-sm font-semibold uppercase text-slate-500">{{ pdp_kicker | upcase }}</p>
             {%- endif -%}
               <h1 class="product-buybox__title mb-3 text-heading font-bold leading-tight text-slate-950 md:text-heading-lg">{{ product.title }}</h1>
+            {%- if is_preorder -%}
+              <span class="pdp-preorder-badge">{% render 'icon', name: 'bolt' %} Pre-Order</span>
+            {%- endif -%}
           </header>
 
           <div class="product-buybox-header space-y-4">
@@ -526,10 +534,11 @@
                 {% endif %}
                 <div class="product-primary-action-wrap" data-product-primary-action-wrap>
                   <button class="btn btn--primary btn--block product-primary-action" type="submit" name="add" data-product-primary-button
-                    data-label-add="{{ 'product.add_to_cart' | t | escape }}"
+                    data-label-add="{% if is_preorder %}Pre-Order{% else %}{{ 'product.add_to_cart' | t | escape }}{% endif %}"
                     data-label-adding="{{ 'product.adding' | t | escape }}"
-                    {% unless product.available %} disabled="disabled"{% endunless %}>
-                    <span data-product-primary-button-label>{% if product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
+                    data-preorder="{% if is_preorder %}true{% else %}false{% endif %}"
+                    {% unless product.available or is_preorder %} disabled="disabled"{% endunless %}>
+                    <span data-product-primary-button-label>{% if is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
                   </button>
                 </div>
               </div>
@@ -819,7 +828,7 @@
           <p class="product-sticky-atc-title">{{ product.title | truncate: 28 }}</p>
           <div class="product-sticky-atc-meta">
             <p class="product-sticky-atc-availability" data-sticky-atc-availability>
-              {% if product.available %}{{ 'product.in_stock' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
+              {% if is_preorder %}Available to pre-order{% elsif product.available %}{{ 'product.in_stock' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
             </p>
             {%- if sticky_trust_line != blank -%}
               <span class="product-sticky-atc-trust">{{ sticky_trust_line }}</span>
@@ -833,8 +842,8 @@
             <span class="product-sticky-atc-save">-{{ sticky_variant.compare_at_price | minus: sticky_variant.price | money }}</span>
           {%- endif -%}
         </div>
-        <button class="btn btn--primary product-sticky-atc-button" type="submit" name="add" form="{{ product_form_id }}" data-sticky-atc-button{% unless product.available %} disabled="disabled"{% endunless %}>
-          <span data-sticky-atc-button-label>{% if product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
+        <button class="btn btn--primary product-sticky-atc-button" type="submit" name="add" form="{{ product_form_id }}" data-sticky-atc-button{% unless product.available or is_preorder %} disabled="disabled"{% endunless %}>
+          <span data-sticky-atc-button-label>{% if is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
         </button>
       </div>
     </div>
