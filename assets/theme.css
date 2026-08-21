@@ -243,3 +243,11 @@
   line-height:1;
 }
 .pdp-preorder-badge svg{width:14px;height:14px}
+
+/* Buy with Shop (Shop Pay) button — match Add to Cart pill radius exactly (100px) */
+.product-form-payment shop-pay-button,
+.shopify-payment-button shop-pay-button{--shop-pay-button-border-radius:100px !important;}
+.product-buybox .shopify-payment-button__button--branded,
+.shopify-payment-button__button--branded{border-radius:100px !important;overflow:hidden !important;}
+.product-buybox .shopify-payment-button__button--unbranded,
+.shopify-payment-button__button--unbranded{border-radius:100px !important;}
