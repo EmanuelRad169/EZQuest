@@ -29,7 +29,9 @@
         "trust_1": "Up To 2 Year Warranty",
         "trust_2": "30 Day Returns",
         "trust_3": "Free Shipping Over $90",
-        "trust_4": ""
+        "trust_4": "",
+        "slider_autoplay": true,
+        "slider_interval": 6
       }
     },
     "where-to-buy": {
@@ -91,7 +93,7 @@
             "category": "us_retailer",
             "name": "Rakuten",
             "logo_asset": "BuyFrom-006.jpg",
-            "url": "http://www.rakuten.com/sr/searchresults#qu=ezquest",
+            "url": "http://www.rakuten.com",
             "region": ""
           }
         },
