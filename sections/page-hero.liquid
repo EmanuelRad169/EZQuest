@@ -68,6 +68,16 @@
   if hero_background_url != blank
     assign use_gradient = false
   endif
+
+  assign hero_slides = section.blocks | where: 'type', 'slide'
+  comment
+    When slide blocks exist the rotating slider provides the background,
+    so suppress the single static background-image to avoid a flash under slide 1.
+  endcomment
+  if hero_slides.size > 0
+    assign hero_background_url = blank
+    assign use_gradient = false
+  endif
 -%}
 
 {%- style -%}
@@ -92,20 +102,23 @@
 
 {{ 'page-hero.css' | asset_url | stylesheet_tag }}
 
-{%- assign hero_slides = section.blocks | where: 'type', 'slide' -%}
 <section class="page-hero {% if use_gradient %}page-hero--gradient{% endif %}" aria-label="{{ hero_heading | escape }}">
   {%- if hero_slides.size > 0 -%}
     <div class="story-hero-slider" data-story-slider data-autoplay="{{ section.settings.slider_autoplay | default: true }}" data-interval="{{ section.settings.slider_interval | default: 6 }}" aria-hidden="true">
       {%- for block in hero_slides -%}
+        {%- comment -%} Per-slide image: merchant picker first, else bundled theme asset fallback by position {%- endcomment -%}
+        {%- assign slide_asset = 'collection-hero-slide-' | append: forloop.index | append: '-desktop.jpg' -%}
         <div class="story-hero-slide{% if forloop.first %} is-active{% endif %}" data-story-slide {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            <picture>
-              {%- if block.settings.image_mobile != blank -%}
-                <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 900 }}">
-              {%- endif -%}
-              <img src="{{ block.settings.image | image_url: width: 2400 }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="1200">
-            </picture>
-          {%- endif -%}
+          <picture>
+            {%- if block.settings.image_mobile != blank -%}
+              <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 900 }}">
+            {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 2400 }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="720">
+            {%- else -%}
+              <img src="{{ slide_asset | asset_url }}" alt="" class="page-hero-dark__image" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"{% if forloop.first %} fetchpriority="high"{% endif %} width="2400" height="720">
+            {%- endif -%}
+          </picture>
         </div>
       {%- endfor -%}
     </div>
