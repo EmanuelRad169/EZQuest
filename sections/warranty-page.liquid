@@ -114,6 +114,24 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
 
       <div class="warranty-claim-col lg:sticky lg:top-24">
 
+      <div class="warranty-register-card border-[1.5px] border-black/[7%] rounded-[24px] p-8 bg-white shadow-[0_18px_55px_rgba(15,23,42,.06)]" style="margin-bottom:1rem">
+        <div class="warranty-claim-card__icon w-12 h-12 rounded-[14px] bg-black/[4%] text-[var(--ez-grey)] flex items-center justify-center mb-5" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M7 4h10.5L22 8.5V24H7V4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M17 4v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M11 16l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="warranty-claim-card__eyebrow text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-2">{{ section.settings.register_eyebrow | default: 'New Purchase' }}</p>
+        <h3 class="warranty-claim-card__heading text-xl font-medium tracking-[-0.02em] text-[var(--ez-black)] m-0 mb-[.625rem]">{{ section.settings.register_heading | default: 'Register Your Product' }}</h3>
+        <p class="warranty-claim-card__body text-sm text-[var(--ez-grey)] leading-[1.65] m-0 mb-6">
+          {{ section.settings.register_body | default: 'Register within 90 days of purchase and we keep your proof of purchase on file. Future claims take minutes instead of hunting for a receipt.' }}
+        </p>
+        <div class="warranty-claim-card__actions flex flex-col gap-3">
+          {% render 'button', label: section.settings.register_button_label | default: 'Register Your Product', url: '/pages/product-registration', style: 'secondary', size: 'sm', class: 'warranty-claim-card__button' %}
+        </div>
+      </div>
+
       <div class="warranty-claim-card border-[1.5px] border-black/[7%] rounded-[24px] p-8 bg-white shadow-[0_18px_55px_rgba(15,23,42,.06)]">
         <div class="warranty-claim-card__icon w-12 h-12 rounded-[14px] bg-black/[4%] text-[var(--ez-grey)] flex items-center justify-center mb-5" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -201,6 +219,10 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
     { "type": "textarea", "id": "claim_body", "label": "Body", "default": "If your product has a defect covered under the limited warranty, contact us here. We respond within 1 business day on weekdays." },
     { "type": "text", "id": "claim_button_label", "label": "Button label", "default": "Submit a claim" },
     { "type": "url", "id": "claim_button_url", "label": "Button URL" },
+    { "type": "text", "id": "register_eyebrow", "label": "Register card eyebrow", "default": "New Purchase" },
+    { "type": "text", "id": "register_heading", "label": "Register card heading", "default": "Register Your Product" },
+    { "type": "textarea", "id": "register_body", "label": "Register card body", "default": "Register within 90 days of purchase and we keep your proof of purchase on file. Future claims take minutes instead of hunting for a receipt." },
+    { "type": "text", "id": "register_button_label", "label": "Register button label", "default": "Register Your Product" },
     { "type": "text", "id": "claim_note", "label": "Note", "default": "Have your order number ready — we'll ask for it." },
     { "type": "header", "content": "Info cards" },
     { "type": "text", "id": "info1_title", "label": "Card 1 title", "default": "30-day no-questions return" },

@@ -1,0 +1,370 @@
+{%- comment -%}
+  Product Registration
+  --------------------
+  Captures warranty registration details after purchase.
+
+  Submission path:
+  1. Always posts through Shopify's native {% form 'contact' %} so the store
+     receives the registration by email with zero external dependencies.
+  2. If "Registration API endpoint" is set in the section settings, the form
+     ALSO posts the same payload to that endpoint, which writes an
+     `ezquest_registration` metaobject via the Admin API. Storefront Liquid
+     cannot write metaobjects directly, so this hop is required for the
+     searchable admin record.
+{%- endcomment -%}
+
+<section
+  class="ticket-form-section section-shell"
+  aria-label="Register your product"
+  data-registration-endpoint="{{ section.settings.api_endpoint | escape }}"
+>
+  <div class="ticket-form-layout page-width">
+
+    <div class="ticket-form-main">
+      {% if section.settings.kicker != blank %}
+        <p class="section-kicker">{{ section.settings.kicker | escape }}</p>
+      {% endif %}
+      <h2 class="ticket-form-section__heading mt-4">
+        {{ section.settings.heading | default: 'Register Your Product' | escape }}
+      </h2>
+      {% if section.settings.body != blank %}
+        <p class="ticket-form-section__body">{{ section.settings.body | escape }}</p>
+      {% endif %}
+
+      {% form 'contact', id: 'product-registration-form' %}
+        {% if form.posted_successfully? %}
+          <div class="ticket-success" role="alert">
+            <div class="ticket-success__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 12l3.5 3.5L17 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="ticket-success__heading">Product Registered</h3>
+            <p class="ticket-success__body">
+              Thank you. We saved your registration and sent a confirmation to
+              <strong>{{ form.email | escape }}</strong>. Keep this email — it is your proof of coverage.
+            </p>
+            <p class="ticket-success__body">
+              Need help with this product? <a href="/pages/ticket-submission">Submit a support ticket</a>.
+            </p>
+          </div>
+          <script>
+            (function () {
+              function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('registration'); }
+              if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fire); } else { fire(); }
+            })();
+          </script>
+        {% else %}
+
+          {% if form.errors %}
+            <div class="ticket-errors" role="alert">
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <input type="hidden" name="contact[submission_type]" value="Product Registration">
+
+          <div class="ticket-form__grid">
+
+            <div class="ticket-form__field">
+              <label for="reg-name" class="ticket-form__label">
+                Full Name <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="reg-name"
+                name="contact[name]"
+                class="ticket-form__input"
+                required
+                autocomplete="name"
+                value="{% if customer %}{{ customer.name | escape }}{% else %}{{ form.name | escape }}{% endif %}"
+              >
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-email" class="ticket-form__label">
+                Email Address <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="reg-email"
+                name="contact[email]"
+                class="ticket-form__input"
+                required
+                autocomplete="email"
+                value="{% if customer %}{{ customer.email | escape }}{% else %}{{ form.email | escape }}{% endif %}"
+              >
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-product" class="ticket-form__label">
+                Product Model or SKU <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="reg-product"
+                name="contact[product_model]"
+                class="ticket-form__input"
+                required
+                autocomplete="off"
+                placeholder="e.g. USB4 Dual Display 8-in-1 Hub or X40214"
+              >
+              <p class="ticket-form__hint">Find the model number on the product label or the box.</p>
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-serial" class="ticket-form__label">
+                Serial Number <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="reg-serial"
+                name="contact[serial_number]"
+                class="ticket-form__input"
+                required
+                autocomplete="off"
+                placeholder="e.g. EZQ2024XXXXXXX"
+              >
+              <p class="ticket-form__hint">Printed on the underside of the device or on the barcode label.</p>
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-purchase-date" class="ticket-form__label">
+                Purchase Date <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="date"
+                id="reg-purchase-date"
+                name="contact[purchase_date]"
+                class="ticket-form__input"
+                required
+              >
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-retailer" class="ticket-form__label">
+                Where Did You Buy It? <span aria-hidden="true">*</span>
+              </label>
+              <select
+                id="reg-retailer"
+                name="contact[retailer]"
+                class="ticket-form__input"
+                required
+              >
+                <option value="" disabled selected>Select a retailer</option>
+                <option value="EZQuest.com">EZQuest.com</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Best Buy">Best Buy</option>
+                <option value="B&amp;H Photo">B&amp;H Photo</option>
+                <option value="Walmart">Walmart</option>
+                <option value="Newegg">Newegg</option>
+                <option value="Micro Center">Micro Center</option>
+                <option value="Other Retailer">Other Retailer</option>
+                <option value="Gift">Received As A Gift</option>
+              </select>
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-order" class="ticket-form__label">
+                Order Number
+                <span class="ticket-form__label-note">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="reg-order"
+                name="contact[order_number]"
+                class="ticket-form__input"
+                autocomplete="off"
+                placeholder="e.g. #1234"
+              >
+            </div>
+
+            <div class="ticket-form__field">
+              <label for="reg-quantity" class="ticket-form__label">
+                Quantity Purchased
+                <span class="ticket-form__label-note">(optional)</span>
+              </label>
+              <input
+                type="number"
+                id="reg-quantity"
+                name="contact[quantity]"
+                class="ticket-form__input"
+                min="1"
+                step="1"
+                value="1"
+              >
+            </div>
+
+            <div class="ticket-form__field ticket-form__field--full">
+              <label for="reg-notes" class="ticket-form__label">
+                Anything Else We Should Know?
+                <span class="ticket-form__label-note">(optional)</span>
+              </label>
+              <textarea
+                id="reg-notes"
+                name="contact[body]"
+                class="ticket-form__input ticket-form__textarea"
+                rows="3"
+                placeholder="Optional notes about your purchase or setup"
+              >{{ form.body | escape }}</textarea>
+            </div>
+
+          </div>
+
+          <p class="ticket-form__required-note">Fields marked * are required.</p>
+
+          <button type="submit" class="btn btn--primary ticket-form__submit">
+            Register Product
+          </button>
+
+        {% endif %}
+      {% endform %}
+    </div>
+
+    <aside class="ticket-form-sidebar" aria-label="Why register">
+      <div class="ticket-sidebar-card">
+        <p class="section-kicker">Why Register</p>
+        <ul class="ticket-sidebar-card__list">
+          <li>Faster warranty claims — no receipt hunting</li>
+          <li>We keep your proof of purchase on file</li>
+          <li>Get notified about firmware and driver updates</li>
+          <li>Priority support on registered products</li>
+        </ul>
+      </div>
+
+      <div class="ticket-sidebar-card">
+        <p class="section-kicker">Register Within</p>
+        <p class="ticket-sidebar-card__stat">{{ section.settings.register_window | default: '90 Days' | escape }}</p>
+        <p class="ticket-sidebar-card__note">
+          Register soon after purchase so your coverage record matches your receipt.
+        </p>
+      </div>
+
+      <div class="ticket-sidebar-card">
+        <p class="section-kicker">Coverage</p>
+        <p class="ticket-sidebar-card__stat">{{ section.settings.coverage_label | default: 'Up To 2 Years' | escape }}</p>
+        <p class="ticket-sidebar-card__note">
+          See full terms on our <a href="/pages/warranty">Warranty page</a>.
+        </p>
+      </div>
+
+      <div class="ticket-sidebar-card">
+        <p class="section-kicker">Questions?</p>
+        <p class="ticket-sidebar-card__stat">1-800-881-9305</p>
+        <p class="ticket-sidebar-card__note">Mon–Fri, 9am–5pm PST</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<style>
+  .ticket-form__hint {
+    margin: 6px 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.55);
+  }
+</style>
+
+<script>
+  (function () {
+    var form = document.getElementById('product-registration-form');
+    if (!form) return;
+
+    /* Prefill from ?order= and ?sku= (used by the post-purchase prompt). */
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var prefill = { order_number: params.get('order'), product_model: params.get('sku') };
+      Object.keys(prefill).forEach(function (key) {
+        var value = prefill[key];
+        if (!value) return;
+        var field = form.querySelector('[name="contact[' + key + ']"]');
+        if (field && !field.value) field.value = value;
+      });
+      if (prefill.order_number) {
+        var retailer = form.querySelector('[name="contact[retailer]"]');
+        if (retailer && !retailer.value) retailer.value = 'EZQuest.com';
+      }
+    } catch (e) {
+      /* Prefill is a convenience only. */
+    }
+
+    var host = form.closest('[data-registration-endpoint]');
+    var endpoint = host ? host.getAttribute('data-registration-endpoint') : '';
+    if (!endpoint) return;
+
+    form.addEventListener('submit', function () {
+      var payload = {};
+      ['name', 'email', 'product_model', 'serial_number', 'purchase_date', 'retailer', 'order_number', 'quantity', 'body'].forEach(function (key) {
+        var field = form.querySelector('[name="contact[' + key + ']"]');
+        if (field) payload[key] = field.value;
+      });
+      payload.registered_at = new Date().toISOString();
+
+      try {
+        var blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint, blob);
+        } else {
+          fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            keepalive: true
+          });
+        }
+      } catch (e) {
+        /* Never block the native form submission. */
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product registration",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Warranty"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Register Your Product"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Description",
+      "default": "Register your EZQuest product to activate your warranty record. It takes about a minute and makes any future claim far faster."
+    },
+    {
+      "type": "text",
+      "id": "register_window",
+      "label": "Registration window",
+      "default": "90 Days"
+    },
+    {
+      "type": "text",
+      "id": "coverage_label",
+      "label": "Coverage label",
+      "default": "Up To 2 Years"
+    },
+    {
+      "type": "text",
+      "id": "api_endpoint",
+      "label": "Registration API endpoint",
+      "info": "Optional. HTTPS endpoint that writes each submission to the ezquest_registration metaobject. Leave blank to send registrations by email only."
+    }
+  ],
+  "presets": [
+    { "name": "Product registration" }
+  ]
+}
+{% endschema %}
