@@ -1047,6 +1047,13 @@
 
       {%- if show_specs_tab -%}
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="specs" id="pdp-specs" tabindex="0">
+          {%- comment -%} Product Part Number (SKU) + Bar Code always lead the spec table when present. {%- endcomment -%}
+          {%- assign pdp_spec_variant = product.selected_or_first_available_variant -%}
+          {%- capture id_rows_html -%}
+            {%- if pdp_spec_variant.sku != blank -%}<tr><th scope="row">Product Part Number</th><td>{{ pdp_spec_variant.sku }}</td></tr>{%- endif -%}
+            {%- if pdp_spec_variant.barcode != blank -%}<tr><th scope="row">Bar Code Number</th><td>{{ pdp_spec_variant.barcode }}</td></tr>{%- endif -%}
+          {%- endcapture -%}
+          {%- assign id_rows_html = id_rows_html | strip -%}
           {%- capture spec_rows_html -%}
             {%- if spec_count > 0 -%}
               {%- for row in product_spec_rows -%}
@@ -1058,8 +1065,9 @@
           {%- endcapture -%}
           {%- assign spec_rows_html = spec_rows_html | strip -%}
           {%- if spec_rows_html != blank -%}
-            <table class="pdp-spec-rows">{{ spec_rows_html }}</table>
+            <table class="pdp-spec-rows">{{ id_rows_html }}{{ spec_rows_html }}</table>
           {%- else -%}
+            {%- if id_rows_html != blank -%}<table class="pdp-spec-rows">{{ id_rows_html }}</table>{%- endif -%}
             <div class="pdp-content-prose">{{ specs_html }}</div>
           {%- endif -%}
         </div>
