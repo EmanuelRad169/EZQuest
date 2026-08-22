@@ -109,6 +109,12 @@
       assign product_badge_codes = product_badge_codes | append: 'dual-display,'
     endif
 
+    if product_tags_normalized contains 'badge-mac-pc'
+      assign product_badge_codes = product_badge_codes | append: 'macpc,'
+    elsif product_tags_normalized contains 'badge-pc-only'
+      assign product_badge_codes = product_badge_codes | append: 'pconly,'
+    endif
+
     if product_tags_normalized contains '100w' or product_tags_normalized contains '120w' or product_title_downcase contains '100w' or product_title_downcase contains '120w'
       assign product_badge_codes = product_badge_codes | append: 'highwatt,'
     endif
