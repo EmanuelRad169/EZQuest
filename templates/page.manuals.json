@@ -73,9 +73,9 @@
         "fam_4"
       ],
       "settings": {
-        "resource_kind": "manuals",
-        "structured_source": "blocks",
-        "only_type": "",
+        "resource_kind": "downloads",
+        "structured_source": "global",
+        "only_type": "Manual",
         "show_filters": true
       }
     },
