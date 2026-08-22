@@ -116,7 +116,18 @@
         assign product_positioning_text = product_description_excerpt | truncatewords: 14
       endif
 
-      if product.metafields.ezquest.spec_rows != blank
+      comment
+        Spec source priority: custom.spec_table (JSON, sourced from the EZQuest
+        Products Master Google Sheet) wins over legacy ezquest.spec_rows metaobjects.
+      endcomment
+      assign spec_table = product.metafields.custom.spec_table.value
+      assign spec_table_count = 0
+      if spec_table != blank
+        assign spec_table_count = spec_table.size
+      endif
+      if spec_table_count > 0
+        assign spec_count = spec_table_count
+      elsif product.metafields.ezquest.spec_rows != blank
         assign product_spec_rows = product.metafields.ezquest.spec_rows.value
         for spec_row in product_spec_rows
           assign spec_count = spec_count | plus: 1
@@ -1055,7 +1066,13 @@
           {%- endcapture -%}
           {%- assign id_rows_html = id_rows_html | strip -%}
           {%- capture spec_rows_html -%}
-            {%- if spec_count > 0 -%}
+            {%- if spec_table_count > 0 -%}
+              {%- for row in spec_table -%}
+                {%- assign row_label = row.label -%}
+                {%- assign row_value = row.value -%}
+                {%- if row_label != blank -%}<tr><th scope="row">{{ row_label }}</th><td>{{ row_value | newline_to_br }}</td></tr>{%- endif -%}
+              {%- endfor -%}
+            {%- elsif spec_count > 0 -%}
               {%- for row in product_spec_rows -%}
                 {%- assign row_label = row.label.value -%}
                 {%- assign row_value = row.spec_value.value -%}
