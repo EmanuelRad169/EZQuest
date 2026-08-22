@@ -64,78 +64,13 @@
             "label": "Accessories",
             "handle": "cables"
           }
-        },
-        "file_m1": {
-          "type": "file",
-          "settings": {
-            "product_name": "USB-C Multimedia Hub Adapter 13 Ports",
-            "file_title": "User Manual",
-            "file_url": "#",
-            "file_size": "3.8 MB",
-            "version": "",
-            "compatibility": "Mac · Windows",
-            "category": "quickstart"
-          }
-        },
-        "file_m2": {
-          "type": "file",
-          "settings": {
-            "product_name": "USB-C Multimedia Hub Adapter 8 Ports",
-            "file_title": "User Manual",
-            "file_url": "#",
-            "file_size": "3.2 MB",
-            "version": "",
-            "compatibility": "Mac · Windows",
-            "category": "quickstart"
-          }
-        },
-        "file_m3": {
-          "type": "file",
-          "settings": {
-            "product_name": "USB-C to 2.5 Gigabit Ethernet Adapter",
-            "file_title": "User Manual",
-            "file_url": "#",
-            "file_size": "2.1 MB",
-            "version": "",
-            "compatibility": "Mac · Windows",
-            "category": "quickstart"
-          }
-        },
-        "file_m4": {
-          "type": "file",
-          "settings": {
-            "product_name": "UltimatePower 120W GaN USB-C PD Wall Charger",
-            "file_title": "User Manual",
-            "file_url": "#",
-            "file_size": "2.8 MB",
-            "version": "",
-            "compatibility": "Mac · Windows",
-            "category": "quickstart"
-          }
-        },
-        "file_m5": {
-          "type": "file",
-          "settings": {
-            "product_name": "Magnetic USB-C M.2 NVMe SSD Enclosure",
-            "file_title": "User Manual",
-            "file_url": "#",
-            "file_size": "4.2 MB",
-            "version": "",
-            "compatibility": "Mac · Windows",
-            "category": "quickstart"
-          }
         }
       },
       "block_order": [
         "fam_1",
         "fam_2",
         "fam_3",
-        "fam_4",
-        "file_m1",
-        "file_m2",
-        "file_m3",
-        "file_m4",
-        "file_m5"
+        "fam_4"
       ],
       "settings": {
         "resource_kind": "manuals",
