@@ -278,3 +278,8 @@
 .product-option-pill:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(254,211,0,.5)}
 .product-option-pill.is-active{border-color:var(--ez-black);background:var(--ez-black);color:#fff}
 .product-option-pill[disabled]{opacity:.38;text-decoration:line-through;cursor:not-allowed}
+
+/* Nav triggers: drop the pill focus-ring (the amber underline is the focus indicator) */
+.mega-menu-trigger:focus-visible,
+.mega-menu-trigger:focus{ outline: none !important; box-shadow: none !important; }
+.mega-menu-trigger:focus-visible:after{ opacity: 1; }
