@@ -1,0 +1,21 @@
+{%- comment -%}
+  Product Registration page template (Liquid).
+
+  Deliberately a .liquid template, not .json: JSON page templates are owned by
+  the Shopify Theme Editor and are NOT synced from GitHub, so a committed .json
+  template never reaches the live theme. Liquid templates DO sync from GitHub,
+  so this renders reliably from the repo without any Theme Editor step.
+{%- endcomment -%}
+
+<section class="page-hero page-hero--registration" style="background:#020617;">
+  <div class="page-width" style="padding:3.25rem 0;">
+    <p class="section-kicker" style="color:#f5a623;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;font-weight:600;margin:0;">
+      Product Registration
+    </p>
+    <h1 style="color:#fff;font-size:2rem;line-height:1.15;letter-spacing:-.02em;font-weight:500;margin:.5rem 0 0;">
+      {{ page.title | escape }}
+    </h1>
+  </div>
+</section>
+
+{% section 'product-registration' %}
