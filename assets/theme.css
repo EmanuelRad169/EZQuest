@@ -318,3 +318,9 @@
 /* More padding on dropdown items so the gray hover has breathing room */
 .nav-dd__link{ padding:10px 14px !important; border-radius:12px; }
 .nav-dd__links{ padding:8px 10px 10px !important; }
+
+/* Remove borders on Compare product images and the Resources featured card */
+.nav-dd__compare-img{ border:none !important; }
+.nav-dd__article{ border:none !important; }
+.nav-dd__article:hover{ border-color:transparent !important; }
+.nav-dd__compare-preview{ cursor:pointer; text-decoration:none; }

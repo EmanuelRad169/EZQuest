@@ -148,7 +148,7 @@
         <div class="nav-dd__compare-head">
           <p class="nav-dd__col-head">Compare products</p>
         </div>
-        <div class="nav-dd__compare-preview" aria-hidden="true">
+        <a href="/pages/compare" class="nav-dd__compare-preview" aria-label="Compare products">
           {%- for p in compare_products limit: 3 -%}
             <div class="nav-dd__compare-card">
               <div class="nav-dd__compare-img">
@@ -164,7 +164,7 @@
               <span class="nav-dd__compare-vs" aria-hidden="true">VS</span>
             {%- endunless -%}
           {%- endfor -%}
-        </div>
+        </a>
         <ul class="nav-dd__links" role="list" style="padding-top:2px">
           <li>
             <a href="/pages/compare" class="nav-dd__link">
