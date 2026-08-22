@@ -71,7 +71,7 @@
             "file_url": "#",
             "file_size": "3.8 MB",
             "version": "",
-            "compatibility": "Mac · Windows",
+            "compatibility": "Mac \u00b7 Windows",
             "category": "quickstart"
           }
         },
@@ -83,7 +83,7 @@
             "file_url": "#",
             "file_size": "3.2 MB",
             "version": "",
-            "compatibility": "Mac · Windows",
+            "compatibility": "Mac \u00b7 Windows",
             "category": "quickstart"
           }
         },
@@ -95,7 +95,7 @@
             "file_url": "#",
             "file_size": "2.1 MB",
             "version": "",
-            "compatibility": "Mac · Windows",
+            "compatibility": "Mac \u00b7 Windows",
             "category": "quickstart"
           }
         },
@@ -107,7 +107,7 @@
             "file_url": "#",
             "file_size": "2.8 MB",
             "version": "",
-            "compatibility": "Mac · Windows",
+            "compatibility": "Mac \u00b7 Windows",
             "category": "quickstart"
           }
         },
@@ -119,7 +119,7 @@
             "file_url": "#",
             "file_size": "4.2 MB",
             "version": "",
-            "compatibility": "Mac · Windows",
+            "compatibility": "Mac \u00b7 Windows",
             "category": "quickstart"
           }
         }
@@ -137,7 +137,9 @@
       ],
       "settings": {
         "resource_kind": "downloads",
-        "structured_source": "blocks"
+        "structured_source": "global",
+        "only_type": "Manual",
+        "show_filters": false
       }
     },
     "cta": {
