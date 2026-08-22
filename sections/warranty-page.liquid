@@ -19,12 +19,12 @@
         <div class="warranty-stat-row">
           <div class="warranty-stat">
             <span class="warranty-stat__label">{{ section.settings.stat1_label | default: 'Coverage' }}</span>
-            <span class="warranty-stat__number">{{ section.settings.stat1_number | default: '1–2 yr' }}</span>
+            <span class="warranty-stat__number">{{ section.settings.stat1_number | default: '1–2 Year' }}</span>
             <span class="warranty-stat__copy">{{ section.settings.stat1_copy | default: 'Varies by product family' }}</span>
           </div>
           <div class="warranty-stat">
             <span class="warranty-stat__label">{{ section.settings.stat2_label | default: 'Returns' }}</span>
-            <span class="warranty-stat__number">{{ section.settings.stat2_number | default: '30 days' }}</span>
+            <span class="warranty-stat__number">{{ section.settings.stat2_number | default: '30 Days' }}</span>
             <span class="warranty-stat__copy">{{ section.settings.stat2_copy | default: 'From delivery' }}</span>
           </div>
           <div class="warranty-stat">
@@ -127,7 +127,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           {{ section.settings.claim_body | default: 'If your product has a defect covered under the limited warranty, contact us here. We respond within 1 business day on weekdays.' }}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
-          {% render 'button', label: section.settings.claim_button_label, default: '/pages/contact', url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
+          {% render 'button', label: section.settings.claim_button_label | default: 'Submit a Claim', url: section.settings.claim_button_url | default: '/pages/contact', style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
           <p class="warranty-claim-card__note text-xs text-[var(--ez-grey)] text-left m-0">{{ section.settings.claim_note | default: "Have your order number ready — we'll ask for it." }}</p>
         </div>
       </div>
@@ -178,7 +178,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
     { "type": "header", "content": "Coverage stats" },
     { "type": "text", "id": "stats_heading", "label": "Stats heading", "default": "Coverage at a glance" },
     { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Coverage" },
-    { "type": "text", "id": "stat1_number", "label": "Stat 1 number", "default": "1–2 yr" },
+    { "type": "text", "id": "stat1_number", "label": "Stat 1 number", "default": "1–2 Year" },
     { "type": "text", "id": "stat1_copy", "label": "Stat 1 copy", "default": "Varies by product family" },
     { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Returns" },
     { "type": "text", "id": "stat2_number", "label": "Stat 2 number", "default": "30 days" },
