@@ -472,18 +472,30 @@
                   <div class="product-option-groups grid gap-4" data-product-option-groups>
                     {% for option in product.options_with_values %}
                       <div class="product-option-group" data-option-group data-option-position="{{ option.position }}">
-                        <label class="product-option-select-label" for="opt-{{ section.id }}-{{ option.position }}">{{ option.name }}</label>
-                        <div class="product-option-select-wrap">
-                          <select
-                            id="opt-{{ section.id }}-{{ option.position }}"
-                            class="product-option-select"
-                            data-option-select
-                            data-option-position="{{ option.position }}"
-                            aria-label="{{ option.name | escape }}">
-                            {% for value in option.values %}
-                              <option value="{{ value | escape }}" {% if value == option.selected_value %}selected="selected"{% endif %}>{{ value }}</option>
-                            {% endfor %}
-                          </select>
+                        <span class="product-option-select-label" id="opt-label-{{ section.id }}-{{ option.position }}">{{ option.name }}</span>
+                        {%- comment -%} Hidden native select keeps all variant/price/image JS working; visible pills drive it. {%- endcomment -%}
+                        <select
+                          id="opt-{{ section.id }}-{{ option.position }}"
+                          class="product-option-select sr-only"
+                          data-option-select
+                          data-option-position="{{ option.position }}"
+                          tabindex="-1"
+                          aria-hidden="true">
+                          {% for value in option.values %}
+                            <option value="{{ value | escape }}" {% if value == option.selected_value %}selected="selected"{% endif %}>{{ value }}</option>
+                          {% endfor %}
+                        </select>
+                        <div class="product-option-pills" role="radiogroup" aria-labelledby="opt-label-{{ section.id }}-{{ option.position }}">
+                          {% for value in option.values %}
+                            <button
+                              type="button"
+                              class="product-option-pill{% if value == option.selected_value %} is-active{% endif %}"
+                              data-option-pill
+                              data-option-position="{{ option.position }}"
+                              data-value="{{ value | escape }}"
+                              role="radio"
+                              aria-checked="{% if value == option.selected_value %}true{% else %}false{% endif %}">{{ value }}</button>
+                          {% endfor %}
                         </div>
                       </div>
                     {% endfor %}
@@ -1507,7 +1519,34 @@
         });
       });
     });
+
+    // Sync the visible pills to the (hidden) selects: active state + unavailable state.
+    Array.prototype.slice.call(groups.querySelectorAll('[data-option-pill]')).forEach(function (pill) {
+      var p = pill.getAttribute('data-option-position');
+      var s = groups.querySelector('[data-option-select][data-option-position="' + p + '"]');
+      if (!s) return;
+      var val = pill.getAttribute('data-value');
+      var active = s.value === val;
+      pill.classList.toggle('is-active', active);
+      pill.setAttribute('aria-checked', active ? 'true' : 'false');
+      var idx = parseInt(p, 10) - 1;
+      pill.disabled = !variants.some(function (v) { return v.available && v.options[idx] === val; });
+    });
   }
+
+  // Clicking a pill drives the hidden select, reusing the change handler above.
+  document.addEventListener('click', function (e) {
+    var pill = e.target && e.target.closest ? e.target.closest('[data-option-pill]') : null;
+    if (!pill || pill.disabled) return;
+    var root = pill.closest('[data-product-root]');
+    var groups = root && root.querySelector('[data-product-option-groups]');
+    if (!groups) return;
+    var p = pill.getAttribute('data-option-position');
+    var s = groups.querySelector('[data-option-select][data-option-position="' + p + '"]');
+    if (!s) return;
+    s.value = pill.getAttribute('data-value');
+    s.dispatchEvent(new Event('change', { bubbles: true }));
+  });
 
   document.addEventListener('change', function (e) {
     var changed = e.target && e.target.closest ? e.target.closest('[data-option-select]') : null;

@@ -263,3 +263,18 @@
   .site-header-actions{ gap:.125rem; flex-wrap:nowrap; }
   .site-header-actions .site-header-icon-button{ flex:0 0 auto; }
 }
+
+/* PDP variant option pills (replaces the plain <select> for Size/Color/Length/etc.) */
+.product-option-group{display:flex;flex-direction:column;gap:.55rem}
+.product-option-select-label{font-size:.8125rem;font-weight:600;color:var(--ez-black);letter-spacing:.01em}
+.product-option-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.product-option-pill{
+  min-height:44px;padding:.55rem 1.05rem;border:1.5px solid rgba(0,0,0,.14);
+  border-radius:9999px;background:#fff;color:var(--ez-black);
+  font-size:.875rem;font-weight:500;line-height:1;cursor:pointer;
+  transition:border-color .15s ease,background-color .15s ease,color .15s ease,box-shadow .15s ease;
+}
+.product-option-pill:hover{border-color:rgba(0,0,0,.42)}
+.product-option-pill:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(254,211,0,.5)}
+.product-option-pill.is-active{border-color:var(--ez-black);background:var(--ez-black);color:#fff}
+.product-option-pill[disabled]{opacity:.38;text-decoration:line-through;cursor:not-allowed}
