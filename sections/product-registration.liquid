@@ -212,6 +212,25 @@
 
           </div>
 
+          <div class="reg-consent">
+            <label class="reg-consent__row" for="reg-newsletter">
+              <input
+                type="checkbox"
+                id="reg-newsletter"
+                name="contact[newsletter]"
+                value="Yes"
+                class="reg-consent__box"
+                {% if section.settings.newsletter_default_checked %}checked{% endif %}
+              >
+              <span class="reg-consent__text">
+                {{ section.settings.newsletter_label | default: 'Yes, sign me up for the EZQuest newsletter — product tips, firmware updates, and occasional offers.' | escape }}
+              </span>
+            </label>
+            <p class="reg-consent__fine">
+              {{ section.settings.newsletter_fine_print | default: 'You can unsubscribe at any time using the link in any email. We never sell your information. See our Privacy Policy for details.' | escape }}
+            </p>
+          </div>
+
           <p class="ticket-form__required-note">Fields marked * are required.</p>
 
           <button type="submit" class="btn btn--primary ticket-form__submit">
@@ -266,6 +285,38 @@
     line-height: 1.4;
     color: rgba(0, 0, 0, 0.55);
   }
+  .reg-consent {
+    margin: 1.25rem 0 0;
+    padding: 1rem 1.125rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.02);
+  }
+  .reg-consent__row {
+    display: flex;
+    gap: 0.625rem;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  .reg-consent__box {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--ez-amber, #f5a623);
+    cursor: pointer;
+  }
+  .reg-consent__text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--ez-black, #0f172a);
+  }
+  .reg-consent__fine {
+    margin: 0.5rem 0 0 1.75rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: rgba(0, 0, 0, 0.5);
+  }
 </style>
 
 <script>
@@ -301,6 +352,9 @@
         var field = form.querySelector('[name="contact[' + key + ']"]');
         if (field) payload[key] = field.value;
       });
+      var newsletter = form.querySelector('[name="contact[newsletter]"]');
+      payload.newsletter_opt_in = !!(newsletter && newsletter.checked);
+      payload.newsletter_consent_at = payload.newsletter_opt_in ? new Date().toISOString() : '';
       payload.registered_at = new Date().toISOString();
 
       try {
@@ -355,6 +409,29 @@
       "id": "coverage_label",
       "label": "Coverage label",
       "default": "Up To 2 Years"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter opt-in"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_label",
+      "label": "Checkbox label",
+      "default": "Yes, sign me up for the EZQuest newsletter — product tips, firmware updates, and occasional offers."
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_fine_print",
+      "label": "Fine print",
+      "default": "You can unsubscribe at any time using the link in any email. We never sell your information. See our Privacy Policy for details."
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_default_checked",
+      "label": "Pre-check the newsletter box",
+      "info": "Not recommended. Pre-checked marketing consent is invalid under GDPR and disfavored by US regulators. Leave off for a clear opt-in.",
+      "default": false
     },
     {
       "type": "text",
