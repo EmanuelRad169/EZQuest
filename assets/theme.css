@@ -293,3 +293,15 @@
 /* A little more breathing room for Resources and Compare */
 #nav-panel-resources{ min-width:22rem; }
 #nav-panel-compare{ min-width:34rem; }
+
+/* Round the Shop mega panel to match the other dropdown cards */
+.ez-mega--shop{
+  left:5% !important; right:5% !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  border-radius:20px !important;
+  box-shadow:0 24px 60px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06) !important;
+  overflow:hidden;
+}
+/* Wider Resources and Compare dropdowns (min-width was being met by content) */
+#nav-panel-resources{ min-width:26rem !important; width:max-content; }
+#nav-panel-compare{ min-width:42rem !important; width:max-content; }
