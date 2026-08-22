@@ -1047,7 +1047,13 @@ function closeDrawer(target, controller) {
   document.body.classList.remove('drawer-open');
 
   const resolvedController = controller || findDrawerController(target);
-  if (resolvedController) resolvedController.setAttribute('aria-expanded', 'false');
+  if (resolvedController) {
+    resolvedController.setAttribute('aria-expanded', 'false');
+    // Return focus to the opener when focus was inside the drawer (keyboard/SR users).
+    if (target.contains(document.activeElement)) {
+      try { resolvedController.focus(); } catch (e) {}
+    }
+  }
 
   target._drawerTimer = window.setTimeout(function() {
     if (!target.classList.contains(DRAWER_OPEN_CLASS)) {
