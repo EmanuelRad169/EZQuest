@@ -283,3 +283,13 @@
 .mega-menu-trigger:focus-visible,
 .mega-menu-trigger:focus{ outline: none !important; box-shadow: none !important; }
 .mega-menu-trigger:focus-visible:after{ opacity: 1; }
+
+/* Normalize dropdown panels (Support/Resources/Compare/About) to the Shop panel card style */
+.nav-submenu-panel{
+  border:1px solid rgba(0,0,0,.08) !important;
+  border-radius:20px !important;
+  box-shadow:0 24px 60px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06) !important;
+}
+/* A little more breathing room for Resources and Compare */
+#nav-panel-resources{ min-width:22rem; }
+#nav-panel-compare{ min-width:34rem; }
