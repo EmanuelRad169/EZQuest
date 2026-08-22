@@ -305,3 +305,16 @@
 /* Wider Resources and Compare dropdowns (min-width was being met by content) */
 #nav-panel-resources{ min-width:26rem !important; width:max-content; }
 #nav-panel-compare{ min-width:42rem !important; width:max-content; }
+
+/* Shop panel: reduce the left/right gap (wider, small even margin) */
+.ez-mega--shop{ left:1.5rem !important; right:1.5rem !important; }
+
+/* Center the dropdown panels under their trigger instead of hard-left */
+.nav-submenu-panel{ left:50% !important; right:auto !important; transform:translateX(-50%); }
+/* Fixed panel widths (no max-content ballooning) */
+#nav-panel-resources{ min-width:40rem !important; width:40rem !important; }
+#nav-panel-compare{ min-width:42rem !important; width:42rem !important; }
+
+/* More padding on dropdown items so the gray hover has breathing room */
+.nav-dd__link{ padding:10px 14px !important; border-radius:12px; }
+.nav-dd__links{ padding:8px 10px 10px !important; }
