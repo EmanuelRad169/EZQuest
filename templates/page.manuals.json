@@ -17,7 +17,7 @@
         "kicker": "Manuals",
         "heading": "",
         "subheading": "Product Manuals and Quick-Start Guides, Organized by Product Family.",
-        "height": 220,
+        "height": 360,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
         "eyebrow_pulse": true,
@@ -29,7 +29,9 @@
         "trust_1": "Up To 2 Year Warranty",
         "trust_2": "30 Day Returns",
         "trust_3": "Free Shipping Over $90",
-        "trust_4": ""
+        "trust_4": "",
+        "slider_autoplay": true,
+        "slider_interval": 6
       }
     },
     "downloads": {
@@ -46,7 +48,7 @@
           "type": "family",
           "settings": {
             "label": "Docking Stations",
-            "handle": "hubs"
+            "handle": "docking-stations"
           }
         },
         "fam_3": {
@@ -71,7 +73,7 @@
             "file_url": "#",
             "file_size": "3.8 MB",
             "version": "",
-            "compatibility": "Mac \u00b7 Windows",
+            "compatibility": "Mac · Windows",
             "category": "quickstart"
           }
         },
@@ -83,7 +85,7 @@
             "file_url": "#",
             "file_size": "3.2 MB",
             "version": "",
-            "compatibility": "Mac \u00b7 Windows",
+            "compatibility": "Mac · Windows",
             "category": "quickstart"
           }
         },
@@ -95,7 +97,7 @@
             "file_url": "#",
             "file_size": "2.1 MB",
             "version": "",
-            "compatibility": "Mac \u00b7 Windows",
+            "compatibility": "Mac · Windows",
             "category": "quickstart"
           }
         },
@@ -107,7 +109,7 @@
             "file_url": "#",
             "file_size": "2.8 MB",
             "version": "",
-            "compatibility": "Mac \u00b7 Windows",
+            "compatibility": "Mac · Windows",
             "category": "quickstart"
           }
         },
@@ -119,7 +121,7 @@
             "file_url": "#",
             "file_size": "4.2 MB",
             "version": "",
-            "compatibility": "Mac \u00b7 Windows",
+            "compatibility": "Mac · Windows",
             "category": "quickstart"
           }
         }
@@ -136,10 +138,10 @@
         "file_m5"
       ],
       "settings": {
-        "resource_kind": "downloads",
-        "structured_source": "global",
-        "only_type": "Manual",
-        "show_filters": false
+        "resource_kind": "manuals",
+        "structured_source": "blocks",
+        "only_type": "",
+        "show_filters": true
       }
     },
     "cta": {
