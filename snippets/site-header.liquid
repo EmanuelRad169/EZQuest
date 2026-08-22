@@ -33,7 +33,7 @@
               {% render 'icon', name: 'search' %}
             </button>
             {% if customer %}
-              <div class="site-header-account-wrap">
+              <div class="site-header-account-wrap js-header-account">
                 <a href="{{ account_url }}"
                    class="site-header-icon-button"
                    aria-label="{{ 'header.my_account' | t }}"
@@ -55,7 +55,7 @@
               </div>
             {% else %}
               <a href="{{ account_login_url }}"
-                 class="site-header-icon-button"
+                 class="site-header-icon-button js-header-account"
                  aria-label="{{ 'header.sign_in' | t }}">
                 <svg width="20" height="20" viewBox="0 0 20 20"
                      fill="none" aria-hidden="true">
@@ -67,7 +67,7 @@
                 </svg>
               </a>
             {% endif %}
-            <a href="/pages/wishlist" class="site-header-icon-button" aria-label="{{ 'header.wishlist' | t }}">
+            <a href="/pages/wishlist" class="site-header-icon-button js-header-wishlist" aria-label="{{ 'header.wishlist' | t }}">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
                 <path d="M10 16.5S2.5 12 2.5 6.5a4 4 0 017.5-2A4 4 0 0117.5 6.5c0 5.5-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
               </svg>

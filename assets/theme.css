@@ -251,3 +251,15 @@
 .shopify-payment-button__button--branded{border-radius:100px !important;overflow:hidden !important;}
 .product-buybox .shopify-payment-button__button--unbranded,
 .shopify-payment-button__button--unbranded{border-radius:100px !important;}
+
+/* ── Mobile header declutter (fixes hamburger getting pushed off-screen on
+   small Android / older iPhone widths). Compare, Account and Language are
+   all reachable inside the hamburger drawer, so hide them from the top bar
+   below the desktop breakpoint and always keep Search · Wishlist · Cart · Menu. */
+@media (max-width: 1023px){
+  .site-header-compare-button,
+  .js-header-account,
+  .site-header-locale{ display:none !important; }
+  .site-header-actions{ gap:.125rem; flex-wrap:nowrap; }
+  .site-header-actions .site-header-icon-button{ flex:0 0 auto; }
+}
