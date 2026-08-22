@@ -36,11 +36,14 @@
         {% when 'duraguard' %}
           <span class="product-badge product-badge--tech">DuraGuard</span>
         {% when 'dual-display' %}
-          <span class="product-badge product-badge--tech">Dual 4K</span>
-        {% when 'macpc' %}
-          <span class="product-badge product-badge--tech">Mac / PC</span>
-        {% when 'pconly' %}
-          <span class="product-badge product-badge--tech">PC</span>
+          {%- assign _compat_tags = product.tags | join: ',' | downcase -%}
+          {%- if _compat_tags contains 'badge-mac-pc' -%}
+            <span class="product-badge product-badge--tech">Dual 4K Mac/PC</span>
+          {%- elsif _compat_tags contains 'badge-pc-only' -%}
+            <span class="product-badge product-badge--tech">Dual 4K PC</span>
+          {%- else -%}
+            <span class="product-badge product-badge--tech">Dual 4K</span>
+          {%- endif -%}
         {% when 'highwatt' %}
           <span class="product-badge product-badge--tech">100W+</span>
       {% endcase %}
