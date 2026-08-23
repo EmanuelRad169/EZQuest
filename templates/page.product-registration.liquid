@@ -5,7 +5,46 @@
   the Shopify Theme Editor and are NOT synced from GitHub, so a committed .json
   template never reaches the live theme. Liquid templates DO sync from GitHub,
   so this renders reliably from the repo without any Theme Editor step.
+
+  Hero is inlined (not {% section 'page-hero' %}) because a statically rendered
+  section does not receive the `page` object, which made page-hero fall back to
+  the literal "Page title". Here we reuse page-hero's markup/CSS so it clears the
+  sticky header, but drive the title from page.title directly.
 {%- endcomment -%}
 
-{% section 'page-hero' %}
+{{ 'page-hero.css' | asset_url | stylesheet_tag }}
+<style>
+  #page-reg-hero .page-hero { background-color: #020617; min-height: 280px; }
+  #page-reg-hero .page-hero__overlay { background: transparent; }
+</style>
+
+<div id="page-reg-hero">
+  <section class="page-hero page-hero--gradient" aria-label="{{ page.title | escape }}">
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__inner container-shell">
+      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span class="page-hero__breadcrumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">{{ page.title | escape }}</span>
+      </nav>
+      <p class="page-hero__kicker">Warranty</p>
+      <h1 class="page-hero__heading">{{ page.title | escape }}</h1>
+      <ul class="page-hero__trust">
+        <li class="page-hero__trust-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Up To 2 Year Warranty
+        </li>
+        <li class="page-hero__trust-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Free Registration
+        </li>
+        <li class="page-hero__trust-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Takes About A Minute
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
 {% section 'product-registration' %}
