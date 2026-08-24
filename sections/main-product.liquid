@@ -11,7 +11,7 @@
     .buybox-sticky { position: static !important; top: auto !important; }
   }
 {%- endstyle -%}
-<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}" data-preorder="{% if product.tags contains 'preorder' or product.tags contains 'pre-order' %}true{% else %}false{% endif %}">
+<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}" data-preorder="{% if product.tags contains 'preorder' or product.tags contains 'pre-order' %}true{% else %}false{% endif %}" data-color-gallery="{% if product.tags contains 'color-gallery' %}true{% else %}false{% endif %}">
   <div class="container-shell">
     <div class="hidden lg:block">
       {% render 'breadcrumbs' %}
@@ -20,6 +20,27 @@
       assign structured_highlights = blank
       assign has_structured_highlights = false
       assign lead_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+      comment
+        Per-color gallery (opt-in via 'color-gallery' tag): map each variant's
+        featured media id to that variant's colour so the gallery can filter to
+        the selected colour and never show the other colour. Images not tied to a
+        variant fall back to the primary (first) colour.
+      endcomment
+      assign color_gallery = false
+      if product.tags contains 'color-gallery'
+        assign color_gallery = true
+      endif
+      assign media_color_map = ''
+      assign primary_color = ''
+      if color_gallery
+        assign primary_color = product.variants.first.options.first | downcase
+        for v in product.variants
+          if v.featured_media
+            assign v_color = v.options.first | downcase
+            assign media_color_map = media_color_map | append: v.featured_media.id | append: ':' | append: v_color | append: '|'
+          endif
+        endfor
+      endif
       assign support_summary_text = blank
       assign compatibility_summary_text = blank
       assign compatibility_summary_html = blank
@@ -305,7 +326,9 @@
 
             <div class="product-gallery-grid product-gallery-grid--rail">
               {% if lead_media != blank %}
-                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" data-media-id="{{ lead_media.id }}" aria-label="View image 1 of {{ product.title | escape }}">
+                {%- assign lead_color = primary_color -%}
+                {%- if color_gallery -%}{%- assign lkey = lead_media.id | append: ':' -%}{%- if media_color_map contains lkey -%}{%- assign lead_color = media_color_map | split: lkey | last | split: '|' | first -%}{%- endif -%}{%- endif -%}
+                <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" data-media-id="{{ lead_media.id }}"{% if color_gallery %} data-media-color="{{ lead_color | escape }}"{% endif %} aria-label="View image 1 of {{ product.title | escape }}">
                   {% render 'media', media: lead_media, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', fetchpriority: 'high', max_width: 200, widths: '100, 200', sizes: '80px' %}
                 </button>
               {% elsif product.featured_image != blank %}
@@ -321,7 +344,9 @@
               {% if product.media.size > 1 %}
                 {% for media_item in product.media %}
                   {% unless lead_media != blank and media_item.id == lead_media.id %}
-                    <button type="button" class="product-thumb-card" data-pdp-thumb data-media-id="{{ media_item.id }}" aria-label="View image {{ forloop.index | plus: 1 }} of {{ product.title | escape }}">
+                    {%- assign m_color = primary_color -%}
+                    {%- if color_gallery -%}{%- assign mkey = media_item.id | append: ':' -%}{%- if media_color_map contains mkey -%}{%- assign m_color = media_color_map | split: mkey | last | split: '|' | first -%}{%- endif -%}{%- endif -%}
+                    <button type="button" class="product-thumb-card" data-pdp-thumb data-media-id="{{ media_item.id }}"{% if color_gallery %} data-media-color="{{ m_color | escape }}"{% endif %} aria-label="View image {{ forloop.index | plus: 1 }} of {{ product.title | escape }}">
                       {% render 'media', media: media_item, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', max_width: 200, widths: '100, 200', sizes: '80px' %}
                     </button>
                   {% endunless %}
@@ -1243,12 +1268,49 @@
     }
   }
 
+  // Per-colour gallery (opt-in via data-color-gallery): show only the selected
+  // colour's images and hide the other colour entirely.
+  var colorGallery = productRoot && productRoot.dataset.colorGallery === 'true';
+  function filterGalleryByVariant(option) {
+    if (!colorGallery || !option) return;
+    var mediaId = option.getAttribute('data-variant-media-id');
+    if (!mediaId) return;
+    var grid = productRoot.querySelector('.product-gallery-grid');
+    if (!grid) return;
+    var target = grid.querySelector('.product-thumb-card[data-media-id="' + mediaId + '"]');
+    var color = target ? target.getAttribute('data-media-color') : null;
+    if (!color) return;
+    var thumbs = grid.querySelectorAll('.product-thumb-card');
+    var firstVisible = null;
+    thumbs.forEach(function (t) {
+      var c = t.getAttribute('data-media-color');
+      var show = (c === color);
+      t.style.display = show ? '' : 'none';
+      if (show && !firstVisible) firstVisible = t;
+    });
+    if (firstVisible) firstVisible.click();
+  }
+
+  function colorOptionFromSelect() {
+    if (!variantSelect) return null;
+    return variantSelect.options[variantSelect.selectedIndex] || null;
+  }
+
   if (variantSelect) {
     variantSelect.addEventListener('change', function () {
       var option = variantSelect.options[variantSelect.selectedIndex];
       syncCounterFromVariant(variantFromOption(option));
-      syncGalleryToVariant(option);
+      if (colorGallery) { filterGalleryByVariant(option); } else { syncGalleryToVariant(option); }
     });
+  }
+
+  // Apply the colour filter on initial load so the other colour is hidden up front.
+  if (colorGallery) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { filterGalleryByVariant(colorOptionFromSelect()); });
+    } else {
+      filterGalleryByVariant(colorOptionFromSelect());
+    }
   }
 
   document.addEventListener('variant:change', function (event) {
