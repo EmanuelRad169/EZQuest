@@ -30,14 +30,13 @@
       if product.tags contains 'color-gallery'
         assign color_gallery = true
       endif
-      assign media_color_map = ''
+      assign color_values = ''
       assign primary_color = ''
       if color_gallery
         assign primary_color = product.variants.first.options.first | downcase
-        for v in product.variants
-          if v.featured_media
-            assign v_color = v.options.first | downcase
-            assign media_color_map = media_color_map | append: v.featured_media.id | append: ':' | append: v_color | append: '|'
+        for opt in product.options_with_values
+          if opt.name == 'Color'
+            assign color_values = opt.values | join: '||' | downcase
           endif
         endfor
       endif
@@ -327,7 +326,7 @@
             <div class="product-gallery-grid product-gallery-grid--rail">
               {% if lead_media != blank %}
                 {%- assign lead_color = primary_color -%}
-                {%- if color_gallery -%}{%- assign lkey = lead_media.id | append: ':' -%}{%- if media_color_map contains lkey -%}{%- assign lead_color = media_color_map | split: lkey | last | split: '|' | first -%}{%- endif -%}{%- endif -%}
+                {%- if color_gallery and color_values != '' -%}{%- assign lead_alt_dc = lead_media.alt | downcase -%}{%- assign cvlist = color_values | split: '||' -%}{%- for cv in cvlist -%}{%- if lead_alt_dc contains cv -%}{%- assign lead_color = cv -%}{%- endif -%}{%- endfor -%}{%- endif -%}
                 <button type="button" class="product-thumb-card" data-pdp-thumb aria-current="true" data-media-id="{{ lead_media.id }}"{% if color_gallery %} data-media-color="{{ lead_color | escape }}"{% endif %} aria-label="View image 1 of {{ product.title | escape }}">
                   {% render 'media', media: lead_media, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', fetchpriority: 'high', max_width: 200, widths: '100, 200', sizes: '80px' %}
                 </button>
@@ -345,7 +344,7 @@
                 {% for media_item in product.media %}
                   {% unless lead_media != blank and media_item.id == lead_media.id %}
                     {%- assign m_color = primary_color -%}
-                    {%- if color_gallery -%}{%- assign mkey = media_item.id | append: ':' -%}{%- if media_color_map contains mkey -%}{%- assign m_color = media_color_map | split: mkey | last | split: '|' | first -%}{%- endif -%}{%- endif -%}
+                    {%- if color_gallery and color_values != '' -%}{%- assign m_alt_dc = media_item.alt | downcase -%}{%- assign cvlist = color_values | split: '||' -%}{%- for cv in cvlist -%}{%- if m_alt_dc contains cv -%}{%- assign m_color = cv -%}{%- endif -%}{%- endfor -%}{%- endif -%}
                     <button type="button" class="product-thumb-card" data-pdp-thumb data-media-id="{{ media_item.id }}"{% if color_gallery %} data-media-color="{{ m_color | escape }}"{% endif %} aria-label="View image {{ forloop.index | plus: 1 }} of {{ product.title | escape }}">
                       {% render 'media', media: media_item, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'eager', max_width: 200, widths: '100, 200', sizes: '80px' %}
                     </button>
