@@ -324,3 +324,16 @@
 .nav-dd__article{ border:none !important; }
 .nav-dd__article:hover{ border-color:transparent !important; }
 .nav-dd__compare-preview{ cursor:pointer; text-decoration:none; }
+
+/* Card: lift bottom-right badges clear of the hover "Add to cart" button so they don't overlap */
+.product-badges--br{transition:transform .18s ease}
+.product-card:hover .product-badges--br,
+.product-card:focus-within .product-badges--br,
+.product-card-tile:hover .product-badges--br,
+.product-card-tile:focus-within .product-badges--br{transform:translateY(-46px)}
+@media (max-width:1023px){
+  .product-card:hover .product-badges--br,
+  .product-card:focus-within .product-badges--br,
+  .product-card-tile:hover .product-badges--br,
+  .product-card-tile:focus-within .product-badges--br{transform:none}
+}
