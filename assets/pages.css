@@ -1462,7 +1462,6 @@
 /* ── Collection perks strip ─────────────────── */
 .collection-perks-bar {
   background: #fff;
-  border-top: 1px solid var(--ez-border, #e5e5e5);
 }
 .collection-perks-grid {
   display: grid;
