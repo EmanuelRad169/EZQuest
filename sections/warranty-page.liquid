@@ -128,7 +128,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           {{ section.settings.register_body | default: 'Register within 90 days of purchase and we keep your proof of purchase on file. Future claims take minutes instead of hunting for a receipt.' }}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
-          {% render 'button', label: section.settings.register_button_label | default: 'Register Your Product', url: '/pages/product-registration', style: 'secondary', size: 'sm', class: 'warranty-claim-card__button' %}
+          {% render 'button', label: section.settings.register_button_label, default: 'Register Your Product', url: '/pages/product-registration', style: 'secondary', size: 'sm', class: 'warranty-claim-card__button' %}
         </div>
       </div>
 
@@ -145,7 +145,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           {{ section.settings.claim_body | default: 'If your product has a defect covered under the limited warranty, contact us here. We respond within 1 business day on weekdays.' }}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
-          {% render 'button', label: section.settings.claim_button_label | default: 'Submit a Claim', url: section.settings.claim_button_url | default: '/pages/contact', style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
+          {% render 'button', label: section.settings.claim_button_label, default: '/pages/contact', url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
           <p class="warranty-claim-card__note text-xs text-[var(--ez-grey)] text-left m-0">{{ section.settings.claim_note | default: "Have your order number ready — we'll ask for it." }}</p>
         </div>
       </div>
@@ -246,4 +246,24 @@ Changes:
     url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
     %}"
   position: 9028..9228
-{% endcomment %}
+{% endcomment %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'button', label: section.settings.register_button_label | default:
+    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
+    size: 'sm', class: 'warranty-claim-card__button' %}"
+  to: "{% render 'button', label: section.settings.register_button_label, default:
+    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
+    size: 'sm', class: 'warranty-claim-card__button' %}"
+  position: 9127..9335
+- from: "{% render 'button', label: section.settings.claim_button_label | default:
+    'Submit a Claim', url: section.settings.claim_button_url | default: '/pages/contact',
+    style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}"
+  to: "{% render 'button', label: section.settings.claim_button_label, default: '/pages/contact',
+    url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
+    %}"
+  position: 10848..11048
+{%- endcomment -%}
