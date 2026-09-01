@@ -3,6 +3,17 @@
 {%- liquid
   assign resource_kind     = section.settings.resource_kind | default: 'downloads'
   assign structured_source = section.settings.structured_source | default: 'blocks'
+  assign only_type_val     = section.settings.only_type
+
+  comment
+    Drivers page: rendered from a .liquid template with default section settings,
+    so force it to the global Downloads metaobjects filtered to the "Driver" type.
+  endcomment
+  if page.handle == 'drivers'
+    assign resource_kind = 'downloads'
+    assign structured_source = 'global'
+    assign only_type_val = 'Driver'
+  endif
 
   case resource_kind
     when 'downloads'
@@ -38,7 +49,7 @@
     {%- endfor -%}
     {%- assign filter_types = raw_types | split: '||' | uniq | compact -%}
 
-    {%- if section.settings.show_filters != false and section.settings.only_type == blank -%}
+    {%- if section.settings.show_filters != false and only_type_val == blank -%}
     <div class="filter-pills flex gap-2 flex-wrap mb-8" id="dl-filters">
       <button class="filter-pill is-active" data-filter="all" type="button">All</button>
       {%- for type_label in filter_types -%}
@@ -68,7 +79,7 @@
           {%- if mo_entries.size > 0 -%}
             {%- for entry in mo_entries -%}
               {%- assign type_val    = entry[type_field].value -%}
-              {%- if section.settings.only_type != blank and type_val != section.settings.only_type -%}{%- continue -%}{%- endif -%}
+              {%- if only_type_val != blank and type_val != only_type_val -%}{%- continue -%}{%- endif -%}
               {%- assign file_url    = entry.file.value.url | default: entry.external_url.value -%}
               {%- assign product_obj = entry.products.value | first -%}
               {%- assign platforms   = entry.platforms.value | join: ' · ' -%}
