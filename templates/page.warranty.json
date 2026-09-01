@@ -34,7 +34,9 @@
     },
     "warranty_content": {
       "type": "warranty-page",
-      "settings": {}
+      "settings": {
+        "claim_button_url": "/pages/contact"
+      }
     },
     "cta": {
       "type": "support-cta-rail",
