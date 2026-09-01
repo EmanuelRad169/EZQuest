@@ -162,7 +162,16 @@
     <div class="product-card-featured-media-shell relative">
       <a href="{{ product_card_url }}" class="product-card-featured-media product-card-featured-media-link relative flex min-h-56 items-center justify-center overflow-hidden border-b border-slate-200/70 bg-white no-underline" aria-label="View {{ product.title | default: 'product' }}">
         {% assign second_image = product.images[1] %}
+        {%- assign card_white_bg = product.metafields.custom.card_image.value -%}
+        {%- if card_white_bg.image != blank -%}{%- assign card_white_bg = card_white_bg.image -%}{%- endif -%}
         <div class="card-img-wrap aspect-card w-full{% if second_image != blank %} has-rollover{% endif %}">
+          {% if card_white_bg != blank %}
+            <img class="card-img card-img--primary product-card-image product-card-featured-image aspect-card w-full object-contain"
+              src="{{ card_white_bg | image_url: width: 1200 }}"
+              srcset="{{ card_white_bg | image_url: width: 600 }} 600w, {{ card_white_bg | image_url: width: 900 }} 900w, {{ card_white_bg | image_url: width: 1200 }} 1200w"
+              sizes="(max-width: 639px) calc(50vw - 1.5rem), (max-width: 1023px) calc(33vw - 1.5rem), calc(25vw - 1.5rem)"
+              alt="{{ product.title | escape }}" loading="{{ card_image_loading }}" width="1200" height="900">
+          {% else %}
           {% render 'product-browse-media',
             product: product,
             context: card_context,
@@ -173,6 +182,7 @@
             fetchpriority: card_image_fetchpriority,
             class: 'card-img card-img--primary product-card-image product-card-featured-image aspect-card w-full object-contain'
           %}
+          {% endif %}
           {% if second_image != blank %}
             <img
               class="card-img card-img--secondary product-card-image product-card-featured-image"
@@ -297,7 +307,16 @@
     <div class="product-thumb-card product-card-image-wrapper relative overflow-hidden">
       <a href="{{ product_card_url }}" class="product-card-image-link" aria-label="{{ product.title }}">
         {% assign second_image = product.images[1] %}
+        {%- assign card_white_bg = product.metafields.custom.card_image.value -%}
+        {%- if card_white_bg.image != blank -%}{%- assign card_white_bg = card_white_bg.image -%}{%- endif -%}
         <div class="card-img-wrap aspect-card w-full{% if second_image != blank %} has-rollover{% endif %}">
+          {% if card_white_bg != blank %}
+            <img class="card-img card-img--primary product-card-image aspect-card w-full object-contain"
+              src="{{ card_white_bg | image_url: width: 900 }}"
+              srcset="{{ card_white_bg | image_url: width: 400 }} 400w, {{ card_white_bg | image_url: width: 600 }} 600w, {{ card_white_bg | image_url: width: 900 }} 900w"
+              sizes="(max-width: 639px) calc(50vw - 1.5rem), (max-width: 1023px) calc(33vw - 1.5rem), calc(25vw - 1.5rem)"
+              alt="{{ product.title | escape }}" loading="{{ card_image_loading }}" width="900" height="675">
+          {% else %}
           {% render 'product-browse-media',
             product: product,
             context: card_context,
@@ -308,6 +327,7 @@
             fetchpriority: card_image_fetchpriority,
             class: 'card-img card-img--primary product-card-image aspect-card w-full object-contain'
           %}
+          {% endif %}
           {% if second_image != blank %}
             <img
               class="card-img card-img--secondary product-card-image"
