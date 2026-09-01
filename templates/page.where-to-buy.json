@@ -47,16 +47,6 @@
             "region": ""
           }
         },
-        "walmart": {
-          "type": "retailer",
-          "settings": {
-            "category": "us_retailer",
-            "name": "Walmart",
-            "logo_asset": "BuyFrom-002.jpg",
-            "url": "http://www.walmart.com/search/?query=ezquest",
-            "region": ""
-          }
-        },
         "bh": {
           "type": "retailer",
           "settings": {
@@ -182,7 +172,7 @@
           "settings": {
             "category": "intl_reseller",
             "name": "Viastara",
-            "region": "",
+            "region": "LATAM",
             "url": "https://www.viastara.com/brands",
             "logo_asset": "viastara.jpg"
           }
@@ -190,7 +180,6 @@
       },
       "block_order": [
         "amazon",
-        "walmart",
         "bh",
         "microcenter",
         "newegg",
