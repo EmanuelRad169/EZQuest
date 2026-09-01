@@ -525,7 +525,7 @@
 
 .wtb-card__region {
   font-size: 12px; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  letter-spacing: 0.06em; text-transform: none;
   color: var(--ez-grey);
 }
 
