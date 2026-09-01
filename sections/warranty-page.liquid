@@ -146,7 +146,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
           {%- assign claim_url = section.settings.claim_button_url -%}
-          {%- if claim_url == blank or claim_url == '#' -%}{%- assign claim_url = '/pages/ticket-submission' -%}{%- endif -%}
+          {%- if claim_url == blank or claim_url == '#' -%}{%- assign claim_url = '/pages/contact' -%}{%- endif -%}
           {% render 'button', label: section.settings.claim_button_label | default: 'Submit a claim', url: claim_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
           <p class="warranty-claim-card__note text-xs text-[var(--ez-grey)] text-left m-0">{{ section.settings.claim_note | default: "Have your order number ready — we'll ask for it." }}</p>
         </div>

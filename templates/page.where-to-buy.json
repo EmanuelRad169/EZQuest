@@ -24,7 +24,7 @@
         "cta_label": "Shop Online",
         "cta_link": "/collections",
         "cta_secondary_label": "Become a Reseller",
-        "cta_secondary_link": "/pages/contact",
+        "cta_secondary_link": "/pages/reseller",
         "show_trust": true,
         "trust_1": "Up To 2 Year Warranty",
         "trust_2": "30 Day Returns",
@@ -200,7 +200,7 @@
         "show_cta": true,
         "cta_text": "Interested in carrying EZQuest products?",
         "cta_label": "Become a Reseller",
-        "cta_url": "/pages/contact"
+        "cta_url": "/pages/reseller"
       }
     }
   },
