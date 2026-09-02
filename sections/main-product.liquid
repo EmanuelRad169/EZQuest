@@ -1082,11 +1082,27 @@
 
       {%- if show_specs_tab -%}
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="specs" id="pdp-specs" tabindex="0">
-          {%- comment -%} Product Part Number (SKU) + Bar Code always lead the spec table when present. {%- endcomment -%}
+          {%- comment -%} Product Part Number (SKU) + Bar Code always lead the spec table when present.
+              Multi-variant products list every variant's part number and UPC (labeled by variant),
+              matching the legacy site. Single-variant products show one row each. {%- endcomment -%}
           {%- assign pdp_spec_variant = product.selected_or_first_available_variant -%}
           {%- capture id_rows_html -%}
-            {%- if pdp_spec_variant.sku != blank -%}<tr><th scope="row">Product Part Number</th><td>{{ pdp_spec_variant.sku }}</td></tr>{%- endif -%}
-            {%- if pdp_spec_variant.barcode != blank -%}<tr><th scope="row">Bar Code Number</th><td>{{ pdp_spec_variant.barcode }}</td></tr>{%- endif -%}
+            {%- if product.variants.size > 1 -%}
+              {%- assign pn_parts = '' -%}
+              {%- for v in product.variants -%}
+                {%- if v.sku != blank -%}
+                  {%- capture pn_piece -%}{{ v.sku }} {{ v.title }}{%- endcapture -%}
+                  {%- if pn_parts == '' -%}{%- assign pn_parts = pn_piece | strip -%}{%- else -%}{%- assign pn_parts = pn_parts | append: ' &amp; ' | append: pn_piece | strip -%}{%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if pn_parts != '' -%}<tr><th scope="row">Product Part Number</th><td>{{ pn_parts }}</td></tr>{%- endif -%}
+              {%- for v in product.variants -%}
+                {%- if v.barcode != blank -%}<tr><th scope="row">Bar Code Number</th><td>{{ v.barcode }} {{ v.title }}</td></tr>{%- endif -%}
+              {%- endfor -%}
+            {%- else -%}
+              {%- if pdp_spec_variant.sku != blank -%}<tr><th scope="row">Product Part Number</th><td>{{ pdp_spec_variant.sku }}</td></tr>{%- endif -%}
+              {%- if pdp_spec_variant.barcode != blank -%}<tr><th scope="row">Bar Code Number</th><td>{{ pdp_spec_variant.barcode }}</td></tr>{%- endif -%}
+            {%- endif -%}
           {%- endcapture -%}
           {%- assign id_rows_html = id_rows_html | strip -%}
           {%- capture spec_rows_html -%}

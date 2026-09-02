@@ -235,37 +235,3 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
   "presets": [{ "name": "Warranty" }]
 }
 {% endschema %}
-{% comment %}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: "{% render 'button', label: section.settings.claim_button_label | default:
-    'Submit a claim', url: section.settings.claim_button_url | default: '/pages/contact',
-    style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}"
-  to: "{% render 'button', label: section.settings.claim_button_label, default: '/pages/contact',
-    url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
-    %}"
-  position: 9028..9228
-{% endcomment %}{%- comment -%}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: "{% render 'button', label: section.settings.register_button_label | default:
-    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
-    size: 'sm', class: 'warranty-claim-card__button' %}"
-  to: "{% render 'button', label: section.settings.register_button_label, default:
-    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
-    size: 'sm', class: 'warranty-claim-card__button' %}"
-  position: 9127..9335
-- from: "{% render 'button', label: section.settings.claim_button_label | default:
-    'Submit a Claim', url: section.settings.claim_button_url | default: '/pages/contact',
-    style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}"
-  to: "{% render 'button', label: section.settings.claim_button_label, default: '/pages/contact',
-    url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
-    %}"
-  position: 10848..11048
-{%- endcomment -%}

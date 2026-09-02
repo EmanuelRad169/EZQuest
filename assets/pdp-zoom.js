@@ -25,7 +25,7 @@
     try {
       var url = new URL(src, window.location.origin);
       if (url.hostname.indexOf('shopify') !== -1 || url.searchParams.has('width')) {
-        url.searchParams.set('width', '2000');
+        url.searchParams.set('width', '3200');
       }
       return url.toString();
     } catch (error) {
