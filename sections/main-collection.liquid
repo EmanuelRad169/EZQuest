@@ -547,15 +547,10 @@
       var paramsInitial = new URLSearchParams(window.location.search);
       var shouldRestoreSort = false;
 
-      try {
-        var savedSort = sessionStorage.getItem(sortStorageKey);
-        if (sortSelectInitial && savedSort && !paramsInitial.has('sort_by') && sortSelectInitial.value !== savedSort) {
-          sortSelectInitial.value = savedSort;
-          paramsInitial.set('sort_by', savedSort);
-          window.history.replaceState({}, '', window.location.pathname + '?' + paramsInitial.toString());
-          shouldRestoreSort = true;
-        }
-      } catch (e) {}
+      /* Sticky-sort restore removed: collections must always default to the
+         merchant's manual (Featured) order on load. A visitor can still change
+         the sort within a session, but it is never silently re-applied on
+         reload, which previously overrode the manual product order. */
 
       function showSkeleton() {
         collectionGrid = document.getElementById('collection-grid');
