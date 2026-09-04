@@ -87,7 +87,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
             <span class="warranty-step__number">3</span>
             <div class="warranty-step__content">
               <strong>Try our Smart Help Center first</strong>
-              <p>Visit the <a href="/pages/support" class="underline" style="color:var(--ez-grey)">Smart Help Center</a> to self-troubleshoot — many warranty-seeming problems are resolved in minutes without a claim.</p>
+              <p>Visit the <a href="/pages/support" class="underline" style="color:var(--ez-grey)">Smart Help Center</a> to self-troubleshoot, many warranty-seeming problems are resolved in minutes without a claim.</p>
             </div>
           </li>
           <li>
@@ -101,7 +101,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
             <span class="warranty-step__number">5</span>
             <div class="warranty-step__content">
               <strong>Approved claims: replacement or refund</strong>
-              <p>Approved claims receive a refurbished replacement or, when available, a new item — shipped at no cost. If no replacement is available, a refund is issued.</p>
+              <p>Approved claims receive a refurbished replacement or, when available, a new item is shipped at no cost. If no replacement is available, a refund is issued.</p>
             </div>
           </li>
         </ol>
@@ -145,9 +145,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
           {{ section.settings.claim_body | default: 'If your product has a defect covered under the limited warranty, contact us here. We respond within 1 business day on weekdays.' }}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
-          {%- assign claim_url = section.settings.claim_button_url -%}
-          {%- if claim_url == blank or claim_url == '#' -%}{%- assign claim_url = '/pages/contact' -%}{%- endif -%}
-          {% render 'button', label: section.settings.claim_button_label | default: 'Submit a claim', url: claim_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
+          {% render 'button', label: section.settings.claim_button_label, default: '/pages/contact', url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}
           <p class="warranty-claim-card__note text-xs text-[var(--ez-grey)] text-left m-0">{{ section.settings.claim_note | default: "Have your order number ready — we'll ask for it." }}</p>
         </div>
       </div>
@@ -235,3 +233,37 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
   "presets": [{ "name": "Warranty" }]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'button', label: section.settings.claim_button_label | default:
+    'Submit a claim', url: section.settings.claim_button_url | default: '/pages/contact',
+    style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}"
+  to: "{% render 'button', label: section.settings.claim_button_label, default: '/pages/contact',
+    url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
+    %}"
+  position: 9028..9228
+{% endcomment %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'button', label: section.settings.register_button_label | default:
+    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
+    size: 'sm', class: 'warranty-claim-card__button' %}"
+  to: "{% render 'button', label: section.settings.register_button_label, default:
+    'Register Your Product', url: '/pages/product-registration', style: 'secondary',
+    size: 'sm', class: 'warranty-claim-card__button' %}"
+  position: 9127..9335
+- from: "{% render 'button', label: section.settings.claim_button_label | default:
+    'Submit a Claim', url: section.settings.claim_button_url | default: '/pages/contact',
+    style: 'primary', size: 'sm', class: 'warranty-claim-card__button' %}"
+  to: "{% render 'button', label: section.settings.claim_button_label, default: '/pages/contact',
+    url: section.settings.claim_button_url, style: 'primary', size: 'sm', class: 'warranty-claim-card__button'
+    %}"
+  position: 10848..11048
+{%- endcomment -%}
