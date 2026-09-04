@@ -1,21 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "page_hero": {
       "type": "page-hero",
       "settings": {
         "background_color": "#020617",
-        "overlay_opacity": 35,
-        "height": 300,
         "kicker": "Partnerships",
         "heading": "Become a Reseller",
         "subheading": "Carry EZQuest premium USB-C accessories in your store or catalog.",
+        "height": 300,
+        "overlay_opacity": 35,
+        "show_breadcrumb": true,
+        "eyebrow_pulse": true,
+        "cta_label": "",
+        "cta_link": "",
+        "cta_secondary_label": "",
+        "cta_secondary_link": "",
+        "show_trust": true,
         "trust_1": "Trusted since 1994",
         "trust_2": "100+ products",
-        "trust_3": "US-based support"
+        "trust_3": "US-based support",
+        "trust_4": "",
+        "slider_autoplay": true,
+        "slider_interval": 6
       }
     },
     "reseller": {
-      "type": "reseller"
+      "type": "reseller",
+      "settings": {
+        "eyebrow": "Partnerships",
+        "heading": "Become a Reseller",
+        "copy": "If you are a distributor, reseller, or retailer interested in carrying EZQuest products, or you would like to evaluate our products. Share your details below and our partnerships team will be in touch shortly."
+      }
     }
   },
   "order": [
