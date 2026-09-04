@@ -16,7 +16,7 @@
         "background_color": "#020617",
         "kicker": "Where To Buy",
         "heading": "Where to Buy EZQuest",
-        "subheading": "Shop online or find an authorised retailer or distributor near you \u2014 worldwide.",
+        "subheading": "Shop online or find an authorised retailer or distributor near you worldwide.",
         "height": 320,
         "overlay_opacity": 35,
         "show_breadcrumb": true,
@@ -107,6 +107,16 @@
             "region": ""
           }
         },
+        "digikey": {
+          "type": "retailer",
+          "settings": {
+            "category": "us_retailer",
+            "name": "DigiKey",
+            "logo_asset": "digikey.jpg",
+            "url": "https://www.digikey.com/en/supplier-centers/ezquest-inc",
+            "region": ""
+          }
+        },
         "adkom": {
           "type": "retailer",
           "settings": {
@@ -127,11 +137,31 @@
             "region": "Kuwait"
           }
         },
+        "pearl": {
+          "type": "retailer",
+          "settings": {
+            "category": "intl_reseller",
+            "name": "Pearl",
+            "logo_asset": "pearl.jpg",
+            "url": "https://www.pearl.fr/recherche/ezquest",
+            "region": "France"
+          }
+        },
+        "viastara": {
+          "type": "retailer",
+          "settings": {
+            "category": "intl_reseller",
+            "name": "Viastara",
+            "logo_asset": "viastara.jpg",
+            "url": "https://www.viastara.com/brands",
+            "region": "LATAM"
+          }
+        },
         "quintec": {
           "type": "retailer",
           "settings": {
             "category": "intl_distributor",
-            "name": "Quintec Distribuci\u00f3n",
+            "name": "Quintec Distribución",
             "logo_asset": "BuyFrom-014.jpg",
             "url": "http://www.quintecdistribucion.cl/catalogo.php?busqueda=ezquest",
             "region": "Chile"
@@ -145,36 +175,6 @@
             "logo_asset": "BuyFrom-015.jpg",
             "url": "http://www.icongroup.co.il/",
             "region": "Israel"
-          }
-        },
-        "digikey": {
-          "type": "retailer",
-          "settings": {
-            "category": "us_retailer",
-            "name": "DigiKey",
-            "region": "",
-            "url": "https://www.digikey.com/en/supplier-centers/ezquest-inc",
-            "logo_asset": "digikey.jpg"
-          }
-        },
-        "pearl": {
-          "type": "retailer",
-          "settings": {
-            "category": "intl_reseller",
-            "name": "Pearl",
-            "region": "France",
-            "url": "https://www.pearl.fr/recherche/ezquest",
-            "logo_asset": "pearl.jpg"
-          }
-        },
-        "viastara": {
-          "type": "retailer",
-          "settings": {
-            "category": "intl_reseller",
-            "name": "Viastara",
-            "region": "LATAM",
-            "url": "https://www.viastara.com/brands",
-            "logo_asset": "viastara.jpg"
           }
         }
       },
