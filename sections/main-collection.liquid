@@ -728,6 +728,23 @@
         </script>
       {%- endif -%}
     </div>
+    <style>
+      .collection-mobile-bar{transition:transform .28s ease,opacity .28s ease;}
+      .collection-mobile-bar.is-at-footer{transform:translateY(140%);opacity:0;pointer-events:none;}
+    </style>
+    <script>
+    (function(){
+      var bar = document.querySelector('.collection-mobile-bar');
+      var footer = document.querySelector('.site-footer') || document.querySelector('footer');
+      if(!bar || !footer || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          bar.classList.toggle('is-at-footer', e.isIntersecting);
+        });
+      }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
+      io.observe(footer);
+    })();
+    </script>
   {%- endif -%}
 
 {% endpaginate %}

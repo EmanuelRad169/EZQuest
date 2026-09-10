@@ -7,7 +7,10 @@
     "title": {{ product.title | json }},
     "url": {{ product.url | json }},
     "price": {{ product.price_min | money_without_trailing_zeros | json }},
-    "image": {{ product.featured_image | image_url: width: 400 | json }},
+    {%- comment -%} Prefer the white-background card image (custom.card_image) when set — e.g. Pro Series adapters — so the compatibility thumbnails aren't the gradient hero shot. {%- endcomment -%}
+    {%- assign compat_ci = product.metafields.custom.card_image.value -%}
+    {%- if compat_ci -%}{%- if compat_ci.image -%}{%- assign compat_img = compat_ci.image -%}{%- else -%}{%- assign compat_img = compat_ci -%}{%- endif -%}{%- else -%}{%- assign compat_img = product.featured_image -%}{%- endif -%}
+    "image": {{ compat_img | image_url: width: 400 | json }},
     "image_alt": {{ product.featured_image.alt | default: product.title | json }},
     "available": {{ product.available | json }},
     "compat": {{ product.metafields.custom.compatibility.value | json }}
