@@ -70,9 +70,9 @@
         }
       },
       "block_order": [
-        "slide_1",
-        "slide_2",
         "slide_3",
+        "slide_2",
+        "slide_1",
         "slide_4"
       ],
       "settings": {
