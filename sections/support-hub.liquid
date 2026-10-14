@@ -6,22 +6,22 @@
   <div class="shub-stats grid grid-cols-3 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden mb-12 max-[768px]:grid-cols-2">
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
       <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat1_number | default: '1–2 Year' }}</span>
-      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat1_label | default: 'Warranty (varies by product)' }}</span>
+      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat1_label | default: 'Warranty (Varies by Product)' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
       <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat2_number | default: '1 Day' }}</span>
-      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat2_label | default: 'Typical support response' }}</span>
+      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat2_label | default: 'Typical Support Response' }}</span>
     </div>
     <div class="shub-stat bg-white p-6 flex flex-col gap-1.5">
       <span class="shub-stat__number text-[clamp(24px,3vw,36px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] leading-none">{{ section.settings.stat4_number | default: '60+' }}</span>
-      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat4_label | default: 'Products with documentation' }}</span>
+      <span class="shub-stat__label text-sm text-[var(--ez-grey)] leading-[1.4] max-w-[18ch]">{{ section.settings.stat4_label | default: 'Products with Documentation' }}</span>
     </div>
   </div>
 
   <p class="section-label text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-6 support-hub__topic-label mt-12">{{ section.settings.topic_label | default: 'Browse By Topic' }}</p>
 
   <div class="shub-grid grid grid-cols-3 gap-px bg-black/[7%] border border-black/[7%] rounded-2xl overflow-hidden max-[900px]:grid-cols-2 max-[540px]:grid-cols-1">
-    {% assign support_links = 'Downloads,Get drivers utilities and setup files,/pages/downloads,download|Drivers,Download the latest drivers for your device,/pages/drivers,firmware|Manuals,Full product documentation and specs,/pages/manuals,manual|Compatibility,Check devices ports and systems,/pages/compatibility,compat|Warranty,Coverage terms and claim process,/pages/warranty,warranty|Troubleshooting,Fix common issues step by step,/pages/troubleshooting,trouble' | split: '|' %}
+    {% assign support_links = 'Downloads,Get Drivers Utilities and Setup Files,/pages/downloads,download|Drivers,Download the Latest Drivers for Your Device,/pages/drivers,firmware|Manuals,Full Product Documentation and Specs,/pages/manuals,manual|Compatibility,Check Devices Ports and Systems,/pages/compatibility,compat|Warranty,Coverage Terms and Claim Process,/pages/warranty,warranty|Troubleshooting,Fix Common Issues Step by Step,/pages/troubleshooting,trouble' | split: '|' %}
 
     {% for link_data in support_links %}
       {% assign parts = link_data | split: ',' %}
@@ -72,11 +72,11 @@
     { "type": "image_picker", "id": "image", "label": "Hero image" },
     { "type": "header", "content": "Stats bar" },
     { "type": "text", "id": "stat1_number", "label": "Stat 1 number", "default": "1–2 Year" },
-    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Warranty (varies by product)" },
+    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Warranty (Varies by Product)" },
     { "type": "text", "id": "stat2_number", "label": "Stat 2 number", "default": "1 Day" },
-    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Typical support response" },
+    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Typical Support Response" },
     { "type": "text", "id": "stat4_number", "label": "Stat 4 number", "default": "60+" },
-    { "type": "text", "id": "stat4_label", "label": "Stat 4 label", "default": "Products with documentation" },
+    { "type": "text", "id": "stat4_label", "label": "Stat 4 label", "default": "Products with Documentation" },
     { "type": "text", "id": "topic_label", "label": "Topic grid label", "default": "Browse By Topic" }
   ],
   "presets": [

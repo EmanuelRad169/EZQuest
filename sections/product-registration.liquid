@@ -197,8 +197,8 @@
           </div>
 
           <p class="ticket-form__hint" style="margin-top:1rem;">
-            Please keep your receipt or order confirmation. Warranty coverage is validated against your
-            original proof of purchase — registration keeps it on file but does not replace it.
+            Please keep your original receipt, invoice, or order confirmation. Warranty coverage is based on the
+            original purchase date and may require valid proof of purchase. Product registration does not replace proof of purchase.
           </p>
 
           <div class="reg-consent">
@@ -234,18 +234,18 @@
       <div class="ticket-sidebar-card">
         <p class="section-kicker">Why Register</p>
         <ul class="ticket-sidebar-card__list">
-          <li>Faster warranty claims — no receipt hunting</li>
-          <li>We keep your proof of purchase on file</li>
+          <li>Faster product identification during support</li>
+          <li>Easier warranty claim processing</li>
           <li>Get notified about firmware and driver updates</li>
           <li>Priority support on registered products</li>
         </ul>
       </div>
 
       <div class="ticket-sidebar-card">
-        <p class="section-kicker">Register Within</p>
+        <p class="section-kicker">Recommended</p>
         <p class="ticket-sidebar-card__stat">{{ section.settings.register_window | default: '90 Days' | escape }}</p>
         <p class="ticket-sidebar-card__note">
-          Register soon after purchase so your coverage record matches your receipt.
+          Registration is optional and does not affect the warranty period. Your warranty begins on the original date of purchase.
         </p>
       </div>
 
@@ -385,13 +385,13 @@
       "type": "textarea",
       "id": "body",
       "label": "Description",
-      "default": "Register your EZQuest product to activate your warranty record. It takes about a minute and makes any future claim far faster."
+      "default": "Register your EZQuest product to make future support and warranty claims faster. Registration is optional and does not affect your warranty coverage."
     },
     {
       "type": "text",
       "id": "register_window",
       "label": "Registration window",
-      "default": "90 Days"
+      "default": "Register Soon After Purchase"
     },
     {
       "type": "text",
