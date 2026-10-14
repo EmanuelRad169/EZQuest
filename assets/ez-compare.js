@@ -20,10 +20,15 @@
 
   /* ---- toast (also replaces any stray Compareder native alert) ---- */
   var toast;
-  function showToast(msg) {
+  function showToast(msg, href) {
     if (!toast) { toast = document.createElement('div'); toast.className = 'ez-compare-toast'; document.body.appendChild(toast); }
-    toast.textContent = msg; toast.classList.add('is-visible');
-    clearTimeout(showToast._t); showToast._t = setTimeout(function () { toast.classList.remove('is-visible'); }, 2600);
+    if (href) {
+      toast.innerHTML = '<span>' + esc(msg) + '</span> <a href="' + href + '" style="color:#fed300;text-decoration:underline;margin-left:10px;font-weight:700;white-space:nowrap;">View comparison →</a>';
+    } else {
+      toast.textContent = msg;
+    }
+    toast.classList.add('is-visible');
+    clearTimeout(showToast._t); showToast._t = setTimeout(function () { toast.classList.remove('is-visible'); }, 4000);
   }
   var origAlert = window.alert;
   window.alert = function (m) { var s = String(m); if (/compar|product|at least|maximum/i.test(s)) { showToast(s); } else { origAlert.call(window, m); } };
@@ -59,10 +64,17 @@
       var pid = heart && heart.getAttribute('data-wishlist-id');
       if (!pid) return;
       var btn = document.createElement('button');
-      btn.type = 'button'; btn.className = 'ez-card-compare'; btn.setAttribute('aria-label', 'Add to compare'); btn.setAttribute('data-ez-compare-id', pid);
+      btn.type = 'button'; btn.className = 'ez-card-compare'; btn.setAttribute('aria-label', 'Add to compare'); btn.setAttribute('title', 'Add to compare'); btn.setAttribute('data-ez-compare-id', pid);
       btn.innerHTML = ICON;
       btn.classList.toggle('is-active', has(pid));
-      btn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); var r = toggle(pid); if (r !== null) btn.classList.toggle('is-active', has(pid)); });
+      btn.addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var wasActive = has(pid);
+        var r = toggle(pid);
+        if (r !== null) btn.classList.toggle('is-active', has(pid));
+        if (r === true && !wasActive) { showToast('Added to Compare (' + getList().length + ')', COMPARE_URL); }
+        else if (wasActive) { showToast('Removed from Compare'); }
+      });
       wrap.appendChild(btn);
     });
   }

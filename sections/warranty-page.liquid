@@ -125,7 +125,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
         <p class="warranty-claim-card__eyebrow text-xs font-semibold tracking-[.1em] uppercase text-[var(--ez-grey)] mb-2">{{ section.settings.register_eyebrow | default: 'New Purchase' }}</p>
         <h3 class="warranty-claim-card__heading text-xl font-medium tracking-[-0.02em] text-[var(--ez-black)] m-0 mb-[.625rem]">{{ section.settings.register_heading | default: 'Register Your Product' }}</h3>
         <p class="warranty-claim-card__body text-sm text-[var(--ez-grey)] leading-[1.65] m-0 mb-6">
-          {{ section.settings.register_body | default: 'Register within 90 days of purchase and we keep your proof of purchase on file. Future claims take minutes instead of hunting for a receipt.' }}
+          {{ section.settings.register_body | default: 'Registration is optional and doesn't affect your coverage — your warranty begins on the original date of purchase. Registering just makes future support and claims faster.' }}
         </p>
         <div class="warranty-claim-card__actions flex flex-col gap-3">
           {% render 'button', label: section.settings.register_button_label, default: 'Register Your Product', url: '/pages/product-registration', style: 'secondary', size: 'sm', class: 'warranty-claim-card__button' %}
@@ -221,7 +221,7 @@ Loss or theft' | newline_to_br | split: '<br />' -%}
     { "type": "url", "id": "claim_button_url", "label": "Button URL" },
     { "type": "text", "id": "register_eyebrow", "label": "Register card eyebrow", "default": "New Purchase" },
     { "type": "text", "id": "register_heading", "label": "Register card heading", "default": "Register Your Product" },
-    { "type": "textarea", "id": "register_body", "label": "Register card body", "default": "Register within 90 days of purchase and we keep your proof of purchase on file. Future claims take minutes instead of hunting for a receipt." },
+    { "type": "textarea", "id": "register_body", "label": "Register card body", "default": "Registration is optional and doesn't affect your coverage — your warranty begins on the original date of purchase. Registering just makes future support and claims faster." },
     { "type": "text", "id": "register_button_label", "label": "Register button label", "default": "Register Your Product" },
     { "type": "text", "id": "claim_note", "label": "Note", "default": "Have your order number ready — we'll ask for it." },
     { "type": "header", "content": "Info cards" },
