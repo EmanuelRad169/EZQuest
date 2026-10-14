@@ -159,16 +159,16 @@
 
                 <div class="pointer-events-none absolute inset-0 z-10">
                   <div class="container-shell relative h-full">
-                    <div class="home-hero-copy-panel pointer-events-auto absolute top-1/2 left-4 z-10 flex max-w-2xl -translate-y-1/2 flex-col items-start sm:left-6 lg:left-8">
+                    <div class="home-hero-copy-panel pointer-events-auto absolute top-1/2 left-4 z-10 flex max-w-2xl md:max-w-[50%] -translate-y-1/2 flex-col items-start sm:left-6 lg:left-8">
                       {% if block.settings.eyebrow != blank %}
                         <p class="home-hero-copy-kicker inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/45" data-hero-kicker>{{ block.settings.eyebrow }}</p>
                       {% endif %}
                       {% if forloop.first %}
-                        <h1 class="display-heading home-hero-copy-heading mt-5 max-w-prose text-display-3xl text-white md:max-w-copy-row lg:mt-6 lg:text-display-4xl xl:mt-7 xl:max-w-hero xl:text-display-5xl" data-hero-heading>{{ slide_heading }}</h1>
+                        <h1 class="display-heading home-hero-copy-heading mt-5 max-w-full text-display-3xl text-white lg:mt-6 lg:text-display-4xl xl:mt-7 xl:text-display-5xl" data-hero-heading>{{ slide_heading }}</h1>
                       {% else %}
-                        <h2 class="display-heading home-hero-copy-heading mt-5 max-w-prose text-display-3xl text-white md:max-w-copy-row lg:mt-6 lg:text-display-4xl xl:mt-7 xl:max-w-hero xl:text-display-5xl" data-hero-heading>{{ slide_heading }}</h2>
+                        <h2 class="display-heading home-hero-copy-heading mt-5 max-w-full text-display-3xl text-white lg:mt-6 lg:text-display-4xl xl:mt-7 xl:text-display-5xl" data-hero-heading>{{ slide_heading }}</h2>
                       {% endif %}
-                      <p class="home-hero-copy-text mt-4 max-w-copy text-body-sm text-white/80 md:max-w-copy-row md:text-body lg:mt-5 lg:max-w-copy-md lg:text-body-lg xl:max-w-prose" data-hero-copy>{{ slide_copy }}</p>
+                      <p class="home-hero-copy-text mt-4 max-w-full text-body-sm text-white/80 md:text-body lg:mt-5 lg:text-body-lg" data-hero-copy>{{ slide_copy }}</p>
 
                       <div class="home-hero-actions mt-6 flex flex-wrap items-center gap-4 lg:mt-8" data-hero-actions>
                         {% if slide_primary_label != blank %}
@@ -257,12 +257,12 @@
 
               <div class="pointer-events-none absolute inset-0 z-10">
                 <div class="container-shell relative h-full">
-                  <div class="home-hero-copy-panel pointer-events-auto absolute top-1/2 left-4 z-10 flex max-w-2xl -translate-y-1/2 flex-col items-start sm:left-6 lg:left-8">
+                  <div class="home-hero-copy-panel pointer-events-auto absolute top-1/2 left-4 z-10 flex max-w-2xl md:max-w-[50%] -translate-y-1/2 flex-col items-start sm:left-6 lg:left-8">
                     {% if section.settings.eyebrow != blank %}
                       <p class="home-hero-copy-kicker inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/45" data-hero-kicker>{{ section.settings.eyebrow }}</p>
                     {% endif %}
-                    <h1 class="display-heading home-hero-copy-heading mt-5 max-w-prose text-display-3xl text-white md:max-w-copy-row lg:mt-6 lg:text-display-4xl xl:mt-7 xl:max-w-hero xl:text-display-5xl" data-hero-heading>{{ hero_heading }}</h1>
-                    <p class="home-hero-copy-text mt-4 max-w-copy text-body-sm text-white/80 md:max-w-copy-row md:text-body lg:mt-5 lg:max-w-copy-md lg:text-body-lg xl:max-w-prose" data-hero-copy>{{ hero_copy }}</p>
+                    <h1 class="display-heading home-hero-copy-heading mt-5 max-w-full text-display-3xl text-white lg:mt-6 lg:text-display-4xl xl:mt-7 xl:text-display-5xl" data-hero-heading>{{ hero_heading }}</h1>
+                    <p class="home-hero-copy-text mt-4 max-w-full text-body-sm text-white/80 md:text-body lg:mt-5 lg:text-body-lg" data-hero-copy>{{ hero_copy }}</p>
                     <div class="home-hero-actions mt-6 flex flex-wrap items-center gap-4 lg:mt-8" data-hero-actions>
                       {% if section.settings.primary_label != blank %}
                         {% render 'button', label: section.settings.primary_label, url: section.settings.primary_url, default: '/pages/help-me-choose', style: 'primary-on-dark' %}
