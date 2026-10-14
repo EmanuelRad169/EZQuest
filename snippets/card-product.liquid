@@ -69,6 +69,9 @@
     assign product_age_seconds = now_seconds | minus: published_seconds
     assign product_days_old = product_age_seconds | divided_by: 86400
 
+    if product_tags_normalized contains 'coming-soon'
+      assign product_badge_codes = 'coming-soon,' | append: product_badge_codes
+    endif
     if product_tags_normalized contains 'preorder' or product_tags_normalized contains 'pre-order'
       assign product_badge_codes = product_badge_codes | append: 'preorder,'
       assign is_preorder_card = true

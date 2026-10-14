@@ -8,6 +8,8 @@
   {% for badge in product_badge_list limit: 3 %}
     {% unless badge == blank %}
       {% case badge %}
+        {% when 'coming-soon' %}
+          <span class="product-badge product-badge--coming" style="background:#0f172a;color:#fff;">Coming Soon</span>
         {% when 'preorder' %}
           <span class="product-badge product-badge--preorder">Pre-Order</span>
         {% when 'soldout' %}
