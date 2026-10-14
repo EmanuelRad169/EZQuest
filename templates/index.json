@@ -157,7 +157,7 @@
             "size": "normal",
             "card_style": "blue",
             "stat": "USB-C",
-            "label": "Fast Charging & Sync",
+            "label": "Fast Charging",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_F_0a1a49f9-77e6-4e40-9035-4ccbffb89906.jpg",
             "link": "/products/mini-30w-gan-usb-c-pd-wall-charger"
@@ -180,7 +180,7 @@
           "settings": {
             "size": "normal",
             "card_style": "light",
-            "stat": "Desk-ready",
+            "stat": "Desk-Ready",
             "label": "Docking Hubs",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_L.jpg",
@@ -192,7 +192,7 @@
           "settings": {
             "size": "normal",
             "card_style": "light",
-            "stat": "100W",
+            "stat": "65W",
             "label": "Power Delivery",
             "sublabel": "",
             "image": "shopify://shop_images/DT_Family_Card_I_232a3349-793a-4bd9-bc02-126f673a7a51.jpg",
