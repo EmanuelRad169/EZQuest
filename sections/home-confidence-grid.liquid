@@ -46,7 +46,10 @@
             </article>
 
           {%- when 'card' -%}
-            <article class="home-confidence-card" {{ block.shopify_attributes }}>
+            <article class="home-confidence-card" style="position:relative;" {{ block.shopify_attributes }}>
+              {%- if block.settings.link_url != blank -%}
+                <a href="{{ block.settings.link_url }}" class="home-confidence-card-stretch" aria-label="{{ block.settings.heading | escape }}" style="position:absolute;inset:0;z-index:1;"></a>
+              {%- endif -%}
               <div class="home-confidence-card-copy">
                 {%- if block.settings.heading != blank -%}
                   <h3 class="home-confidence-card-title">{{ block.settings.heading }}</h3>

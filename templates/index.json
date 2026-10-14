@@ -314,52 +314,56 @@
         "card_shipping": {
           "type": "card",
           "settings": {
-            "heading": "Fast shipping",
-            "body": "Orders ship within 1–2 business days with full tracking provided.",
+            "heading": "Fast Shipping",
+            "body": "Orders Ship Within 1–2 Business Days With Full Tracking Provided.",
             "icon": "truck",
             "icon_bg": "#FEF3C7",
-            "icon_color": "#92400E"
+            "icon_color": "#92400E",
+            "link_url": "/pages/shipping-returns"
           }
         },
         "promise": {
           "type": "promise",
           "settings": {
             "eyebrow": "EZQuest Promise",
-            "title": "1–2yr warranty",
-            "subtext": "Varies by product. No fine print.",
-            "badge_label": "1–2yr coverage",
-            "link_label": "View warranty",
+            "title": "1–2 Year Warranty",
+            "subtext": "Varies By Product. No Fine Print.",
+            "badge_label": "1–2 Year Coverage",
+            "link_label": "View Warranty",
             "link_url": "/pages/warranty"
           }
         },
         "card_returns": {
           "type": "card",
           "settings": {
-            "heading": "Easy returns",
-            "body": "Hassle-free returns within 30 days. No questions asked.",
+            "heading": "Easy Returns",
+            "body": "Hassle-Free Returns Within 30 Days. No Questions Asked.",
             "icon": "refresh-cw",
             "icon_bg": "#DBEAFE",
-            "icon_color": "#1E40AF"
+            "icon_color": "#1E40AF",
+            "link_url": "/pages/shipping-returns"
           }
         },
         "card_manuals": {
           "type": "card",
           "settings": {
-            "heading": "Manuals & downloads",
-            "body": "Setup guides, firmware, and docs ready when you need them.",
+            "heading": "Manuals & Downloads",
+            "body": "Setup Guides, Firmware, And Documentation Ready When You Need Them.",
             "icon": "file-text",
             "icon_bg": "#E0E7FF",
-            "icon_color": "#3730A3"
+            "icon_color": "#3730A3",
+            "link_url": "/pages/manuals"
           }
         },
         "card_support": {
           "type": "card",
           "settings": {
-            "heading": "Live support",
-            "body": "Real humans, fast replies. Help by email, chat, or phone.",
+            "heading": "Live Support",
+            "body": "Real People, Fast Answers. Help By Email, Chat, Or Phone.",
             "icon": "support",
             "icon_bg": "#D1FAE5",
-            "icon_color": "#065F46"
+            "icon_color": "#065F46",
+            "link_url": "/pages/support"
           }
         }
       },
