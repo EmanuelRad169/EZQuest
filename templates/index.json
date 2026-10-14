@@ -379,10 +379,10 @@
       "type": "homepage-cinematic-reveal",
       "settings": {
         "background_image": "shopify://shop_images/Down_Page_Banner.jpg",
-        "kicker": "Backed by the Right Support",
-        "headline": "Built different. Works better.",
-        "body_text": "EZQuest accessories are engineered for people who need the right connection, every time.",
-        "cta_label": "Shop the Range",
+        "kicker": "Engineered For Reliable Connections",
+        "headline": "Built Different. Works Better.",
+        "body_text": "High-Performance Connectivity Designed To Keep Your Displays, And Workflow Connected.",
+        "cta_label": "Shop Products",
         "cta_url": "/collections/all",
         "aria_label": "Brand Statement"
       }
