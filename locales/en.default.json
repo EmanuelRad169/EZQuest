@@ -9,11 +9,11 @@
  */
 {
   "general": {
-    "continue_reading": "Continue reading",
-    "learn_more": "Learn more",
-    "shop_now": "Shop now",
-    "contact_support": "Contact support",
-    "view_all": "View all",
+    "continue_reading": "Continue Reading",
+    "learn_more": "Learn More",
+    "shop_now": "Shop Now",
+    "contact_support": "Contact Support",
+    "view_all": "View All",
     "close": "Close",
     "search": "Search",
     "search_placeholder": "Search products, support, articles…",
@@ -26,7 +26,7 @@
     "open_menu": "Open menu",
     "search": "Search",
     "cart": "Cart",
-    "my_account": "My account",
+    "my_account": "My Account",
     "sign_in": "Sign in",
     "wishlist": "Wishlist",
     "select_language": "Select language"
@@ -35,7 +35,7 @@
     "newsletter_placeholder": "Enter your email",
     "newsletter_button": "Subscribe",
     "company": "Company",
-    "product_families": "Product families",
+    "product_families": "Product Families",
     "legal": "Legal",
     "support": "Support"
   },
@@ -50,17 +50,17 @@
   "product": {
     "specifications": "Specifications",
     "compare": "Compare",
-    "related": "Related products",
-    "add_to_cart": "Add to cart",
+    "related": "Related Products",
+    "add_to_cart": "Add to Cart",
     "adding": "Adding\u2026",
-    "sold_out": "Sold out",
-    "in_stock": "In stock",
-    "out_of_stock": "Out of stock",
+    "sold_out": "Sold Out",
+    "in_stock": "In Stock",
+    "out_of_stock": "Out of Stock",
     "buy_on_amazon": "Buy on Amazon",
     "share": "Share",
-    "copy_link": "Copy link",
+    "copy_link": "Copy Link",
     "quantity": "Quantity",
-    "back_to_products": "Back to products",
+    "back_to_products": "Back to Products",
     "back_to": "Back to {{ collection }}",
     "save": "Save {{ amount }}"
   },
@@ -68,50 +68,50 @@
     "share_on_facebook": "Share on Facebook",
     "share_on_twitter": "Share on X / Twitter",
     "save_to_pinterest": "Save to Pinterest",
-    "copy_link": "Copy link"
+    "copy_link": "Copy Link"
   },
   "trust": {
-    "warranty": "2-yr warranty",
+    "warranty": "2-Yr Warranty",
     "no_drivers": "No Drivers",
     "mac_windows": "Mac + Windows",
-    "free_shipping": "Free shipping"
+    "free_shipping": "Free Shipping"
   },
   "notify": {
     "out_of_stock": "This item is currently out of stock.",
     "label": "Email address for restock notification",
     "email_placeholder": "Enter your email",
-    "submit": "Notify me",
+    "submit": "Notify Me",
     "success": "You will be notified when this item is back in stock."
   },
   "cart": {
-    "title": "Your cart",
+    "title": "Your Cart",
     "empty": "Your cart is empty",
     "empty_body": "Add products to your cart to see them here.",
-    "empty_cta": "Browse products",
-    "checkout": "Proceed to checkout",
-    "continue_shopping": "Continue shopping",
+    "empty_cta": "Browse Products",
+    "checkout": "Proceed to Checkout",
+    "continue_shopping": "Continue Shopping",
     "close": "Close cart",
     "remove": "Remove",
     "remove_item": "Remove {{ product }} from cart",
     "subtotal": "Subtotal",
     "tax_note": "Taxes and shipping calculated at checkout",
     "free_shipping_threshold": "Add {{ amount }} more for free shipping",
-    "free_shipping_unlocked": "Free shipping unlocked",
+    "free_shipping_unlocked": "Free Shipping Unlocked",
     "qty_decrease": "Decrease quantity of {{ product }}",
     "qty_increase": "Increase quantity of {{ product }}"
   },
   "wishlist": {
-    "title": "Your wishlist",
-    "saved_items": "Saved items",
+    "title": "Your Wishlist",
+    "saved_items": "Saved Items",
     "empty": "No saved items yet",
     "empty_body": "Heart any product to save it here for later."
   },
   "contact": {
-    "send_message": "Send message",
-    "name": "Full name",
-    "email": "Email address",
+    "send_message": "Send Message",
+    "name": "Full Name",
+    "email": "Email Address",
     "message": "Message",
-    "success": "Message sent",
+    "success": "Message Sent",
     "success_body": "We\u2019ll reply to {{ email }} within 1 business day.",
     "note": "We read every message. Typical reply time: 1 business day."
   }
