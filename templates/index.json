@@ -393,54 +393,54 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "reviewer_name": "Michail T.",
+            "reviewer_name": "Geoff",
             "rating": 5,
-            "review_text": "A very strong power bank, able to charge a gaming laptop... Very useful that you can plug in 3 cables as you can charge laptop and phone at the same time. Overall really happy — thumbs up!",
+            "review_text": "EZQuest makes some great products. This is perfect for travel — fits nice in my messenger bag and is lightweight. 70W with two USB-C ports is just right for what I need day to day.",
             "product": ""
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "reviewer_name": "Ryan",
+            "reviewer_name": "D. Kim",
             "rating": 5,
-            "review_text": "Excellent fast charging with attached USB-C cable. Everyone needs a power bank and this one charges faster than others, and is Qi 2 compatible. Highly recommended.",
+            "review_text": "These are a mainstay in my wife's and my work bags and I'm considering getting more. The slim profile and folding prongs make it fit neatly into a pocket, and it feels pleasantly sturdy.",
             "product": ""
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "reviewer_name": "Holly",
-            "rating": 4,
-            "review_text": "The multiple ports make it very flexible, so I can keep a mix of devices going from one unit instead of carrying several separate chargers. Build quality is very good and it feels solid and premium.",
+            "reviewer_name": "Dan",
+            "rating": 5,
+            "review_text": "I wanted a low-profile charger that could charge two phones at max speed or power a laptop — this little guy fits the bill. I'm already considering buying another one for traveling.",
             "product": ""
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "reviewer_name": "Joe",
-            "rating": 4,
-            "review_text": "I love the form factor of this charger — it's compact for travel or minimalist space usage on a desk. It charges at 25W for my iPhone 17 and has an extension port if I want to plug something else in.",
+            "reviewer_name": "Tim",
+            "rating": 5,
+            "review_text": "I love this charger. It's extremely low profile, and the cables go in parallel to the wall which makes it even thinner than other charging bricks. Charges all our devices very well.",
             "product": ""
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
-            "reviewer_name": "David",
+            "reviewer_name": "Daisy",
             "rating": 5,
-            "review_text": "A very well designed and built charger. The retractable lead is a great idea and I can recommend this for anyone who needs a neat and solid charger for their travels.",
+            "review_text": "A great little product that I've used for years. I had an issue and EZQuest called me immediately, explained the fix and solved it. The customer service was excellent — I highly recommend the product and company!",
             "product": ""
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
-            "reviewer_name": "Chris",
-            "rating": 4,
-            "review_text": "This USB-C hub has been a game changer for my MacBook Air. It has a great selection of ports. I was able to achieve fast and stable data transfer and upload speeds compared to the built-in gigabit port.",
+            "reviewer_name": "Mike Carroll",
+            "rating": 5,
+            "review_text": "I bought the newest MacBook Pro and saw it had no USB ports. This device is slim enough to fit in the pocket of my laptop sleeve, and I use it to connect USB devices and ethernet connections. Works great!",
             "product": ""
           }
         }
