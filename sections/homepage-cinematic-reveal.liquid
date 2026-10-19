@@ -2,7 +2,12 @@
   assign headline_lines = section.settings.headline | split: '|'
 -%}
 {% style %}
-  .cinematic-reveal-kicker.section-kicker { color: var(--ez-amber, #fed300) !important; }
+  .cinematic-reveal-kicker.section-kicker { color: var(--ez-amber, #fed300) !important; text-transform: none !important; letter-spacing: 0 !important; }
+  .cinematic-reveal-stat__icon { display: block; color: var(--ez-amber, #fed300); margin-bottom: 10px; }
+  .cinematic-reveal-stat__icon svg { display: block; }
+  @media (min-width: 768px) {
+    .cinematic-reveal-stat + .cinematic-reveal-stat { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 28px; }
+  }
 {% endstyle %}
 <section
   class="cinematic-reveal-section section--dark"
@@ -52,18 +57,30 @@
 
     <div class="cinematic-reveal-stats" aria-label="Brand highlights">
       <div class="cinematic-reveal-stat">
+        <span class="cinematic-reveal-stat__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </span>
         <span class="cinematic-reveal-stat__num">30+ Years</span>
         <span class="cinematic-reveal-stat__lbl">Connectivity Expertise</span>
       </div>
       <div class="cinematic-reveal-stat">
+        <span class="cinematic-reveal-stat__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg>
+        </span>
         <span class="cinematic-reveal-stat__num">100+ Products</span>
         <span class="cinematic-reveal-stat__lbl">Designed For Today’s Devices</span>
       </div>
       <div class="cinematic-reveal-stat">
+        <span class="cinematic-reveal-stat__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
         <span class="cinematic-reveal-stat__num">1–2 Year</span>
         <span class="cinematic-reveal-stat__lbl">Limited Warranty</span>
       </div>
       <div class="cinematic-reveal-stat">
+        <span class="cinematic-reveal-stat__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </span>
         <span class="cinematic-reveal-stat__num">24 Hours</span>
         <span class="cinematic-reveal-stat__lbl">Fast Order Processing</span>
       </div>

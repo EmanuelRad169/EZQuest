@@ -29,13 +29,13 @@
         "slide_2": {
           "type": "slide",
           "settings": {
-            "eyebrow": "USB-C Cables & Docks",
-            "heading": "The Right Connection<br>for a Smarter Workspace.",
-            "copy": "High-performance USB-C cables and desk-ready docks deliver faster data, higher-resolution displays, and powerful charging—without the clutter.",
-            "primary_label": "Shop USB-C Cables & Docks",
-            "primary_url": "/collections/cables",
-            "secondary_label": "Compare Options",
-            "secondary_url": "/pages/compare",
+            "eyebrow": "USB-C Slim Hub · H30006",
+            "heading": "6-in-1 Slim Hub.<br>4K Display. 100W Power.",
+            "copy": "The USB-C Slim Gen 2 6-in-1 hub adds 4K 60Hz video, four 10Gbps USB-C ports, and 100W PD pass-through—slim enough to carry anywhere.",
+            "primary_label": "Shop H30006",
+            "primary_url": "/products/usb-c-slim-gen-2-hub-adapter-6-in-1",
+            "secondary_label": "View Hub",
+            "secondary_url": "/products/usb-c-slim-gen-2-hub-adapter-6-in-1",
             "image": "shopify://shop_images/DT_Banner_02_0df90393-2bbc-4c57-9f67-6517b0e4d39e.jpg",
             "image_mobile": "shopify://shop_images/Mob_Banner_02_8ab61f7c-456d-466d-88d7-424941fedfe7.jpg"
           }
@@ -282,11 +282,11 @@
       "settings": {
         "image": "shopify://shop_images/Down_Page_Banner.jpg",
         "text_position": "left",
-        "eyebrow": "Desk and Travel Coverage",
-        "heading": "Choose the Right Mix of Ports, Power, and Displays",
-        "copy": "From compact travel hubs to desk-ready docks and multi-device chargers, EZQuest keeps modern-device setups cleaner and easier to manage.",
-        "cta_label": "Shop the Lineup",
-        "cta_link": ""
+        "eyebrow": "Wall Chargers",
+        "heading": "Clean Power. A More Organized Space.",
+        "copy": "Choose the right mix of ports, power, and displays with our compact wall chargers—designed for a cleaner setup at home, the office, or while traveling.",
+        "cta_label": "Shop Wall Chargers",
+        "cta_link": "/collections/wall-chargers"
       }
     },
     "story": {
@@ -318,7 +318,7 @@
             "body": "Orders Ship Within 1–2 Business Days With Full Tracking Provided.",
             "icon": "truck",
             "icon_bg": "#FEF3C7",
-            "icon_color": "#92400E",
+            "icon_color": "#F59E0B",
             "link_url": "/pages/shipping-returns"
           }
         },
@@ -339,8 +339,8 @@
             "heading": "Easy Returns",
             "body": "Hassle-Free Returns Within 30 Days. No Questions Asked.",
             "icon": "refresh-cw",
-            "icon_bg": "#DBEAFE",
-            "icon_color": "#1E40AF",
+            "icon_bg": "#FEF3C7",
+            "icon_color": "#F59E0B",
             "link_url": "/pages/shipping-returns"
           }
         },
@@ -350,8 +350,8 @@
             "heading": "Manuals & Downloads",
             "body": "Setup Guides, Firmware, And Documentation Ready When You Need Them.",
             "icon": "file-text",
-            "icon_bg": "#E0E7FF",
-            "icon_color": "#3730A3",
+            "icon_bg": "#FEF3C7",
+            "icon_color": "#F59E0B",
             "link_url": "/pages/manuals"
           }
         },
@@ -361,8 +361,8 @@
             "heading": "Live Support",
             "body": "Real People, Fast Answers. Help By Email, Chat, Or Phone.",
             "icon": "support",
-            "icon_bg": "#D1FAE5",
-            "icon_color": "#065F46",
+            "icon_bg": "#FEF3C7",
+            "icon_color": "#F59E0B",
             "link_url": "/pages/support"
           }
         }
@@ -382,7 +382,7 @@
         "kicker": "Engineered For Reliable Connections",
         "headline": "Built Different. Works Better.",
         "body_text": "High-Performance Connectivity Designed To Keep Your Displays, And Workflow Connected.",
-        "cta_label": "Shop Products",
+        "cta_label": "Shop Products →",
         "cta_url": "/collections/all",
         "aria_label": "Brand Statement"
       }
