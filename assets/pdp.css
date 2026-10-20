@@ -624,6 +624,8 @@
 .pdp-share-btn--fb  { background: #1877F2; color: #fff; }
 .pdp-share-btn--tw  { background: #000;    color: #fff; }
 .pdp-share-btn--pin { background: #E60023; color: #fff; }
+.pdp-share-btn--ig  { background: #E4405F; color: #fff; }
+.pdp-share-btn--yt  { background: #FF0000; color: #fff; }
 .pdp-share-btn--copy { background: var(--ez-light); color: var(--ez-black); }
 
 .pdp-share-btn--copy[data-copied] {
