@@ -1,3 +1,15 @@
+<style>
+  /* A third-party app injects `footer { float: left }`, which drops the footer out of
+     flow and collapses its wrapper to 0px — that shortened the page body and broke the
+     sticky header near the bottom. Force it back into normal flow. */
+  footer.site-footer, .site-footer { float: none !important; }
+
+  /* Slightly lighter footer text (not full white) for better legibility on the dark bg. */
+  .site-footer__grid a { color: rgba(255, 255, 255, 0.80) !important; }
+  .site-footer__grid a:hover { color: #ffffff !important; }
+  .footer-col__heading { color: rgba(255, 255, 255, 0.85) !important; }
+  .site-footer__copy { color: rgba(255, 255, 255, 0.78) !important; }
+</style>
 <footer class="site-footer" role="contentinfo">
   <div class="container-shell">
 
