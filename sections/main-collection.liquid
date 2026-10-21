@@ -707,23 +707,45 @@
         </button>
       {%- endif -%}
       {%- if section.settings.show_sort -%}
-        <button type="button"
-                class="collection-mobile-bar__btn"
-                id="collection-mobile-sort-btn"
-                aria-label="Sort products">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2 5h8M2 8h5M2 11h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M11 3v10M9 11l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Sort
-        </button>
+        {%- comment -%}
+          Mobile sort uses a real transparent <select> laid over the button (the same
+          pattern as the desktop sort). A programmatic .click() on a <select> does NOT
+          open the native picker on mobile browsers, which is why the old button did
+          nothing when tapped.
+        {%- endcomment -%}
+        {%- assign mobile_sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <div class="collection-mobile-bar__btn collection-mobile-sort-wrap">
+          <select id="CollectionSortMobile"
+                  class="collection-sort-select-native"
+                  aria-label="Sort products">
+            {% for option in collection.sort_options %}
+              <option value="{{ option.value }}" {% if option.value == mobile_sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+            {% endfor %}
+          </select>
+          <span class="collection-mobile-sort-label" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 5h8M2 8h5M2 11h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11 3v10M9 11l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Sort
+          </span>
+        </div>
         <script>
         (function() {
-          var sortBtn = document.getElementById('collection-mobile-sort-btn');
-          var sortSelect = document.getElementById('CollectionSort');
-          if (sortBtn && sortSelect) {
-            sortBtn.addEventListener('click', function() { sortSelect.focus(); sortSelect.click(); });
-          }
+          var mobileSort = document.getElementById('CollectionSortMobile');
+          var desktopSort = document.getElementById('CollectionSort');
+          if (!mobileSort) return;
+          mobileSort.addEventListener('change', function() {
+            // Mirror onto the canonical select so the existing sort handler runs.
+            if (desktopSort) {
+              desktopSort.value = mobileSort.value;
+              desktopSort.dispatchEvent(new Event('change', { bubbles: true }));
+            } else {
+              var params = new URLSearchParams(window.location.search);
+              params.set('sort_by', mobileSort.value);
+              window.location.assign(window.location.pathname + '?' + params.toString());
+            }
+          });
         })();
         </script>
       {%- endif -%}
@@ -731,6 +753,10 @@
     <style>
       .collection-mobile-bar{transition:transform .28s ease,opacity .28s ease;}
       .collection-mobile-bar.is-at-footer{transform:translateY(140%);opacity:0;pointer-events:none;}
+      /* The transparent native <select> is absolutely positioned, so its wrapper
+         must establish a positioning context for the tap target to cover the pill. */
+      .collection-mobile-sort-wrap{position:relative;}
+      .collection-mobile-sort-label{display:inline-flex;align-items:center;gap:.5rem;pointer-events:none;}
     </style>
     <script>
     (function(){
