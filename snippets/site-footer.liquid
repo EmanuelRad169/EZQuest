@@ -16,8 +16,12 @@
   .footer-col__heading { color: rgba(255, 255, 255, 0.85) !important; }
   .site-footer__copy { color: rgba(255, 255, 255, 0.78) !important; }
 
-  /* Payment methods block — centered, no heading */
-  .site-footer__payments { padding: 18px 0 2px; text-align: center; }
+  /* Payment methods block — centered, no heading.
+     Balanced spacing: the link grid above sits flush, so the breathing room comes
+     from this block's top padding; the divider below carries a 40px top margin by
+     default, which is trimmed here so the gaps above and below match. */
+  .site-footer__payments { padding: 30px 0 0; text-align: center; }
+  .site-footer__payments + .site-footer__divider { margin-top: 26px; }
   .site-footer__payments-list {
     list-style: none;
     margin: 0 auto;
