@@ -16,31 +16,26 @@
   .footer-col__heading { color: rgba(255, 255, 255, 0.85) !important; }
   .site-footer__copy { color: rgba(255, 255, 255, 0.78) !important; }
 
-  /* Payment methods block */
-  .site-footer__payments { padding: 4px 0 2px; }
-  .site-footer__payments-heading {
-    margin: 0 0 12px;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
-  }
+  /* Payment methods block — centered, no heading */
+  .site-footer__payments { padding: 18px 0 2px; text-align: center; }
   .site-footer__payments-list {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
+    justify-content: center;
   }
   .site-footer__payment {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 32px;
+    width: 36px;
+    height: 23px;
     padding: 0;
-    border-radius: 6px;
+    border-radius: 4px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.10);
   }
@@ -51,8 +46,8 @@
     object-fit: contain;
   }
   @media (max-width: 640px) {
-    .site-footer__payments-list { gap: 6px; }
-    .site-footer__payment { width: 44px; height: 28px; }
+    .site-footer__payments-list { gap: 5px; }
+    .site-footer__payment { width: 32px; height: 20px; }
   }
 </style>
 <footer class="site-footer" role="contentinfo">
@@ -110,15 +105,12 @@
 
     </div>
 
-    <div class="site-footer__divider"></div>
-
     {% comment %}
       PAYMENT METHODS — mirrors what is actually enabled at checkout
       (verified live: Visa, Mastercard, Amex, Discover, JCB, UnionPay cards;
       PayPal, Apple Pay and Google Pay wallets). Renders on every page.
     {% endcomment %}
-    <div class="site-footer__payments" aria-labelledby="footer-payments-heading">
-      <p class="site-footer__payments-heading" id="footer-payments-heading">We Accept</p>
+    <div class="site-footer__payments" aria-label="Accepted payment methods" role="group">
       <ul class="site-footer__payments-list" role="list">
         {%- assign pay_methods = 'visa,Visa|mastercard,Mastercard|amex,American Express|discover,Discover|jcb,JCB|unionpay,UnionPay|paypal,PayPal|applepay,Apple Pay|googlepay,Google Pay' | split: '|' -%}
         {%- for method in pay_methods -%}
