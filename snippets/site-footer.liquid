@@ -116,7 +116,8 @@
     {% endcomment %}
     <div class="site-footer__payments" aria-label="Accepted payment methods" role="group">
       <ul class="site-footer__payments-list" role="list">
-        {%- assign pay_methods = 'visa,Visa|mastercard,Mastercard|amex,American Express|discover,Discover|jcb,JCB|unionpay,UnionPay|paypal,PayPal|applepay,Apple Pay|googlepay,Google Pay' | split: '|' -%}
+        {%- comment -%} Cards first, then wallets (Venmo sits beside PayPal — it runs through PayPal). {%- endcomment -%}
+        {%- assign pay_methods = 'visa,Visa|mastercard,Mastercard|amex,American Express|discover,Discover|jcb,JCB|unionpay,UnionPay|shoppay,Shop Pay|paypal,PayPal|venmo,Venmo|applepay,Apple Pay|googlepay,Google Pay' | split: '|' -%}
         {%- for method in pay_methods -%}
           {%- assign parts = method | split: ',' -%}
           {%- assign slug = parts[0] -%}
