@@ -1059,8 +1059,22 @@
     assign show_downloads_tab = true
   endif
 
+  comment
+    Video tab — the product video lives here rather than in the image gallery, so the
+    gallery stays photos-only (a video tile there renders as a raw YouTube thumbnail).
+    Source: custom.product_video_url per product, falling back to the section setting.
+  endcomment
+  assign show_video_tab = false
+  assign pdp_video_url = product.metafields.custom.product_video_url | strip
+  if pdp_video_url == blank
+    assign pdp_video_url = section.settings.youtube_url
+  endif
+  if pdp_video_url != blank
+    assign show_video_tab = true
+  endif
+
   assign has_editorial_content = false
-  if show_overview_tab or show_specs_tab or show_highlight_tab or show_compat_tab or show_downloads_tab or has_in_box
+  if show_overview_tab or show_specs_tab or show_highlight_tab or show_compat_tab or show_video_tab or show_downloads_tab or has_in_box
     assign has_editorial_content = true
   endif
 -%}
@@ -1074,6 +1088,7 @@
       {%- if show_specs_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="specs">Specifications</button>{%- endif -%}
       {%- if show_highlight_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="highlight">Highlights</button>{%- endif -%}
       {%- if show_compat_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="compat">Compatibility</button>{%- endif -%}
+      {%- if show_video_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="video">Video</button>{%- endif -%}
       {%- if show_downloads_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="downloads">Downloads</button>{%- endif -%}
     </div>
 
@@ -1159,6 +1174,12 @@
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="compat" id="pdp-compat" tabindex="0">
           {%- render 'product-compat-matrix', product: product -%}
           <div class="pdp-content-prose">{% if compatibility_summary_html != blank %}{{ compatibility_summary_html }}{% else %}{{ compat_html }}{% endif %}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if show_video_tab -%}
+        <div class="pdp-tabs2__panel" role="tabpanel" data-panel="video" id="pdp-video" tabindex="0">
+          {%- render 'product-video-embed', url: pdp_video_url, title: product.title -%}
         </div>
       {%- endif -%}
 
