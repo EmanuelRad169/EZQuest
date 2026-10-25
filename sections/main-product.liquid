@@ -917,11 +917,11 @@
 </section>
 
 {%- liquid
+  comment
+    The product video is NOT rendered here — it lives in the Video tab (Zone 4) so it
+    only appears once on the page. This section is now driven purely by feature blocks.
+  endcomment
   assign show_features_tab = false
-  assign metafield_video_url = product.metafields.custom.product_video_url | strip
-  if section.settings.youtube_url != blank or metafield_video_url != blank
-    assign show_features_tab = true
-  endif
   for block in section.blocks
     if block.type == 'feature' and block.settings.image != blank
       assign show_features_tab = true
@@ -932,8 +932,8 @@
 
 {% comment %}──────────────────────────────────────────────────────────────
   ZONE 3 — FEATURES
-  Guard: requires youtube_url setting OR at least one feature block
-         with an image. Renders nothing if neither is set.
+  Guard: requires at least one feature block with an image.
+         Renders nothing otherwise.
 ──────────────────────────────────────────────────────────────{% endcomment %}
 {% if show_features_tab %}
 <section class="section-shell pdp-section pdp-section--features" id="pdp-features">
@@ -944,11 +944,6 @@
         <h2 class="section-heading mt-4">{{ product.title | split: '—' | first | strip }}</h2>
       </div>
     </div>
-
-    {%- assign feature_video_url = section.settings.youtube_url | strip | default: metafield_video_url -%}
-    {%- if feature_video_url != blank -%}
-      {%- render 'product-video-embed', url: feature_video_url, title: product.title -%}
-    {%- endif -%}
 
     {%- assign feature_block_count = 0 -%}
     {% for block in section.blocks %}
