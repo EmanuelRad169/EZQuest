@@ -37,7 +37,12 @@
     {%- assign is_mp4 = true -%}
   {%- endif -%}
 
-  <div class="pdp-video-wrap mt-8 w-full">
+  <style>
+    /* Keep the player modest — full width looks oversized inside the tab panel. */
+    .pdp-video-wrap { max-width: 720px; margin-left: 0; }
+    @media (max-width: 767px) { .pdp-video-wrap { max-width: 100%; } }
+  </style>
+  <div class="pdp-video-wrap mt-6 w-full">
     <div class="pdp-video-frame">
       {%- if is_youtube and embed_id != blank -%}
         <iframe

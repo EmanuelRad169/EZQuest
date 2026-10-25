@@ -1084,11 +1084,11 @@
   <div class="container-shell">
     <div class="pdp-tabs2" role="tablist" aria-label="Product information">
       {%- if show_overview_tab -%}<button class="pdp-tabs2__tab is-active" type="button" role="tab" aria-selected="true" data-tab="overview">Overview</button>{%- endif -%}
+      {%- if show_video_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="video">Video</button>{%- endif -%}
       {%- if has_in_box -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="in-box">In the box</button>{%- endif -%}
       {%- if show_specs_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="specs">Specifications</button>{%- endif -%}
       {%- if show_highlight_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="highlight">Highlights</button>{%- endif -%}
       {%- if show_compat_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="compat">Compatibility</button>{%- endif -%}
-      {%- if show_video_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="video">Video</button>{%- endif -%}
       {%- if show_downloads_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="downloads">Downloads</button>{%- endif -%}
     </div>
 
@@ -1096,6 +1096,12 @@
       {%- if show_overview_tab -%}
         <div class="pdp-tabs2__panel is-active" role="tabpanel" data-panel="overview" id="pdp-panel-overview" tabindex="0">
           <div class="pdp-content-prose">{{ overview_html }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if show_video_tab -%}
+        <div class="pdp-tabs2__panel" role="tabpanel" data-panel="video" id="pdp-video" tabindex="0">
+          {%- render 'product-video-embed', url: pdp_video_url, title: product.title -%}
         </div>
       {%- endif -%}
 
@@ -1174,12 +1180,6 @@
         <div class="pdp-tabs2__panel" role="tabpanel" data-panel="compat" id="pdp-compat" tabindex="0">
           {%- render 'product-compat-matrix', product: product -%}
           <div class="pdp-content-prose">{% if compatibility_summary_html != blank %}{{ compatibility_summary_html }}{% else %}{{ compat_html }}{% endif %}</div>
-        </div>
-      {%- endif -%}
-
-      {%- if show_video_tab -%}
-        <div class="pdp-tabs2__panel" role="tabpanel" data-panel="video" id="pdp-video" tabindex="0">
-          {%- render 'product-video-embed', url: pdp_video_url, title: product.title -%}
         </div>
       {%- endif -%}
 
