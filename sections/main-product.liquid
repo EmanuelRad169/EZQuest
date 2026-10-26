@@ -361,10 +361,70 @@
                   {% render 'owned-product-visual', product_handle: product.handle, product_title: product.title, variant: 'scale', width: 320, height: 320, class: 'aspect-square w-full object-cover' %}
                 </button>
               {% endif %}
+
+              {%- comment -%}
+                Video tile. Deliberately NOT a Shopify media item: this gallery is an
+                image swapper (theme.js syncStageIndex swaps the main <img> src), so an
+                ExternalVideo here renders as a raw red YouTube embed and cannot play.
+                Instead we show a clean product still with a play badge, and clicking it
+                opens the Video tab where the embed plays properly.
+              {%- endcomment -%}
+              {%- assign rail_video_url = product.metafields.custom.product_video_url | strip -%}
+              {%- if rail_video_url == blank -%}{%- assign rail_video_url = section.settings.youtube_url -%}{%- endif -%}
+              {%- if rail_video_url != blank -%}
+                {%- assign rail_video_poster = product.featured_image -%}
+                <button type="button" class="product-thumb-card product-thumb-card--video" data-pdp-video-thumb aria-label="Play video for {{ product.title | escape }}">
+                  {% if rail_video_poster != blank %}
+                    {% render 'media', image: rail_video_poster, aspect_ratio: 'aspect-square', class: 'bg-white p-1 shadow-none', object_fit: 'object-contain', loading: 'lazy', max_width: 200, widths: '100, 200', sizes: '80px' %}
+                  {% endif %}
+                  <span class="product-thumb-card__play" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.3-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/></svg>
+                  </span>
+                </button>
+              {%- endif -%}
             </div>
 
           </div>
         </div>
+
+{%- if rail_video_url != blank -%}
+<style>
+  .product-thumb-card--video { position: relative; }
+  .product-thumb-card__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .product-thumb-card__play svg {
+    display: block;
+    padding: 7px;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.78);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+</style>
+<script>
+(function () {
+  // Gallery video tile → open the Video tab and scroll it into view.
+  document.addEventListener('click', function (e) {
+    var tile = e.target.closest('[data-pdp-video-thumb]');
+    if (!tile) return;
+    e.preventDefault();
+    var tab = document.querySelector('.pdp-tabs2__tab[data-tab="video"]');
+    if (!tab) return;
+    tab.click();
+    var section = document.getElementById('pdp-content-tabs');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}());
+</script>
+{%- endif -%}
 
 
         <div
