@@ -757,17 +757,21 @@
                 </svg>
               </a>
               {%- comment -%}
-                Instagram has no web share endpoint, so instead of a dead link we use the
-                device share sheet (navigator.share) — Instagram, WhatsApp, Messages etc.
-                all appear there on mobile. Hidden unless the browser supports it.
+                Instagram has no web share endpoint — a link can only be shared into IG from
+                inside its own app — so this button does the closest real thing:
+                  • Mobile / any browser with navigator.share → opens the device share sheet,
+                    where Instagram sits alongside WhatsApp, Messages, Mail, etc.
+                  • Desktop (no share sheet) → copies the product link and confirms, so the
+                    person can paste it into an IG story, DM or bio.
+                Always visible either way, so the icon never goes missing on desktop.
               {%- endcomment -%}
-              <button class="pdp-share-btn pdp-share-btn--ig pdp-share-btn--native"
+              <button class="pdp-share-btn pdp-share-btn--ig"
                       type="button"
-                      hidden
-                      data-pdp-native-share
+                      data-pdp-ig-share
                       data-share-title="{{ product.title | escape }}"
                       data-share-url="{{ shop.url | append: product.url }}"
-                      aria-label="Share on Instagram and more">
+                      aria-label="{{ 'social.share_on_instagram' | t }}"
+                      title="{{ 'social.share_on_instagram' | t }}">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
@@ -776,15 +780,33 @@
               </button>
               <script>
                 (function () {
-                  if (!navigator.share) return;
-                  document.querySelectorAll('[data-pdp-native-share]').forEach(function (btn) {
-                    btn.hidden = false;
+                  document.querySelectorAll('[data-pdp-ig-share]').forEach(function (btn) {
                     btn.addEventListener('click', function () {
-                      navigator.share({
-                        title: btn.dataset.shareTitle,
-                        text: btn.dataset.shareTitle,
-                        url: btn.dataset.shareUrl
-                      }).catch(function () { /* user dismissed the sheet */ });
+                      var title = btn.dataset.shareTitle;
+                      var url = btn.dataset.shareUrl;
+
+                      if (navigator.share) {
+                        navigator.share({ title: title, text: title, url: url })
+                          .catch(function () { /* person dismissed the share sheet */ });
+                        return;
+                      }
+
+                      // No share sheet (desktop): copy the link so it can be pasted into Instagram.
+                      var done = function () {
+                        btn.setAttribute('data-copied', 'true');
+                        setTimeout(function () { btn.removeAttribute('data-copied'); }, 2400);
+                      };
+                      if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(url).then(done).catch(done);
+                      } else {
+                        var tmp = document.createElement('input');
+                        tmp.value = url;
+                        document.body.appendChild(tmp);
+                        tmp.select();
+                        try { document.execCommand('copy'); } catch (e) {}
+                        document.body.removeChild(tmp);
+                        done();
+                      }
                     });
                   });
                 })();
