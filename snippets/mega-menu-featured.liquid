@@ -15,7 +15,7 @@
         <a href="{{ href }}" class="button-primary button-sm mega-menu-story-primary">{{ cta | default: 'Explore' }}</a>
       {% endif %}
       {% if secondary_href != blank %}
-        <a href="{{ secondary_href }}" class="button-tertiary mega-menu-story-secondary">{{ secondary_cta | default: 'Learn more' }}</a>
+        <a href="{{ secondary_href }}" class="button-tertiary mega-menu-story-secondary">{{ secondary_cta | default: 'Learn More' }}</a>
       {% endif %}
     </div>
   </article>
@@ -36,7 +36,7 @@
       </ul>
     {% endif %}
     {% if href != blank %}
-      <a href="{{ href }}" class="button-primary button-sm mega-menu-support-cta">{{ cta | default: 'Open support center' }}</a>
+      <a href="{{ href }}" class="button-primary button-sm mega-menu-support-cta">{{ cta | default: 'Open Support Center' }}</a>
     {% endif %}
   </aside>
 {%- else -%}
@@ -57,7 +57,7 @@
         <span class="mega-menu-featured-price">{{ price }}</span>
       {% endif %}
     </div>
-      <span class="button-tertiary mega-menu-featured-cta">{{ cta | default: 'View product' }}</span>
+      <span class="button-tertiary mega-menu-featured-cta">{{ cta | default: 'View Product' }}</span>
     </div>
     {% if image != blank %}
       <div class="mega-menu-featured-media">

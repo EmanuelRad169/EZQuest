@@ -31,7 +31,7 @@
     {%- assign sr_sub = section.settings.hero_subheading | default: 'Free shipping on all US orders over $90. 30-day hassle-free returns. 1–2 year limited warranty depending on product.' -%}
     {%- if sr_sub != blank -%}<p class="page-hero__subheading">{{ sr_sub }}</p>{%- endif -%}
     <div class="page-hero__actions">
-      {%- assign sr_cta1 = section.settings.cta_primary_label | default: 'Start a return' -%}
+      {%- assign sr_cta1 = section.settings.cta_primary_label | default: 'Start a Return' -%}
       {%- if sr_cta1 != blank -%}<a href="{{ section.settings.cta_primary_url | default: '/pages/contact' }}" class="page-hero__cta">{{ sr_cta1 }}</a>{%- endif -%}
       {%- assign sr_cta2 = section.settings.cta_secondary_label | default: 'Browse FAQ' -%}
       {%- if sr_cta2 != blank -%}<a href="{{ section.settings.cta_secondary_url | default: '/pages/faq' }}" class="page-hero__cta-secondary">{{ sr_cta2 }} <span aria-hidden="true">&rarr;</span></a>{%- endif -%}
@@ -102,34 +102,34 @@
         <div class="return-step">
           <div class="return-step__num">1</div>
           <div>
-            <p class="return-step__title">{{ section.settings.step1_title | default: "Contact us" }}</p>
+            <p class="return-step__title">{{ section.settings.step1_title | default: "Contact Us" }}</p>
             <p class="return-step__body">{{ section.settings.step1_body | default: "Email support@ezq.com with your order number and reason for return. We respond within 1 business day." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">2</div>
           <div>
-            <p class="return-step__title">{{ section.settings.step2_title | default: "Get your RMA" }}</p>
+            <p class="return-step__title">{{ section.settings.step2_title | default: "Get Your RMA" }}</p>
             <p class="return-step__body">{{ section.settings.step2_body | default: "We'll email you a Return Materials Authorization number and step-by-step return instructions." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">3</div>
           <div>
-            <p class="return-step__title">{{ section.settings.step3_title | default: "Ship it back" }}</p>
+            <p class="return-step__title">{{ section.settings.step3_title | default: "Ship It Back" }}</p>
             <p class="return-step__body">{{ section.settings.step3_body | default: "Write your RMA number on the outside of the package. Use a trackable shipping method — we can't accept responsibility for lost returns." }}</p>
           </div>
         </div>
         <div class="return-step">
           <div class="return-step__num">4</div>
           <div>
-            <p class="return-step__title">{{ section.settings.step4_title | default: "Get your refund" }}</p>
+            <p class="return-step__title">{{ section.settings.step4_title | default: "Get Your Refund" }}</p>
             <p class="return-step__body">{{ section.settings.step4_body | default: "Once received and inspected, refunds process within 5–7 business days back to your original payment method." }}</p>
           </div>
         </div>
       </div>
       <div style="margin-top:2rem;padding:1.25rem;background:var(--ez-light);border-radius:14px;">
-        <p style="font-size:13px;font-weight:500;color:var(--ez-black);margin-bottom:.375rem;">{{ section.settings.note_title | default: "30-day return window" }}</p>
+        <p style="font-size:13px;font-weight:500;color:var(--ez-black);margin-bottom:.375rem;">{{ section.settings.note_title | default: "30-Day Return Window" }}</p>
         <p style="font-size:13px;color:var(--ez-grey);line-height:1.6;">{{ section.settings.note_body | default: "Items must be returned within 30 days of delivery, unused, and in original packaging. Items showing signs of use may not be eligible for a full refund." }}</p>
       </div>
     </div>
@@ -142,7 +142,7 @@
   <div class="container-shell">
     <div style="margin-bottom:2rem;">
       <p class="section-intro__kicker">Common questions</p>
-      <h2 class="section-intro__heading section-intro__heading--left text-left">Shipping &amp; returns FAQ</h2>
+      <h2 class="section-intro__heading section-intro__heading--left text-left">Shipping &amp; Returns FAQ</h2>
     </div>
     <div class="page-faq">
       <div class="page-faq-item">
@@ -181,7 +181,7 @@
   <div class="container-shell">
     <div style="margin-bottom:1.5rem;">
       <p class="section-intro__kicker">Return policy highlights</p>
-      <h2 class="section-intro__heading section-intro__heading--left text-left" style="font-size:clamp(1.25rem,2.5vw,1.75rem);">What to know before you return</h2>
+      <h2 class="section-intro__heading section-intro__heading--left text-left" style="font-size:clamp(1.25rem,2.5vw,1.75rem);">What to Know Before You Return</h2>
     </div>
     <ul class="sr-policy-list">
       <li>Undamaged products qualify for a <strong>full refund within 30 days</strong> of purchase</li>
@@ -189,7 +189,7 @@
       <li>Bulk orders of 10 or more units of the same product are not eligible for refund</li>
       <li>Free prepaid return shipping label provided for all approved US returns</li>
     </ul>
-    {%- assign sr_pol = section.settings.policy_link_label | default: 'Read the full return & refund policy' -%}
+    {%- assign sr_pol = section.settings.policy_link_label | default: 'Read the Full Return & Refund Policy' -%}
     {%- if sr_pol != blank -%}<a href="{{ section.settings.policy_link_url | default: '/policies/refund-policy' }}" class="sr-policy-link">{{ sr_pol }} &rarr;</a>{%- endif -%}
   </div>
 </section>
@@ -367,7 +367,7 @@
       "type": "text",
       "id": "step1_title",
       "label": "Step 1 title",
-      "default": "Contact us"
+      "default": "Contact Us"
     },
     {
       "type": "textarea",
@@ -379,7 +379,7 @@
       "type": "text",
       "id": "step2_title",
       "label": "Step 2 title",
-      "default": "Get your RMA"
+      "default": "Get Your RMA"
     },
     {
       "type": "textarea",
@@ -391,7 +391,7 @@
       "type": "text",
       "id": "step3_title",
       "label": "Step 3 title",
-      "default": "Ship it back"
+      "default": "Ship It Back"
     },
     {
       "type": "textarea",
@@ -403,7 +403,7 @@
       "type": "text",
       "id": "step4_title",
       "label": "Step 4 title",
-      "default": "Get your refund"
+      "default": "Get Your Refund"
     },
     {
       "type": "textarea",
@@ -415,7 +415,7 @@
       "type": "text",
       "id": "note_title",
       "label": "Return-window note title",
-      "default": "30-day return window"
+      "default": "30-Day Return Window"
     },
     {
       "type": "textarea",

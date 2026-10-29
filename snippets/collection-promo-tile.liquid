@@ -1,9 +1,9 @@
 {%- liquid
   assign resolved_handle = promo_handle | default: blank
-  assign resolved_eyebrow = promo_eyebrow | default: 'Next step'
+  assign resolved_eyebrow = promo_eyebrow | default: 'Next Step'
   assign resolved_title = promo_title | default: 'Explore the next part of the lineup'
   assign resolved_copy = promo_copy | default: 'See the adjacent EZQuest category that keeps the setup moving cleanly.'
-  assign resolved_link_label = promo_link_label | default: 'Explore now'
+  assign resolved_link_label = promo_link_label | default: 'Explore Now'
   assign resolved_image = promo_image | default: blank
   assign target_collection = collections[resolved_handle]
   assign target_url = routes.collections_url

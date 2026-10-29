@@ -66,7 +66,7 @@
       assign selected_option_summary = blank
       assign selected_option_label = 'Variant'
       assign role_decision_note = 'Clean connectivity.'
-      assign ownership_heading = section.settings.support_heading | default: 'Support stays close'
+      assign ownership_heading = section.settings.support_heading | default: 'Support Stays Close'
       assign ownership_copy = section.settings.support_copy | default: 'Compatibility, manuals, downloads, and help.'
       assign setup_label = 'Everyday'
       assign spec_count = 0
@@ -614,7 +614,7 @@
                 <details class="product-accessories-row">
                   <summary class="product-accessories-summary">
                     <span class="product-accessories-icon" aria-hidden="true">{% render 'icon', name: 'layers' %}</span>
-                    More accessories
+                    More Accessories
                     <span class="product-accessories-chevron" aria-hidden="true">{% render 'icon', name: 'chevron-down' %}</span>
                   </summary>
                   <div class="product-accessories-body">
@@ -1140,7 +1140,7 @@
     <div class="pdp-tabs2" role="tablist" aria-label="Product information">
       {%- if show_overview_tab -%}<button class="pdp-tabs2__tab is-active" type="button" role="tab" aria-selected="true" data-tab="overview">Overview</button>{%- endif -%}
       {%- if show_video_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="video">Video</button>{%- endif -%}
-      {%- if has_in_box -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="in-box">In the box</button>{%- endif -%}
+      {%- if has_in_box -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="in-box">In the Box</button>{%- endif -%}
       {%- if show_specs_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="specs">Specifications</button>{%- endif -%}
       {%- if show_highlight_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="highlight">Highlights</button>{%- endif -%}
       {%- if show_compat_tab -%}<button class="pdp-tabs2__tab" type="button" role="tab" aria-selected="false" data-tab="compat">Compatibility</button>{%- endif -%}
@@ -1253,7 +1253,7 @@
 <section class="section-shell pdp-section pdp-section--reviews" id="pdp-reviews">
   <div class="container-shell">
     <p class="section-kicker">Customer Reviews</p>
-    <h2 class="section-heading mt-4">What customers are saying</h2>
+    <h2 class="section-heading mt-4">What Customers Are Saying</h2>
     <div class="pdp-reviews-body mt-8">
       <div class="pdp-amazon-reviews-callout flex flex-col gap-4 max-w-[480px]">
         {% render 'amazon-reviews-widget', product: product %}

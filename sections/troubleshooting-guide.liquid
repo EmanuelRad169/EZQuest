@@ -6,7 +6,7 @@
 <section class="ts-hero bg-[linear-gradient(135deg,var(--ez-light)_0%,#ffffff_100%)] border-b border-black/[6%] pt-[clamp(52px,6vw,84px)] pb-[clamp(36px,4vw,52px)]">
   <div class="ts-hero__inner max-w-[80rem] mx-auto px-[clamp(1.25rem,5vw,2rem)]">
     <p class="ts-hero__kicker text-xs font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3.5">{{ section.settings.hero_kicker | default: 'Troubleshooting' }}</p>
-    <h1 class="ts-hero__heading text-[clamp(32px,5vw,60px)] font-medium tracking-[-0.04em] leading-[1.05] text-[var(--ez-black)] mb-4 max-w-[18ch]">{{ section.settings.hero_heading | default: 'Fix it by symptom' }}</h1>
+    <h1 class="ts-hero__heading text-[clamp(32px,5vw,60px)] font-medium tracking-[-0.04em] leading-[1.05] text-[var(--ez-black)] mb-4 max-w-[18ch]">{{ section.settings.hero_heading | default: 'Fix It by Symptom' }}</h1>
     <p class="ts-hero__sub text-[clamp(15px,1.5vw,17px)] text-[var(--ez-grey)] leading-[1.65] max-w-[54ch] m-0">{{ section.settings.hero_sub | default: 'Start with the symptom you see. Take the shortest recovery step. Escalate to support only if the issue stays.' }}</p>
   </div>
 </section>
@@ -172,7 +172,7 @@
 <section class="ts-resources bg-[var(--ez-light)] py-[clamp(52px,6vw,80px)]">
   <div class="ts-resources__inner max-w-[80rem] mx-auto px-[clamp(1.25rem,5vw,2rem)]">
     <p class="ts-resources__kicker text-xs font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.next_kicker | default: 'Next Step' }}</p>
-    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">{{ section.settings.next_heading | default: 'Where to go from here' }}</h2>
+    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">{{ section.settings.next_heading | default: 'Where to Go From Here' }}</h2>
     <p class="ts-resources__sub text-base text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] mb-10">{{ section.settings.next_sub | default: "If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation." }}</p>
     <div class="ts-resource-grid grid grid-cols-3 gap-4 max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
 
@@ -233,7 +233,7 @@
       <p class="wtb-cta__text">{{ section.settings.cta_text | default: 'Still need help?' }}</p>
     </div>
     <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="btn btn--primary">
-      {{ section.settings.cta_label | default: 'Submit a request' }}
+      {{ section.settings.cta_label | default: 'Submit a Request' }}
       {%- render 'icon', name: 'arrow-right', size: 16 -%}
     </a>
   </div>

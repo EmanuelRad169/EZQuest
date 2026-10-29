@@ -12,8 +12,8 @@
   <div class="container-shell">
     <div class="product-bundle-upsell__panel">
       <div class="product-bundle-upsell__copy">
-        <p class="section-kicker">{{ section.settings.eyebrow | default: 'Pairs with' }}</p>
-        <h2 class="product-bundle-upsell__heading">{{ section.settings.heading | default: 'Complete your setup' }}</h2>
+        <p class="section-kicker">{{ section.settings.eyebrow | default: 'Pairs With' }}</p>
+        <h2 class="product-bundle-upsell__heading">{{ section.settings.heading | default: 'Complete Your Setup' }}</h2>
         <p class="product-bundle-upsell__body">{{ section.settings.copy | default: 'Curated EZQuest accessories that pair perfectly with this product.' }}</p>
         <a href="{{ related_collection.url | default: routes.all_products_collection_url }}" class="product-bundle-upsell__cta">
           {{ section.settings.cta_label | default: 'Shop the Collection' }}

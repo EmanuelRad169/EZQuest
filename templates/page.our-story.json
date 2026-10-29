@@ -16,55 +16,55 @@
           "type": "stat",
           "settings": {
             "value": "30+",
-            "label": "Years in business"
+            "label": "Years in Business"
           }
         },
         "s_2": {
           "type": "stat",
           "settings": {
             "value": "100+",
-            "label": "Products made"
+            "label": "Products Made"
           }
         },
         "s_3": {
           "type": "stat",
           "settings": {
             "value": "1\u20132yr",
-            "label": "Limited warranty (varies by product)"
+            "label": "Limited Warranty (Varies by Product)"
           }
         },
         "v_1": {
           "type": "value",
           "settings": {
-            "title": "We listen first",
+            "title": "We Listen First",
             "body": "Every product begins with understanding our customers\u2019 needs, not following market trends."
           }
         },
         "v_2": {
           "type": "value",
           "settings": {
-            "title": "We never build \u201cme too\u201d products",
+            "title": "We Never Build \u201cMe Too\u201d Products",
             "body": "Every EZQuest product must improve upon what\u2019s already available by adding meaningful value."
           }
         },
         "v_3": {
           "type": "value",
           "settings": {
-            "title": "Thoughtful engineering",
+            "title": "Thoughtful Engineering",
             "body": "Every detail matters, from internal components to packaging, durability, and user experience."
           }
         },
         "v_4": {
           "type": "value",
           "settings": {
-            "title": "Innovation with purpose",
+            "title": "Innovation With Purpose",
             "body": "Technology should simplify life, not complicate it. Every feature should have a reason for existing."
           }
         },
         "v_5": {
           "type": "value",
           "settings": {
-            "title": "Building lifelong relationships",
+            "title": "Building Lifelong Relationships",
             "body": "Our success isn\u2019t measured by how many customers we have, but by how many people proudly recommend EZQuest to others."
           }
         },
@@ -151,13 +151,13 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/ezquest-story-hero.png",
-        "breadcrumb_label": "Our story",
+        "breadcrumb_label": "Our Story",
         "hero_kicker": "Est. 1994 \u00b7 Yorba Linda, California",
         "hero_heading": "Built for People Who Connect Everything",
         "hero_body": "Since 1994, EZQuest has made it simpler to connect the devices that matter most \u2014 with products built to last and a team that stands behind every one.",
         "hero_cta_label": "Shop Products",
         "hero_cta_url": "",
-        "hero_cta2_label": "Contact us",
+        "hero_cta2_label": "Contact Us",
         "hero_cta2_url": "",
         "narrative_kicker": "Our Story",
         "narrative_lead": "Technology has changed dramatically since EZQuest was founded in 1994. We\u2019ve witnessed the evolution from SCSI to USB, FireWire, Thunderbolt, USB-C, USB4, and beyond. Through every generation of innovation, one thing has remained unchanged: our commitment to designing products that solve real problems for real people.",

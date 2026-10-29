@@ -19,11 +19,11 @@
       <span class="nf404__dot"></span>
     </div>
 
-    <h1 class="nf404__heading">{{ section.settings.heading | default: 'Oops! Page not found' }}</h1>
+    <h1 class="nf404__heading">{{ section.settings.heading | default: 'Oops! Page Not Found' }}</h1>
     <p class="nf404__copy">{{ section.settings.copy | default: "The page you're looking for moved, was renamed, or never existed. Let's get you back to the good stuff." }}</p>
 
     <div class="nf404__actions">
-      <a href="{{ routes.root_url }}" class="btn btn--primary nf404__cta">{{ section.settings.cta_label | default: 'Go back to Homepage' }}</a>
+      <a href="{{ routes.root_url }}" class="btn btn--primary nf404__cta">{{ section.settings.cta_label | default: 'Go Back to Homepage' }}</a>
     </div>
     <a href="{{ routes.collections_url }}" class="nf404__quiet-link">Or browse all products →</a>
 

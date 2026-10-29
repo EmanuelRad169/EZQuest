@@ -52,7 +52,7 @@
   <div class="pr-picker container-shell" id="pr-picker-root">
     <div class="pr-picker__content">
       <p class="section-kicker">{{ section.settings.picker_kicker | default: 'Resources' }}</p>
-      <h1 class="pr-picker__title">{{ section.settings.picker_heading | default: 'Find your product resources' }}</h1>
+      <h1 class="pr-picker__title">{{ section.settings.picker_heading | default: 'Find Your Product Resources' }}</h1>
       <p class="pr-picker__copy">
         {{ section.settings.picker_copy | default: 'Enter the product handle from your packaging, or scan the QR code to go directly to setup, downloads, and support for your device.' }}
       </p>
@@ -127,7 +127,7 @@
   <section class="pr-section" id="pr-setup">
     <div class="container-shell">
       <p class="section-kicker">Getting Started</p>
-      <h2 class="section-heading mt-4">Setup guide</h2>
+      <h2 class="section-heading mt-4">Setup Guide</h2>
 
       {% if in_the_box != blank %}
         <div class="pr-subsection">
@@ -164,7 +164,7 @@
     <section class="pr-section" id="pr-manuals">
       <div class="container-shell">
         <p class="section-kicker">Documentation</p>
-        <h2 class="section-heading mt-4">Manuals &amp; guides</h2>
+        <h2 class="section-heading mt-4">Manuals &amp; Guides</h2>
         <div class="pr-doc-links">
           {% if manual_pdf_url != blank %}
             <a href="{{ manual_pdf_url }}" class="pr-doc-card" target="_blank" rel="noopener">
@@ -206,7 +206,7 @@
     <section class="pr-section pr-section--alt" id="pr-firmware">
       <div class="container-shell">
         <p class="section-kicker">Software</p>
-        <h2 class="section-heading mt-4">Firmware &amp; updates</h2>
+        <h2 class="section-heading mt-4">Firmware &amp; Updates</h2>
         <p class="pr-firmware-copy">Download the latest firmware to ensure peak performance and compatibility.</p>
         <a href="{{ firmware_url }}" class="btn btn--primary mt-6" target="_blank" rel="noopener">
           Download firmware
@@ -220,7 +220,7 @@
     <section class="pr-section" id="pr-compatibility">
       <div class="container-shell">
         <p class="section-kicker">Compatibility</p>
-        <h2 class="section-heading mt-4">Supported devices &amp; systems</h2>
+        <h2 class="section-heading mt-4">Supported Devices &amp; Systems</h2>
         <div class="pr-prose mt-6">{{ compat_html }}</div>
       </div>
     </section>
@@ -230,7 +230,7 @@
   <section class="pr-section pr-section--alt" id="pr-warranty">
     <div class="container-shell">
       <p class="section-kicker">Coverage</p>
-      <h2 class="section-heading mt-4">{{ warranty_years }}-year limited warranty</h2>
+      <h2 class="section-heading mt-4">{{ warranty_years }}-Year Limited Warranty</h2>
       <div class="pr-warranty-body">
         <p class="pr-warranty-copy">
           Your {{ rp.title }} is covered by EZQuest's {{ warranty_years }}-year limited warranty against defects in materials and workmanship under normal use.
@@ -247,7 +247,7 @@
   <section class="pr-section" id="pr-contact">
     <div class="container-shell">
       <p class="section-kicker">Help &amp; Support</p>
-      <h2 class="section-heading mt-4">Get in touch</h2>
+      <h2 class="section-heading mt-4">Get in Touch</h2>
       <p class="pr-contact-copy">
         Can't find what you need? Our support team is available to help with setup, compatibility, or anything else.
       </p>

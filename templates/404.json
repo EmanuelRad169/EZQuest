@@ -3,9 +3,9 @@
     "main": {
       "type": "main-404",
       "settings": {
-        "heading": "Oops! Page not found",
+        "heading": "Oops! Page Not Found",
         "copy": "The page you're looking for moved, was renamed, or never existed. Let's get you back to the good stuff.",
-        "cta_label": "Go back to Homepage"
+        "cta_label": "Go Back to Homepage"
       }
     }
   },

@@ -6,7 +6,7 @@
         <p class="section-kicker">{{ section.settings.kicker | escape }}</p>
       {% endif %}
       <h2 class="ticket-form-section__heading mt-4">
-        {{ section.settings.heading | default: 'Submit a support ticket' | escape }}
+        {{ section.settings.heading | default: 'Submit a Support Ticket' | escape }}
       </h2>
       {% if section.settings.body != blank %}
         <p class="ticket-form-section__body">{{ section.settings.body | escape }}</p>
@@ -45,7 +45,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-name" class="ticket-form__label">
-                Full name <span aria-hidden="true">*</span>
+                Full Name <span aria-hidden="true">*</span>
               </label>
               <input
                 type="text"
@@ -60,7 +60,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-email" class="ticket-form__label">
-                Email address <span aria-hidden="true">*</span>
+                Email Address <span aria-hidden="true">*</span>
               </label>
               <input
                 type="email"
@@ -75,7 +75,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-order" class="ticket-form__label">
-                Order number
+                Order Number
                 <span class="ticket-form__label-note">(optional)</span>
               </label>
               <input
@@ -90,7 +90,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-product" class="ticket-form__label">
-                Product model or SKU <span aria-hidden="true">*</span>
+                Product Model or SKU <span aria-hidden="true">*</span>
               </label>
               <input
                 type="text"
@@ -104,7 +104,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-issue-type" class="ticket-form__label">
-                Issue type <span aria-hidden="true">*</span>
+                Issue Type <span aria-hidden="true">*</span>
               </label>
               <select
                 id="ticket-issue-type"
@@ -128,7 +128,7 @@
 
             <div class="ticket-form__field">
               <label for="ticket-os" class="ticket-form__label">
-                Operating system <span aria-hidden="true">*</span>
+                Operating System <span aria-hidden="true">*</span>
               </label>
               <select
                 id="ticket-os"
@@ -152,7 +152,7 @@
 
             <div class="ticket-form__field ticket-form__field--full">
               <label for="ticket-description" class="ticket-form__label">
-                Describe the issue <span aria-hidden="true">*</span>
+                Describe the Issue <span aria-hidden="true">*</span>
               </label>
               <textarea
                 id="ticket-description"
@@ -183,7 +183,7 @@
           <p class="ticket-form__required-note">Fields marked * are required.</p>
 
           <button type="submit" class="btn btn--primary ticket-form__submit">
-            Submit ticket
+            Submit Ticket
           </button>
 
         {% endif %}

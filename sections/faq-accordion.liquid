@@ -36,14 +36,14 @@
       <!-- Sticky heading column -->
       <div class="faq-header">
         {% unless hide_faq_intro %}
-          <h2 class="faq-heading">{{ section.settings.heading | default: 'Frequently asked questions' }}</h2>
+          <h2 class="faq-heading">{{ section.settings.heading | default: 'Frequently Asked Questions' }}</h2>
         {% endunless %}
         {% if section.settings.subhead != blank and hide_faq_intro == false %}
           <p class="faq-subhead">{{ section.settings.subhead }}</p>
         {% endif %}
         {% unless hide_faq_intro %}
           <div class="faq-cta-stack">
-            <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="btn">{{ section.settings.cta_label | default: 'Contact support' }}</a>
+            <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="btn">{{ section.settings.cta_label | default: 'Contact Support' }}</a>
           </div>
         {% endunless %}
       </div>
