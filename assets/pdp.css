@@ -628,9 +628,20 @@
 .pdp-share-btn--fb  { background: #1877F2; color: #fff; }
 .pdp-share-btn--tw  { background: #000;    color: #fff; }
 .pdp-share-btn--pin { background: #E60023; color: #fff; }
-.pdp-share-btn--ig  { background: #E4405F; color: #fff; }
+/* Instagram brand gradient (matches the real IG glyph treatment). */
+.pdp-share-btn--ig {
+  color: #fff;
+  background: radial-gradient(circle at 30% 107%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);
+}
 .pdp-share-btn--yt  { background: #FF0000; color: #fff; }
 .pdp-share-btn--copy { background: var(--ez-light); color: var(--ez-black); }
+
+/* Native-share button: Instagram cannot accept a shared link from a web page
+   (no share URL exists — IG only allows it from inside its own app), so this
+   opens the device share sheet, where Instagram is one of the targets. Hidden
+   until JS confirms navigator.share is available, so it never sits there dead
+   on desktop. */
+.pdp-share-btn--native[hidden] { display: none !important; }
 
 .pdp-share-btn--copy[data-copied] {
   background: rgba(34, 197, 94, 0.1);
