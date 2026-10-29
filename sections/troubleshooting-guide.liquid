@@ -172,7 +172,7 @@
 <section class="ts-resources bg-[var(--ez-light)] py-[clamp(52px,6vw,80px)]">
   <div class="ts-resources__inner max-w-[80rem] mx-auto px-[clamp(1.25rem,5vw,2rem)]">
     <p class="ts-resources__kicker text-xs font-semibold tracking-[.12em] uppercase text-[var(--ez-grey)] mb-3">{{ section.settings.next_kicker | default: 'Next Step' }}</p>
-    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">{{ section.settings.next_heading | default: 'Where to Go From Here' }}</h2>
+    <h2 class="ts-resources__heading text-[clamp(22px,3.5vw,38px)] font-medium tracking-[-0.03em] text-[var(--ez-black)] mb-3">{{ section.settings.next_heading | default: 'Where to Go from Here' }}</h2>
     <p class="ts-resources__sub text-base text-[var(--ez-grey)] leading-[1.6] max-w-[52ch] mb-10">{{ section.settings.next_sub | default: "If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation." }}</p>
     <div class="ts-resource-grid grid grid-cols-3 gap-4 max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
 
@@ -246,16 +246,16 @@
   "settings": [
     { "type": "header", "content": "Hero" },
     { "type": "text", "id": "hero_kicker", "label": "Kicker", "default": "Troubleshooting" },
-    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Fix it by symptom" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Fix It by Symptom" },
     { "type": "textarea", "id": "hero_sub", "label": "Subheading", "default": "Start with the symptom you see. Take the shortest recovery step. Escalate to support only if the issue stays." },
     { "type": "header", "content": "Where to go from here" },
     { "type": "text", "id": "next_kicker", "label": "Kicker", "default": "Next Step" },
-    { "type": "text", "id": "next_heading", "label": "Heading", "default": "Where to go from here" },
+    { "type": "text", "id": "next_heading", "label": "Heading", "default": "Where to Go from Here" },
     { "type": "textarea", "id": "next_sub", "label": "Subheading", "default": "If the fix above didn't resolve it, the next path is a file, a guide, or a direct conversation." },
     { "type": "header", "content": "Bottom CTA" },
     { "type": "text", "id": "cta_kicker", "label": "Kicker", "default": "Support" },
     { "type": "text", "id": "cta_text", "label": "Text", "default": "Still need help?" },
-    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Submit a request" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Submit a Request" },
     { "type": "url", "id": "cta_url", "label": "Button URL" }
   ],
   "presets": [{ "name": "Troubleshooting guide" }]
