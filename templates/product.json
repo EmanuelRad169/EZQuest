@@ -65,15 +65,6 @@
     },
     "178474916264f76e07": {
       "type": "apps",
-      "blocks": {
-        "comparexpert_product_compare_table_block_mkLATX": {
-          "type": "shopify://apps/comparexpert/blocks/product-compare-table-block/c855b225-94ed-4209-962c-0fcdc53b09bf",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "comparexpert_product_compare_table_block_mkLATX"
-      ],
       "settings": {}
     },
     "recently_viewed": {
