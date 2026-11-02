@@ -1,0 +1,153 @@
+{% if request.page_type == 'page' and template.suffix == 'reviews' %}
+  {% comment %}Reviews has no dark hero behind the shared white overlay navigation.{% endcomment %}
+  <style>
+    .site-header--hero-overlay:not(.is-scrolled):not(.is-menu-open):not(:has(.mega-menu-trigger[aria-expanded="true"])) { background: #020617; }
+  </style>
+{% endif %}
+{{ 'media-coverage.css' | asset_url | stylesheet_tag }}
+{% assign coverage_entries = shop.metaobjects.media_coverage.values %}
+{% assign use_fallback = false %}
+{% if coverage_entries == blank %}{% assign use_fallback = true %}{% endif %}
+{% assign related_only = false %}
+{% assign card_heading_level = 'h2' %}
+{% if section.settings.related_product_only %}
+  {% if request.page_type == 'product' %}
+    {% if product != blank %}{% assign related_only = true %}{% assign card_heading_level = 'h3' %}{% endif %}
+  {% endif %}
+{% endif %}
+
+{% if use_fallback %}
+  {% assign matching_count = 0 %}
+  {% if related_only %}
+    {% for block in section.blocks %}
+      {% assign block_matches_product = false %}
+      {% for linked_product in block.settings.related_products %}
+        {% if linked_product.id == product.id %}{% assign block_matches_product = true %}{% endif %}
+      {% endfor %}
+      {% if block_matches_product %}{% assign matching_count = matching_count | plus: 1 %}{% endif %}
+    {% endfor %}
+  {% endif %}
+  {% assign show_section = true %}
+  {% if related_only %}{% if matching_count == 0 %}{% assign show_section = false %}{% endif %}{% endif %}
+  {% if show_section %}
+    <section class="media-coverage" id="MediaCoverage-{{ section.id }}" data-media-coverage>
+      <div class="media-coverage__inner">
+        <header class="media-coverage__header">
+          <p class="media-coverage__eyebrow">EZQuest in the press</p>
+          {% if related_only %}<h2>{{ section.settings.heading | default: 'Reviews & Media Coverage' | escape }}</h2>{% else %}<h1>{{ section.settings.heading | default: page.title | escape }}</h1>{% endif %}
+          <p class="media-coverage__intro">{{ section.settings.intro | escape }}</p>
+        </header>
+        <div class="media-coverage__controls" data-coverage-controls hidden>
+          <label class="media-coverage__search-label" for="CoverageSearch-{{ section.id }}">Search coverage</label>
+          <input id="CoverageSearch-{{ section.id }}" class="media-coverage__search" type="search" placeholder="Search publications and stories" data-coverage-search>
+          <label class="media-coverage__type-label" for="CoverageType-{{ section.id }}">Filter by type</label>
+          <select id="CoverageType-{{ section.id }}" class="media-coverage__select" data-coverage-type>
+            <option value="all">All coverage</option>
+            {% assign types = '' %}{% for block in section.blocks %}{% assign type_value = block.settings.coverage_type | strip %}{% if type_value != blank %}{% assign types = types | append: '||' | append: type_value %}{% endif %}{% endfor %}
+            {% assign types_array = types | split: '||' | uniq | sort %}{% for type_value in types_array %}{% if type_value != blank %}<option value="{{ type_value | handleize }}">{{ type_value | escape }}</option>{% endif %}{% endfor %}
+          </select>
+        </div>
+        <p class="media-coverage__filter-note" data-coverage-filter-note hidden>Filters apply to this page of results.</p>
+        {% assign rendered_count = 0 %}
+        <div class="media-coverage__list" data-coverage-list>
+          {% for block in section.blocks %}
+            {% assign render_entry = true %}
+            {% if related_only %}
+              {% assign block_matches_product = false %}
+              {% for linked_product in block.settings.related_products %}{% if linked_product.id == product.id %}{% assign block_matches_product = true %}{% endif %}{% endfor %}
+              {% unless block_matches_product %}{% assign render_entry = false %}{% endunless %}
+            {% endif %}
+            {% if render_entry %}{% assign rendered_count = rendered_count | plus: 1 %}{% render 'media-coverage-card', title: block.settings.title, publication: block.settings.publication, date_label: block.settings.date_label, summary: block.settings.summary, source_url: block.settings.source_url, image: block.settings.image, coverage_type: block.settings.coverage_type, related_products: block.settings.related_products, featured: block.settings.featured, heading_level: card_heading_level %}{% endif %}
+          {% endfor %}
+        </div>
+        <p class="media-coverage__empty" data-coverage-empty hidden>No coverage matches those filters.</p>
+        {% if section.blocks.size == 0 %}<p class="media-coverage__empty">Coverage is being updated. Please check back soon.</p>{% endif %}
+      </div>
+    </section>
+  {% endif %}
+{% else %}
+  {% paginate coverage_entries by 100 %}
+  {% assign matching_count = 0 %}
+  {% if related_only %}
+    {% for entry in coverage_entries %}
+      {% assign entry_matches_product = false %}
+      {% for linked_product in entry.related_products.value %}
+        {% if linked_product.id == product.id %}{% assign entry_matches_product = true %}{% endif %}
+      {% endfor %}
+      {% if entry_matches_product %}{% assign matching_count = matching_count | plus: 1 %}{% endif %}
+    {% endfor %}
+  {% endif %}
+    {% comment %}Render native paginated values directly; the client sorts this page by date.{% endcomment %}
+    {% assign show_section = true %}
+    {% if related_only %}{% if matching_count == 0 %}{% assign show_section = false %}{% endif %}{% endif %}
+    {% if show_section %}
+      <section class="media-coverage" id="MediaCoverage-{{ section.id }}" data-media-coverage>
+        <div class="media-coverage__inner">
+          <header class="media-coverage__header">
+            <p class="media-coverage__eyebrow">EZQuest in the press</p>
+            {% if related_only %}<h2>{{ section.settings.heading | default: 'Reviews & Media Coverage' | escape }}</h2>{% else %}<h1>{{ section.settings.heading | default: page.title | escape }}</h1>{% endif %}
+            <p class="media-coverage__intro">{{ section.settings.intro | escape }}</p>
+          </header>
+          <div class="media-coverage__controls" data-coverage-controls hidden>
+            <label class="media-coverage__search-label" for="CoverageSearch-{{ section.id }}">Search coverage</label>
+            <input id="CoverageSearch-{{ section.id }}" class="media-coverage__search" type="search" placeholder="Search publications and stories" data-coverage-search>
+            <label class="media-coverage__type-label" for="CoverageType-{{ section.id }}">Filter by type</label>
+            <select id="CoverageType-{{ section.id }}" class="media-coverage__select" data-coverage-type>
+              <option value="all">All coverage</option>
+              {% assign types = '' %}{% for entry in coverage_entries %}{% assign type_value = entry.coverage_type.value | default: entry.coverage_type %}{% if type_value != blank %}{% assign types = types | append: '||' | append: type_value %}{% endif %}{% endfor %}
+              {% assign types_array = types | split: '||' | uniq | sort %}{% for type_value in types_array %}{% if type_value != blank %}<option value="{{ type_value | handleize }}">{{ type_value | escape }}</option>{% endif %}{% endfor %}
+            </select>
+          </div>
+          <p class="media-coverage__filter-note" data-coverage-filter-note hidden>Filters apply to this page of results.</p>
+          {% assign rendered_count = 0 %}
+          <div class="media-coverage__list" data-coverage-list>
+            {% for entry in coverage_entries %}
+              {% assign render_entry = true %}
+              {% if related_only %}
+                {% assign entry_matches_product = false %}
+                {% for linked_product in entry.related_products.value %}{% if linked_product.id == product.id %}{% assign entry_matches_product = true %}{% endif %}{% endfor %}
+                {% unless entry_matches_product %}{% assign render_entry = false %}{% endunless %}
+              {% endif %}
+              {% if render_entry %}{% assign rendered_count = rendered_count | plus: 1 %}{% render 'media-coverage-card', title: entry.title.value, publication: entry.publication.value, date_label: entry.date_label.value, summary: entry.summary.value, source_url: entry.source_url.value, image: entry.image.value, coverage_type: entry.coverage_type.value, related_products: entry.related_products.value, featured: entry.featured.value, heading_level: card_heading_level %}{% endif %}
+            {% endfor %}
+          </div>
+          {% if related_only %}{% if rendered_count == 0 %}<p class="media-coverage__page-note">Related coverage is listed on another results page.</p>{% endif %}{% endif %}
+          <p class="media-coverage__empty" data-coverage-empty hidden>No coverage matches those filters.</p>
+          {% if paginate.pages > 1 %}
+            <nav class="media-coverage__pagination" aria-label="Coverage pages">
+              {% if paginate.previous %}<a href="{{ paginate.previous.url }}" rel="prev">← Newer</a>{% endif %}
+              <span>Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+              {% if paginate.next %}<a href="{{ paginate.next.url }}" rel="next">Older →</a>{% endif %}
+            </nav>
+          {% endif %}
+        </div>
+      </section>
+    {% endif %}
+  {% endpaginate %}
+{% endif %}
+<script src="{{ 'media-coverage.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Media coverage",
+  "settings": [
+    {"type":"text","id":"heading","label":"Heading","default":"Reviews & Media Coverage"},
+    {"type":"text","id":"intro","label":"Introduction","default":"Independent reviews, buying guides and videos featuring EZQuest."},
+    {"type":"checkbox","id":"related_product_only","label":"Show only coverage related to the current product","default":false}
+  ],
+  "blocks": [
+    {"type":"coverage","name":"Coverage entry","settings":[
+      {"type":"text","id":"title","label":"Title"},
+      {"type":"text","id":"publication","label":"Publication"},
+      {"type":"text","id":"date_label","label":"Date (ISO format, YYYY-MM-DD)"},
+      {"type":"textarea","id":"summary","label":"Summary"},
+      {"type":"url","id":"source_url","label":"Original source URL"},
+      {"type":"image_picker","id":"image","label":"Thumbnail"},
+      {"type":"text","id":"coverage_type","label":"Type (review, guide, video, etc.)"},
+      {"type":"product_list","id":"related_products","label":"Related products","limit":12},
+      {"type":"checkbox","id":"featured","label":"Featured","default":false}
+    ]}
+  ],
+  "max_blocks": 50,
+  "presets": [{"name":"Media coverage"}]
+}
+{% endschema %}

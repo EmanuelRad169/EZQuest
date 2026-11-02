@@ -1,0 +1,35 @@
+{{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'image-gallery.js' | asset_url }}" defer="defer"></script>
+<section class="image-gallery" data-image-gallery data-manifest-url="{{ 'image-gallery-data.json' | asset_url }}" aria-labelledby="gallery-heading-{{ section.id }}">
+  <header class="ig-intro">
+    <div class="ig-wrap">
+      <p class="ig-eyebrow">EZQuest / Media library</p>
+      <h1 id="gallery-heading-{{ section.id }}">Image Gallery<span aria-hidden="true">.</span></h1>
+      <p>Browse product photography and download original image sets.</p>
+    </div>
+  </header>
+  <div class="ig-wrap ig-library">
+    <form class="ig-filters" role="search" aria-label="Search product images" hidden>
+      <label class="ig-search">Search products<input type="search" name="gallery_q" placeholder="Product name or SKU" autocomplete="off"></label>
+      <label>Category<select name="gallery_category"><option value="">All categories</option><option>Hubs &amp; Docks</option><option>Cables</option><option>Adapters</option><option>Chargers &amp; Power</option><option>Storage</option></select></label>
+      <label class="ig-legacy"><input type="checkbox" name="gallery_legacy"> Include legacy products</label>
+    </form>
+    <div class="ig-results-bar"><p class="ig-status" role="status" aria-live="polite">Loading the image library…</p><button class="ig-text-button ig-clear" type="button" hidden>Clear filters</button></div>
+    <div class="ig-grid" aria-label="Product albums" aria-busy="true"></div>
+    <div class="ig-message" hidden><p></p><button class="ig-button ig-retry" type="button" hidden>Try again</button></div>
+    <noscript><style>.image-gallery .ig-results-bar{display:none}</style><p class="ig-message">Enable JavaScript to search the image library and download product photography. For help, <a href="/pages/contact">contact EZQuest</a>.</p></noscript>
+  </div>
+  <dialog class="ig-dialog" aria-labelledby="gallery-album-{{ section.id }}">
+    <div class="ig-dialog-top"><div><p class="ig-album-sku"></p><h2 id="gallery-album-{{ section.id }}"></h2></div><button class="ig-close" type="button" aria-label="Close album" autofocus>×</button></div>
+    <div class="ig-album-body">
+      <div class="ig-viewer">
+        <div class="ig-stage"><img class="ig-full-image" alt="" width="1200" height="900"><button class="ig-arrow ig-prev" type="button" aria-label="Previous image">←</button><button class="ig-arrow ig-next" type="button" aria-label="Next image">→</button><p class="ig-image-error" hidden>This image could not load. Open the full-size image or download the originals ZIP.</p></div>
+        <div class="ig-thumbnails" aria-label="Choose an image"></div>
+      </div>
+      <aside class="ig-detail"><p class="ig-counter" role="status" aria-live="polite"></p><h3 class="ig-image-label"></h3><p class="ig-filename"></p><p class="ig-image-meta"></p><p class="ig-original-meta" hidden></p><a class="ig-button ig-original" target="_blank" rel="noopener"><span class="ig-original-label">Open full-size image</span> <span aria-hidden="true">↗</span></a><div class="ig-zip-links"></div><a class="ig-product" href="/collections/all">View product <span aria-hidden="true">↗</span></a><p class="ig-keyboard">Use ← → to browse images.</p></aside>
+    </div>
+  </dialog>
+</section>
+{% schema %}
+{"name":"Image Gallery","settings":[],"presets":[{"name":"Image Gallery"}]}
+{% endschema %}

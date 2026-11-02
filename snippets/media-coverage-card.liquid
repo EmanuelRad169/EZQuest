@@ -1,0 +1,14 @@
+{% assign card_title = title | default: 'Coverage' %}
+{% assign card_type = coverage_type | default: 'Article' %}
+{% assign card_heading = heading_level | default: 'h2' %}
+<article class="coverage-item{% if featured %} coverage-item--featured{% endif %}" data-coverage-item data-coverage-date="{{ date_label | escape }}" data-coverage-kind="{{ card_type | handleize }}" data-coverage-searchable="{{ publication | append: ' ' | append: card_title | append: ' ' | append: summary | strip_html | escape }}">
+  {% if image != blank %}{% if source_url != blank %}<a class="coverage-item__image" href="{{ source_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Read {{ card_title | escape }} at {{ publication | escape }}">{% else %}<div class="coverage-item__image">{% endif %}<img src="{{ image | image_url: width: 800 }}" alt="{{ image.alt | default: card_title | escape }}" width="800" height="600" loading="lazy">{% if source_url != blank %}</a>{% else %}</div>{% endif %}{% endif %}
+  <div class="coverage-item__content">
+    <div class="coverage-item__meta"><span class="coverage-item__publication">{{ publication | escape }}</span>{% if date_label != blank %}<time datetime="{{ date_label | split: ' ' | first | escape }}">{{ date_label | escape }}</time>{% endif %}</div>
+    <span class="coverage-item__type">{{ card_type | escape }}</span>
+    <{{ card_heading }}>{% if source_url != blank %}<a href="{{ source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ card_title | escape }}</a>{% else %}{{ card_title | escape }}{% endif %}</{{ card_heading }}>
+    {% if summary != blank %}<p class="coverage-item__summary">{{ summary | escape }}</p>{% endif %}
+    {% if related_products != blank %}<div class="coverage-item__products" aria-label="Related products">{% for product in related_products %}<a href="{{ product.url }}">{{ product.title | escape }}</a>{% endfor %}</div>{% endif %}
+    {% if source_url != blank %}<a class="coverage-item__read" href="{{ source_url | escape }}" target="_blank" rel="noopener noreferrer">Read original source <span aria-hidden="true">↗</span></a>{% endif %}
+  </div>
+</article>
