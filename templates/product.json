@@ -59,7 +59,8 @@
         "eyebrow": "Pairs With",
         "heading": "Complete Your Setup",
         "copy": "Curated EZQuest accessories that pair perfectly with this product.",
-        "products_to_show": 3
+        "products_to_show": 3,
+        "cta_label": "Shop the Collection"
       }
     },
     "178474916264f76e07": {
@@ -82,10 +83,20 @@
         "heading": "Recently Viewed",
         "max_products": 4
       }
+    },
+    "media_coverage_ECEM9T": {
+      "type": "media-coverage",
+      "name": "Media coverage",
+      "settings": {
+        "heading": "Reviews & Media Coverage",
+        "intro": "See what publications are saying about this product.",
+        "related_product_only": true
+      }
     }
   },
   "order": [
     "main",
+    "media_coverage_ECEM9T",
     "faq",
     "bundle",
     "178474916264f76e07",

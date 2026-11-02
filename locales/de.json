@@ -65,6 +65,7 @@
     "save": "{{ amount }} sparen"
   },
   "social": {
+    "share_on_instagram": "Auf Instagram teilen",
     "share_on_facebook": "Auf Facebook teilen",
     "share_on_twitter": "Auf X / Twitter teilen",
     "save_to_pinterest": "Auf Pinterest speichern",

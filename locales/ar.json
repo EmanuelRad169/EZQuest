@@ -65,6 +65,7 @@
     "save": "وفّر {{ amount }}"
   },
   "social": {
+    "share_on_instagram": "مشاركة على Instagram",
     "share_on_facebook": "مشاركة على فيسبوك",
     "share_on_twitter": "مشاركة على إكس / تويتر",
     "save_to_pinterest": "حفظ على بينتريست",

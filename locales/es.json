@@ -65,6 +65,7 @@
     "save": "Ahorrar {{ amount }}"
   },
   "social": {
+    "share_on_instagram": "Compartir en Instagram",
     "share_on_facebook": "Compartir en Facebook",
     "share_on_twitter": "Compartir en X / Twitter",
     "save_to_pinterest": "Guardar en Pinterest",
