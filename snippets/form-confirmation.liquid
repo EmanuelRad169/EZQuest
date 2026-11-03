@@ -1,0 +1,9 @@
+{% comment %}Rendered only after Shopify confirms a successful contact submission.{% endcomment %}
+<div class="form-confirmation" role="status" aria-live="polite">
+  <div class="form-confirmation__icon" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h3 class="form-confirmation__heading">{{ heading | escape }}</h3>
+  <div class="form-confirmation__body">{{ body }}</div>
+  <a class="btn btn--primary form-confirmation__action" href="{{ routes.root_url }}">Back to Home</a>
+</div>

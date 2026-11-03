@@ -15,10 +15,9 @@
         {% assign lbl = 'block text-sm font-semibold text-[var(--ez-black)] mb-2' %}
 
         {% if form.posted_successfully? %}
-          <div class="contact-success py-6 px-6 border-[1.5px] border-[rgba(22,163,74,.3)] rounded-[12px] bg-[rgba(22,163,74,.05)] text-[var(--ez-black)]" role="status">
-            <p class="font-semibold text-base m-0">Thanks — your reseller application has been received.</p>
-            <p class="text-sm text-[var(--ez-grey)] mt-2 m-0">Our partnerships team will review your details and reply to your email within 1–2 business days.</p>
-          </div>
+          {% assign confirmation_heading = 'Application Received' %}
+          {% capture confirmation_body %}Thanks — your reseller application has been received. Our partnerships team will review your details and reply to your email within 1–2 business days.{% endcapture %}
+          {% render 'form-confirmation', heading: confirmation_heading, body: confirmation_body %}
         {% else %}
           {% if form.errors %}
             <div class="contact-errors py-4 px-5 border-[1.5px] border-[rgba(220,38,38,.25)] rounded-[10px] bg-[rgba(220,38,38,.04)] text-[#9a1c1f] text-sm mb-5" role="alert">{{ form.errors | default_errors }}</div>

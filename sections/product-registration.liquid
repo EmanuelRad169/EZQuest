@@ -33,22 +33,10 @@
 
       {% form 'contact', id: 'product-registration-form' %}
         {% if form.posted_successfully? %}
-          <div class="ticket-success" role="alert">
-            <div class="ticket-success__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M7 12l3.5 3.5L17 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="ticket-success__heading">Product Registered</h3>
-            <p class="ticket-success__body">
-              Thank you. We saved your registration and sent a confirmation to
-              <strong>{{ form.email | escape }}</strong>. Keep this email — it is your proof of coverage.
-            </p>
-            <p class="ticket-success__body">
-              Need help with this product? <a href="/pages/ticket-submission">Submit a Support Ticket</a>.
-            </p>
-          </div>
+          {% assign confirmation_heading = 'Registration Submitted' %}
+          {% capture confirmation_body %}Thank you. We received your product registration. Please keep your original receipt or order confirmation as proof of purchase. Registration does not replace proof of purchase.{% endcapture %}
+          {% render 'form-confirmation', heading: confirmation_heading, body: confirmation_body %}
+          <p class="ticket-success__body">Need help with this product? <a href="/pages/ticket-submission">Submit a Support Ticket</a>.</p>
           <script>
             (function () {
               function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('registration'); }

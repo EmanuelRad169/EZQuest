@@ -18688,3 +18688,67 @@ a[href*="helptochoose.com"]{display:none !important;}
 
 /* Soften the bold utility site-wide to medium weight (brand preference). */
 .font-bold { font-weight: 500; }
+
+/* Native contact confirmations and Shopify's outer verification controls.
+   Never style or replace the CAPTCHA iframe or its challenge contents. */
+.form-confirmation {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  background: var(--ez-light);
+  border-radius: 20px;
+  color: var(--ez-black);
+}
+.form-confirmation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: var(--ez-amber);
+}
+.form-confirmation__heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+.form-confirmation__body {
+  max-width: 32rem;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ez-grey);
+  overflow-wrap: anywhere;
+}
+.form-confirmation__action { margin-top: 1.5rem; min-height: 48px; }
+.shopify-challenge__container {
+  padding: 3rem 1rem;
+  color: var(--ez-black);
+}
+.shopify-challenge__container .shopify-challenge__message {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.shopify-challenge__container .shopify-challenge__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 160px;
+  padding: 12px 32px;
+  margin-top: 1.5rem;
+  border: 1px solid var(--ez-amber);
+  border-radius: 999px;
+  background: var(--ez-amber);
+  color: var(--ez-black);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.shopify-challenge__container .shopify-challenge__button:focus-visible {
+  outline: 2px solid var(--ez-black);
+  outline-offset: 4px;
+}

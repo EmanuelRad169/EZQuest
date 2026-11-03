@@ -14,19 +14,9 @@
 
       {% form 'contact', id: 'ticket-form' %}
         {% if form.posted_successfully? %}
-          <div class="ticket-success" role="alert">
-            <div class="ticket-success__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M7 12l3.5 3.5L17 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="ticket-success__heading">Ticket Submitted</h3>
-            <p class="ticket-success__body">
-              We received your request and will respond to
-              <strong>{{ form.email | escape }}</strong> within 1 business day.
-            </p>
-          </div>
+          {% assign confirmation_heading = 'Ticket Submitted' %}
+          {% capture confirmation_body %}We received your request and will respond{% if form.email != blank %} to <strong>{{ form.email | escape }}</strong>{% endif %} within 1 business day.{% endcapture %}
+          {% render 'form-confirmation', heading: confirmation_heading, body: confirmation_body %}
           <script>
             (function () {
               function fire() { if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('ticket'); }
