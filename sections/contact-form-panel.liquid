@@ -69,7 +69,7 @@
 
         {% if form.posted_successfully? %}
           {% assign confirmation_heading = 'contact.success' | t %}
-          {% capture confirmation_body %}{{ 'contact.success_body' | t: email: form.email }}{% endcapture %}
+          {% capture confirmation_body %}{% if form.email != blank %}{{ 'contact.success_body' | t: email: form.email }}{% else %}{{ section.settings.success_message | escape }}{% endif %}{% endcapture %}
           {% render 'form-confirmation', heading: confirmation_heading, body: confirmation_body %}
           <script>
             (function () {
