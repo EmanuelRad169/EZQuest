@@ -101,6 +101,15 @@
     return row ? String(row.value || '').trim() : '';
   }
 
+  function formatSpec(value) {
+    return String(value).split(/(<br\s*\/?\s*>|<\/?(?:b|strong)>)/gi).map(function (part) {
+      if (/^<br\s*\/?\s*>$/i.test(part)) return '<br>';
+      if (/^<(?:b|strong)>$/i.test(part)) return '<strong>';
+      if (/^<\/(?:b|strong)>$/i.test(part)) return '</strong>';
+      return esc(part).replace(/\n/g, '<br>');
+    }).join('');
+  }
+
   function compareRows(ids, index) {
     var rows = SUMMARY_ROWS.slice();
     var labels = [];
@@ -169,7 +178,7 @@
       var vals = ids.map(function (id) { return row[1](index[id]); });
       var diff = vals.some(function (v) { return v !== vals[0]; });
       h += '<tr class="' + (diff ? 'ezc-diff' : '') + '"><th class="ezc-rowlabel" scope="row">' + esc(row[0]) + '</th>';
-      vals.forEach(function (value) { h += '<td>' + (value ? esc(value).replace(/\n/g, '<br>') : '<span class="ezc-not-listed">Not listed</span>') + '</td>'; });
+      vals.forEach(function (value) { h += '<td>' + (value ? formatSpec(value) : '<span class="ezc-not-listed">Not listed</span>') + '</td>'; });
       if (addCol) h += '<td class="ezc-col--add"></td>';
       h += '</tr>';
     });
