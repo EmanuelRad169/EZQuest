@@ -127,9 +127,12 @@
       });
     });
     labels.forEach(function (label) {
-      if (/^product part number$/i.test(label)) return;
+      if (/^product part number$/i.test(label) || (/^bar code number$/i.test(label) && ids.some(function (id) { return index[id].barcode; }))) return;
       rows.push([label, function (p) { return specValue(p, label); }]);
     });
+    if (ids.some(function (id) { return index[id].barcode; })) {
+      rows.splice(SUMMARY_ROWS.length, 0, ['Bar Code Number', function (p) { return p.barcode || specValue(p, 'Bar Code Number'); }]);
+    }
     return rows;
   }
 

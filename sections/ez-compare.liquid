@@ -28,6 +28,7 @@
 "vid": {{ product.selected_or_first_available_variant.id | json }},
 "available": {{ product.available | json }},
 "sku": {{ product.selected_or_first_available_variant.sku | json }},
+"barcode": {{ product.selected_or_first_available_variant.barcode | json }},
 "type": {{ product.type | json }},
 "vendor": {{ product.vendor | json }},
 "connector": {{ product.metafields.ezquest.compare_connector_type.value | json }},
