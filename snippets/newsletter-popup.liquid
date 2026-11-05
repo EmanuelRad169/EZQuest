@@ -107,7 +107,8 @@
 
       var confirmed = !!popup.querySelector('[data-newsletter-confirmed]');
       var returnedWithErrors = !!popup.querySelector('#nl-popup-form [role="alert"]');
-      if (!confirmed && !returnedWithErrors && (sessionStorage.getItem(POPUP_KEY) || localStorage.getItem(SUCCESS_KEY))) return;
+      if (localStorage.getItem(SUCCESS_KEY)) return;
+      if (!confirmed && !returnedWithErrors && sessionStorage.getItem(POPUP_KEY)) return;
 
       function open() {
         if (!popup.hidden) return;
@@ -119,6 +120,7 @@
       }
 
       function close() {
+        window.clearTimeout(timer);
         popup.hidden = true;
         document.body.style.overflow = '';
         sessionStorage.setItem(POPUP_KEY, '1');
@@ -136,13 +138,18 @@
       });
 
       function startTriggers() {
-        timer = window.setTimeout(open, DELAY_MS);
+        if (confirmed || returnedWithErrors) return;
+        function openOffer() {
+          if (sessionStorage.getItem(POPUP_KEY) || localStorage.getItem(SUCCESS_KEY)) return;
+          open();
+        }
+        timer = window.setTimeout(openOffer, DELAY_MS);
 
         if (EXIT_ENABLED && !('ontouchstart' in window)) {
           document.addEventListener('mouseleave', function onLeave(event) {
             if (event.clientY <= 0 && popup.hidden) {
               window.clearTimeout(timer);
-              open();
+              openOffer();
               document.removeEventListener('mouseleave', onLeave);
             }
           });
