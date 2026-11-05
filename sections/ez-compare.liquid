@@ -31,6 +31,19 @@
 "type": {{ product.type | json }},
 "vendor": {{ product.vendor | json }},
 "connector": {{ product.metafields.ezquest.compare_connector_type.value | json }},
+"specs": [
+{%- assign compare_spec_table = product.metafields.custom.spec_table.value -%}
+{%- if compare_spec_table != blank -%}
+  {%- for row in compare_spec_table -%}
+    {%- unless forloop.first -%},{%- endunless -%}{"label": {{ row.label | json }}, "value": {{ row.value | json }}}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign compare_spec_rows = product.metafields.ezquest.spec_rows.value -%}
+  {%- for row in compare_spec_rows -%}
+    {%- unless forloop.first -%},{%- endunless -%}{"label": {{ row.label.value | json }}, "value": {{ row.spec_value.value | json }}}
+  {%- endfor -%}
+{%- endif -%}
+],
 "features": {{ product.metafields.custom.key_features.value | json }},
 "form": {{ product.metafields.ezquest.compare_form_factor.value | json }},
 "power": {{ product.metafields.ezquest.compare_charging_power.value | json }},

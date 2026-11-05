@@ -89,18 +89,33 @@
     return INDEX;
   }
 
-  var ROWS = [
-    ['Price', function (p) { return '<span class="ezc-price">' + (p.price || '') + '</span>' + (p.compareAt ? ' <s class="ezc-was">' + p.compareAt + '</s>' : ''); }, function (p) { return (p.price || '') + '|' + (p.compareAt || ''); }],
-    ['SKU / Part #', function (p) { return p.sku || '—'; }],
-    ['Type', function (p) { return p.type || '—'; }],
-    ['Connector', function (p) { return p.connector || '—'; }],
-    ['Key features', function (p) { return (Array.isArray(p.features) && p.features.length) ? '<ul class="ezc-features">' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' : '—'; }, function (p) { return Array.isArray(p.features) ? p.features.join('|') : ''; }],
-    ['Form factor', function (p) { return p.form || '—'; }],
-    ['Charging power', function (p) { return p.power || '—'; }],
-    ['Portability', function (p) { return p.portability || '—'; }],
-    ['Warranty', function (p) { return p.warranty ? ('' + p.warranty).replace(/\.0+$/, '') + '-year' : '—'; }],
-    ['Best for', function (p) { return p.bestfor || '—'; }]
+  var SUMMARY_ROWS = [
+    ['Price', function (p) { return (p.price || '') + (p.compareAt ? ' (was ' + p.compareAt + ')' : ''); }],
+    ['Part number', function (p) { return p.sku || ''; }],
+    ['Type', function (p) { return p.type || ''; }],
+    ['Connectors', function (p) { return p.connector || specValue(p, 'Interface') || ''; }]
   ];
+
+  function specValue(p, label) {
+    var row = (p.specs || []).find(function (item) { return item && String(item.label || '').trim().toLowerCase() === label.toLowerCase(); });
+    return row ? String(row.value || '').trim() : '';
+  }
+
+  function compareRows(ids, index) {
+    var rows = SUMMARY_ROWS.slice();
+    var labels = [];
+    ids.forEach(function (id) {
+      (index[id].specs || []).forEach(function (item) {
+        var label = item && String(item.label || '').trim();
+        if (label && !labels.some(function (seen) { return seen.toLowerCase() === label.toLowerCase(); })) labels.push(label);
+      });
+    });
+    labels.forEach(function (label) {
+      if (/^product part number$/i.test(label)) return;
+      rows.push([label, function (p) { return specValue(p, label); }]);
+    });
+    return rows;
+  }
 
   function renderComparePage() {
     var root = document.getElementById('ez-compare-root');
@@ -112,8 +127,8 @@
       root.innerHTML =
         '<div class="ez-compare-empty">' +
           '<span class="ez-compare-empty__icon">' + ICON + '</span>' +
-          '<h2 class="ez-compare-empty__title">Nothing to compare yet</h2>' +
-          '<p>Add products with the compare icon while you browse, then line them up side by side here.</p>' +
+          '<h2 class="ez-compare-empty__title">Compare products side by side</h2>' +
+          '<p>Choose up to three products using the compare icon on product cards. We’ll line up their price, connectors, and specifications here.</p>' +
           '<a class="ez-compare-empty__btn" href="/collections/all">Browse products</a>' +
         '</div>';
       return;
@@ -147,11 +162,14 @@
     });
     h += addCol + '</tr></thead><tbody>';
 
-    ROWS.forEach(function (row) {
-      var vals = ids.map(function (id) { return (row[2] || row[1])(index[id]); });
+    compareRows(ids, index).forEach(function (row, rowIndex) {
+      if (rowIndex === SUMMARY_ROWS.length) {
+        h += '<tr class="ezc-section-row"><th scope="row">Specifications</th><td colspan="' + (ids.length + (addCol ? 1 : 0)) + '">Values from each product’s Specifications tab</td></tr>';
+      }
+      var vals = ids.map(function (id) { return row[1](index[id]); });
       var diff = vals.some(function (v) { return v !== vals[0]; });
-      h += '<tr class="' + (diff ? 'ezc-diff' : '') + '"><th class="ezc-rowlabel" scope="row">' + row[0] + '</th>';
-      ids.forEach(function (id) { h += '<td>' + row[1](index[id]) + '</td>'; });
+      h += '<tr class="' + (diff ? 'ezc-diff' : '') + '"><th class="ezc-rowlabel" scope="row">' + esc(row[0]) + '</th>';
+      vals.forEach(function (value) { h += '<td>' + (value ? esc(value).replace(/\n/g, '<br>') : '<span class="ezc-not-listed">Not listed</span>') + '</td>'; });
       if (addCol) h += '<td class="ezc-col--add"></td>';
       h += '</tr>';
     });
