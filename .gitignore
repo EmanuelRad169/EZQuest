@@ -24,6 +24,8 @@ docs/migration/gift-cards-reissued.csv
 test-results/
 .audit/
 .screenshots/
+tmp/
+EZQuest_Content_Audit_Phase1.xlsx
 
 # Product source photos (already on Shopify CDN)
 public/ezq-products/
