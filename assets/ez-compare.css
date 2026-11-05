@@ -122,6 +122,8 @@
 .ezc-not-listed { color: #666; font-style: italic; }
 .ezc-spec-detail summary { cursor: pointer; list-style: none; }
 .ezc-spec-detail summary::-webkit-details-marker { display: none; }
+.ezc-spec-detail__preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.ezc-spec-detail[open] .ezc-spec-detail__preview { display: none; }
 .ezc-spec-detail__action { display: block; margin-top: 8px; color: #3f5200; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .ezc-spec-detail[open] .ezc-spec-detail__action { font-size: 0; }
 .ezc-spec-detail[open] .ezc-spec-detail__action::after { content: 'Hide details'; font-size: 13px; }
