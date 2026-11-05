@@ -93,7 +93,7 @@
     ['Price', function (p) { return (p.price || '') + (p.compareAt ? ' (was ' + p.compareAt + ')' : ''); }],
     ['Part number', function (p) { return p.sku || ''; }],
     ['Type', function (p) { return p.type || ''; }],
-    ['Connectors', function (p) { return p.connector || specValue(p, 'Interface') || ''; }]
+    ['Connectors', function (p) { return p.connector || (specValue(p, 'Interface') ? 'See Interface details below' : ''); }]
   ];
 
   function specValue(p, label) {
