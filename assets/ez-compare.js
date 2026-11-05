@@ -175,7 +175,6 @@
         '<button type="button" class="ezc-remove" data-ezc-remove="' + id + '" aria-label="Remove ' + esc(p.title) + '">&times;</button>' +
         '<a href="' + p.url + '" class="ezc-col__media">' + (p.img ? '<img src="' + p.img + '" alt="' + esc(p.title) + '" loading="lazy">' : '') + '</a>' +
         '<a href="' + p.url + '" class="ezc-col__title">' + esc(p.title) + '</a>' +
-        '<div class="ezc-col__price"><span class="ezc-price">' + (p.price || '') + '</span>' + (p.compareAt ? ' <s class="ezc-was">' + p.compareAt + '</s>' : '') + '</div>' +
         buy +
         '</th>';
     });
