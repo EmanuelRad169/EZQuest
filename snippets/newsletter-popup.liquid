@@ -43,13 +43,16 @@
           Subscribe for your discount code plus early access to new products, setup guides, and exclusive deals.
         </p>
 
-        <form class="nl-popup__form" id="nl-popup-form" novalidate>
+        {% form 'customer', id: 'nl-popup-form', class: 'nl-popup__form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter,welcome10">
+          {% if form.posted_successfully? %}<span data-newsletter-confirmed hidden></span>{% endif %}
+          {% if form.errors %}<div role="alert">{{ form.errors | default_errors }}</div>{% endif %}
           <div class="nl-popup__field-wrap">
             <label class="sr-only" for="nl-popup-email">Email Address</label>
             <input
               type="email"
               id="nl-popup-email"
-              name="email"
+              name="contact[email]"
               class="nl-popup__input"
               placeholder="Your email address"
               autocomplete="email"
@@ -66,7 +69,7 @@
             <input type="text" id="nl-popup-website" name="nl_website" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="nl-popup__submit">Claim My 10% Off</button>
-        </form>
+        {% endform %}
 
         <div class="nl-popup__success" id="nl-popup-success" hidden>
           <div class="nl-popup__code-box">
@@ -76,7 +79,7 @@
             </button>
             <p class="nl-popup__code-hint" id="nl-code-hint">Click to copy</p>
           </div>
-          <p class="nl-popup__success-msg">Code saved to clipboard. Use it at checkout.</p>
+          <p class="nl-popup__success-msg">Use this code at checkout. Click the code to copy it.</p>
         </div>
 
         <p class="nl-popup__terms">
@@ -102,7 +105,9 @@
 
       if (!popup) return;
 
-      if (sessionStorage.getItem(POPUP_KEY) || localStorage.getItem(SUCCESS_KEY)) return;
+      var confirmed = !!popup.querySelector('[data-newsletter-confirmed]');
+      var returnedWithErrors = !!popup.querySelector('#nl-popup-form [role="alert"]');
+      if (!confirmed && !returnedWithErrors && (sessionStorage.getItem(POPUP_KEY) || localStorage.getItem(SUCCESS_KEY))) return;
 
       function open() {
         if (!popup.hidden) return;
@@ -162,64 +167,28 @@
       var code = document.getElementById('nl-popup-code');
       var hint = document.getElementById('nl-code-hint');
 
+      if (confirmed) {
+        window.clearTimeout(timer);
+        if (form) form.hidden = true;
+        if (success) success.hidden = false;
+        open();
+        sessionStorage.setItem(POPUP_KEY, '1');
+        localStorage.setItem(SUCCESS_KEY, '1');
+        if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('newsletter_popup');
+      } else if (returnedWithErrors) {
+        open();
+      }
+
       if (form) {
         form.addEventListener('submit', function (event) {
-          event.preventDefault();
-
-          // Honeypot: real users never fill this hidden field. If it has a
-          // value, treat it as a bot — show the success UI but never submit.
           var hp = form.querySelector('[name="nl_website"]');
           if (hp && hp.value) {
-            form.hidden = true;
-            if (success) success.hidden = false;
-            sessionStorage.setItem(POPUP_KEY, '1');
-            localStorage.setItem(SUCCESS_KEY, '1');
-            window.setTimeout(close, 6000);
+            event.preventDefault();
             return;
           }
-
-          var emailInput = document.getElementById('nl-popup-email');
-          var email = emailInput ? emailInput.value.trim() : '';
+          // Native Shopify submission preserves CAPTCHA and server validation.
           var button = form.querySelector('.nl-popup__submit');
-
-          if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-            if (error) {
-              error.textContent = 'Please enter a valid email address.';
-              error.hidden = false;
-            }
-            if (emailInput) emailInput.focus();
-            return;
-          }
-
-          if (error) error.hidden = true;
-          if (button) {
-            button.disabled = true;
-            button.textContent = 'Saving...';
-          }
-
-          window.ezSubmitContact({
-            email: email,
-            tags: 'newsletter,welcome10',
-            body: 'Newsletter signup — discount code: WELCOME10'
-          })
-            .then(function () {
-              form.hidden = true;
-              if (success) success.hidden = false;
-              sessionStorage.setItem(POPUP_KEY, '1');
-              localStorage.setItem(SUCCESS_KEY, '1');
-              if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('newsletter_popup');
-              window.setTimeout(close, 6000);
-            })
-            .catch(function () {
-              if (button) {
-                button.disabled = false;
-                button.textContent = 'Claim my 10% off';
-              }
-              if (error) {
-                error.textContent = 'Something went wrong. Please try again.';
-                error.hidden = false;
-              }
-            });
+          if (button) button.textContent = 'Submitting...';
         });
       }
 
