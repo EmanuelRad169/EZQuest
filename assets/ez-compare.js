@@ -110,6 +110,14 @@
     }).join('');
   }
 
+  function renderSpec(value) {
+    if (!value) return '<span class="ezc-not-listed">Not listed</span>';
+    var plain = String(value).replace(/<br\s*\/?\s*>/gi, ' ').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    if (plain.length <= 220) return formatSpec(value);
+    var preview = plain.slice(0, 115).replace(/\s+\S*$/, '') + '…';
+    return '<details class="ezc-spec-detail"><summary>' + esc(preview) + '<span class="ezc-spec-detail__action">View full details</span></summary><div class="ezc-spec-detail__body">' + formatSpec(value) + '</div></details>';
+  }
+
   function compareRows(ids, index) {
     var rows = SUMMARY_ROWS.slice();
     var labels = [];
@@ -178,7 +186,7 @@
       var vals = ids.map(function (id) { return row[1](index[id]); });
       var diff = vals.some(function (v) { return v !== vals[0]; });
       h += '<tr class="' + (diff ? 'ezc-diff' : '') + '"><th class="ezc-rowlabel" scope="row">' + esc(row[0]) + '</th>';
-      vals.forEach(function (value) { h += '<td>' + (value ? formatSpec(value) : '<span class="ezc-not-listed">Not listed</span>') + '</td>'; });
+      vals.forEach(function (value) { h += '<td>' + renderSpec(value) + '</td>'; });
       if (addCol) h += '<td class="ezc-col--add"></td>';
       h += '</tr>';
     });
