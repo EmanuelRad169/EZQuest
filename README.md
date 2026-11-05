@@ -1,122 +1,47 @@
 # EZQuest Shopify Theme
 
-Custom Shopify Online Store 2.0 theme scaffold for EZQuest.
+This repository is the source for the live EZQuest storefront at [ezq.com](https://ezq.com). The `main` branch is connected to Shopify theme `EZQuest/main` (theme ID `149895643334`) in store `ezquest-4.myshopify.com`.
 
-## Stack
+## Handoff
 
-- Shopify CLI
-- Shopify Skeleton starter workflow
-- Liquid, JSON templates, sections, snippets
-- Tailwind CSS + PostCSS for stylesheet compilation only
-- Lightweight native JavaScript only where interactions are justified
+- Theme code: `assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, and `templates/`.
+- CSS source and build configuration: `src/`, `tailwind.config.cjs`, `postcss.config.cjs`, and `package.json`.
+- Maintenance and Shopify content tools: `scripts/`. Historical migration data and import sources are in `docs/`.
+- Tests and macOS visual baselines: `tests/`. The GitHub visual regression workflow runs manually because the broad screenshot suite is slow and sensitive to live content changes.
+- Shopify admin controls products, collections, pages, policies, payments, and shipping. Theme files alone are not a full store backup.
 
-## Requirements
+## Local setup
 
-- Node.js `>=20.10.0`
-- npm
-- Shopify CLI
-- Shopify development store access
-- Local storefront password if `ezquest-3.myshopify.com` is password protected
-
-## Local Development
-
-Do NOT use MAMP to serve the theme. Shopify CLI is the source of truth for local preview and theme syncing.
-
-The expected local preview URL is:
-
-```text
-http://127.0.0.1:9292
-```
-
-### One-time setup
+Requirements: Node.js 20 or newer, npm, Shopify CLI, and access to the EZQuest Shopify store.
 
 ```bash
-npm install
+npm ci
 cp shopify.theme.toml.example shopify.theme.toml
-# if the storefront is password protected, replace PUT_STOREFRONT_PASSWORD_HERE
 shopify auth login
+npm run check
 ```
 
-## Scripts
+`shopify.theme.toml` and `.env.local` are local files and are ignored by Git. Do not commit credentials.
 
-- `npm run dev`: Tailwind watch + Shopify theme dev together
-- `npm run dev:css`: Tailwind watch from `src/styles/theme.css` to `assets/theme.css`
-- `npm run dev:theme`: Shopify CLI theme dev using the default environment in `shopify.theme.toml`
-- `npm run build`: compile production CSS
-- `npm run check`: run Theme Check
-- `npm run push:staging`: build and push to an unpublished theme
-- `npm run push`: build and push the current theme
-- `npm run pull`: pull theme files from Shopify
-- `npm run package`: build and package the theme
+To preview the theme locally, run `npm run dev`. To rebuild the compiled CSS, run `npm run build`. The local preview uses Shopify CLI; MAMP does not serve this theme.
 
-### Flow A: One command
+## Publishing and recovery
+
+Review and test changes, then push them to `main`; Shopify syncs that branch to the live `EZQuest/main` theme. Check [ezq.com](https://ezq.com) after sync. The older `EZQuest — Image Gallery Preview 2026-10-27` theme is an unpublished rollback copy.
+
+Never run an unscoped `shopify theme pull`: the live theme can lag local changes, and a full pull can overwrite newer work. Pull only named files, for example:
 
 ```bash
-npm run dev
+shopify theme pull --store ezquest-4.myshopify.com --theme 149895643334 --only assets/example.css --nodelete
 ```
 
-### Flow B: Two terminals
+If GitHub sync is delayed and a live fix is necessary, upload only the reviewed files to theme `149895643334` with `--only`, `--nodelete`, and `--allow-live`. Shopify may create an empty sync commit on `main`; fetch before the next push. Do not push to the older unpublished theme unless intentionally restoring it.
 
-Terminal 1:
+## Checks
 
 ```bash
-npm run dev:css
+npm run check
+npm run test:visual
 ```
 
-Terminal 2:
-
-```bash
-npm run dev:theme
-```
-
-### Shopify commands
-
-```bash
-shopify auth login
-shopify theme dev --environment default
-```
-
-### Local environment file
-
-`shopify.theme.toml` is local-only and must not be committed. The committed-safe reference file is `shopify.theme.toml.example`.
-
-Optional `.env.local` overrides can still exist for ad hoc CLI flags, but the default project workflow should use `shopify.theme.toml`.
-
-## Troubleshooting
-
-- Store flag confusion:
-  Use `shopify theme info` to confirm the current store and environment. The project expects `ezquest-3.myshopify.com`.
-- Password-protected store:
-  If the storefront shows a password page in local preview, update `store-password` in local `shopify.theme.toml`.
-- Preview URL mismatch:
-  The local preview should run at `http://127.0.0.1:9292`. If another port appears, stop the dev server and restart with the default environment.
-- Remote deletions during development:
-  The local environment is configured with `nodelete = true` to avoid delete-blocking issues while previewing.
-
-## Architecture Notes
-
-- Header and footer use Shopify section groups.
-- Templates stay thin and section-driven.
-- Support-center pages are scaffolded as custom pages.
-- Privacy, terms, and refund pages remain native Shopify policies.
-- Shipping & Returns is implemented as a custom page: `/pages/shipping-returns`.
-
-## Documentation
-
-- Phase 1.5 handoff: [docs/phase-1-5-handoff.md](./docs/phase-1-5-handoff.md)
-- Phase 1 final foundation: [docs/phase-1-final-foundation.md](./docs/phase-1-final-foundation.md)
-- Shopify Admin automation: [docs/shopify-admin-automation.md](./docs/shopify-admin-automation.md)
-- Structured data architecture: [docs/structured-data-architecture.md](./docs/structured-data-architecture.md)
-
-## Next Milestone
-
-Phase 2 should begin with implementation of the global shell, homepage, collection page, product page, and the first support-center templates.
-
-## Repo structure
-
-- `assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/` — the Shopify theme (deployed via Shopify CLI / GitHub integration)
-- `src/styles/` + `tailwind.config.cjs` — CSS source compiled into `assets/`
-- `scripts/` — maintenance and QA scripts (`dev`, `audit`, `shopify-admin`, `migration`)
-- `tests/` — Playwright QA + visual regression baselines
-- `docs/` — project data: `policies/` (store policy sources), `data/` (review/press import CSVs), `redirects/` (redirect maps), `migration/` (legacy content/SKU maps), audit data
-- `.env.local`, `shopify.theme.toml` — local credentials/config (gitignored; see the `.example` files)
+The visual suite is available from GitHub Actions through **Visual Regression (Manual)**. It does not run on every push. Live form delivery, payment, shipping, and inventory integrations require separate checks in their respective services.

@@ -15,8 +15,6 @@
     "check": "shopify theme check",
     "lint": "shopify theme check",
     "push:staging": "npm run build && shopify theme push --unpublished",
-    "push": "npm run build && shopify theme push",
-    "pull": "shopify theme pull",
     "package": "npm run build && shopify theme package",
     "open": "shopify theme open",
     "info": "shopify theme info",

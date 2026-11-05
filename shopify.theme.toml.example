@@ -1,8 +1,7 @@
 [environments.default]
-store = "ezquest-3.myshopify.com"
+store = "ezquest-4.myshopify.com"
 host = "127.0.0.1"
 port = 9292
 nodelete = true
 open = true
 live-reload = "hot-reload"
-store-password = "PUT_STOREFRONT_PASSWORD_HERE"
