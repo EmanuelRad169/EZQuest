@@ -112,6 +112,7 @@
 
       function open() {
         if (!popup.hidden) return;
+        sessionStorage.setItem(POPUP_KEY, '1');
         previousFocus = document.activeElement;
         popup.hidden = false;
         document.body.style.overflow = 'hidden';
