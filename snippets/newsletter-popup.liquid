@@ -46,7 +46,7 @@
         {% form 'customer', id: 'nl-popup-form', class: 'nl-popup__form' %}
           <input type="hidden" name="contact[tags]" value="newsletter,welcome10">
           {% if form.posted_successfully? %}<span data-newsletter-confirmed hidden></span>{% endif %}
-          {% if form.errors %}<div role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+          {% if form.errors %}<div role="alert" data-newsletter-form-errors>{{ form.errors | default_errors }}</div>{% endif %}
           <div class="nl-popup__field-wrap">
             <label class="sr-only" for="nl-popup-email">Email Address</label>
             <input
@@ -122,7 +122,7 @@
       }
 
       var confirmed = !!popup.querySelector('[data-newsletter-confirmed]');
-      var returnedWithErrors = !!popup.querySelector('#nl-popup-form [role="alert"]');
+      var returnedWithErrors = !!popup.querySelector('[data-newsletter-form-errors]');
       if (localStorage.getItem(SUCCESS_KEY)) return;
       if (!confirmed && !returnedWithErrors && hasSeenOffer()) return;
 
