@@ -105,14 +105,30 @@
 
       if (!popup) return;
 
+      function hasSeenOffer() {
+        try {
+          if (sessionStorage.getItem(POPUP_KEY)) return true;
+        } catch (error) {}
+        try {
+          return !!localStorage.getItem(POPUP_KEY);
+        } catch (error) {
+          return false;
+        }
+      }
+
+      function markOfferSeen() {
+        try { sessionStorage.setItem(POPUP_KEY, '1'); } catch (error) {}
+        try { localStorage.setItem(POPUP_KEY, '1'); } catch (error) {}
+      }
+
       var confirmed = !!popup.querySelector('[data-newsletter-confirmed]');
       var returnedWithErrors = !!popup.querySelector('#nl-popup-form [role="alert"]');
       if (localStorage.getItem(SUCCESS_KEY)) return;
-      if (!confirmed && !returnedWithErrors && localStorage.getItem(POPUP_KEY)) return;
+      if (!confirmed && !returnedWithErrors && hasSeenOffer()) return;
 
       function open() {
         if (!popup.hidden) return;
-        localStorage.setItem(POPUP_KEY, '1');
+        markOfferSeen();
         previousFocus = document.activeElement;
         popup.hidden = false;
         document.body.style.overflow = 'hidden';
@@ -124,7 +140,7 @@
         window.clearTimeout(timer);
         popup.hidden = true;
         document.body.style.overflow = '';
-        localStorage.setItem(POPUP_KEY, '1');
+        markOfferSeen();
         if (previousFocus && typeof previousFocus.focus === 'function') {
           previousFocus.focus();
         }
@@ -141,7 +157,7 @@
       function startTriggers() {
         if (confirmed || returnedWithErrors) return;
         function openOffer() {
-          if (localStorage.getItem(POPUP_KEY) || localStorage.getItem(SUCCESS_KEY)) return;
+          if (hasSeenOffer() || localStorage.getItem(SUCCESS_KEY)) return;
           open();
         }
         timer = window.setTimeout(openOffer, DELAY_MS);
@@ -180,7 +196,7 @@
         if (form) form.hidden = true;
         if (success) success.hidden = false;
         open();
-        localStorage.setItem(POPUP_KEY, '1');
+        markOfferSeen();
         localStorage.setItem(SUCCESS_KEY, '1');
         if (window.ezTrackFormSubmit) window.ezTrackFormSubmit('newsletter_popup');
       } else if (returnedWithErrors) {
