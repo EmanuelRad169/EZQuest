@@ -352,7 +352,9 @@
     <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'scroll-animate.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'ez-compare.js' | asset_url }}" defer="defer"></script>
-    {% render 'newsletter-popup' %}
+    {% if request.page_type == 'index' %}
+      {% render 'newsletter-popup' %}
+    {% endif %}
     {% render 'quick-view-modal' %}
   </body>
 </html>
