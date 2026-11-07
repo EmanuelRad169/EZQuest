@@ -335,7 +335,9 @@
     {% render 'cart-drawer' %}
     {% render 'mobile-nav-drawer' %}
     {{ 'cookie-consent.css' | asset_url | stylesheet_tag }}
-    {% render 'cookie-consent' %}
+    {% if request.page_type == 'index' %}
+      {% render 'cookie-consent' %}
+    {% endif %}
     <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'reveal.js' | asset_url }}" defer="defer"></script>

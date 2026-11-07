@@ -105,19 +105,19 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     banner        = document.getElementById('cookie-banner');
-    if (!banner) return;
-
-    acceptButton  = document.getElementById('cookie-accept');
-    declineButton = document.getElementById('cookie-decline');
-
     var consent = getConsent();
 
-    /* If consent was already given in a previous visit, apply it silently */
+    /* Apply the saved choice on every page, including pages without the banner. */
     if (consent) {
       updateGA4Consent(consent === 'accepted');
       updateShopifyConsent(consent === 'accepted');
       return;
     }
+
+    if (!banner) return;
+
+    acceptButton  = document.getElementById('cookie-accept');
+    declineButton = document.getElementById('cookie-decline');
 
     /* First visit — show the banner after a short delay */
     if (acceptButton) {
