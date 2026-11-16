@@ -280,6 +280,10 @@
     if (surface.getAttribute('src') !== src) surface.src = src;
   }
 
+  surface.addEventListener('load', function () {
+    if (isActive && pendingEvent) updateZoom(pendingEvent);
+  });
+
   function updateZoom(e) {
     rafId = null;
     var img = getImg();
@@ -296,12 +300,23 @@
       return;
     }
 
+    // Never enlarge beyond the pixels available in the loaded source.
+    // High-density screens need more source pixels for each CSS pixel.
+    var density = window.devicePixelRatio || 1;
+    var scale = surface.complete && surface.naturalWidth
+      ? Math.min(ZOOM, surface.naturalWidth / (rect.width * density), surface.naturalHeight / (rect.height * density))
+      : 0;
+    if (scale <= 1) {
+      surface.classList.remove('is-active');
+      surface.style.transform = '';
+      return;
+    }
     surface.classList.add('is-active');
     // Zoom toward the point under the cursor
     var ox = (x / rect.width) * 100;
     var oy = (y / rect.height) * 100;
     surface.style.transformOrigin = ox + '% ' + oy + '%';
-    surface.style.transform = 'scale(' + ZOOM + ')';
+    surface.style.transform = 'scale(' + scale + ')';
   }
 
   container.addEventListener('mouseenter', function () {
