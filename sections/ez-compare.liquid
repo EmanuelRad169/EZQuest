@@ -27,6 +27,7 @@
 {% if product.compare_at_price > product.price %}"compareAt": {{ product.compare_at_price | money | json }},{% endif %}
 "vid": {{ product.selected_or_first_available_variant.id | json }},
 "available": {{ product.available | json }},
+"comingSoon": {% if product.tags contains 'coming-soon' %}true{% else %}false{% endif %},
 "sku": {{ product.selected_or_first_available_variant.sku | json }},
 "barcode": {{ product.selected_or_first_available_variant.barcode | json }},
 "type": {{ product.type | json }},

@@ -71,6 +71,7 @@
 
     if product_tags_normalized contains 'coming-soon'
       assign product_badge_codes = 'coming-soon,' | append: product_badge_codes
+      assign is_coming_soon_card = true
     endif
     if product_tags_normalized contains 'preorder' or product_tags_normalized contains 'pre-order'
       assign product_badge_codes = product_badge_codes | append: 'preorder,'
@@ -129,7 +130,7 @@
     endif
 
     assign selected_variant = product.selected_or_first_available_variant
-    if selected_variant != blank and card_context != 'compare'
+    if selected_variant != blank and card_context != 'compare' and is_coming_soon_card != true
       assign show_quick_add = true
     endif
 
@@ -212,7 +213,11 @@
       </a>
 
       {% if product != blank %}
-        {% unless product.has_only_default_variant %}
+        {% if is_coming_soon_card %}
+          <button type="button" class="quick-add-btn quick-add-btn--atc" disabled aria-disabled="true">
+            <span>Coming Soon</span>
+          </button>
+        {% elsif product.has_only_default_variant == false %}
           <a href="{{ product_card_url }}"
              class="quick-add-btn quick-add-btn--options"
              aria-label="View options for {{ product.title | escape }}">
@@ -233,7 +238,7 @@
             </svg>
             <span>Add to Cart</span>
           </button>
-        {% endunless %}
+        {% endif %}
       {% endif %}
 
       <div class="product-card__wishlist">
@@ -365,7 +370,11 @@
         </svg>
         Quick View
       </button>
-      {% unless product.has_only_default_variant %}
+      {% if is_coming_soon_card %}
+        <button type="button" class="quick-add-btn quick-add-btn--atc" disabled aria-disabled="true">
+          <span>Coming Soon</span>
+        </button>
+      {% elsif product.has_only_default_variant == false %}
         <a href="{{ product_card_url }}"
            class="quick-add-btn quick-add-btn--options"
            aria-label="View options for {{ product.title | escape }}">
@@ -386,7 +395,7 @@
           </svg>
           <span>Add to Cart</span>
         </button>
-      {% endunless %}
+      {% endif %}
     </div>
   {% else %}
     <div class="product-thumb-card product-card-image-wrapper">

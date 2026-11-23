@@ -80,11 +80,19 @@
     return '<span data-qv-price>' + money(variant.price) + compare + '</span>';
   }
 
+  function isComingSoon(product) {
+    return Array.isArray(product.tags) && product.tags.some(function (tag) {
+      return String(tag).toLowerCase().replace(/[ _]+/g, '-') === 'coming-soon';
+    });
+  }
+
   function buildBody(product) {
     var variant = product.variants && product.variants.length ? product.variants[0] : null;
     if (!variant) {
       return '<div class="qv-modal__message">Could not load this product.</div>';
     }
+
+    var comingSoon = isComingSoon(product);
 
     return '<div class="qv-modal__img-wrap">' + buildImage(product) + '</div>' +
       '<div class="qv-modal__body">' +
@@ -92,8 +100,8 @@
         '<h2 class="qv-modal__title">' + escapeHTML(product.title) + '</h2>' +
         '<p class="qv-modal__price">' + priceHTML(variant) + '</p>' +
         buildVariants(product, variant) +
-        '<button class="qv-modal__atc disabled:opacity-50 disabled:cursor-default" data-qv-atc data-variant-id="' + variant.id + '"' + (variant.available ? '' : ' disabled') + '>' +
-          (variant.available ? 'Add to cart' : 'Sold out') +
+        '<button class="qv-modal__atc disabled:opacity-50 disabled:cursor-default" data-qv-atc data-coming-soon="' + (comingSoon ? 'true' : 'false') + '" data-variant-id="' + variant.id + '"' + (variant.available && !comingSoon ? '' : ' disabled') + '>' +
+          (comingSoon ? 'Coming Soon' : (variant.available ? 'Add to cart' : 'Sold out')) +
         '</button>' +
         '<a href="' + escapeHTML(localizedPath('/products/' + product.handle)) + '" class="qv-modal__view-link">View full details</a>' +
       '</div>';
@@ -179,9 +187,10 @@
 
     if (price) price.outerHTML = priceHTML(variant);
     if (atc) {
+      var comingSoon = atc.dataset.comingSoon === 'true';
       atc.dataset.variantId = variant.id;
-      atc.disabled = !variant.available;
-      atc.textContent = variant.available ? 'Add to cart' : 'Sold out';
+      atc.disabled = comingSoon || !variant.available;
+      atc.textContent = comingSoon ? 'Coming Soon' : (variant.available ? 'Add to cart' : 'Sold out');
     }
   });
 

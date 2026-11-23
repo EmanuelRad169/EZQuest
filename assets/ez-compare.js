@@ -184,9 +184,11 @@
     h += '<th class="ezc-corner"></th>';
     ids.forEach(function (id) {
       var p = index[id];
-      var buy = (p.available && p.vid)
-        ? '<button type="button" class="ezc-buy" data-ezc-add-cart="' + p.vid + '">Add to cart</button>'
-        : '<span class="ezc-soldout">Sold out</span>';
+      var buy = p.comingSoon
+        ? '<span class="ezc-soldout">Coming Soon</span>'
+        : (p.available && p.vid)
+          ? '<button type="button" class="ezc-buy" data-ezc-add-cart="' + p.vid + '">Add to cart</button>'
+          : '<span class="ezc-soldout">Sold out</span>';
       h += '<th class="ezc-col">' +
         '<button type="button" class="ezc-remove" data-ezc-remove="' + id + '" aria-label="Remove ' + esc(p.title) + '">&times;</button>' +
         '<a href="' + p.url + '" class="ezc-col__media">' + (p.img ? '<img src="' + p.img + '" alt="' + esc(p.title) + '" loading="lazy">' : '') + '</a>' +

@@ -11,7 +11,7 @@
     .buybox-sticky { position: static !important; top: auto !important; }
   }
 {%- endstyle -%}
-<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}" data-preorder="{% if product.tags contains 'preorder' or product.tags contains 'pre-order' %}true{% else %}false{% endif %}" data-color-gallery="{% if product.tags contains 'color-gallery' %}true{% else %}false{% endif %}">
+<section class="section-shell main-product-section" id="pdp-overview" data-product-root data-product-id="{{ product.id }}" data-product-type="{{ product.type | escape }}" data-product-created="{{ product.created_at | date: '%s' }}" data-product-price="{{ product.selected_or_first_available_variant.price | money }}" data-preorder="{% if product.tags contains 'preorder' or product.tags contains 'pre-order' %}true{% else %}false{% endif %}" data-coming-soon="{% if product.tags contains 'coming-soon' %}true{% else %}false{% endif %}" data-color-gallery="{% if product.tags contains 'color-gallery' %}true{% else %}false{% endif %}">
   <div class="container-shell">
     <div class="hidden lg:block">
       {% render 'breadcrumbs' %}
@@ -54,9 +54,13 @@
       assign amazon_count  = product.metafields.custom.amazon_review_count | default: 0
       assign selected_variant = product.selected_or_first_available_variant
       assign is_preorder = false
+      assign is_coming_soon = false
       assign product_tags_pre = product.tags | join: ',' | downcase | replace: ' ', '-' | replace: '_', '-'
       if product_tags_pre contains 'preorder' or product_tags_pre contains 'pre-order'
         assign is_preorder = true
+      endif
+      if product_tags_pre contains 'coming-soon'
+        assign is_coming_soon = true
       endif
       assign product_form_id = 'ProductForm-' | append: section.id
       assign mobile_proof_line = blank
@@ -469,7 +473,7 @@
                 <p class="product-buybox__kicker mb-3 text-caption-sm font-semibold uppercase text-slate-500">{{ pdp_kicker | upcase }}</p>
             {%- endif -%}
               <h1 class="product-buybox__title mb-3 text-heading font-bold leading-tight text-slate-950 md:text-heading-lg">{{ product.title }}</h1>
-            {%- if product.tags contains 'coming-soon' -%}
+            {%- if is_coming_soon -%}
               <span class="pdp-preorder-badge" style="background:#0f172a;color:#fff;">Coming Soon</span>
             {%- endif -%}
             {%- if is_preorder -%}
@@ -644,16 +648,16 @@
                 {% endif %}
                 <div class="product-primary-action-wrap" data-product-primary-action-wrap>
                   <button class="btn btn--primary btn--block product-primary-action" type="submit" name="add" data-product-primary-button
-                    data-label-add="{% if is_preorder %}Pre-Order{% else %}{{ 'product.add_to_cart' | t | escape }}{% endif %}"
+                    data-label-add="{% if is_coming_soon %}Coming Soon{% elsif is_preorder %}Pre-Order{% else %}{{ 'product.add_to_cart' | t | escape }}{% endif %}"
                     data-label-adding="{{ 'product.adding' | t | escape }}"
                     data-preorder="{% if is_preorder %}true{% else %}false{% endif %}"
-                    {% unless product.available or is_preorder %} disabled="disabled"{% endunless %}>
-                    <span data-product-primary-button-label>{% if is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
+                    {% if is_coming_soon %}disabled="disabled" aria-disabled="true"{% else %}{% unless product.available or is_preorder %} disabled="disabled"{% endunless %}{% endif %}>
+                    <span data-product-primary-button-label>{% if is_coming_soon %}Coming Soon{% elsif is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
                   </button>
                 </div>
               </div>
 
-              {% if section.settings.show_dynamic_checkout %}
+              {% if section.settings.show_dynamic_checkout and is_coming_soon == false %}
                 <div class="product-form-express-divider" aria-hidden="true"><span>or</span></div>
                 <div class="product-form-payment">
                   {{ form | payment_button }}
@@ -663,7 +667,7 @@
               {%- comment -%} Installment messaging (Shop Pay / Klarna) — renders only when enabled in the store {%- endcomment -%}
               <div class="product-form-terms">{{ form | payment_terms }}</div>
 
-              {%- if product.available -%}
+              {%- if product.available and is_coming_soon == false -%}
                 <p class="product-form-secure">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10.5h14v9.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
                   Secure Checkout · Ships in 1–2 Business Days · Free over $90
@@ -998,7 +1002,7 @@
           <p class="product-sticky-atc-title">{{ product.title | truncate: 28 }}</p>
           <div class="product-sticky-atc-meta">
             <p class="product-sticky-atc-availability" data-sticky-atc-availability>
-              {% if is_preorder %}Available to pre-order{% elsif product.available %}{{ 'product.in_stock' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
+              {% if is_coming_soon %}Coming Soon{% elsif is_preorder %}Available to pre-order{% elsif product.available %}{{ 'product.in_stock' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
             </p>
             {%- if sticky_trust_line != blank -%}
               <span class="product-sticky-atc-trust">{{ sticky_trust_line }}</span>
@@ -1012,8 +1016,8 @@
             <span class="product-sticky-atc-save">-{{ sticky_variant.compare_at_price | minus: sticky_variant.price | money }}</span>
           {%- endif -%}
         </div>
-        <button class="btn btn--primary product-sticky-atc-button" type="submit" name="add" form="{{ product_form_id }}" data-sticky-atc-button{% unless product.available or is_preorder %} disabled="disabled"{% endunless %}>
-          <span data-sticky-atc-button-label>{% if is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
+        <button class="btn btn--primary product-sticky-atc-button" type="submit" name="add" form="{{ product_form_id }}" data-sticky-atc-button{% if is_coming_soon %} disabled="disabled" aria-disabled="true"{% else %}{% unless product.available or is_preorder %} disabled="disabled"{% endunless %}{% endif %}>
+          <span data-sticky-atc-button-label>{% if is_coming_soon %}Coming Soon{% elsif is_preorder %}Pre-Order{% elsif product.available %}{{ 'product.add_to_cart' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}</span>
         </button>
       </div>
     </div>
@@ -1351,7 +1355,7 @@
     "url": {{ shop.url | append: product.url | json }},
     "priceCurrency": {{ cart.currency.iso_code | json }},
     "price": {{ product.price | divided_by: 100.0 }},
-    "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "availability": "{% if product.available and is_coming_soon == false %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
     "seller": {
       "@type": "Organization",
@@ -1528,8 +1532,10 @@
 
   document.addEventListener('submit', function (event) {
     var productForm = event.target && event.target.closest ? event.target.closest('form[id^="ProductForm-"]') : null;
-    if (!productForm || !productForm.closest('[data-product-root]')) return;
+    var productRoot = productForm && productForm.closest('[data-product-root]');
+    if (!productForm || !productRoot) return;
     event.preventDefault();
+    if (productRoot.dataset.comingSoon === 'true') return;
     var variantInput = productForm.querySelector('[name="id"]');
     var quantityInput = productForm.querySelector('[name="quantity"]');
     if (!variantInput || !variantInput.value) return;
