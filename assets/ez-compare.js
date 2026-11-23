@@ -21,9 +21,16 @@
   /* ---- toast (also replaces any stray Compareder native alert) ---- */
   var toast;
   function showToast(msg, href) {
-    if (!toast) { toast = document.createElement('div'); toast.className = 'ez-compare-toast'; document.body.appendChild(toast); }
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'ez-compare-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
     if (href) {
-      toast.innerHTML = '<span>' + esc(msg) + '</span> <a href="' + href + '" style="color:#fed300;text-decoration:underline;margin-left:10px;font-weight:700;white-space:nowrap;">View comparison →</a>';
+      toast.innerHTML = '<span class="ez-compare-toast__message">' + esc(msg) + '</span>' +
+        '<a class="ez-compare-toast__link" data-ez-compare-view href="' + href + '">View comparison <span aria-hidden="true">→</span></a>';
     } else {
       toast.textContent = msg;
     }
@@ -72,13 +79,22 @@
         var wasActive = has(pid);
         var r = toggle(pid);
         if (r !== null) btn.classList.toggle('is-active', has(pid));
-        if (r === true && !wasActive) { showToast('Added to Compare (' + getList().length + ')', COMPARE_URL); }
-        else if (wasActive) { showToast('Removed from Compare'); }
+        if (r === true && !wasActive) { showToast('Added to compare · ' + getList().length + ' of ' + MAX + ' selected', COMPARE_URL); }
+        else if (wasActive) { showToast('Removed from compare'); }
       });
       wrap.appendChild(btn);
     });
   }
-  function refreshCardStates() { document.querySelectorAll('.ez-card-compare[data-ez-compare-id]').forEach(function (b) { b.classList.toggle('is-active', has(b.getAttribute('data-ez-compare-id'))); }); }
+  function refreshCardStates() {
+    document.querySelectorAll('.ez-card-compare[data-ez-compare-id]').forEach(function (b) {
+      var active = has(b.getAttribute('data-ez-compare-id'));
+      var label = active ? 'Remove from compare' : 'Add to compare';
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-label', label);
+      b.setAttribute('title', label);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
 
   /* ---- compare page ---- */
   var INDEX = null;
@@ -242,6 +258,8 @@
 
   /* ---- events ---- */
   document.addEventListener('click', function (e) {
+    var view = e.target.closest('[data-ez-compare-view]');
+    if (view) { e.stopPropagation(); return; }
     var rm = e.target.closest('[data-ezc-remove]'); if (rm) { remove(rm.getAttribute('data-ezc-remove')); return; }
     if (e.target.closest('[data-ezc-clear]')) { setList([]); return; }
     var buy = e.target.closest('[data-ezc-add-cart]'); if (buy) { addToCart(buy.getAttribute('data-ezc-add-cart'), buy); return; }
@@ -253,7 +271,7 @@
   document.addEventListener('input', function (e) { if (e.target.closest('[data-ezc-add-input]')) renderAddResults(e.target.value); });
   document.addEventListener('ez-compare:change', function () { syncBadge(); refreshCardStates(); renderComparePage(); });
 
-  function tick() { ensureHeaderBtn(); decorate(); syncBadge(); }
+  function tick() { ensureHeaderBtn(); decorate(); refreshCardStates(); syncBadge(); }
   function init() { tick(); renderComparePage(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
