@@ -830,7 +830,7 @@
           </div>
 
           {% unless product.available %}
-            {% render 'notify-me-form', product: product %}
+            {% render 'notify-me-form', product: product, coming_soon: is_coming_soon %}
           {% endunless %}
 
           {% if section.settings.show_pickup_availability %}

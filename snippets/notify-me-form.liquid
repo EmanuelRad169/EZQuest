@@ -18,7 +18,7 @@
     <input type="text" id="notify-hp-{{ section.id }}" name="notify_hp" tabindex="-1" autocomplete="off">
   </div>
 
-  <p class="notify-form__message">{{ 'notify.out_of_stock' | t }}</p>
+  <p class="notify-form__message">{% if coming_soon %}This product is coming soon. Sign up to be notified when it is available.{% else %}{{ 'notify.out_of_stock' | t }}{% endif %}</p>
 
   <div class="notify-form__input-row" data-notify-fields data-notify-input-row>
     <input

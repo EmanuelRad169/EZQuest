@@ -569,9 +569,10 @@ function animateMediaReveal(element, options) {
 
     function syncButtonState(isAvailable, priceText) {
       const isPreorder = productRoot.dataset.preorder === 'true';
-      const buttonLabel = isPreorder ? 'Pre-Order' : (isAvailable ? 'Add to cart' : 'Sold out');
+      const isComingSoon = productRoot.dataset.comingSoon === 'true';
+      const buttonLabel = isComingSoon ? 'Coming Soon' : (isPreorder ? 'Pre-Order' : (isAvailable ? 'Add to cart' : 'Sold out'));
       // Pre-order items stay purchasable even when Shopify reports the variant unavailable.
-      const buttonEnabled = isPreorder || isAvailable;
+      const buttonEnabled = !isComingSoon && (isPreorder || isAvailable);
 
       if (primaryButton) {
         primaryButton.disabled = !buttonEnabled;
@@ -625,8 +626,9 @@ function animateMediaReveal(element, options) {
       }
 
       if (stickyAvailability) {
-        stickyAvailability.textContent = isAvailable ? 'In stock' : 'Sold out';
-        stickyAvailability.classList.toggle('is-unavailable', !isAvailable);
+        const isComingSoon = productRoot.dataset.comingSoon === 'true';
+        stickyAvailability.textContent = isComingSoon ? 'Coming Soon' : (isAvailable ? 'In stock' : 'Sold out');
+        stickyAvailability.classList.toggle('is-unavailable', isComingSoon || !isAvailable);
       }
 
       if (stickyPrice) {
